@@ -4,6 +4,7 @@ const READMES: &[(&str, &str)] = &[
   ("ghostty", include_str!("../ghostty/README.md")),
   ("zsh", include_str!("../zsh/README.md")),
   ("starship", include_str!("../starship/README.md")),
+  ("zed", include_str!("../zed/README.md")),
 ];
 
 #[test]
@@ -27,6 +28,7 @@ fn no_theme_file_uses_patina_as_label() {
     ("starship/dark", include_str!("../starship/warm-burnout-dark.toml")),
     ("starship/light", include_str!("../starship/warm-burnout-light.toml")),
     ("starship/example", include_str!("../starship/starship.toml")),
+    ("zed/theme", include_str!("../zed/themes/warm-burnout.json")),
   ];
   for (name, content) in theme_files {
     for line in content.lines() {

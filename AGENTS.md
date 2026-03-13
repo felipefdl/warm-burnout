@@ -30,6 +30,7 @@ patina-vscode-theme/
     ghostty.rs                # Ghostty theme validation tests
     starship.rs               # Starship palette validation tests
     vscode.rs                 # VS Code theme validation tests
+    zed.rs                    # Zed theme validation tests
     zsh.rs                    # Zsh theme validation tests
   .github/workflows/
     validate.yml              # CI: run theme validation on push/PR
@@ -61,6 +62,13 @@ patina-vscode-theme/
     warm-burnout-dark.toml    # Dark palette (standalone)
     warm-burnout-light.toml   # Light palette (standalone)
     starship.toml             # Example full config with both palettes
+  zed/                        # Zed editor theme
+    README.md                 # Zed install instructions
+    AGENTS.md                 # Zed-specific agent rules
+    extension.toml            # Extension manifest
+    LICENSE                   # Required by Zed extension registry
+    themes/
+      warm-burnout.json       # Theme family (dark + light in one file)
 ```
 
 ## Design Principles

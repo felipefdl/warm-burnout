@@ -50,3 +50,31 @@ pub fn vscode_color(src: &str, key: &str) -> String {
   let v: serde_json::Value = serde_json::from_str(src).unwrap();
   hex_to_lower(v["colors"][key].as_str().unwrap())
 }
+
+pub fn zed_editor_color(src: &str, theme_name: &str, key: &str) -> String {
+  let v: serde_json::Value = serde_json::from_str(src).unwrap();
+  let themes = v["themes"].as_array().unwrap();
+  let theme = themes
+    .iter()
+    .find(|t| t["name"].as_str() == Some(theme_name))
+    .unwrap_or_else(|| panic!("no theme named '{theme_name}'"));
+  hex_to_lower(
+    theme["style"][key]
+      .as_str()
+      .unwrap_or_else(|| panic!("missing style key: {key}")),
+  )
+}
+
+pub fn zed_syntax_color(src: &str, theme_name: &str, key: &str) -> String {
+  let v: serde_json::Value = serde_json::from_str(src).unwrap();
+  let themes = v["themes"].as_array().unwrap();
+  let theme = themes
+    .iter()
+    .find(|t| t["name"].as_str() == Some(theme_name))
+    .unwrap_or_else(|| panic!("no theme named '{theme_name}'"));
+  hex_to_lower(
+    theme["style"]["syntax"][key]["color"]
+      .as_str()
+      .unwrap_or_else(|| panic!("missing syntax key: {key}")),
+  )
+}

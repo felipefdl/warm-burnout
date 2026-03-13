@@ -135,6 +135,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Ghostty | Available | [`ghostty/`](ghostty/) |
 | Zsh | Available | [`zsh/`](zsh/) |
 | Starship | Available | [`starship/`](starship/) |
+| Zed | Available | [`zed/`](zed/) |
 | JetBrains | Planned | -- |
 | Neovim | Planned | -- |
 | Alacritty | Planned | -- |
