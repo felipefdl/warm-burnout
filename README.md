@@ -129,20 +129,20 @@ Inspired by materials that age well. Unlike your eyes.
 
 ## Platforms
 
-| Platform | Status | Directory |
-|----------|--------|-----------|
-| VS Code | Available | [`vscode/`](vscode/) |
+| Platform | Status | Install |
+|----------|--------|---------|
+| VS Code | Available | [Marketplace](https://marketplace.visualstudio.com/items?itemName=felip3fdl.warm-burnout) |
 | Ghostty | Available | [`ghostty/`](ghostty/) |
 | Zsh | Available | [`zsh/`](zsh/) |
 | Starship | Available | [`starship/`](starship/) |
-| JetBrains | Planned | `jetbrains/` |
-| Neovim | Planned | `neovim/` |
-| Alacritty | Planned | `alacritty/` |
-| Warp | Planned | `warp/` |
-| iTerm2 | Planned | `iterm2/` |
-| Windows Terminal | Planned | `windows-terminal/` |
-| Slack | Planned | `slack/` |
-| tmux | Planned | `tmux/` |
+| JetBrains | Planned | -- |
+| Neovim | Planned | -- |
+| Alacritty | Planned | -- |
+| Warp | Planned | -- |
+| iTerm2 | Planned | -- |
+| Windows Terminal | Planned | -- |
+| Slack | Planned | -- |
+| tmux | Planned | -- |
 
 Each platform lives in its own directory with its own README, build process, and release workflow.
 

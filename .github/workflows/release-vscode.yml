@@ -14,11 +14,14 @@ jobs:
     permissions:
       contents: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
+
+      - name: Copy LICENSE into extension directory
+        run: cp ../LICENSE LICENSE
 
       - name: Install vsce
         run: npm install -g @vscode/vsce
