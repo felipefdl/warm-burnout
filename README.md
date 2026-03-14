@@ -139,6 +139,7 @@ Inspired by materials that age well. Unlike your eyes.
 | eza | Available | [`eza/`](eza/) |
 | JetBrains | Planned | -- |
 | Neovim | Available | [`nvim/`](nvim/) |
+| Xcode | Available | [`xcode/`](xcode/) |
 | Alacritty | Planned | -- |
 | Warp | Planned | -- |
 | iTerm2 | Planned | -- |

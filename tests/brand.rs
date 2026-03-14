@@ -6,6 +6,7 @@ const READMES: &[(&str, &str)] = &[
   ("starship", include_str!("../starship/README.md")),
   ("zed", include_str!("../zed/README.md")),
   ("nvim", include_str!("../nvim/README.md")),
+  ("xcode", include_str!("../xcode/README.md")),
 ];
 
 #[test]
