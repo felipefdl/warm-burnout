@@ -10,7 +10,7 @@
         "background": "#1a1510",
         "text": "#bfbdb6",
         "text.muted": "#ada69c",
-        "text.accent": "#e61a2b",
+        "text.accent": "#b8522e",
         "surface.background": "#14120f",
         "elevated_surface.background": "#1f1d17",
         "panel.background": "#14120f",
@@ -20,8 +20,8 @@
         "toolbar.background": "#1a1510",
         "border": "#ffffff0d",
         "border.variant": "#ffffff08",
-        "border.focused": "#e61a2b",
-        "border.selected": "#e61a2b",
+        "border.focused": "#b8522e",
+        "border.selected": "#b8522e",
         "border.disabled": "#ffffff08",
         "border.transparent": "#00000000",
         "ghost_element.hover": "#ffffff08",
@@ -36,7 +36,7 @@
         "icon": "#bfbdb6",
         "icon.muted": "#ada69c",
         "icon.disabled": "#ada69c80",
-        "icon.accent": "#e61a2b",
+        "icon.accent": "#b8522e",
         "scrollbar.thumb.background": "#ffffff15",
         "scrollbar.thumb.hover_background": "#ffffff25",
         "scrollbar.thumb.border": "#ffffff00",
@@ -106,7 +106,7 @@
         "players": [
           {
             "cursor": "#f5c56e",
-            "selection": "#3388ff40",
+            "selection": "#8aa8b840",
             "background": "#f5c56e"
           }
         ],
@@ -261,7 +261,7 @@
         "background": "#F5EDE0",
         "text": "#3a3630",
         "text.muted": "#5a5244",
-        "text.accent": "#e61a2b",
+        "text.accent": "#b8522e",
         "surface.background": "#EDE6DA",
         "elevated_surface.background": "#F0E8DC",
         "panel.background": "#EDE6DA",
@@ -271,8 +271,8 @@
         "toolbar.background": "#F5EDE0",
         "border": "#DDD6CA",
         "border.variant": "#E5DED2",
-        "border.focused": "#e61a2b",
-        "border.selected": "#e61a2b",
+        "border.focused": "#b8522e",
+        "border.selected": "#b8522e",
         "border.disabled": "#DDD6CA80",
         "border.transparent": "#00000000",
         "ghost_element.hover": "#00000008",
@@ -287,7 +287,7 @@
         "icon": "#3a3630",
         "icon.muted": "#5a5244",
         "icon.disabled": "#5a524480",
-        "icon.accent": "#e61a2b",
+        "icon.accent": "#b8522e",
         "scrollbar.thumb.background": "#00000015",
         "scrollbar.thumb.hover_background": "#00000025",
         "scrollbar.thumb.border": "#00000000",
@@ -357,7 +357,7 @@
         "players": [
           {
             "cursor": "#8a6600",
-            "selection": "#3388ff40",
+            "selection": "#8aa8b840",
             "background": "#8a6600"
           }
         ],

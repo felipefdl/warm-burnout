@@ -107,7 +107,7 @@ The palette is fully warm except types/classes -- `#8aa8b8` (dark) / `#2a5868` (
 
 ### Cursor: gold, not red
 
-The accent color is red (`#e61a2b`) for buttons and badges. But the cursor uses warm gold -- `#f5c56e` dark, `#8a6600` light. A red cursor gets confused with error indicators. Gold is visible everywhere, including YAML where syntax colors are muted.
+The accent color is copper rust (`#b8522e`) for buttons and badges. But the cursor uses warm gold -- `#f5c56e` dark, `#8a6600` light. A copper cursor gets confused with error indicators. Gold is visible everywhere, including YAML where syntax colors are muted.
 
 ## The Palette
 

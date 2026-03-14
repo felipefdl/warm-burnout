@@ -107,7 +107,7 @@ Background: `#1a1510` (L ~= 0.008). All tokens >= 7.0:1 (AAA).
 | Error/invalid     | `#f08888` | 7.4:1    | normal   |
 | CSS properties    | `#deb074` | 9.1:1    | normal   |
 
-Accent: `#e61a2b`. Cursor: `#f5c56e`.
+Accent: `#b8522e`. Cursor: `#f5c56e`.
 
 ### Light Theme
 
@@ -131,7 +131,7 @@ Background: `#F5EDE0` (L ~= 0.854). All tokens >= 4.5:1 (AA).
 | Error/invalid     | `#b03434` | 5.3:1    | normal   |
 | CSS properties    | `#74501c` | 6.2:1    | normal   |
 
-Accent: `#e61a2b`. Cursor: `#8a6600`.
+Accent: `#b8522e`. Cursor: `#8a6600`.
 
 ### Contrast Ratio Formula
 

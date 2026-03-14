@@ -35,10 +35,10 @@ Non-ANSI colors:
 
 ## Selection Color Note
 
-Ghostty may not support alpha channels in selection colors (e.g., `#3388ff40`). If alpha is not supported, use opaque blends:
+Ghostty may not support alpha channels in selection colors (e.g., `#8aa8b840`). If alpha is not supported, use opaque blends:
 
-- Dark: `#1f2c48` (result of `#3388ff` at 25% over `#1a1510`)
-- Light: `#c4d3e8` (result of `#3388ff` at 25% over `#F5EDE0`)
+- Dark: `#33393a` (result of `#8aa8b8` at 25% over `#1a1510`)
+- Light: `#e5e8e2` (result of `#8aa8b8` at 25% over `#F5EDE0`)
 
 Test after changes. If the selection looks wrong, switch to the opaque values.
 
