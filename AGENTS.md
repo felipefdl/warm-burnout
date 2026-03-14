@@ -70,6 +70,18 @@ patina-vscode-theme/
     LICENSE                   # Required by Zed extension registry
     themes/
       warm-burnout.json       # Theme family (dark + light in one file)
+  nvim/                       # Neovim colorscheme
+    README.md                 # Neovim install instructions
+    AGENTS.md                 # Neovim-specific agent rules
+    colors/
+      warm-burnout-dark.lua   # Dark variant entry point
+      warm-burnout-light.lua  # Light variant entry point
+    lua/
+      warm-burnout/
+        init.lua              # setup(), load(variant)
+        palette.lua           # Dark + light palette tables
+        highlights.lua        # All highlight group definitions
+        terminal.lua          # Terminal ANSI colors (16 colors)
 ```
 
 ## Design Principles

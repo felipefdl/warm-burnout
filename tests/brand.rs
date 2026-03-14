@@ -5,6 +5,7 @@ const READMES: &[(&str, &str)] = &[
   ("zsh", include_str!("../zsh/README.md")),
   ("starship", include_str!("../starship/README.md")),
   ("zed", include_str!("../zed/README.md")),
+  ("nvim", include_str!("../nvim/README.md")),
 ];
 
 #[test]

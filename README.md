@@ -138,7 +138,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Zed | Available | [`zed/`](zed/) |
 | eza | Available | [`eza/`](eza/) |
 | JetBrains | Planned | -- |
-| Neovim | Planned | -- |
+| Neovim | Available | [`nvim/`](nvim/) |
 | Alacritty | Planned | -- |
 | Warp | Planned | -- |
 | iTerm2 | Planned | -- |

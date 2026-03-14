@@ -14,5 +14,10 @@ jobs:
 
       - uses: Swatinem/rust-cache@v2
 
+      - name: Install Neovim
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y neovim
+
       - name: Run theme validation tests
         run: cargo test
