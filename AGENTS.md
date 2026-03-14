@@ -31,6 +31,7 @@ patina-vscode-theme/
     starship.rs               # Starship palette validation tests
     vscode.rs                 # VS Code theme validation tests
     zed.rs                    # Zed theme validation tests
+    eza.rs                    # Eza theme validation tests
     zsh.rs                    # Zsh theme validation tests
   .github/workflows/
     validate.yml              # CI: run theme validation on push/PR

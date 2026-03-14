@@ -6,4 +6,5 @@ publish = false
 
 [dev-dependencies]
 serde_json = "1"
+serde_yml = "0.0.12"
 toml = "1"
