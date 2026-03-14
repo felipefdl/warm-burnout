@@ -32,6 +32,7 @@ patina-vscode-theme/
     vscode.rs                 # VS Code theme validation tests
     zed.rs                    # Zed theme validation tests
     eza.rs                    # Eza theme validation tests
+    xcode.rs                  # Xcode theme validation tests
     zsh.rs                    # Zsh theme validation tests
   .github/workflows/
     validate.yml              # CI: run theme validation on push/PR
@@ -82,6 +83,11 @@ patina-vscode-theme/
         palette.lua           # Dark + light palette tables
         highlights.lua        # All highlight group definitions
         terminal.lua          # Terminal ANSI colors (16 colors)
+  xcode/                      # Xcode color theme
+    README.md                 # Xcode install instructions
+    AGENTS.md                 # Xcode-specific agent rules
+    Warm Burnout Dark.xccolortheme   # Dark variant (XML plist)
+    Warm Burnout Light.xccolortheme  # Light variant (XML plist)
 ```
 
 ## Design Principles
@@ -197,6 +203,12 @@ Use these as inspiration for copy, commit messages, taglines, and descriptions:
 - "clinically warm, emotionally cold"
 - "every pixel, audited to hurt less"
 - "the ophthalmologist approves, probably"
+
+### Code Quality
+
+1. Always run `cargo fmt` after modifying Rust files.
+2. Always run `cargo clippy -- -D warnings` before committing -- all warnings are errors.
+3. Run `cargo test` to verify all theme validation tests pass.
 
 ### Adding a New Platform
 

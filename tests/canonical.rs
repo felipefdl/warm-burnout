@@ -1,6 +1,9 @@
 mod common;
 
-use common::{ghostty_color, hex_to_lower, nvim_palette_color, starship_palette_color, vscode_color, zed_editor_color};
+use common::{
+  ghostty_color, hex_to_lower, nvim_palette_color, starship_palette_color, vscode_color, xcode_color,
+  xcode_syntax_color, zed_editor_color,
+};
 
 fn zsh_foreground(src: &str) -> Option<String> {
   src.lines().find(|l| l.contains("[default]")).and_then(|l| {
@@ -316,6 +319,60 @@ fn light_foreground_nvim_matches_ghostty() {
   let nvim = nvim_palette_color(nvim_light_block(), "fg");
   let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
   assert_eq!(nvim, ghostty, "light foreground: nvim={nvim} ghostty={ghostty}");
+}
+
+// -- Background/foreground matches: vscode <-> xcode --
+
+#[test]
+fn dark_background_vscode_matches_xcode() {
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-dark.json"),
+    "editor.background",
+  );
+  let xcode = xcode_color(
+    include_str!("../xcode/Warm Burnout Dark.xccolortheme"),
+    "DVTSourceTextBackground",
+  );
+  assert_eq!(vscode, xcode, "dark background: vscode={vscode} xcode={xcode}");
+}
+
+#[test]
+fn light_background_vscode_matches_xcode() {
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-light.json"),
+    "editor.background",
+  );
+  let xcode = xcode_color(
+    include_str!("../xcode/Warm Burnout Light.xccolortheme"),
+    "DVTSourceTextBackground",
+  );
+  assert_eq!(vscode, xcode, "light background: vscode={vscode} xcode={xcode}");
+}
+
+#[test]
+fn dark_foreground_vscode_matches_xcode() {
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-dark.json"),
+    "editor.foreground",
+  );
+  let xcode = xcode_syntax_color(
+    include_str!("../xcode/Warm Burnout Dark.xccolortheme"),
+    "xcode.syntax.plain",
+  );
+  assert_eq!(vscode, xcode, "dark foreground: vscode={vscode} xcode={xcode}");
+}
+
+#[test]
+fn light_foreground_vscode_matches_xcode() {
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-light.json"),
+    "editor.foreground",
+  );
+  let xcode = xcode_syntax_color(
+    include_str!("../xcode/Warm Burnout Light.xccolortheme"),
+    "xcode.syntax.plain",
+  );
+  assert_eq!(vscode, xcode, "light foreground: vscode={vscode} xcode={xcode}");
 }
 
 #[test]

@@ -248,12 +248,30 @@ fn dark_and_light_have_same_palette_keys() {
 fn dark_has_required_palette_keys() {
   let keys = extract_palette_keys(dark_block());
   for required in [
-    "bg", "bg_dim", "bg_float", "bg_highlight", "bg_visual",
-    "fg", "fg_dim", "fg_gutter",
-    "comment", "cursor", "accent",
-    "keyword", "func", "string", "type", "operator", "number",
-    "error", "warn", "info", "hint",
-    "added", "modified", "deleted",
+    "bg",
+    "bg_dim",
+    "bg_float",
+    "bg_highlight",
+    "bg_visual",
+    "fg",
+    "fg_dim",
+    "fg_gutter",
+    "comment",
+    "cursor",
+    "accent",
+    "keyword",
+    "func",
+    "string",
+    "type",
+    "operator",
+    "number",
+    "error",
+    "warn",
+    "info",
+    "hint",
+    "added",
+    "modified",
+    "deleted",
   ] {
     assert!(
       keys.contains(&required.to_string()),
@@ -266,12 +284,30 @@ fn dark_has_required_palette_keys() {
 fn light_has_required_palette_keys() {
   let keys = extract_palette_keys(light_block());
   for required in [
-    "bg", "bg_dim", "bg_float", "bg_highlight", "bg_visual",
-    "fg", "fg_dim", "fg_gutter",
-    "comment", "cursor", "accent",
-    "keyword", "func", "string", "type", "operator", "number",
-    "error", "warn", "info", "hint",
-    "added", "modified", "deleted",
+    "bg",
+    "bg_dim",
+    "bg_float",
+    "bg_highlight",
+    "bg_visual",
+    "fg",
+    "fg_dim",
+    "fg_gutter",
+    "comment",
+    "cursor",
+    "accent",
+    "keyword",
+    "func",
+    "string",
+    "type",
+    "operator",
+    "number",
+    "error",
+    "warn",
+    "info",
+    "hint",
+    "added",
+    "modified",
+    "deleted",
   ] {
     assert!(
       keys.contains(&required.to_string()),
@@ -292,37 +328,28 @@ fn dark_terminal_has_16_colors() {
     })
     .count();
   // 16 colors in dark block + 16 in light block = 32 total
-  assert_eq!(count, 32, "expected 32 terminal color assignments (16 per variant), got {count}");
+  assert_eq!(
+    count, 32,
+    "expected 32 terminal color assignments (16 per variant), got {count}"
+  );
 }
 
 #[test]
 fn dark_terminal_indices_complete() {
   // Find the dark block (first set of terminal_color assignments)
-  let dark_section = TERMINAL
-    .split("else")
-    .next()
-    .expect("missing dark terminal section");
+  let dark_section = TERMINAL.split("else").next().expect("missing dark terminal section");
   for i in 0..16 {
     let key = format!("vim.g.terminal_color_{i}");
-    assert!(
-      dark_section.contains(&key),
-      "dark terminal missing {key}"
-    );
+    assert!(dark_section.contains(&key), "dark terminal missing {key}");
   }
 }
 
 #[test]
 fn light_terminal_indices_complete() {
-  let light_section = TERMINAL
-    .split("else")
-    .nth(1)
-    .expect("missing light terminal section");
+  let light_section = TERMINAL.split("else").nth(1).expect("missing light terminal section");
   for i in 0..16 {
     let key = format!("vim.g.terminal_color_{i}");
-    assert!(
-      light_section.contains(&key),
-      "light terminal missing {key}"
-    );
+    assert!(light_section.contains(&key), "light terminal missing {key}");
   }
 }
 
@@ -412,10 +439,26 @@ fn light_terminal_ansi_matches_vscode() {
 #[test]
 fn highlights_has_editor_ui_groups() {
   for group in [
-    "Normal", "NormalFloat", "Visual", "CursorLine", "CursorLineNr",
-    "LineNr", "SignColumn", "Pmenu", "PmenuSel", "Search", "IncSearch",
-    "StatusLine", "StatusLineNC", "TabLine", "TabLineSel", "TabLineFill",
-    "FloatBorder", "WinSeparator", "MatchParen", "Directory",
+    "Normal",
+    "NormalFloat",
+    "Visual",
+    "CursorLine",
+    "CursorLineNr",
+    "LineNr",
+    "SignColumn",
+    "Pmenu",
+    "PmenuSel",
+    "Search",
+    "IncSearch",
+    "StatusLine",
+    "StatusLineNC",
+    "TabLine",
+    "TabLineSel",
+    "TabLineFill",
+    "FloatBorder",
+    "WinSeparator",
+    "MatchParen",
+    "Directory",
   ] {
     assert!(
       HIGHLIGHTS.contains(group),
@@ -427,9 +470,22 @@ fn highlights_has_editor_ui_groups() {
 #[test]
 fn highlights_has_legacy_syntax_groups() {
   for group in [
-    "Comment", "Constant", "String", "Number", "Boolean", "Function",
-    "Statement", "Keyword", "Operator", "Type", "PreProc", "Special",
-    "Identifier", "Delimiter", "Error", "Todo",
+    "Comment",
+    "Constant",
+    "String",
+    "Number",
+    "Boolean",
+    "Function",
+    "Statement",
+    "Keyword",
+    "Operator",
+    "Type",
+    "PreProc",
+    "Special",
+    "Identifier",
+    "Delimiter",
+    "Error",
+    "Todo",
   ] {
     assert!(
       HIGHLIGHTS.contains(group),
@@ -441,10 +497,22 @@ fn highlights_has_legacy_syntax_groups() {
 #[test]
 fn highlights_has_treesitter_captures() {
   for capture in [
-    "@comment", "@string", "@keyword", "@function", "@type",
-    "@variable", "@constant", "@number", "@boolean", "@operator",
-    "@punctuation.bracket", "@punctuation.delimiter", "@tag",
-    "@property", "@constructor", "@module",
+    "@comment",
+    "@string",
+    "@keyword",
+    "@function",
+    "@type",
+    "@variable",
+    "@constant",
+    "@number",
+    "@boolean",
+    "@operator",
+    "@punctuation.bracket",
+    "@punctuation.delimiter",
+    "@tag",
+    "@property",
+    "@constructor",
+    "@module",
   ] {
     assert!(
       HIGHLIGHTS.contains(&format!("[\"{capture}\"]")),
@@ -456,8 +524,12 @@ fn highlights_has_treesitter_captures() {
 #[test]
 fn highlights_has_lsp_diagnostics() {
   for group in [
-    "DiagnosticError", "DiagnosticWarn", "DiagnosticInfo", "DiagnosticHint",
-    "DiagnosticVirtualTextError", "DiagnosticUnderlineError",
+    "DiagnosticError",
+    "DiagnosticWarn",
+    "DiagnosticInfo",
+    "DiagnosticHint",
+    "DiagnosticVirtualTextError",
+    "DiagnosticUnderlineError",
     "DiagnosticSignError",
   ] {
     assert!(
@@ -470,8 +542,12 @@ fn highlights_has_lsp_diagnostics() {
 #[test]
 fn highlights_has_lsp_semantic_tokens() {
   for group in [
-    "@lsp.type.class", "@lsp.type.function", "@lsp.type.keyword",
-    "@lsp.type.method", "@lsp.type.type", "@lsp.type.interface",
+    "@lsp.type.class",
+    "@lsp.type.function",
+    "@lsp.type.keyword",
+    "@lsp.type.method",
+    "@lsp.type.type",
+    "@lsp.type.interface",
   ] {
     assert!(
       HIGHLIGHTS.contains(&format!("[\"{group}\"]")),
@@ -483,8 +559,11 @@ fn highlights_has_lsp_semantic_tokens() {
 #[test]
 fn highlights_has_telescope_groups() {
   for group in [
-    "TelescopeNormal", "TelescopeBorder", "TelescopeSelection",
-    "TelescopeMatching", "TelescopePromptNormal",
+    "TelescopeNormal",
+    "TelescopeBorder",
+    "TelescopeSelection",
+    "TelescopeMatching",
+    "TelescopePromptNormal",
   ] {
     assert!(
       HIGHLIGHTS.contains(group),
@@ -506,8 +585,11 @@ fn highlights_has_gitsigns_groups() {
 #[test]
 fn highlights_has_neotree_groups() {
   for group in [
-    "NeoTreeNormal", "NeoTreeDirectoryName", "NeoTreeGitModified",
-    "NeoTreeGitAdded", "NeoTreeGitDeleted",
+    "NeoTreeNormal",
+    "NeoTreeDirectoryName",
+    "NeoTreeGitModified",
+    "NeoTreeGitAdded",
+    "NeoTreeGitDeleted",
   ] {
     assert!(
       HIGHLIGHTS.contains(group),
@@ -529,7 +611,8 @@ fn highlights_has_barbar_groups() {
 #[test]
 fn highlights_has_mini_statusline_groups() {
   for group in [
-    "MiniStatuslineModeNormal", "MiniStatuslineModeInsert",
+    "MiniStatuslineModeNormal",
+    "MiniStatuslineModeInsert",
     "MiniStatuslineModeVisual",
   ] {
     assert!(
@@ -597,10 +680,7 @@ fn highlights_comments_are_italic() {
     .lines()
     .find(|l| l.trim().starts_with("Comment"))
     .expect("missing Comment highlight");
-  assert!(
-    comment_line.contains("italic = true"),
-    "Comment should be italic"
-  );
+  assert!(comment_line.contains("italic = true"), "Comment should be italic");
 }
 
 #[test]
@@ -609,10 +689,7 @@ fn highlights_keywords_are_bold() {
     .lines()
     .find(|l| l.trim().starts_with("Keyword"))
     .expect("missing Keyword highlight");
-  assert!(
-    keyword_line.contains("bold = true"),
-    "Keyword should be bold"
-  );
+  assert!(keyword_line.contains("bold = true"), "Keyword should be bold");
 }
 
 #[test]
@@ -624,10 +701,7 @@ fn highlights_types_are_italic() {
       l.starts_with("Type ") || l.starts_with("Type=")
     })
     .expect("missing Type highlight");
-  assert!(
-    type_line.contains("italic = true"),
-    "Type should be italic"
-  );
+  assert!(type_line.contains("italic = true"), "Type should be italic");
 }
 
 #[test]
@@ -684,10 +758,7 @@ fn diagnostic_underlines_use_undercurl() {
       .lines()
       .find(|l| l.contains(group))
       .unwrap_or_else(|| panic!("missing {group}"));
-    assert!(
-      line.contains("undercurl = true"),
-      "{group} should use undercurl"
-    );
+    assert!(line.contains("undercurl = true"), "{group} should use undercurl");
   }
 }
 
@@ -711,10 +782,7 @@ fn init_sets_colors_name() {
 
 #[test]
 fn init_clears_highlights() {
-  assert!(
-    INIT.contains("hi clear"),
-    "init.lua should clear existing highlights"
-  );
+  assert!(INIT.contains("hi clear"), "init.lua should clear existing highlights");
 }
 
 #[test]
@@ -751,10 +819,7 @@ fn init_has_setup_function() {
 
 #[test]
 fn init_has_load_function() {
-  assert!(
-    INIT.contains("function M.load"),
-    "init.lua should export load function"
-  );
+  assert!(INIT.contains("function M.load"), "init.lua should export load function");
 }
 
 // -- Color entry points --

@@ -222,7 +222,10 @@ fn dark_type_is_italic() {
 fn dark_comment_is_italic() {
   let v = parse_theme();
   let theme = get_theme_style(&v, "Warm Burnout Dark");
-  assert_eq!(theme["style"]["syntax"]["comment"]["font_style"].as_str(), Some("italic"));
+  assert_eq!(
+    theme["style"]["syntax"]["comment"]["font_style"].as_str(),
+    Some("italic")
+  );
 }
 
 #[test]
@@ -243,7 +246,10 @@ fn light_type_is_italic() {
 fn light_comment_is_italic() {
   let v = parse_theme();
   let theme = get_theme_style(&v, "Warm Burnout Light");
-  assert_eq!(theme["style"]["syntax"]["comment"]["font_style"].as_str(), Some("italic"));
+  assert_eq!(
+    theme["style"]["syntax"]["comment"]["font_style"].as_str(),
+    Some("italic")
+  );
 }
 
 // -- Terminal ANSI colors present --
@@ -318,7 +324,10 @@ fn both_variants_have_same_style_keys() {
   let light_keys: Vec<&str> = light["style"].as_object().unwrap().keys().map(String::as_str).collect();
 
   for key in &dark_keys {
-    assert!(light_keys.contains(key), "dark has style key '{key}' but light does not");
+    assert!(
+      light_keys.contains(key),
+      "dark has style key '{key}' but light does not"
+    );
   }
   for key in &light_keys {
     assert!(dark_keys.contains(key), "light has style key '{key}' but dark does not");
@@ -345,9 +354,15 @@ fn both_variants_have_same_syntax_keys() {
     .collect();
 
   for key in &dark_keys {
-    assert!(light_keys.contains(key), "dark has syntax key '{key}' but light does not");
+    assert!(
+      light_keys.contains(key),
+      "dark has syntax key '{key}' but light does not"
+    );
   }
   for key in &light_keys {
-    assert!(dark_keys.contains(key), "light has syntax key '{key}' but dark does not");
+    assert!(
+      dark_keys.contains(key),
+      "light has syntax key '{key}' but dark does not"
+    );
   }
 }

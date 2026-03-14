@@ -178,7 +178,14 @@ fn size_has_required_entries() {
 fn users_has_required_entries() {
   let v = parse_theme();
   let section = get_section(&v, "users");
-  for key in ["user_you", "user_root", "user_other", "group_yours", "group_other", "group_root"] {
+  for key in [
+    "user_you",
+    "user_root",
+    "user_other",
+    "group_yours",
+    "group_other",
+    "group_root",
+  ] {
     assert!(section.get(key).is_some(), "users.{key}: missing");
     let fg = get_foreground(section, key, "users");
     assert!(is_valid_hex(&fg), "users.{key}: invalid hex: {fg}");
@@ -191,7 +198,15 @@ fn users_has_required_entries() {
 fn git_has_required_entries() {
   let v = parse_theme();
   let section = get_section(&v, "git");
-  for key in ["new", "modified", "deleted", "renamed", "typechange", "ignored", "conflicted"] {
+  for key in [
+    "new",
+    "modified",
+    "deleted",
+    "renamed",
+    "typechange",
+    "ignored",
+    "conflicted",
+  ] {
     assert!(section.get(key).is_some(), "git.{key}: missing");
     let fg = get_foreground(section, key, "git");
     assert!(is_valid_hex(&fg), "git.{key}: invalid hex: {fg}");
@@ -218,7 +233,16 @@ fn file_type_has_required_entries() {
   let v = parse_theme();
   let section = get_section(&v, "file_type");
   for key in [
-    "image", "video", "music", "lossless", "crypto", "document", "compressed", "temp", "compiled", "build",
+    "image",
+    "video",
+    "music",
+    "lossless",
+    "crypto",
+    "document",
+    "compressed",
+    "temp",
+    "compiled",
+    "build",
     "source",
   ] {
     assert!(section.get(key).is_some(), "file_type.{key}: missing");
@@ -391,7 +415,17 @@ fn no_unexpected_top_level_keys() {
 #[test]
 fn nested_sections_are_maps_of_maps() {
   let v = parse_theme();
-  for section_name in ["filekinds", "perms", "size", "users", "links", "git", "git_repo", "security_context", "file_type"] {
+  for section_name in [
+    "filekinds",
+    "perms",
+    "size",
+    "users",
+    "links",
+    "git",
+    "git_repo",
+    "security_context",
+    "file_type",
+  ] {
     let section = get_section(&v, section_name);
     let mapping = section
       .as_mapping()
@@ -425,10 +459,7 @@ fn flat_sections_are_direct_maps() {
     "broken_path_overlay",
   ] {
     let section = get_section(&v, section_name);
-    assert!(
-      section.is_mapping(),
-      "{section_name} should be a mapping"
-    );
+    assert!(section.is_mapping(), "{section_name} should be a mapping");
     assert!(
       section.get("foreground").is_some(),
       "{section_name} should have a direct 'foreground' key"
