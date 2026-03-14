@@ -5,3 +5,4 @@ out/
 dist/
 target/
 .DS_Store
+.claude/

@@ -145,7 +145,7 @@ Inspired by materials that age well. Unlike your eyes.
 | iTerm2 | Planned | -- |
 | Windows Terminal | Planned | -- |
 | Slack | Planned | -- |
-| tmux | Planned | -- |
+| tmux | Available | [`tmux/`](tmux/) |
 
 Each platform lives in its own directory with its own README, build process, and release workflow.
 

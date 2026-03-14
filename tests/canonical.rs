@@ -1,8 +1,8 @@
 mod common;
 
 use common::{
-  ghostty_color, hex_to_lower, nvim_palette_color, starship_palette_color, vscode_color, xcode_color,
-  xcode_syntax_color, zed_editor_color,
+  ghostty_color, hex_to_lower, nvim_palette_color, starship_palette_color, tmux_option_value, tmux_style_fg,
+  vscode_color, xcode_color, xcode_syntax_color, zed_editor_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -409,4 +409,48 @@ fn light_background_nvim_matches_zed() {
     "editor.background",
   );
   assert_eq!(nvim, zed, "light background: nvim={nvim} zed={zed}");
+}
+
+// -- tmux cross-platform consistency --
+
+#[test]
+fn dark_tmux_message_fg_matches_ghostty_foreground() {
+  let tmux_msg = tmux_option_value(include_str!("../tmux/warm-burnout-dark.conf"), "message-style");
+  let tmux_fg = tmux_style_fg(&tmux_msg);
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(
+    tmux_fg, ghostty,
+    "dark tmux message fg={tmux_fg} should match ghostty foreground={ghostty}"
+  );
+}
+
+#[test]
+fn light_tmux_message_fg_matches_ghostty_foreground() {
+  let tmux_msg = tmux_option_value(include_str!("../tmux/warm-burnout-light.conf"), "message-style");
+  let tmux_fg = tmux_style_fg(&tmux_msg);
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(
+    tmux_fg, ghostty,
+    "light tmux message fg={tmux_fg} should match ghostty foreground={ghostty}"
+  );
+}
+
+#[test]
+fn dark_tmux_accent_matches_canonical() {
+  let tmux_border = tmux_option_value(
+    include_str!("../tmux/warm-burnout-dark.conf"),
+    "pane-active-border-style",
+  );
+  let accent = tmux_style_fg(&tmux_border);
+  assert_eq!(accent, "#b8522e", "dark tmux accent should be canonical copper rust");
+}
+
+#[test]
+fn light_tmux_accent_matches_canonical() {
+  let tmux_border = tmux_option_value(
+    include_str!("../tmux/warm-burnout-light.conf"),
+    "pane-active-border-style",
+  );
+  let accent = tmux_style_fg(&tmux_border);
+  assert_eq!(accent, "#b8522e", "light tmux accent should be canonical copper rust");
 }

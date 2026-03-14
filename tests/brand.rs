@@ -7,6 +7,7 @@ const READMES: &[(&str, &str)] = &[
   ("zed", include_str!("../zed/README.md")),
   ("nvim", include_str!("../nvim/README.md")),
   ("xcode", include_str!("../xcode/README.md")),
+  ("tmux", include_str!("../tmux/README.md")),
 ];
 
 #[test]
@@ -31,6 +32,8 @@ fn no_theme_file_uses_patina_as_label() {
     ("starship/light", include_str!("../starship/warm-burnout-light.toml")),
     ("starship/example", include_str!("../starship/starship.toml")),
     ("zed/theme", include_str!("../zed/themes/warm-burnout.json")),
+    ("tmux/dark", include_str!("../tmux/warm-burnout-dark.conf")),
+    ("tmux/light", include_str!("../tmux/warm-burnout-light.conf")),
   ];
   for (name, content) in theme_files {
     for line in content.lines() {

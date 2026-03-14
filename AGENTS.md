@@ -33,6 +33,7 @@ patina-vscode-theme/
     zed.rs                    # Zed theme validation tests
     eza.rs                    # Eza theme validation tests
     xcode.rs                  # Xcode theme validation tests
+    tmux.rs                   # tmux theme validation tests
     zsh.rs                    # Zsh theme validation tests
   .github/workflows/
     validate.yml              # CI: run theme validation on push/PR
@@ -88,6 +89,12 @@ patina-vscode-theme/
     AGENTS.md                 # Xcode-specific agent rules
     Warm Burnout Dark.xccolortheme   # Dark variant (XML plist)
     Warm Burnout Light.xccolortheme  # Light variant (XML plist)
+  tmux/                       # tmux status bar theme
+    README.md                 # tmux install instructions
+    AGENTS.md                 # tmux-specific agent rules
+    warm-burnout-dark.conf    # Dark variant
+    warm-burnout-light.conf   # Light variant
+    warm-burnout.tmux         # TPM plugin entry point
 ```
 
 ## Design Principles

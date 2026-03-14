@@ -151,6 +151,39 @@ fn rgba_float_to_hex(rgba: &str) -> String {
   format!("#{r:02x}{g:02x}{b:02x}")
 }
 
+/// Extract the value of a tmux `set -g option-name "value"` line.
+pub fn tmux_option_value(src: &str, option: &str) -> String {
+  src
+    .lines()
+    .find(|l| {
+      let l = l.trim();
+      l.starts_with("set -g") && l.contains(option)
+    })
+    .map(|l| {
+      let after_option = l.split(option).nth(1).unwrap().trim();
+      after_option.trim_matches('"').to_string()
+    })
+    .unwrap_or_else(|| panic!("no tmux option '{option}'"))
+}
+
+/// Extract the fg color from a tmux style string like "fg=#rrggbb,bg=#rrggbb,bold".
+pub fn tmux_style_fg(style: &str) -> String {
+  style
+    .split(',')
+    .find(|s| s.starts_with("fg="))
+    .map(|s| hex_to_lower(&s[3..]))
+    .unwrap_or_else(|| panic!("no fg in style: {style}"))
+}
+
+/// Extract the bg color from a tmux style string like "fg=#rrggbb,bg=#rrggbb,bold".
+pub fn tmux_style_bg(style: &str) -> String {
+  style
+    .split(',')
+    .find(|s| s.starts_with("bg="))
+    .map(|s| hex_to_lower(&s[3..]))
+    .unwrap_or_else(|| panic!("no bg in style: {style}"))
+}
+
 /// Extract all key-value pairs from a Lua palette table block (M.dark or M.light).
 /// Returns vec of (key, hex_value) pairs.
 pub fn nvim_palette_keys(src: &str) -> Vec<String> {
