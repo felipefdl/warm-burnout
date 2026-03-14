@@ -1,8 +1,8 @@
 mod common;
 
 use common::{
-  ghostty_color, hex_to_lower, nvim_palette_color, starship_palette_color, tmux_option_value, tmux_style_fg,
-  vscode_color, xcode_color, xcode_syntax_color, zed_editor_color,
+  ghostty_color, hex_to_lower, iterm2_color, nvim_palette_color, starship_palette_color, tmux_option_value,
+  tmux_style_fg, vscode_color, xcode_color, xcode_syntax_color, zed_editor_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -453,4 +453,60 @@ fn light_tmux_accent_matches_canonical() {
   );
   let accent = tmux_style_fg(&tmux_border);
   assert_eq!(accent, "#b8522e", "light tmux accent should be canonical copper rust");
+}
+
+// -- iTerm2 cross-platform consistency --
+
+#[test]
+fn dark_background_iterm2_matches_ghostty() {
+  let iterm2 = iterm2_color(
+    include_str!("../iterm2/Warm Burnout Dark.itermcolors"),
+    "Background Color",
+  );
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(iterm2, ghostty, "dark background: iterm2={iterm2} ghostty={ghostty}");
+}
+
+#[test]
+fn light_background_iterm2_matches_ghostty() {
+  let iterm2 = iterm2_color(
+    include_str!("../iterm2/Warm Burnout Light.itermcolors"),
+    "Background Color",
+  );
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(iterm2, ghostty, "light background: iterm2={iterm2} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_foreground_iterm2_matches_ghostty() {
+  let iterm2 = iterm2_color(
+    include_str!("../iterm2/Warm Burnout Dark.itermcolors"),
+    "Foreground Color",
+  );
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(iterm2, ghostty, "dark foreground: iterm2={iterm2} ghostty={ghostty}");
+}
+
+#[test]
+fn light_foreground_iterm2_matches_ghostty() {
+  let iterm2 = iterm2_color(
+    include_str!("../iterm2/Warm Burnout Light.itermcolors"),
+    "Foreground Color",
+  );
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(iterm2, ghostty, "light foreground: iterm2={iterm2} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_cursor_iterm2_matches_ghostty() {
+  let iterm2 = iterm2_color(include_str!("../iterm2/Warm Burnout Dark.itermcolors"), "Cursor Color");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "cursor-color");
+  assert_eq!(iterm2, ghostty, "dark cursor: iterm2={iterm2} ghostty={ghostty}");
+}
+
+#[test]
+fn light_cursor_iterm2_matches_ghostty() {
+  let iterm2 = iterm2_color(include_str!("../iterm2/Warm Burnout Light.itermcolors"), "Cursor Color");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
+  assert_eq!(iterm2, ghostty, "light cursor: iterm2={iterm2} ghostty={ghostty}");
 }

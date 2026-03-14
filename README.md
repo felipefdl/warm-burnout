@@ -142,7 +142,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Xcode | Available | [`xcode/`](xcode/) |
 | Alacritty | Planned | -- |
 | Warp | Planned | -- |
-| iTerm2 | Planned | -- |
+| iTerm2 | Available | [`iterm2/`](iterm2/) |
 | Windows Terminal | Planned | -- |
 | Slack | Planned | -- |
 | tmux | Available | [`tmux/`](tmux/) |

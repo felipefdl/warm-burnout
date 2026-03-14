@@ -184,6 +184,23 @@ pub fn tmux_style_bg(style: &str) -> String {
     .unwrap_or_else(|| panic!("no bg in style: {style}"))
 }
 
+pub fn iterm2_color(src: &str, key: &str) -> String {
+  let cursor = std::io::Cursor::new(src.as_bytes());
+  let value: plist::Value = plist::from_reader(cursor).expect("invalid plist");
+  let dict = value.as_dictionary().expect("plist root is not a dict");
+  let color_dict = dict
+    .get(key)
+    .and_then(|v| v.as_dictionary())
+    .unwrap_or_else(|| panic!("missing key: {key}"));
+  let r = color_dict.get("Red Component").and_then(|v| v.as_real()).unwrap();
+  let g = color_dict.get("Green Component").and_then(|v| v.as_real()).unwrap();
+  let b = color_dict.get("Blue Component").and_then(|v| v.as_real()).unwrap();
+  let r = (r * 255.0).round() as u8;
+  let g = (g * 255.0).round() as u8;
+  let b = (b * 255.0).round() as u8;
+  format!("#{r:02x}{g:02x}{b:02x}")
+}
+
 /// Extract all key-value pairs from a Lua palette table block (M.dark or M.light).
 /// Returns vec of (key, hex_value) pairs.
 pub fn nvim_palette_keys(src: &str) -> Vec<String> {
