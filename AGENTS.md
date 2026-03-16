@@ -27,6 +27,7 @@ patina-vscode-theme/
     common.rs                 # Shared test utilities (hex validation, color extraction)
     brand.rs                  # Brand name enforcement tests
     canonical.rs              # Cross-platform palette consistency tests
+    home_assistant.rs         # Home Assistant theme validation tests
     ghostty.rs                # Ghostty theme validation tests
     starship.rs               # Starship palette validation tests
     vscode.rs                 # VS Code theme validation tests
@@ -42,6 +43,13 @@ patina-vscode-theme/
     validate.yml              # CI: run theme validation on push/PR
     release-vscode.yml        # VS Code extension release workflow
     release-themes.yml        # All platforms release workflow (zip/attach to GH release)
+  themes/
+    warm-burnout.yaml          # Symlink -> ../home-assistant/warm-burnout.yaml (HACS)
+  hacs.json                    # HACS manifest (Home Assistant)
+  home-assistant/              # Home Assistant theme
+    warm-burnout.yaml          # Theme file (dark + light modes)
+    README.md                  # Home Assistant install instructions
+    AGENTS.md                  # Home Assistant-specific agent rules
   vscode/                     # VS Code extension (primary, palette source of truth)
     README.md                 # VS Code install instructions
     AGENTS.md                 # VS Code-specific agent rules

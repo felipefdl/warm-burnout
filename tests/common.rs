@@ -248,6 +248,16 @@ pub fn jetbrains_attribute(src: &str, attr: &str, prop: &str) -> String {
   }
 }
 
+/// Extract a color value from a Home Assistant theme YAML file.
+/// Navigates to `theme_name > modes > mode > key` and returns the lowercase hex value.
+pub fn home_assistant_color(src: &str, theme_name: &str, mode: &str, key: &str) -> String {
+  let v: serde_yml::Value = serde_yml::from_str(src).expect("invalid YAML");
+  let val = v[theme_name]["modes"][mode][key]
+    .as_str()
+    .unwrap_or_else(|| panic!("missing key '{key}' in {theme_name} > modes > {mode}"));
+  hex_to_lower(val)
+}
+
 /// Extract all key-value pairs from a Lua palette table block (M.dark or M.light).
 /// Returns vec of (key, hex_value) pairs.
 pub fn nvim_palette_keys(src: &str) -> Vec<String> {

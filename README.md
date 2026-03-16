@@ -150,6 +150,7 @@ Inspired by materials that age well. Unlike your eyes.
 | tmux | Available | [`tmux/`](tmux/) |
 | Starship | Available | [`starship/`](starship/) |
 | Zsh | Available | [`zsh/`](zsh/) |
+| Home Assistant | Available | [`home-assistant/`](home-assistant/) |
 | eza | Available | [`eza/`](eza/) |
 
 Each platform lives in its own directory with its own README, build process, and release workflow.

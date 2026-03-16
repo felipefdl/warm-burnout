@@ -1,9 +1,9 @@
 mod common;
 
 use common::{
-  ghostty_color, hex_to_lower, iterm2_color, jetbrains_attribute, jetbrains_color, nvim_palette_color,
-  starship_palette_color, tmux_option_value, tmux_style_fg, vscode_color, windows_terminal_color, xcode_color,
-  xcode_syntax_color, zed_editor_color,
+  ghostty_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute, jetbrains_color,
+  nvim_palette_color, starship_palette_color, tmux_option_value, tmux_style_fg, vscode_color, windows_terminal_color,
+  xcode_color, xcode_syntax_color, zed_editor_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -648,4 +648,48 @@ fn light_cursor_windows_terminal_matches_ghostty() {
   );
   let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
   assert_eq!(wt, ghostty, "light cursor: wt={wt} ghostty={ghostty}");
+}
+
+// -- Home Assistant cross-platform consistency --
+
+const HA_THEME: &str = include_str!("../home-assistant/warm-burnout.yaml");
+
+#[test]
+fn dark_background_home_assistant_matches_ghostty() {
+  let ha = home_assistant_color(HA_THEME, "Warm Burnout", "dark", "primary-background-color");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(ha, ghostty, "dark background: ha={ha} ghostty={ghostty}");
+}
+
+#[test]
+fn light_background_home_assistant_matches_ghostty() {
+  let ha = home_assistant_color(HA_THEME, "Warm Burnout", "light", "primary-background-color");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(ha, ghostty, "light background: ha={ha} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_foreground_home_assistant_matches_ghostty() {
+  let ha = home_assistant_color(HA_THEME, "Warm Burnout", "dark", "primary-text-color");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(ha, ghostty, "dark foreground: ha={ha} ghostty={ghostty}");
+}
+
+#[test]
+fn light_foreground_home_assistant_matches_ghostty() {
+  let ha = home_assistant_color(HA_THEME, "Warm Burnout", "light", "primary-text-color");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(ha, ghostty, "light foreground: ha={ha} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_accent_home_assistant_matches_canonical() {
+  let ha = home_assistant_color(HA_THEME, "Warm Burnout", "dark", "accent-color");
+  assert_eq!(ha, "#b8522e", "dark accent should be canonical copper rust");
+}
+
+#[test]
+fn light_accent_home_assistant_matches_canonical() {
+  let ha = home_assistant_color(HA_THEME, "Warm Burnout", "light", "accent-color");
+  assert_eq!(ha, "#b8522e", "light accent should be canonical copper rust");
 }

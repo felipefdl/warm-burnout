@@ -1,0 +1,445 @@
+Warm Burnout:
+  modes:
+    dark:
+      # ── Text ──
+      primary-text-color: "#bfbdb6"
+      secondary-text-color: "#ada69c"
+      text-primary-color: "#bfbdb6"
+      text-light-primary-color: "#bfbdb6"
+      disabled-text-color: "rgba(191, 189, 182, 0.5)"
+
+      # ── Interface ──
+      primary-color: "#b8522e"
+      dark-primary-color: "#8a3d22"
+      light-primary-color: "#8aa8b8"
+      accent-color: "#b8522e"
+      divider-color: "rgba(191, 189, 182, 0.12)"
+      scrollbar-thumb-color: "rgba(191, 189, 182, 0.3)"
+
+      # ── Feedback ──
+      error-color: "#f08888"
+      warning-color: "#ffb454"
+      success-color: "#b4bc78"
+      info-color: "#8aa8b8"
+
+      # ── States ──
+      state-icon-color: "#ada69c"
+      state-icon-active-color: "#b8522e"
+      state-icon-unavailable-color: "rgba(174, 161, 149, 0.5)"
+
+      # ── Backgrounds ──
+      primary-background-color: "#1a1510"
+      secondary-background-color: "#14120f"
+      card-background-color: "#1f1d17"
+      ha-card-background: "#1f1d17"
+
+      # ── Card styling ──
+      ha-card-border-radius: "16px"
+      ha-card-border-width: "0"
+      ha-card-border-color: "transparent"
+      ha-card-box-shadow: "0 2px 8px 0 rgba(20, 12, 6, 0.25)"
+
+      # ── Badges ──
+      label-badge-red: "#f08888"
+      label-badge-blue: "#8aa8b8"
+      label-badge-green: "#b4bc78"
+      label-badge-yellow: "#ffb454"
+      label-badge-grey: "#ada69c"
+      label-badge-background-color: "#1f1d17"
+      label-badge-text-color: "#bfbdb6"
+
+      # ── Opacity ──
+      dark-divider-opacity: "0.12"
+      dark-disabled-opacity: "0.5"
+      dark-secondary-opacity: "0.7"
+      dark-primary-opacity: "1.0"
+      light-divider-opacity: "0.12"
+      light-disabled-opacity: "0.5"
+      light-secondary-opacity: "0.7"
+      light-primary-opacity: "1.0"
+
+      # ── RGB tokens ──
+      rgb-primary-color: "184, 82, 46"
+      rgb-accent-color: "184, 82, 46"
+      rgb-primary-text-color: "191, 189, 182"
+      rgb-secondary-text-color: "173, 166, 156"
+      rgb-text-primary-color: "191, 189, 182"
+      rgb-card-background-color: "31, 29, 23"
+
+      # ── Sidebar ──
+      sidebar-text-color: "#ada69c"
+      sidebar-background-color: "#14120f"
+      sidebar-selected-text-color: "#bfbdb6"
+      sidebar-selected-icon-color: "#b8522e"
+      sidebar-icon-color: "#ada69c"
+
+      # ── Header ──
+      app-header-text-color: "#bfbdb6"
+      app-header-background-color: "#14120f"
+
+      # ── Switches ──
+      switch-checked-color: "#b8522e"
+      switch-checked-button-color: "#b8522e"
+      switch-checked-track-color: "rgba(184, 82, 46, 0.4)"
+      switch-unchecked-button-color: "#ada69c"
+      switch-unchecked-track-color: "rgba(174, 161, 149, 0.3)"
+
+      # ── Sliders ──
+      slider-color: "#b8522e"
+      slider-secondary-color: "rgba(184, 82, 46, 0.4)"
+      slider-bar-color: "rgba(191, 189, 182, 0.12)"
+
+      # ── Paper slider ──
+      paper-slider-knob-color: "#b8522e"
+      paper-slider-knob-start-color: "#b8522e"
+      paper-slider-pin-color: "#b8522e"
+      paper-slider-active-color: "#b8522e"
+      paper-slider-container-color: "rgba(191, 189, 182, 0.12)"
+      paper-slider-secondary-color: "rgba(184, 82, 46, 0.4)"
+      paper-slider-disabled-active-color: "rgba(184, 82, 46, 0.5)"
+      paper-slider-disabled-secondary-color: "rgba(184, 82, 46, 0.3)"
+
+      # ── Icons ──
+      paper-item-icon-color: "#ada69c"
+      paper-item-icon-active-color: "#b8522e"
+
+      # ── Lists ──
+      paper-listbox-background-color: "#1f1d17"
+
+      # ── Tables ──
+      table-row-background-color: "#1f1d17"
+      table-row-alternative-background-color: "#1a1510"
+      data-table-background-color: "#1f1d17"
+
+      # ── MDC (Material Design Components) ──
+      mdc-theme-primary: "#b8522e"
+      mdc-theme-secondary: "#b8522e"
+      mdc-theme-background: "#1a1510"
+      mdc-theme-surface: "#1f1d17"
+      mdc-theme-on-primary: "#bfbdb6"
+      mdc-theme-on-secondary: "#bfbdb6"
+      mdc-theme-on-surface: "#bfbdb6"
+      mdc-theme-text-primary-on-background: "#bfbdb6"
+      mdc-theme-text-secondary-on-background: "#ada69c"
+      mdc-theme-text-disabled-on-background: "rgba(191, 189, 182, 0.5)"
+      mdc-checkbox-unchecked-color: "#ada69c"
+      mdc-radio-unchecked-color: "#ada69c"
+      mdc-tab-text-label-color-default: "#ada69c"
+      mdc-button-outline-color: "rgba(191, 189, 182, 0.12)"
+      mdc-button-disabled-ink-color: "rgba(191, 189, 182, 0.5)"
+      mdc-ripple-color: "#b8522e"
+
+      # ── Material ──
+      material-body-text-color: "#bfbdb6"
+      material-background-color: "#1a1510"
+      material-secondary-background-color: "#14120f"
+      material-secondary-text-color: "#ada69c"
+
+      # ── Markdown / Code ──
+      markdown-code-background-color: "#14120f"
+
+      # ── Chips ──
+      chip-background-color: "rgba(184, 82, 46, 0.15)"
+
+      # ── Errors ──
+      error-state-color: "#f08888"
+
+      # ── Dialogs ──
+      ha-dialog-border-radius: "16px"
+
+      # ── CodeMirror (YAML editor) ──
+      codemirror-keyword: "#ff8f40"
+      codemirror-operator: "#f29668"
+      codemirror-variable: "#bfbdb6"
+      codemirror-variable-2: "#8aa8b8"
+      codemirror-builtin: "#f58088"
+      codemirror-atom: "#d4a8b8"
+      codemirror-number: "#d4a8b8"
+      codemirror-def: "#ffb454"
+      codemirror-string: "#b4bc78"
+      codemirror-string-2: "#96b898"
+      codemirror-comment: "#aea195"
+      codemirror-tag: "#d49484"
+      codemirror-meta: "#e6c08a"
+      codemirror-attribute: "#deb074"
+      codemirror-property: "#deb074"
+      codemirror-qualifier: "#8aa8b8"
+      codemirror-type: "#8aa8b8"
+
+      # ── Energy ──
+      energy-grid-consumption-color: "#ffb454"
+      energy-grid-return-color: "#deb074"
+      energy-solar-color: "#b4bc78"
+      energy-battery-in-color: "#d4a8b8"
+      energy-battery-out-color: "#e6c08a"
+      energy-gas-color: "#f29668"
+      energy-water-color: "#8aa8b8"
+
+      # ── Graph colors (14, all warm spectrum) ──
+      graph-color-1: "#ffb454"
+      graph-color-2: "#d49484"
+      graph-color-3: "#b4bc78"
+      graph-color-4: "#d4a8b8"
+      graph-color-5: "#f08888"
+      graph-color-6: "#e6c08a"
+      graph-color-7: "#ff8f40"
+      graph-color-8: "#aea195"
+      graph-color-9: "#f29668"
+      graph-color-10: "#96b898"
+      graph-color-11: "#deb074"
+      graph-color-12: "#f58088"
+      graph-color-13: "#8aa8b8"
+      graph-color-14: "#d49484"
+
+      # ── Section views ──
+      ha-section-grid-row-gap: "8px"
+      ha-section-grid-column-gap: "8px"
+
+      # ── Mushroom card overrides ──
+      mush-card-primary-color: "#bfbdb6"
+      mush-card-secondary-color: "#ada69c"
+      mush-card-background-color: "#1f1d17"
+      mush-title-color: "#bfbdb6"
+      mush-subtitle-color: "#ada69c"
+      mush-icon-color: "#ada69c"
+      mush-icon-color-active: "#b8522e"
+      mush-chip-background-color: "rgba(184, 82, 46, 0.15)"
+      mush-chip-icon-color: "#ada69c"
+      mush-chip-border-radius: "16px"
+      mush-slider-color: "#b8522e"
+      mush-lock-icon-color: "#f08888"
+      mush-badge-color: "#b8522e"
+
+      # ── Mini Graph Card overrides ──
+      mini-graph-color-0: "#ffb454"
+      mini-graph-color-1: "#d49484"
+      mini-graph-color-2: "#b4bc78"
+      mini-graph-color-3: "#d4a8b8"
+      mini-graph-color-4: "#f08888"
+      mini-graph-color-5: "#e6c08a"
+      mini-graph-color-6: "#ff8f40"
+      mini-graph-color-7: "#aea195"
+      mini-graph-color-8: "#f29668"
+      mini-graph-name-font-weight: "600"
+
+    light:
+      # ── Text ──
+      primary-text-color: "#3a3630"
+      secondary-text-color: "#5c5750"
+      text-primary-color: "#3a3630"
+      text-light-primary-color: "#3a3630"
+      disabled-text-color: "rgba(58, 54, 48, 0.5)"
+
+      # ── Interface ──
+      primary-color: "#b8522e"
+      dark-primary-color: "#8a3d22"
+      light-primary-color: "#2a5868"
+      accent-color: "#b8522e"
+      divider-color: "rgba(58, 54, 48, 0.12)"
+      scrollbar-thumb-color: "rgba(58, 54, 48, 0.3)"
+
+      # ── Feedback ──
+      error-color: "#b03434"
+      warning-color: "#855700"
+      success-color: "#4d5c1a"
+      info-color: "#2a5868"
+
+      # ── States ──
+      state-icon-color: "#5c5750"
+      state-icon-active-color: "#b8522e"
+      state-icon-unavailable-color: "rgba(90, 82, 68, 0.5)"
+
+      # ── Backgrounds ──
+      primary-background-color: "#F5EDE0"
+      secondary-background-color: "#EDE6DA"
+      card-background-color: "#FAF6F0"
+      ha-card-background: "#FAF6F0"
+
+      # ── Card styling ──
+      ha-card-border-radius: "16px"
+      ha-card-border-width: "1px"
+      ha-card-border-color: "rgba(58, 54, 48, 0.08)"
+      ha-card-box-shadow: "0 2px 6px 0 rgba(90, 60, 30, 0.10)"
+
+      # ── Badges ──
+      label-badge-red: "#b03434"
+      label-badge-blue: "#2a5868"
+      label-badge-green: "#4d5c1a"
+      label-badge-yellow: "#855700"
+      label-badge-grey: "#5c5750"
+      label-badge-background-color: "#FAF6F0"
+      label-badge-text-color: "#3a3630"
+
+      # ── Opacity ──
+      dark-divider-opacity: "0.12"
+      dark-disabled-opacity: "0.5"
+      dark-secondary-opacity: "0.7"
+      dark-primary-opacity: "1.0"
+      light-divider-opacity: "0.12"
+      light-disabled-opacity: "0.5"
+      light-secondary-opacity: "0.7"
+      light-primary-opacity: "1.0"
+
+      # ── RGB tokens ──
+      rgb-primary-color: "184, 82, 46"
+      rgb-accent-color: "184, 82, 46"
+      rgb-primary-text-color: "58, 54, 48"
+      rgb-secondary-text-color: "92, 87, 80"
+      rgb-text-primary-color: "58, 54, 48"
+      rgb-card-background-color: "250, 246, 240"
+
+      # ── Sidebar ──
+      sidebar-text-color: "#5c5750"
+      sidebar-background-color: "#EDE6DA"
+      sidebar-selected-text-color: "#3a3630"
+      sidebar-selected-icon-color: "#b8522e"
+      sidebar-icon-color: "#5c5750"
+
+      # ── Header ──
+      app-header-text-color: "#3a3630"
+      app-header-background-color: "#EDE6DA"
+
+      # ── Switches ──
+      switch-checked-color: "#b8522e"
+      switch-checked-button-color: "#b8522e"
+      switch-checked-track-color: "rgba(184, 82, 46, 0.4)"
+      switch-unchecked-button-color: "#5c5750"
+      switch-unchecked-track-color: "rgba(92, 87, 80, 0.3)"
+
+      # ── Sliders ──
+      slider-color: "#b8522e"
+      slider-secondary-color: "rgba(184, 82, 46, 0.4)"
+      slider-bar-color: "rgba(58, 54, 48, 0.12)"
+
+      # ── Paper slider ──
+      paper-slider-knob-color: "#b8522e"
+      paper-slider-knob-start-color: "#b8522e"
+      paper-slider-pin-color: "#b8522e"
+      paper-slider-active-color: "#b8522e"
+      paper-slider-container-color: "rgba(58, 54, 48, 0.12)"
+      paper-slider-secondary-color: "rgba(184, 82, 46, 0.4)"
+      paper-slider-disabled-active-color: "rgba(184, 82, 46, 0.5)"
+      paper-slider-disabled-secondary-color: "rgba(184, 82, 46, 0.3)"
+
+      # ── Icons ──
+      paper-item-icon-color: "#5c5750"
+      paper-item-icon-active-color: "#b8522e"
+
+      # ── Lists ──
+      paper-listbox-background-color: "#FAF6F0"
+
+      # ── Tables ──
+      table-row-background-color: "#FAF6F0"
+      table-row-alternative-background-color: "#F5EDE0"
+      data-table-background-color: "#FAF6F0"
+
+      # ── MDC (Material Design Components) ──
+      mdc-theme-primary: "#b8522e"
+      mdc-theme-secondary: "#b8522e"
+      mdc-theme-background: "#F5EDE0"
+      mdc-theme-surface: "#FAF6F0"
+      mdc-theme-on-primary: "#FAF6F0"
+      mdc-theme-on-secondary: "#FAF6F0"
+      mdc-theme-on-surface: "#3a3630"
+      mdc-theme-text-primary-on-background: "#3a3630"
+      mdc-theme-text-secondary-on-background: "#5c5750"
+      mdc-theme-text-disabled-on-background: "rgba(58, 54, 48, 0.5)"
+      mdc-checkbox-unchecked-color: "#5c5750"
+      mdc-radio-unchecked-color: "#5c5750"
+      mdc-tab-text-label-color-default: "#5c5750"
+      mdc-button-outline-color: "rgba(58, 54, 48, 0.12)"
+      mdc-button-disabled-ink-color: "rgba(58, 54, 48, 0.5)"
+      mdc-ripple-color: "#b8522e"
+
+      # ── Material ──
+      material-body-text-color: "#3a3630"
+      material-background-color: "#F5EDE0"
+      material-secondary-background-color: "#EDE6DA"
+      material-secondary-text-color: "#5c5750"
+
+      # ── Markdown / Code ──
+      markdown-code-background-color: "#EDE6DA"
+
+      # ── Chips ──
+      chip-background-color: "rgba(184, 82, 46, 0.10)"
+
+      # ── Errors ──
+      error-state-color: "#b03434"
+
+      # ── Dialogs ──
+      ha-dialog-border-radius: "16px"
+
+      # ── CodeMirror (YAML editor) ──
+      codemirror-keyword: "#924800"
+      codemirror-operator: "#8f4418"
+      codemirror-variable: "#3a3630"
+      codemirror-variable-2: "#2a5868"
+      codemirror-builtin: "#a02838"
+      codemirror-atom: "#7e4060"
+      codemirror-number: "#7e4060"
+      codemirror-def: "#855700"
+      codemirror-string: "#4d5c1a"
+      codemirror-string-2: "#286a48"
+      codemirror-comment: "#5a5244"
+      codemirror-tag: "#8e4632"
+      codemirror-meta: "#7a5a1c"
+      codemirror-attribute: "#74501c"
+      codemirror-property: "#74501c"
+      codemirror-qualifier: "#2a5868"
+      codemirror-type: "#2a5868"
+
+      # ── Energy ──
+      energy-grid-consumption-color: "#855700"
+      energy-grid-return-color: "#74501c"
+      energy-solar-color: "#4d5c1a"
+      energy-battery-in-color: "#7e4060"
+      energy-battery-out-color: "#7a5a1c"
+      energy-gas-color: "#8f4418"
+      energy-water-color: "#2a5868"
+
+      # ── Graph colors (14, all warm spectrum) ──
+      graph-color-1: "#855700"
+      graph-color-2: "#8e4632"
+      graph-color-3: "#4d5c1a"
+      graph-color-4: "#7e4060"
+      graph-color-5: "#b03434"
+      graph-color-6: "#7a5a1c"
+      graph-color-7: "#924800"
+      graph-color-8: "#5a5244"
+      graph-color-9: "#8f4418"
+      graph-color-10: "#286a48"
+      graph-color-11: "#74501c"
+      graph-color-12: "#a02838"
+      graph-color-13: "#2a5868"
+      graph-color-14: "#8e4632"
+
+      # ── Section views ──
+      ha-section-grid-row-gap: "8px"
+      ha-section-grid-column-gap: "8px"
+
+      # ── Mushroom card overrides ──
+      mush-card-primary-color: "#3a3630"
+      mush-card-secondary-color: "#5c5750"
+      mush-card-background-color: "#FAF6F0"
+      mush-title-color: "#3a3630"
+      mush-subtitle-color: "#5c5750"
+      mush-icon-color: "#5c5750"
+      mush-icon-color-active: "#b8522e"
+      mush-chip-background-color: "rgba(184, 82, 46, 0.10)"
+      mush-chip-icon-color: "#5c5750"
+      mush-chip-border-radius: "16px"
+      mush-slider-color: "#b8522e"
+      mush-lock-icon-color: "#b03434"
+      mush-badge-color: "#b8522e"
+
+      # ── Mini Graph Card overrides ──
+      mini-graph-color-0: "#855700"
+      mini-graph-color-1: "#8e4632"
+      mini-graph-color-2: "#4d5c1a"
+      mini-graph-color-3: "#7e4060"
+      mini-graph-color-4: "#b03434"
+      mini-graph-color-5: "#7a5a1c"
+      mini-graph-color-6: "#924800"
+      mini-graph-color-7: "#5a5244"
+      mini-graph-color-8: "#8f4418"
+      mini-graph-name-font-weight: "600"

@@ -85,6 +85,9 @@ jobs:
       - name: Package eza
         run: cp eza/theme.yml warm-burnout-eza.yml
 
+      - name: Package Home Assistant
+        run: cp themes/warm-burnout.yaml warm-burnout-home-assistant.yaml
+
       - name: Package JetBrains
         run: |
           cd jetbrains
@@ -105,6 +108,7 @@ jobs:
             warm-burnout-windows-terminal.zip
             warm-burnout-tmux.zip
             warm-burnout-eza.yml
+            warm-burnout-home-assistant.yaml
             jetbrains/warm-burnout-theme.jar
 
       - name: Publish to JetBrains Marketplace
