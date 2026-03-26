@@ -17,6 +17,8 @@
     font-family: "JetBrains Mono", monospace;
     color: #bfbdb6;
     display: flex;
+    align-items: center;
+    justify-content: center;
     position: relative;
   }
 
@@ -55,58 +57,77 @@
     z-index: 4;
     background: radial-gradient(
       ellipse at center,
-      transparent 50%,
-      rgba(0, 0, 0, 0.4) 100%
+      transparent 40%,
+      rgba(0, 0, 0, 0.45) 100%
     );
   }
 
-  /* Left side: branding */
-  .left {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 60px 70px;
+  /* Warm glow */
+  .glow {
+    position: absolute;
+    top: 38%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 500px;
+    background: radial-gradient(
+      ellipse,
+      rgba(184, 82, 46, 0.14) 0%,
+      rgba(245, 197, 110, 0.05) 45%,
+      transparent 70%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  .content {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   .logo {
-    width: 80px;
-    height: 80px;
-    margin-bottom: 28px;
-    filter: drop-shadow(0 0 16px rgba(245, 197, 110, 0.3));
+    width: 140px;
+    height: 140px;
+    margin-bottom: 24px;
+    filter: drop-shadow(0 0 24px rgba(245, 197, 110, 0.25));
   }
 
   .title {
-    font-size: 56px;
+    font-size: 72px;
     font-weight: 700;
     color: #f5c56e;
-    line-height: 1.1;
-    margin-bottom: 16px;
-    letter-spacing: -0.01em;
+    line-height: 1.05;
+    margin-bottom: 20px;
   }
 
   .tagline {
-    font-size: 18px;
+    font-size: 20px;
     color: #aea195;
     line-height: 1.5;
-    margin-bottom: 32px;
-    max-width: 440px;
+    margin-bottom: 12px;
+    max-width: 650px;
+  }
+
+  .brand-phrase {
+    font-size: 15px;
+    color: #6b665f;
+    margin-bottom: 28px;
   }
 
   .badges {
     display: flex;
     gap: 8px;
-    flex-wrap: wrap;
   }
 
   .badge {
-    display: inline-block;
     padding: 5px 12px;
     border: 1px solid #2a2620;
     border-radius: 4px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     color: #6b665f;
     text-transform: uppercase;
@@ -117,102 +138,21 @@
     border-color: rgba(184, 82, 46, 0.4);
     color: #b8522e;
   }
-
-  /* Right side: color palette strip */
-  .right {
-    width: 420px;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    z-index: 2;
-  }
-
-  .palette-strip {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-  }
-
-  .palette-strip .swatch {
-    flex: 1;
-    position: relative;
-    display: flex;
-    align-items: flex-end;
-    padding: 0 20px 6px;
-  }
-
-  .swatch-label {
-    font-size: 10px;
-    font-weight: 700;
-    color: rgba(0, 0, 0, 0.45);
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-  }
-
-  .swatch-light .swatch-label {
-    color: rgba(0, 0, 0, 0.35);
-  }
-
-  /* Warm glow behind left side */
-  .glow {
-    position: absolute;
-    top: 50%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(
-      circle,
-      rgba(184, 82, 46, 0.12) 0%,
-      rgba(245, 197, 110, 0.05) 40%,
-      transparent 70%
-    );
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  /* Accent line separator */
-  .accent-line {
-    position: absolute;
-    right: 420px;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: #b8522e;
-    z-index: 3;
-  }
 </style>
 </head>
 <body>
   <div class="glow"></div>
-  <div class="accent-line"></div>
 
-  <div class="left">
+  <div class="content">
     <img src="../images/wb-logo.svg" class="logo" alt="">
-    <div class="title">Warm<br>Burnout</div>
+    <div class="title">Warm Burnout</div>
     <div class="tagline">The theme suite for developers who already burned out but still have deadlines.</div>
+    <div class="brand-phrase">the ophthalmologist approves, probably</div>
     <div class="badges">
       <span class="badge badge-accent">WCAG AAA Dark</span>
       <span class="badge badge-accent">WCAG AA Light</span>
       <span class="badge">14 Platforms</span>
-      <span class="badge">Warm Palette</span>
       <span class="badge">Zero Blue Light</span>
-    </div>
-  </div>
-
-  <div class="right">
-    <div class="palette-strip">
-      <div class="swatch" style="background: #ff8f40;"><span class="swatch-label">Burnt Orange</span></div>
-      <div class="swatch" style="background: #ffb454;"><span class="swatch-label">Amber</span></div>
-      <div class="swatch" style="background: #e6c08a;"><span class="swatch-label">Gold</span></div>
-      <div class="swatch" style="background: #deb074;"><span class="swatch-label">Aged Brass</span></div>
-      <div class="swatch" style="background: #d49484;"><span class="swatch-label">Terra Cotta</span></div>
-      <div class="swatch" style="background: #f58088;"><span class="swatch-label">Coral</span></div>
-      <div class="swatch" style="background: #d4a8b8;"><span class="swatch-label">Dusty Mauve</span></div>
-      <div class="swatch" style="background: #b4bc78;"><span class="swatch-label">Dried Sage</span></div>
-      <div class="swatch" style="background: #96b898;"><span class="swatch-label">Verdigris</span></div>
-      <div class="swatch" style="background: #8aa8b8;"><span class="swatch-label">Steel Patina</span></div>
-      <div class="swatch" style="background: #aea195;"><span class="swatch-label">Warm Stone</span></div>
     </div>
   </div>
 
