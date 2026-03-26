@@ -1,4 +1,4 @@
-// Generates the VS Code extension logo from logo-vscode.html
+// Generates branding assets from HTML templates via Playwright.
 // Usage: npx playwright install chromium && node generate-logo.mjs
 import { chromium } from "playwright";
 import { fileURLToPath } from "url";
@@ -6,26 +6,48 @@ import { dirname, join } from "path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-const SIZE = 128;
+const ASSETS = [
+  {
+    html: "logo-vscode.html",
+    output: join("..", "vscode", "warm-burnout-logo-vscode.png"),
+    width: 128,
+    height: 128,
+    scale: 1,
+  },
+  {
+    html: "og-image.html",
+    output: join("..", "site", "og-image.png"),
+    width: 1200,
+    height: 630,
+    scale: 2,
+  },
+];
 
 async function main() {
   const browser = await chromium.launch();
-  const context = await browser.newContext({
-    viewport: { width: SIZE, height: SIZE },
-    deviceScaleFactor: 1,
-  });
 
-  const page = await context.newPage();
-  const htmlPath = join(__dirname, "logo-vscode.html");
-  await page.goto(`file://${htmlPath}`);
-  await page.waitForFunction(() => document.fonts.ready);
-  await page.waitForTimeout(300);
+  for (const { html, output, width, height, scale } of ASSETS) {
+    const context = await browser.newContext({
+      viewport: { width, height },
+      deviceScaleFactor: scale,
+    });
 
-  const outputPath = join(__dirname, "..", "vscode", "warm-burnout-logo-vscode.png");
-  await page.screenshot({ path: outputPath, type: "png" });
-  console.log(`  warm-burnout-logo-vscode.png (${SIZE}x${SIZE})`);
+    const page = await context.newPage();
+    const htmlPath = join(__dirname, html);
+    await page.goto(`file://${htmlPath}`);
+    await page.waitForFunction(() => document.fonts.ready);
+    await page.waitForTimeout(500);
 
-  await page.close();
+    const outputPath = join(__dirname, output);
+    await page.screenshot({ path: outputPath, type: "png" });
+    const actualW = width * scale;
+    const actualH = height * scale;
+    console.log(`  ${output} (${actualW}x${actualH}${scale > 1 ? " @" + scale + "x" : ""})`);
+
+    await page.close();
+    await context.close();
+  }
+
   await browser.close();
   console.log("\nDone.");
 }

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200, initial-scale=1">
+<title>Warm Burnout - OG Image</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 630px;
+    overflow: hidden;
+    background: #1a1510;
+    font-family: "JetBrains Mono", monospace;
+    color: #bfbdb6;
+    display: flex;
+    position: relative;
+  }
+
+  /* Noise grain */
+  .noise {
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    background-size: 256px 256px;
+    z-index: 5;
+  }
+
+  /* Scanlines */
+  .scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 6;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.025) 2px,
+      rgba(0, 0, 0, 0.025) 4px
+    );
+  }
+
+  /* Vignette */
+  .vignette {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 4;
+    background: radial-gradient(
+      ellipse at center,
+      transparent 50%,
+      rgba(0, 0, 0, 0.4) 100%
+    );
+  }
+
+  /* Left side: branding */
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 60px 70px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 28px;
+    filter: drop-shadow(0 0 16px rgba(245, 197, 110, 0.3));
+  }
+
+  .title {
+    font-size: 56px;
+    font-weight: 700;
+    color: #f5c56e;
+    line-height: 1.1;
+    margin-bottom: 16px;
+    letter-spacing: -0.01em;
+  }
+
+  .tagline {
+    font-size: 18px;
+    color: #aea195;
+    line-height: 1.5;
+    margin-bottom: 32px;
+    max-width: 440px;
+  }
+
+  .badges {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid #2a2620;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #6b665f;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .badge-accent {
+    border-color: rgba(184, 82, 46, 0.4);
+    color: #b8522e;
+  }
+
+  /* Right side: color palette strip */
+  .right {
+    width: 420px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 2;
+  }
+
+  .palette-strip {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .palette-strip .swatch {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 20px 6px;
+  }
+
+  .swatch-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.45);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .swatch-light .swatch-label {
+    color: rgba(0, 0, 0, 0.35);
+  }
+
+  /* Warm glow behind left side */
+  .glow {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(
+      circle,
+      rgba(184, 82, 46, 0.12) 0%,
+      rgba(245, 197, 110, 0.05) 40%,
+      transparent 70%
+    );
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  /* Accent line separator */
+  .accent-line {
+    position: absolute;
+    right: 420px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: #b8522e;
+    z-index: 3;
+  }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="accent-line"></div>
+
+  <div class="left">
+    <img src="../images/wb-logo.svg" class="logo" alt="">
+    <div class="title">Warm<br>Burnout</div>
+    <div class="tagline">The theme suite for developers who already burned out but still have deadlines.</div>
+    <div class="badges">
+      <span class="badge badge-accent">WCAG AAA Dark</span>
+      <span class="badge badge-accent">WCAG AA Light</span>
+      <span class="badge">14 Platforms</span>
+      <span class="badge">Warm Palette</span>
+      <span class="badge">Zero Blue Light</span>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="palette-strip">
+      <div class="swatch" style="background: #ff8f40;"><span class="swatch-label">Burnt Orange</span></div>
+      <div class="swatch" style="background: #ffb454;"><span class="swatch-label">Amber</span></div>
+      <div class="swatch" style="background: #e6c08a;"><span class="swatch-label">Gold</span></div>
+      <div class="swatch" style="background: #deb074;"><span class="swatch-label">Aged Brass</span></div>
+      <div class="swatch" style="background: #d49484;"><span class="swatch-label">Terra Cotta</span></div>
+      <div class="swatch" style="background: #f58088;"><span class="swatch-label">Coral</span></div>
+      <div class="swatch" style="background: #d4a8b8;"><span class="swatch-label">Dusty Mauve</span></div>
+      <div class="swatch" style="background: #b4bc78;"><span class="swatch-label">Dried Sage</span></div>
+      <div class="swatch" style="background: #96b898;"><span class="swatch-label">Verdigris</span></div>
+      <div class="swatch" style="background: #8aa8b8;"><span class="swatch-label">Steel Patina</span></div>
+      <div class="swatch" style="background: #aea195;"><span class="swatch-label">Warm Stone</span></div>
+    </div>
+  </div>
+
+  <div class="vignette"></div>
+  <div class="noise"></div>
+  <div class="scanlines"></div>
+</body>
+</html>

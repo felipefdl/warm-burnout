@@ -46,6 +46,7 @@ jobs:
           cp screenshots/*.png _site/screenshots/
           cp images/wb-logo.svg _site/images/wb-logo.svg
           cp images/wb-logo.svg _site/favicon.svg
+          cp site/og-image.png _site/og-image.png
           cp site/robots.txt _site/robots.txt
           cp site/sitemap.xml _site/sitemap.xml
 
