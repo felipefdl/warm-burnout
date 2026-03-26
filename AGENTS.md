@@ -219,6 +219,28 @@ Light: foreground needs L <= 0.144 for AA.
 - All publishing is handled by GitHub Actions workflows triggered by `v*` tags.
 - To release a new version: bump the version in the platform's manifest, commit, create a `v{version}` tag, and push the tag.
 
+### Release Checklist
+
+1. Bump version in `vscode/package.json` and `zed/extension.toml`.
+2. Commit, create `v{version}` tag, push both.
+3. The tag push triggers `release-vscode.yml` (VS Code/Open VSX) and `release-themes.yml` (all platform zips attached to GitHub Release).
+4. **Zed marketplace** requires a separate PR to `zed-industries/extensions`. Clone the fork at `felipefdl/extensions`, sync with upstream, update the submodule to the new tag, bump the version in the central `extensions.toml` (only the `[warm-burnout-theme]` entry), and open a PR against `zed-industries/extensions`.
+
+### Website
+
+The website at `site/` is deployed to GitHub Pages via `deploy-site.yml`. It triggers automatically on push to `main` when files in `site/`, `screenshots/`, or `images/` change.
+
+To preview locally:
+
+```sh
+cd site
+npm run build
+cd ..
+python3 -m http.server 8791 --directory site
+```
+
+GitHub Pages source must be set to "GitHub Actions" in repo Settings > Pages.
+
 ## Rules for All Platforms
 
 ### Design Rules

@@ -59,4 +59,4 @@ Zed extensions are published by adding a git submodule to `zed-industries/extens
 3. Add entry to `extensions.toml` pointing to the `zed/` subdirectory
 4. Open PR to `zed-industries/extensions`
 
-This is a one-time manual process, not CI-driven. Future updates are picked up automatically from the repository.
+Each version update requires a PR to `zed-industries/extensions` that bumps the submodule pointer and the version in the central `extensions.toml`. See the release checklist in the root `AGENTS.md`.
