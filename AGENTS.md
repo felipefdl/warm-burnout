@@ -300,7 +300,8 @@ User-facing text must read like a human wrote it. AI-generated text has recogniz
 5. Add the platform to `.github/workflows/release-themes.yml`: zip multi-file platforms, attach single-file platforms directly.
 6. Add any build artifacts to `.gitignore`.
 7. Update the platforms table in the root `README.md`.
-8. Do not duplicate the full palette tables -- reference this file.
+8. Update the platforms grid and any relevant docs in `site/index.html` (the GitHub Pages website).
+9. Do not duplicate the full palette tables -- reference this file.
 
 ### Release Files
 
@@ -332,5 +333,6 @@ Screenshots are referenced in:
 - Root `README.md` (relative paths)
 - `vscode/README.md` (relative paths; `release-vscode.yml` copies `screenshots/` into the extension directory before packaging)
 - `zed/README.md` (absolute `raw.githubusercontent.com` URLs)
+- `site/index.html` (GitHub Pages website, copied into `_site/screenshots/` by the deploy workflow)
 
 When adding a new screenshot, update all three READMEs and the `PAGES` array in `generate.mjs`.

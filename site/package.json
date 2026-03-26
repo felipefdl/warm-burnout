@@ -1,0 +1,12 @@
+{
+  "name": "warm-burnout-site",
+  "private": true,
+  "devDependencies": {
+    "tailwindcss": "^4.2.2",
+    "@tailwindcss/cli": "^4.2.2"
+  },
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i css/input.css -o css/output.css --minify",
+    "dev": "npx @tailwindcss/cli -i css/input.css -o css/output.css --watch"
+  }
+}

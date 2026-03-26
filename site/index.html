@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Warm Burnout</title>
+  <meta name="description" content="The theme suite for developers who already burned out but still have deadlines. Fully warm palette, minimal blue light, contrast-audited.">
+  <meta name="theme-color" content="#1a1510">
+
+  <meta property="og:title" content="Warm Burnout">
+  <meta property="og:description" content="The theme suite for developers who already burned out but still have deadlines.">
+  <meta property="og:image" content="https://felipefdl.github.io/warm-burnout/screenshots/split-comparison.png">
+  <meta property="og:url" content="https://felipefdl.github.io/warm-burnout/">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" type="image/svg+xml" href="images/wb-logo.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/output.css">
+</head>
+<body class="theme-bg theme-fg">
+
+  <!-- ==================== NAV ==================== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 theme-bg-dim border-b theme-border backdrop-blur-sm" style="background: color-mix(in srgb, var(--theme-bg-dim) 85%, transparent);">
+    <div class="max-w-6xl mx-auto px-4 md:px-8 flex items-center justify-between h-14">
+      <a href="#" class="flex items-center gap-2 no-underline theme-fg">
+        <img src="images/wb-logo.svg" alt="" class="w-7 h-7 logo-img" width="28" height="28">
+        <span class="font-bold text-sm hidden sm:inline">Warm Burnout</span>
+      </a>
+
+      <div class="nav-links flex-col md:flex-row absolute md:relative top-14 md:top-0 left-0 right-0 theme-bg-dim md:bg-transparent border-b md:border-0 theme-border gap-0 md:gap-6 items-stretch md:items-center" id="nav-links">
+        <a href="#problem" class="px-4 py-3 md:p-0 text-xs uppercase tracking-widest theme-fg-muted hover:theme-fg no-underline transition-colors">Problem</a>
+        <a href="#showcase" class="px-4 py-3 md:p-0 text-xs uppercase tracking-widest theme-fg-muted hover:theme-fg no-underline transition-colors">Preview</a>
+        <a href="#palette" class="px-4 py-3 md:p-0 text-xs uppercase tracking-widest theme-fg-muted hover:theme-fg no-underline transition-colors">Palette</a>
+        <a href="#platforms" class="px-4 py-3 md:p-0 text-xs uppercase tracking-widest theme-fg-muted hover:theme-fg no-underline transition-colors">Platforms</a>
+      </div>
+
+      <div class="flex items-center gap-3">
+        <button id="theme-toggle" class="text-xs font-bold uppercase tracking-wider theme-fg-muted hover:theme-fg px-3 py-1.5 border theme-border rounded cursor-pointer font-mono transition-colors" aria-label="Toggle theme">
+          3AM
+        </button>
+        <button class="hamburger md:hidden theme-fg-muted p-1 cursor-pointer" id="hamburger" aria-label="Toggle navigation">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="5" x2="17" y2="5"/>
+            <line x1="3" y1="10" x2="17" y2="10"/>
+            <line x1="3" y1="15" x2="17" y2="15"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="min-h-screen flex items-center justify-center has-noise has-scanlines pt-14">
+      <div class="max-w-3xl mx-auto px-4 text-center py-20">
+        <div class="logo-glow mb-8 flex justify-center">
+          <img src="images/wb-logo.svg" alt="Warm Burnout logo" class="w-24 h-24 md:w-32 md:h-32 logo-img" width="128" height="128">
+        </div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold crt-flicker theme-gold mb-6 leading-tight">
+          Warm Burnout
+        </h1>
+        <p class="text-base md:text-lg theme-fg-dim mb-4 max-w-xl mx-auto leading-relaxed">
+          The theme suite for developers who already burned out but still have deadlines.
+        </p>
+        <p class="tagline-rotate text-sm theme-fg-muted mb-10" data-tagline-rotate>
+          your eyes deserved this
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <a href="https://github.com/felipefdl/warm-burnout" class="btn-solid">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== THE PROBLEM ==================== -->
+    <section id="problem" class="section-alt py-20 md:py-28 reveal has-scanlines">
+      <div class="max-w-2xl mx-auto px-4 md:px-8">
+        <div class="mb-10 text-center">
+          <span class="warning-label">Warning: eye damage in progress</span>
+        </div>
+        <h2 class="text-2xl md:text-3xl font-bold theme-fg mb-8 text-center">Your theme is working against you</h2>
+        <div class="space-y-5 text-sm md:text-base theme-fg-dim leading-relaxed">
+          <p>
+            Most themes look good in screenshots. Then you use them for 14 hours straight and your eyes feel like they have been sandpapered.
+          </p>
+          <p>
+            The blues, cyans, and purples that make themes look "cool" emit at
+            <span class="theme-keyword font-bold">450-500nm</span>,
+            the exact wavelength range that suppresses melatonin, triggers digital eye strain, and makes your ophthalmologist wince.
+          </p>
+          <p>
+            Your theme is fighting your body's ability to rest. Even after you close the laptop.
+          </p>
+          <p>
+            Warm Burnout strips out almost all blue-spectrum syntax colors. What's left is a fully warm palette
+            (<span class="theme-func font-bold">550-630nm</span> dominant)
+            that your retinas can actually survive.
+          </p>
+          <p class="theme-fg-muted text-xs pt-4 border-t theme-border" style="border-color: var(--theme-border);">
+            Dark variant: every token meets WCAG AAA (&gt;= 7:1). Light variant: every token meets WCAG AA (&gt;= 4.5:1). Not vibes. Math.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SHOWCASE ==================== -->
+    <section id="showcase" class="py-20 md:py-28 reveal">
+      <div class="max-w-5xl mx-auto px-4 md:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold theme-fg mb-10 text-center">See the damage</h2>
+
+        <!-- Tabs (desktop) -->
+        <div class="flex justify-center gap-0 mb-8" id="showcase-tabs">
+          <button class="tab-btn active rounded-l-md" data-tab="dark">Dark</button>
+          <button class="tab-btn" data-tab="light">Light</button>
+          <button class="tab-btn rounded-r-md" data-tab="compare">Compare</button>
+        </div>
+
+        <!-- Tab panels -->
+        <div class="tab-panel active" data-panel="dark">
+          <div class="crt-frame">
+            <img src="screenshots/editor-dark.png" alt="Warm Burnout dark theme in a code editor showing TypeScript and React" loading="lazy" width="2400" height="1600">
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="light">
+          <div class="crt-frame">
+            <img src="screenshots/editor-light.png" alt="Warm Burnout light theme in a code editor showing Rust code" loading="lazy" width="2400" height="1600">
+          </div>
+        </div>
+        <div class="tab-panel" data-panel="compare">
+          <div class="crt-frame">
+            <img src="screenshots/split-comparison.png" alt="Dark and light variants side by side" loading="lazy" width="2400" height="1600">
+          </div>
+        </div>
+
+        <!-- Terminal preview -->
+        <div class="mt-10">
+          <p class="text-xs uppercase tracking-widest theme-fg-muted mb-4 text-center font-bold">Terminal: Ghostty + tmux + Starship</p>
+          <div class="crt-frame">
+            <img src="screenshots/terminal-dark.png" alt="Warm Burnout in Ghostty terminal with tmux and Starship prompt" loading="lazy" width="2400" height="1600">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== EYE SAFETY AUDIT ==================== -->
+    <section id="audit" class="section-alt py-20 md:py-28 reveal has-scanlines">
+      <div class="max-w-5xl mx-auto px-4 md:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold theme-fg mb-4 text-center">Eye safety audit</h2>
+        <p class="text-sm theme-fg-muted mb-12 text-center max-w-xl mx-auto">Full contrast audit against WCAG standards. Your comments are readable at 3am. On purpose.</p>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <!-- Dark audit -->
+          <div>
+            <h3 class="text-sm font-bold theme-fg mb-1 uppercase tracking-wider">Dark Theme</h3>
+            <p class="text-xs theme-fg-muted mb-4">Background: #1a1510 &middot; All tokens AAA (&gt;= 7:1)</p>
+            <div class="overflow-x-auto">
+              <table class="audit-table">
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>Color</th>
+                    <th>Ratio</th>
+                    <th>Grade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Foreground</td><td><span class="color-dot" style="background:#bfbdb6"></span><code class="text-xs">#bfbdb6</code></td><td>9.6:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Keywords</td><td><span class="color-dot" style="background:#ff8f40"></span><code class="text-xs">#ff8f40</code></td><td>8.0:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Functions</td><td><span class="color-dot" style="background:#ffb454"></span><code class="text-xs">#ffb454</code></td><td>10.3:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Operators</td><td><span class="color-dot" style="background:#f29668"></span><code class="text-xs">#f29668</code></td><td>8.1:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Decorators</td><td><span class="color-dot" style="background:#e6c08a"></span><code class="text-xs">#e6c08a</code></td><td>10.0:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Types</td><td><span class="color-dot" style="background:#8aa8b8"></span><code class="text-xs">#8aa8b8</code></td><td>7.2:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Strings</td><td><span class="color-dot" style="background:#b4bc78"></span><code class="text-xs">#b4bc78</code></td><td>9.0:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Regex</td><td><span class="color-dot" style="background:#96b898"></span><code class="text-xs">#96b898</code></td><td>8.3:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Constants</td><td><span class="color-dot" style="background:#d4a8b8"></span><code class="text-xs">#d4a8b8</code></td><td>8.7:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Tags</td><td><span class="color-dot" style="background:#d49484"></span><code class="text-xs">#d49484</code></td><td>7.2:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Members</td><td><span class="color-dot" style="background:#f58088"></span><code class="text-xs">#f58088</code></td><td>7.2:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Comments</td><td><span class="color-dot" style="background:#aea195"></span><code class="text-xs">#aea195</code></td><td>7.2:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Errors</td><td><span class="color-dot" style="background:#f08888"></span><code class="text-xs">#f08888</code></td><td>7.4:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>CSS props</td><td><span class="color-dot" style="background:#deb074"></span><code class="text-xs">#deb074</code></td><td>9.1:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Light audit -->
+          <div>
+            <h3 class="text-sm font-bold theme-fg mb-1 uppercase tracking-wider">Light Theme</h3>
+            <p class="text-xs theme-fg-muted mb-4">Background: #F5EDE0 &middot; All tokens AA (&gt;= 4.5:1)</p>
+            <div class="overflow-x-auto">
+              <table class="audit-table">
+                <thead>
+                  <tr>
+                    <th>Role</th>
+                    <th>Color</th>
+                    <th>Ratio</th>
+                    <th>Grade</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>Foreground</td><td><span class="color-dot" style="background:#3a3630"></span><code class="text-xs">#3a3630</code></td><td>10.3:1</td><td><span class="badge-aaa">AAA</span></td></tr>
+                  <tr><td>Keywords</td><td><span class="color-dot" style="background:#924800"></span><code class="text-xs">#924800</code></td><td>5.7:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Functions</td><td><span class="color-dot" style="background:#855700"></span><code class="text-xs">#855700</code></td><td>5.4:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Operators</td><td><span class="color-dot" style="background:#8f4418"></span><code class="text-xs">#8f4418</code></td><td>6.0:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Decorators</td><td><span class="color-dot" style="background:#7a5a1c"></span><code class="text-xs">#7a5a1c</code></td><td>5.5:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Types</td><td><span class="color-dot" style="background:#2a5868"></span><code class="text-xs">#2a5868</code></td><td>6.7:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Strings</td><td><span class="color-dot" style="background:#4d5c1a"></span><code class="text-xs">#4d5c1a</code></td><td>6.3:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Regex</td><td><span class="color-dot" style="background:#286a48"></span><code class="text-xs">#286a48</code></td><td>5.6:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Constants</td><td><span class="color-dot" style="background:#7e4060"></span><code class="text-xs">#7e4060</code></td><td>6.5:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Tags</td><td><span class="color-dot" style="background:#8e4632"></span><code class="text-xs">#8e4632</code></td><td>5.9:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Members</td><td><span class="color-dot" style="background:#a02838"></span><code class="text-xs">#a02838</code></td><td>6.3:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Comments</td><td><span class="color-dot" style="background:#5a5244"></span><code class="text-xs">#5a5244</code></td><td>6.6:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>Errors</td><td><span class="color-dot" style="background:#b03434"></span><code class="text-xs">#b03434</code></td><td>5.3:1</td><td><span class="badge-aa">AA</span></td></tr>
+                  <tr><td>CSS props</td><td><span class="color-dot" style="background:#74501c"></span><code class="text-xs">#74501c</code></td><td>6.2:1</td><td><span class="badge-aa">AA</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== COLOR PALETTE ==================== -->
+    <section id="palette" class="py-20 md:py-28 reveal">
+      <div class="max-w-5xl mx-auto px-4 md:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold theme-fg mb-3 text-center">The palette</h2>
+        <p class="text-sm theme-fg-muted mb-12 text-center">Inspired by materials that age well. Unlike your eyes.</p>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #ffb454"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Amber</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#ffb454 / #855700</p>
+              <p class="text-xs theme-fg-muted">Functions</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #ff8f40"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Burnt Orange</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#ff8f40 / #924800</p>
+              <p class="text-xs theme-fg-muted">Keywords</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #d49484"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Terra Cotta</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#d49484 / #8e4632</p>
+              <p class="text-xs theme-fg-muted">HTML tags</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #b4bc78"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Dried Sage</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#b4bc78 / #4d5c1a</p>
+              <p class="text-xs theme-fg-muted">Strings</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #96b898"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Verdigris</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#96b898 / #286a48</p>
+              <p class="text-xs theme-fg-muted">Regex, escapes</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #d4a8b8"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Dusty Mauve</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#d4a8b8 / #7e4060</p>
+              <p class="text-xs theme-fg-muted">Numbers, constants</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #f58088"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Coral</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#f58088 / #a02838</p>
+              <p class="text-xs theme-fg-muted">Member variables</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #aea195"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Warm Stone</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#aea195 / #5a5244</p>
+              <p class="text-xs theme-fg-muted">Comments</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #deb074"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Aged Brass</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#deb074 / #74501c</p>
+              <p class="text-xs theme-fg-muted">CSS properties</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #8aa8b8"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Steel Patina</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#8aa8b8 / #2a5868</p>
+              <p class="text-xs theme-fg-muted">Types, classes</p>
+            </div>
+          </div>
+          <div class="swatch-card">
+            <div class="swatch-block" style="background: #e6c08a"></div>
+            <div class="p-3">
+              <p class="text-xs font-bold theme-fg">Gold</p>
+              <p class="text-xs theme-fg-muted mt-0.5">#e6c08a / #7a5a1c</p>
+              <p class="text-xs theme-fg-muted">Decorators</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PLATFORMS ==================== -->
+    <section id="platforms" class="section-alt py-20 md:py-28 reveal has-scanlines">
+      <div class="max-w-5xl mx-auto px-4 md:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold theme-fg mb-3 text-center">Consistent damage across all platforms</h2>
+        <p class="text-sm theme-fg-muted mb-12 text-center">14 platforms. The burnout is spreading.</p>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+          <a href="https://marketplace.visualstudio.com/items?itemName=felip3fdl.warm-burnout" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">VS Code</p>
+            <p class="text-xs theme-fg-muted mt-1">Editor</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Marketplace</span>
+          </a>
+
+          <a href="https://plugins.jetbrains.com/plugin/30694-warm-burnout" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">JetBrains</p>
+            <p class="text-xs theme-fg-muted mt-1">Editor</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Marketplace</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/ghostty" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">Ghostty</p>
+            <p class="text-xs theme-fg-muted mt-1">Terminal</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/zed" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">Zed</p>
+            <p class="text-xs theme-fg-muted mt-1">Editor</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/nvim" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">Neovim</p>
+            <p class="text-xs theme-fg-muted mt-1">Editor</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/xcode" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">Xcode</p>
+            <p class="text-xs theme-fg-muted mt-1">Editor</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/iterm2" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">iTerm2</p>
+            <p class="text-xs theme-fg-muted mt-1">Terminal</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/windows-terminal" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">Windows Terminal</p>
+            <p class="text-xs theme-fg-muted mt-1">Terminal</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/tmux" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">tmux</p>
+            <p class="text-xs theme-fg-muted mt-1">Multiplexer</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/starship" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">Starship</p>
+            <p class="text-xs theme-fg-muted mt-1">Prompt</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/zsh" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">Zsh</p>
+            <p class="text-xs theme-fg-muted mt-1">Shell</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/home-assistant" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">Home Assistant</p>
+            <p class="text-xs theme-fg-muted mt-1">Dashboard</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">HACS</span>
+          </a>
+
+          <a href="https://github.com/felipefdl/warm-burnout/tree/main/eza" class="retro-card rounded-md p-4 no-underline block">
+            <p class="text-sm font-bold theme-fg">eza</p>
+            <p class="text-xs theme-fg-muted mt-1">ls replacement</p>
+            <span class="inline-block mt-2 text-xs font-bold px-2 py-0.5 rounded" style="background: rgba(184, 82, 46, 0.15); color: var(--theme-accent);">Available</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-12 border-t theme-border has-noise has-scanlines">
+    <div class="max-w-5xl mx-auto px-4 md:px-8 text-center">
+      <div class="logo-glow mb-4 flex justify-center">
+        <img src="images/wb-logo.svg" alt="" class="w-10 h-10 logo-img" width="40" height="40">
+      </div>
+      <p class="text-xs theme-fg-muted mb-2">every pixel, audited to hurt less.</p>
+      <p class="text-xs theme-fg-muted">
+        <a href="https://github.com/felipefdl/warm-burnout" class="hover:theme-fg transition-colors">GitHub</a>
+        &middot;
+        <a href="https://github.com/felipefdl/warm-burnout/blob/main/LICENSE" class="hover:theme-fg transition-colors">MIT License</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

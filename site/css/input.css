@@ -1,0 +1,627 @@
+@import "tailwindcss";
+
+/* ============================================================
+   Warm Burnout -- Tailwind v4 Theme
+   All colors from AGENTS.md canonical palette
+   ============================================================ */
+
+@theme {
+  --color-*: initial;
+
+  /* Backgrounds (dark) */
+  --color-bg: #1a1510;
+  --color-bg-dim: #14120f;
+  --color-bg-surface: #1f1d17;
+  --color-bg-highlight: #222018;
+
+  /* Backgrounds (light) */
+  --color-bg-light: #F5EDE0;
+  --color-bg-light-dim: #EDE6DA;
+  --color-bg-light-surface: #EAE2D6;
+  --color-bg-light-highlight: #E2DBCF;
+  --color-bg-light-card: #FAF6F0;
+
+  /* Foregrounds (dark) */
+  --color-fg: #bfbdb6;
+  --color-fg-dim: #aea195;
+  --color-fg-muted: #6b665f;
+
+  /* Foregrounds (light) */
+  --color-fg-light: #3a3630;
+  --color-fg-light-dim: #5a5244;
+  --color-fg-light-muted: #8a8070;
+
+  /* Brand accent */
+  --color-accent: #b8522e;
+  --color-accent-hover: #a04828;
+  --color-accent-deep: #8a3d22;
+
+  /* Cursor / gold */
+  --color-gold: #f5c56e;
+  --color-gold-dark: #8a6600;
+
+  /* Borders */
+  --color-border: #2a2620;
+  --color-border-light: #DDD6CA;
+
+  /* Syntax palette (dark) */
+  --color-keyword: #ff8f40;
+  --color-func: #ffb454;
+  --color-string: #b4bc78;
+  --color-type: #8aa8b8;
+  --color-operator: #f29668;
+  --color-number: #d4a8b8;
+  --color-tag: #d49484;
+  --color-coral: #f58088;
+  --color-comment: #aea195;
+  --color-decorator: #e6c08a;
+  --color-regex: #96b898;
+  --color-property: #deb074;
+
+  /* Syntax palette (light) */
+  --color-keyword-light: #924800;
+  --color-func-light: #855700;
+  --color-string-light: #4d5c1a;
+  --color-type-light: #2a5868;
+  --color-number-light: #7e4060;
+  --color-tag-light: #8e4632;
+  --color-coral-light: #a02838;
+  --color-comment-light: #5a5244;
+  --color-decorator-light: #7a5a1c;
+  --color-regex-light: #286a48;
+  --color-property-light: #74501c;
+
+  /* Status */
+  --color-added: #70bf56;
+  --color-deleted: #f26d78;
+
+  /* ANSI (for terminal dots) */
+  --color-ansi-red: #f06b73;
+  --color-ansi-yellow: #fdb04c;
+  --color-ansi-green: #70bf56;
+
+  /* Neutrals */
+  --color-white: #ffffff;
+  --color-black: #000000;
+
+  /* Selection */
+  --color-selection: #33393a;
+  --color-selection-light: #e5e8e2;
+
+  /* Fonts */
+  --font-mono: "JetBrains Mono", "Fira Code", "Cascadia Code", "Consolas", monospace;
+}
+
+/* ============================================================
+   Base / Reset
+   ============================================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  font-family: var(--font-mono);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ============================================================
+   Dark / Light Theme via data-theme attribute
+   CSS custom properties that swap based on theme.
+   Tailwind classes use the static palette; these vars
+   are for components that need to respond to theme toggle.
+   ============================================================ */
+
+:root,
+[data-theme="dark"] {
+  --theme-bg: #1a1510;
+  --theme-bg-dim: #14120f;
+  --theme-bg-surface: #1f1d17;
+  --theme-bg-highlight: #222018;
+  --theme-fg: #bfbdb6;
+  --theme-fg-dim: #aea195;
+  --theme-fg-muted: #6b665f;
+  --theme-accent: #b8522e;
+  --theme-accent-hover: #a04828;
+  --theme-gold: #f5c56e;
+  --theme-border: #2a2620;
+  --theme-selection: #33393a;
+  --theme-keyword: #ff8f40;
+  --theme-func: #ffb454;
+  --theme-string: #b4bc78;
+  --theme-type: #8aa8b8;
+  --theme-number: #d4a8b8;
+  --theme-tag: #d49484;
+  --theme-coral: #f58088;
+  --theme-comment: #aea195;
+  --theme-decorator: #e6c08a;
+  --theme-regex: #96b898;
+  --theme-property: #deb074;
+  --theme-operator: #f29668;
+  --theme-glow: rgba(245, 197, 110, 0.15);
+  --theme-scanline-opacity: 0.03;
+  --theme-noise-opacity: 0.04;
+  --theme-logo-color: #ffffff;
+}
+
+[data-theme="light"] {
+  --theme-bg: #F5EDE0;
+  --theme-bg-dim: #EDE6DA;
+  --theme-bg-surface: #EAE2D6;
+  --theme-bg-highlight: #E2DBCF;
+  --theme-fg: #3a3630;
+  --theme-fg-dim: #5a5244;
+  --theme-fg-muted: #8a8070;
+  --theme-accent: #b8522e;
+  --theme-accent-hover: #a04828;
+  --theme-gold: #8a6600;
+  --theme-border: #DDD6CA;
+  --theme-selection: #e5e8e2;
+  --theme-keyword: #924800;
+  --theme-func: #855700;
+  --theme-string: #4d5c1a;
+  --theme-type: #2a5868;
+  --theme-number: #7e4060;
+  --theme-tag: #8e4632;
+  --theme-coral: #a02838;
+  --theme-comment: #5a5244;
+  --theme-decorator: #7a5a1c;
+  --theme-regex: #286a48;
+  --theme-property: #74501c;
+  --theme-operator: #8f4418;
+  --theme-glow: rgba(184, 82, 46, 0.1);
+  --theme-scanline-opacity: 0.015;
+  --theme-noise-opacity: 0.025;
+  --theme-logo-color: #3a3630;
+}
+
+/* ============================================================
+   Theme-aware utility classes
+   ============================================================ */
+
+.theme-bg { background-color: var(--theme-bg); }
+.theme-bg-dim { background-color: var(--theme-bg-dim); }
+.theme-bg-surface { background-color: var(--theme-bg-surface); }
+.theme-bg-highlight { background-color: var(--theme-bg-highlight); }
+.theme-fg { color: var(--theme-fg); }
+.theme-fg-dim { color: var(--theme-fg-dim); }
+.theme-fg-muted { color: var(--theme-fg-muted); }
+.theme-border { border-color: var(--theme-border); }
+.theme-gold { color: var(--theme-gold); }
+.theme-accent { color: var(--theme-accent); }
+.theme-keyword { color: var(--theme-keyword); }
+.theme-func { color: var(--theme-func); }
+.theme-string { color: var(--theme-string); }
+.theme-type { color: var(--theme-type); }
+.theme-number { color: var(--theme-number); }
+.theme-coral { color: var(--theme-coral); }
+.theme-comment { color: var(--theme-comment); }
+.theme-decorator { color: var(--theme-decorator); }
+.theme-regex { color: var(--theme-regex); }
+.theme-tag { color: var(--theme-tag); }
+.theme-property { color: var(--theme-property); }
+.theme-operator { color: var(--theme-operator); }
+
+.theme-accent-bg { background-color: var(--theme-accent); }
+.theme-accent-bg:hover { background-color: var(--theme-accent-hover); }
+.theme-accent-border { border-color: var(--theme-accent); }
+.theme-gold-bg { background-color: var(--theme-gold); }
+
+/* ============================================================
+   Scanline overlay (CRT effect)
+   ============================================================ */
+
+.has-scanlines {
+  position: relative;
+}
+
+.has-scanlines::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, var(--theme-scanline-opacity)) 2px,
+    rgba(0, 0, 0, var(--theme-scanline-opacity)) 4px
+  );
+}
+
+/* ============================================================
+   Noise / grain texture
+   ============================================================ */
+
+.has-noise {
+  position: relative;
+}
+
+.has-noise::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: var(--theme-noise-opacity);
+  pointer-events: none;
+  z-index: 1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ============================================================
+   CRT frame for screenshots
+   ============================================================ */
+
+.crt-frame {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 2px solid var(--theme-border);
+  box-shadow:
+    0 0 30px var(--theme-glow),
+    inset 0 0 60px rgba(0, 0, 0, 0.3);
+}
+
+.crt-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 60%,
+    rgba(0, 0, 0, 0.35) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+.crt-frame img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ============================================================
+   CRT flicker animation (hero title)
+   ============================================================ */
+
+@keyframes crt-flicker {
+  0%   { opacity: 0.92; }
+  5%   { opacity: 1; }
+  10%  { opacity: 0.96; }
+  15%  { opacity: 1; }
+  100% { opacity: 1; }
+}
+
+.crt-flicker {
+  animation: crt-flicker 2s ease-out 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crt-flicker {
+    animation: none;
+  }
+}
+
+/* ============================================================
+   Logo glow
+   ============================================================ */
+
+.logo-glow {
+  filter: drop-shadow(0 0 20px var(--theme-glow));
+  color: var(--theme-logo-color);
+}
+
+.logo-glow svg {
+  fill: currentColor;
+}
+
+.logo-img {
+  /* SVG is white by default, works on dark backgrounds */
+  filter: none;
+}
+
+[data-theme="light"] .logo-img {
+  /* Invert white SVG to dark for light backgrounds */
+  filter: brightness(0) saturate(100%);
+}
+
+/* ============================================================
+   Scroll reveal
+   ============================================================ */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* ============================================================
+   Tagline rotation
+   ============================================================ */
+
+.tagline-rotate {
+  transition: opacity 0.4s ease;
+  min-height: 1.5em;
+}
+
+/* ============================================================
+   Platform / palette cards
+   ============================================================ */
+
+.retro-card {
+  background: var(--theme-bg-surface);
+  border: 1px solid var(--theme-border);
+  border-top: 3px solid var(--theme-accent);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retro-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--theme-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .retro-card {
+    transition: none;
+  }
+  .retro-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
+   Palette swatch cards
+   ============================================================ */
+
+.swatch-card {
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--theme-border);
+  background: var(--theme-bg-surface);
+}
+
+.swatch-block {
+  height: 80px;
+}
+
+/* ============================================================
+   Audit tables
+   ============================================================ */
+
+.audit-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8125rem;
+}
+
+.audit-table th {
+  text-align: left;
+  padding: 0.5rem 0.75rem;
+  border-bottom: 2px solid var(--theme-border);
+  color: var(--theme-fg-dim);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.6875rem;
+}
+
+.audit-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--theme-border);
+  color: var(--theme-fg);
+}
+
+.audit-table tr:nth-child(even) td {
+  background: var(--theme-bg-highlight);
+}
+
+.color-dot {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin-right: 0.5rem;
+  border: 1px solid var(--theme-border);
+}
+
+/* ============================================================
+   Contrast badges
+   ============================================================ */
+
+.badge-aaa {
+  display: inline-block;
+  padding: 0.125rem 0.375rem;
+  border-radius: 3px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: rgba(112, 191, 86, 0.15);
+  color: #70bf56;
+}
+
+.badge-aa {
+  display: inline-block;
+  padding: 0.125rem 0.375rem;
+  border-radius: 3px;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  background: rgba(253, 176, 76, 0.15);
+  color: #fdb04c;
+}
+
+[data-theme="light"] .badge-aaa {
+  background: rgba(34, 100, 20, 0.1);
+  color: #226414;
+}
+
+[data-theme="light"] .badge-aa {
+  background: rgba(138, 96, 0, 0.1);
+  color: #74501c;
+}
+
+/* ============================================================
+   Warning label heading
+   ============================================================ */
+
+.warning-label {
+  display: inline-block;
+  padding: 0.5rem 1.25rem;
+  border: 2px solid var(--theme-accent);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  font-size: 0.75rem;
+  color: var(--theme-accent);
+}
+
+/* ============================================================
+   Screenshot tabs
+   ============================================================ */
+
+.tab-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid var(--theme-border);
+  background: transparent;
+  color: var(--theme-fg-muted);
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+
+.tab-btn:hover {
+  color: var(--theme-fg);
+}
+
+.tab-btn.active {
+  color: var(--theme-accent);
+  border-color: var(--theme-accent);
+  background: var(--theme-bg-surface);
+}
+
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
+}
+
+/* ============================================================
+   Mobile nav
+   ============================================================ */
+
+.nav-links {
+  display: none;
+}
+
+.nav-links.open {
+  display: flex;
+}
+
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex !important;
+  }
+  .hamburger {
+    display: none !important;
+  }
+}
+
+/* ============================================================
+   Buttons
+   ============================================================ */
+
+.btn-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  background: var(--theme-accent);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.15s;
+}
+
+.btn-solid:hover {
+  background: var(--theme-accent-hover);
+  color: #ffffff;
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1.5rem;
+  background: transparent;
+  color: var(--theme-fg);
+  border: 1px solid var(--theme-border);
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.btn-outline:hover {
+  border-color: var(--theme-accent);
+  color: var(--theme-accent);
+}
+
+/* ============================================================
+   Section alternating backgrounds
+   ============================================================ */
+
+.section-alt {
+  background: var(--theme-bg-dim);
+}
+
+/* ============================================================
+   Misc
+   ============================================================ */
+
+::selection {
+  background: var(--theme-selection);
+}
+
+a {
+  color: var(--theme-accent);
+}
+
+a:hover {
+  color: var(--theme-accent-hover);
+}

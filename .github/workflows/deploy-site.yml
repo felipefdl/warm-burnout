@@ -1,0 +1,65 @@
+name: Deploy Site
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "site/**"
+      - "screenshots/**"
+      - "images/**"
+      - ".github/workflows/deploy-site.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Install dependencies
+        working-directory: site
+        run: npm ci
+
+      - name: Build CSS
+        working-directory: site
+        run: npx @tailwindcss/cli -i css/input.css -o css/output.css --minify
+
+      - name: Prepare output
+        run: |
+          mkdir -p _site/css _site/js _site/screenshots _site/images
+          cp site/index.html _site/
+          cp site/css/output.css _site/css/output.css
+          cp site/js/main.js _site/js/main.js
+          cp screenshots/*.png _site/screenshots/
+          cp images/wb-logo.svg _site/images/wb-logo.svg
+          cp images/wb-logo.svg _site/favicon.svg
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: "_site"
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
