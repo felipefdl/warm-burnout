@@ -4,3 +4,6 @@ TODO.md
 screenshots/*.html
 screenshots/*.mjs
 screenshots/AGENTS.md
+screenshots/node_modules/**
+screenshots/package.json
+screenshots/package-lock.json
