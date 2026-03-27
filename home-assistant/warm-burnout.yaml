@@ -11,21 +11,21 @@ Warm Burnout:
       # ── Interface ──
       primary-color: "#b8522e"
       dark-primary-color: "#8a3d22"
-      light-primary-color: "#8aa8b8"
+      light-primary-color: "#90aec0"
       accent-color: "#b8522e"
       divider-color: "rgba(191, 189, 182, 0.12)"
       scrollbar-thumb-color: "rgba(191, 189, 182, 0.3)"
 
       # ── Feedback ──
-      error-color: "#f08888"
+      error-color: "#f49090"
       warning-color: "#ffb454"
       success-color: "#b4bc78"
-      info-color: "#8aa8b8"
+      info-color: "#90aec0"
 
       # ── States ──
       state-icon-color: "#ada69c"
       state-icon-active-color: "#b8522e"
-      state-icon-unavailable-color: "rgba(174, 161, 149, 0.5)"
+      state-icon-unavailable-color: "rgba(180, 168, 156, 0.5)"
 
       # ── Backgrounds ──
       primary-background-color: "#1a1510"
@@ -40,8 +40,8 @@ Warm Burnout:
       ha-card-box-shadow: "0 2px 8px 0 rgba(20, 12, 6, 0.25)"
 
       # ── Badges ──
-      label-badge-red: "#f08888"
-      label-badge-blue: "#8aa8b8"
+      label-badge-red: "#f49090"
+      label-badge-blue: "#90aec0"
       label-badge-green: "#b4bc78"
       label-badge-yellow: "#ffb454"
       label-badge-grey: "#ada69c"
@@ -82,7 +82,7 @@ Warm Burnout:
       switch-checked-button-color: "#b8522e"
       switch-checked-track-color: "rgba(184, 82, 46, 0.4)"
       switch-unchecked-button-color: "#ada69c"
-      switch-unchecked-track-color: "rgba(174, 161, 149, 0.3)"
+      switch-unchecked-track-color: "rgba(180, 168, 156, 0.3)"
 
       # ── Sliders ──
       slider-color: "#b8522e"
@@ -142,7 +142,7 @@ Warm Burnout:
       chip-background-color: "rgba(184, 82, 46, 0.15)"
 
       # ── Errors ──
-      error-state-color: "#f08888"
+      error-state-color: "#f49090"
 
       # ── Dialogs ──
       ha-dialog-border-radius: "16px"
@@ -151,20 +151,20 @@ Warm Burnout:
       codemirror-keyword: "#ff8f40"
       codemirror-operator: "#f29668"
       codemirror-variable: "#bfbdb6"
-      codemirror-variable-2: "#8aa8b8"
-      codemirror-builtin: "#f58088"
+      codemirror-variable-2: "#90aec0"
+      codemirror-builtin: "#ec9878"
       codemirror-atom: "#d4a8b8"
       codemirror-number: "#d4a8b8"
       codemirror-def: "#ffb454"
       codemirror-string: "#b4bc78"
       codemirror-string-2: "#96b898"
-      codemirror-comment: "#aea195"
-      codemirror-tag: "#d49484"
+      codemirror-comment: "#b4a89c"
+      codemirror-tag: "#dc9e92"
       codemirror-meta: "#e6c08a"
       codemirror-attribute: "#deb074"
       codemirror-property: "#deb074"
-      codemirror-qualifier: "#8aa8b8"
-      codemirror-type: "#8aa8b8"
+      codemirror-qualifier: "#90aec0"
+      codemirror-type: "#90aec0"
 
       # ── Energy ──
       energy-grid-consumption-color: "#ffb454"
@@ -173,23 +173,23 @@ Warm Burnout:
       energy-battery-in-color: "#d4a8b8"
       energy-battery-out-color: "#e6c08a"
       energy-gas-color: "#f29668"
-      energy-water-color: "#8aa8b8"
+      energy-water-color: "#90aec0"
 
       # ── Graph colors (14, all warm spectrum) ──
       graph-color-1: "#ffb454"
-      graph-color-2: "#d49484"
+      graph-color-2: "#dc9e92"
       graph-color-3: "#b4bc78"
       graph-color-4: "#d4a8b8"
-      graph-color-5: "#f08888"
+      graph-color-5: "#f49090"
       graph-color-6: "#e6c08a"
       graph-color-7: "#ff8f40"
-      graph-color-8: "#aea195"
+      graph-color-8: "#b4a89c"
       graph-color-9: "#f29668"
       graph-color-10: "#96b898"
       graph-color-11: "#deb074"
-      graph-color-12: "#f58088"
-      graph-color-13: "#8aa8b8"
-      graph-color-14: "#d49484"
+      graph-color-12: "#ec9878"
+      graph-color-13: "#90aec0"
+      graph-color-14: "#dc9e92"
 
       # ── Section views ──
       ha-section-grid-row-gap: "8px"
@@ -207,18 +207,18 @@ Warm Burnout:
       mush-chip-icon-color: "#ada69c"
       mush-chip-border-radius: "16px"
       mush-slider-color: "#b8522e"
-      mush-lock-icon-color: "#f08888"
+      mush-lock-icon-color: "#f49090"
       mush-badge-color: "#b8522e"
 
       # ── Mini Graph Card overrides ──
       mini-graph-color-0: "#ffb454"
-      mini-graph-color-1: "#d49484"
+      mini-graph-color-1: "#dc9e92"
       mini-graph-color-2: "#b4bc78"
       mini-graph-color-3: "#d4a8b8"
-      mini-graph-color-4: "#f08888"
+      mini-graph-color-4: "#f49090"
       mini-graph-color-5: "#e6c08a"
       mini-graph-color-6: "#ff8f40"
-      mini-graph-color-7: "#aea195"
+      mini-graph-color-7: "#b4a89c"
       mini-graph-color-8: "#f29668"
       mini-graph-name-font-weight: "600"
 
@@ -233,7 +233,7 @@ Warm Burnout:
       # ── Interface ──
       primary-color: "#b8522e"
       dark-primary-color: "#8a3d22"
-      light-primary-color: "#2a5868"
+      light-primary-color: "#285464"
       accent-color: "#b8522e"
       divider-color: "rgba(58, 54, 48, 0.12)"
       scrollbar-thumb-color: "rgba(58, 54, 48, 0.3)"
@@ -242,7 +242,7 @@ Warm Burnout:
       error-color: "#b03434"
       warning-color: "#855700"
       success-color: "#4d5c1a"
-      info-color: "#2a5868"
+      info-color: "#285464"
 
       # ── States ──
       state-icon-color: "#5c5750"
@@ -263,7 +263,7 @@ Warm Burnout:
 
       # ── Badges ──
       label-badge-red: "#b03434"
-      label-badge-blue: "#2a5868"
+      label-badge-blue: "#285464"
       label-badge-green: "#4d5c1a"
       label-badge-yellow: "#855700"
       label-badge-grey: "#5c5750"
@@ -373,20 +373,20 @@ Warm Burnout:
       codemirror-keyword: "#924800"
       codemirror-operator: "#8f4418"
       codemirror-variable: "#3a3630"
-      codemirror-variable-2: "#2a5868"
-      codemirror-builtin: "#a02838"
+      codemirror-variable-2: "#285464"
+      codemirror-builtin: "#883850"
       codemirror-atom: "#7e4060"
       codemirror-number: "#7e4060"
       codemirror-def: "#855700"
       codemirror-string: "#4d5c1a"
       codemirror-string-2: "#286a48"
-      codemirror-comment: "#5a5244"
+      codemirror-comment: "#544c40"
       codemirror-tag: "#8e4632"
       codemirror-meta: "#7a5a1c"
       codemirror-attribute: "#74501c"
       codemirror-property: "#74501c"
-      codemirror-qualifier: "#2a5868"
-      codemirror-type: "#2a5868"
+      codemirror-qualifier: "#285464"
+      codemirror-type: "#285464"
 
       # ── Energy ──
       energy-grid-consumption-color: "#855700"
@@ -395,7 +395,7 @@ Warm Burnout:
       energy-battery-in-color: "#7e4060"
       energy-battery-out-color: "#7a5a1c"
       energy-gas-color: "#8f4418"
-      energy-water-color: "#2a5868"
+      energy-water-color: "#285464"
 
       # ── Graph colors (14, all warm spectrum) ──
       graph-color-1: "#855700"
@@ -405,12 +405,12 @@ Warm Burnout:
       graph-color-5: "#b03434"
       graph-color-6: "#7a5a1c"
       graph-color-7: "#924800"
-      graph-color-8: "#5a5244"
+      graph-color-8: "#544c40"
       graph-color-9: "#8f4418"
       graph-color-10: "#286a48"
       graph-color-11: "#74501c"
-      graph-color-12: "#a02838"
-      graph-color-13: "#2a5868"
+      graph-color-12: "#883850"
+      graph-color-13: "#285464"
       graph-color-14: "#8e4632"
 
       # ── Section views ──
@@ -440,6 +440,6 @@ Warm Burnout:
       mini-graph-color-4: "#b03434"
       mini-graph-color-5: "#7a5a1c"
       mini-graph-color-6: "#924800"
-      mini-graph-color-7: "#5a5244"
+      mini-graph-color-7: "#544c40"
       mini-graph-color-8: "#8f4418"
       mini-graph-name-font-weight: "600"

@@ -163,7 +163,7 @@ fn light_ansi_colors_match_ghostty() {
     ("Ansi 6 Color", "#146858"),
     ("Ansi 7 Color", "#c0b8aa"),
     ("Ansi 8 Color", "#686868"),
-    ("Ansi 9 Color", "#b82820"),
+    ("Ansi 9 Color", "#c83028"),
     ("Ansi 10 Color", "#3a7a20"),
     ("Ansi 11 Color", "#9a7008"),
     ("Ansi 12 Color", "#2870b0"),

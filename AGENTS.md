@@ -16,7 +16,7 @@ Warm Burnout is a multi-platform color theme suite designed to reduce eye strain
 ## Project Structure
 
 ```
-patina-vscode-theme/
+warm-burnout/
   README.md                   # Suite README -- brand, science, scores, palette
   AGENTS.md                   # This file -- suite-level agent rules
   LICENSE                     # MIT, Felipe Lima
@@ -128,6 +128,11 @@ patina-vscode-theme/
     warm-burnout-dark.conf    # Dark variant
     warm-burnout-light.conf   # Light variant
     warm-burnout.tmux         # TPM plugin entry point
+  eza/                        # eza file listing theme
+    dark.yml                  # Dark variant
+    light.yml                 # Light variant
+    README.md                 # eza install instructions
+    AGENTS.md                 # eza-specific agent rules
   screenshots/                # Theme preview screenshots
     AGENTS.md                 # Screenshot-specific agent rules
     generate.mjs              # Playwright script to render HTML -> PNG
@@ -145,7 +150,7 @@ patina-vscode-theme/
    - Dark: WCAG AAA minimum (>= 7.0:1) for every token against `#1a1510`
    - Light: WCAG AA minimum (>= 4.5:1) for every token against `#F5EDE0`, targeting 5-7:1
 3. **Blue light reduction**: Minimize blue-spectrum emission. Blues allowed only in: terminal ANSI (programs depend on them), selection/highlight backgrounds (must be neutral), git status indicators (convention), and the single type-name accent.
-4. **Three-tier font style system**: **bold** = structural keywords, *italic* = types and comments, normal = everything else. Non-color discrimination channel for CVD and fatigued users.
+4. **Three-tier font style system**: **bold** = structural keywords and HTML tags, *italic* = types, comments, CSS properties, decorators, normal = everything else. Non-color discrimination channel for CVD and fatigued users.
 5. **No extreme backgrounds**: No pure black (halation risk for astigmatic users). No pure white (luminance overload).
 
 ## Canonical Palette
@@ -162,23 +167,23 @@ Background: `#1a1510` (L ~= 0.008). All tokens >= 7.0:1 (AAA).
 | Keywords/storage  | `#ff8f40` | 8.0:1    | **bold** |
 | Functions         | `#ffb454` | 10.3:1   | normal   |
 | Operators         | `#f29668` | 8.1:1    | normal   |
-| Decorators        | `#e6c08a` | 10.0:1   | normal   |
-| Types/classes     | `#8aa8b8` | 7.2:1    | *italic* |
+| Decorators        | `#e6c08a` | 10.6:1   | *italic* |
+| Types/classes     | `#90aec0` | 7.8:1    | *italic* |
 | Strings           | `#b4bc78` | 9.0:1    | normal   |
 | Regex/escape      | `#96b898` | 8.3:1    | normal   |
 | Constants/numbers | `#d4a8b8` | 8.7:1    | normal   |
-| Tags (HTML)       | `#d49484` | 7.2:1    | normal   |
-| Member vars       | `#f58088` | 7.2:1    | normal   |
-| Library functions | `#f58088` | 7.2:1    | normal   |
-| Comments          | `#aea195` | 7.2:1    | *italic* |
-| Error/invalid     | `#f08888` | 7.4:1    | normal   |
-| CSS properties    | `#deb074` | 9.1:1    | normal   |
+| Tags (HTML)       | `#dc9e92` | 8.1:1    | **bold** |
+| Member vars       | `#ec9878` | 8.1:1    | normal   |
+| Library functions | `#ec9878` | 8.1:1    | normal   |
+| Comments          | `#b4a89c` | 7.8:1    | *italic* |
+| Error/invalid     | `#f49090` | 7.9:1    | normal   |
+| CSS properties    | `#deb074` | 9.1:1    | *italic* |
 
 Accent: `#b8522e`. Cursor: `#f5c56e`.
 
 ### Light Theme
 
-Background: `#F5EDE0` (L ~= 0.854). All tokens >= 4.5:1 (AA).
+Background: `#F5EDE0` (L ~= 0.854). All tokens >= 4.5:1 (AA). 2 tokens (types and comments) meet AAA (>= 7.0:1).
 
 | Role              | Hex       | Contrast | Style    |
 |-------------------|-----------|----------|----------|
@@ -186,17 +191,17 @@ Background: `#F5EDE0` (L ~= 0.854). All tokens >= 4.5:1 (AA).
 | Keywords/storage  | `#924800` | 5.7:1    | **bold** |
 | Functions         | `#855700` | 5.4:1    | normal   |
 | Operators         | `#8f4418` | 6.0:1    | normal   |
-| Decorators        | `#7a5a1c` | 5.5:1    | normal   |
-| Types/classes     | `#2a5868` | 6.7:1    | *italic* |
+| Decorators        | `#7a5a1c` | 5.5:1    | *italic* |
+| Types/classes     | `#285464` | 7.2:1    | *italic* |
 | Strings           | `#4d5c1a` | 6.3:1    | normal   |
 | Regex/escape      | `#286a48` | 5.6:1    | normal   |
 | Constants/numbers | `#7e4060` | 6.5:1    | normal   |
-| Tags (HTML)       | `#8e4632` | 5.9:1    | normal   |
-| Member vars       | `#a02838` | 6.3:1    | normal   |
-| Library functions | `#a02838` | 6.3:1    | normal   |
-| Comments          | `#5a5244` | 6.6:1    | *italic* |
+| Tags (HTML)       | `#8e4632` | 5.9:1    | **bold** |
+| Member vars       | `#883850` | 6.6:1    | normal   |
+| Library functions | `#883850` | 6.6:1    | normal   |
+| Comments          | `#544c40` | 7.3:1    | *italic* |
 | Error/invalid     | `#b03434` | 5.3:1    | normal   |
-| CSS properties    | `#74501c` | 6.2:1    | normal   |
+| CSS properties    | `#74501c` | 6.2:1    | *italic* |
 
 Accent: `#b8522e`. Cursor: `#8a6600`.
 
@@ -209,7 +214,7 @@ Light: foreground needs L <= 0.144 for AA.
 
 ## Known Design Tradeoffs
 
-1. **Warm hue cluster**: Keywords, functions, operators, tags, decorators, CSS props all live in a 27-degree hue band (13-40deg). For CVD users these collapse to "brown." Only keywords escape via bold. This is the cost of a warm palette -- cannot fix without breaking identity.
+1. **Warm hue cluster**: Keywords, functions, operators, tags, decorators, CSS props all live in a 27-degree hue band (13-40deg). For CVD users these collapse to "brown." Keywords and tags escape via bold. This is the cost of a warm palette -- cannot fix without breaking identity.
 2. **Light theme inactive line numbers at 3.35:1**: Intentionally subdued. Active line number is 5.16:1 (AA).
 3. **Terminal bright colors 3.5-4.5:1 on light**: Standard for light themes. Programs primarily use default foreground (9.67:1).
 
@@ -331,7 +336,7 @@ Every platform must have its theme files attached to GitHub Releases via `.githu
 
 **Packaging rules:**
 - Multi-file platforms: zip into `warm-burnout-<platform>.zip` (e.g., `warm-burnout-ghostty.zip`)
-- Single-file platforms: attach directly with a descriptive name (e.g., `warm-burnout-eza.yml`)
+- Single-file platforms: attach directly with a descriptive name (e.g., `warm-burnout-home-assistant.yaml`)
 - Platforms with build steps: build first, attach the artifact (e.g., `jetbrains/warm-burnout-theme.jar`)
 
 VS Code is handled separately by `release-vscode.yml` (marketplace + Open VSX publishing).

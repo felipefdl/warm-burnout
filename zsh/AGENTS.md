@@ -32,15 +32,15 @@ Zsh syntax tokens map to the canonical palette roles:
 | `command`, `function`, `alias`, `suffix-alias`, `global-alias`, `hashed-command` | Functions | `#ffb454` | `#855700` |
 | `reserved-word`, `builtin`, `precommand` | Keywords (bold) | `#ff8f40` | `#924800` |
 | `single-quoted-argument`, `double-quoted-argument`, `dollar-quoted-argument` | Strings | `#b4bc78` | `#4d5c1a` |
-| `*-unclosed` variants, `unknown-token` | Error/invalid | `#f08888` | `#b03434` |
+| `*-unclosed` variants, `unknown-token` | Error/invalid | `#f49090` | `#b03434` |
 | `commandseparator`, `assign`, `redirection`, `path_pathseparator`, `path_prefix_pathseparator`, `back-quoted-argument-delimiter` | Operators | `#f29668` | `#8f4418` |
-| `single-hyphen-option`, `double-hyphen-option` | Types (cool accent) | `#8aa8b8` | `#2a5868` |
+| `single-hyphen-option`, `double-hyphen-option` | Types (cool accent) | `#90aec0` | `#285464` |
 | `path`, `autodirectory` | Decorators | `#e6c08a` | `#7a5a1c` |
 | `path_prefix` | Decorators (underline) | `#e6c08a` | `#7a5a1c` |
 | `globbing` | Regex/escape | `#96b898` | `#286a48` |
 | `rc-quote`, `dollar-double-quoted-argument`, `back-double-quoted-argument` | Regex/escape | `#96b898` | `#286a48` |
 | `history-expansion`, `back-quoted-argument`, `named-fd`, `numeric-fd` | Constants | `#d4a8b8` | `#7e4060` |
-| `comment` | Comments (italic) | `#aea195` | `#5a5244` |
+| `comment` | Comments (italic) | `#b4a89c` | `#544c40` |
 | `default`, `arg0` | Foreground | `#bfbdb6` | `#3a3630` |
 
 ## Derived UI Colors (fzf)

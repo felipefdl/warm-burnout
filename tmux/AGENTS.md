@@ -16,7 +16,7 @@ See the root [`AGENTS.md`](../AGENTS.md) for the canonical palette, design princ
 tmux themes control UI chrome (status bar, pane borders, messages, copy mode) -- not terminal ANSI colors. The mapping is:
 
 - **Status bar bg** (`#14120f` dark, `#EDE6DA` light): sidebar surface -- the status bar is a panel, not the editor.
-- **Status bar fg** (`#aea195` dark, `#5a5244` light): comments/warm stone -- subdued informational text.
+- **Status bar fg** (`#b4a89c` dark, `#544c40` light): comments/warm stone -- subdued informational text.
 - **Session name** (`#ffb454` dark, `#855700` light): functions/amber -- prominent but not jarring.
 - **Active window** (`#ff8f40`/`#924800` bg): keywords/burnt orange -- strongest visual landmark.
 - **Pane border** (`#222018` dark, `#DDD6CA` light): line-highlight -- subtle, architectural.

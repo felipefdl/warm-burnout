@@ -52,6 +52,49 @@ jobs:
           cp -r site/logos _site/logos
           cp site/CNAME _site/CNAME
 
+      - name: Validate local references
+        run: |
+          echo "Checking that all locally-referenced files exist in _site..."
+          fail=0
+          # Extract relative src= and href= values from index.html, skip anchors and absolute URLs
+          for ref in $(grep -oP '(?:src|href)="([^"#][^"]*)"' _site/index.html \
+                       | sed 's/.*="//;s/"$//' \
+                       | grep -v '^https\?://' \
+                       | grep -v '^data:' \
+                       | sort -u); do
+            if [ ! -e "_site/$ref" ]; then
+              echo "MISSING: _site/$ref"
+              fail=1
+            fi
+          done
+          if [ "$fail" -eq 1 ]; then
+            echo "Some referenced files are missing from the build output."
+            exit 1
+          fi
+          echo "All local references are valid."
+
+      - name: Validate HTML structure
+        run: |
+          # Check that the HTML is well-formed: matching doctype, html, head, body tags
+          html="_site/index.html"
+          errors=0
+          if ! head -1 "$html" | grep -qi '<!doctype html>'; then
+            echo "Missing <!DOCTYPE html>"
+            errors=1
+          fi
+          for tag in html head body; do
+            open=$(grep -c "<${tag}" "$html" || true)
+            close=$(grep -c "</${tag}>" "$html" || true)
+            if [ "$open" -ne "$close" ]; then
+              echo "Mismatched <${tag}> tags: $open opening, $close closing"
+              errors=1
+            fi
+          done
+          if [ "$errors" -eq 1 ]; then
+            exit 1
+          fi
+          echo "HTML structure looks good."
+
       - uses: actions/configure-pages@v5
 
       - uses: actions/upload-pages-artifact@v4

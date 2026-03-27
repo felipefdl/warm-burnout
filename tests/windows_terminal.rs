@@ -168,7 +168,7 @@ fn light_ansi_colors_match_ghostty() {
     ("cyan", "#146858"),
     ("white", "#c0b8aa"),
     ("brightBlack", "#686868"),
-    ("brightRed", "#b82820"),
+    ("brightRed", "#c83028"),
     ("brightGreen", "#3a7a20"),
     ("brightYellow", "#9a7008"),
     ("brightBlue", "#2870b0"),

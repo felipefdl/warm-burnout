@@ -59,7 +59,7 @@ The theme overrides CSS custom properties from the official HA default theme (`h
 ## Rules
 
 1. Every hex value in the theme must come from the canonical palette or be a derived variant (opacity, slight shade shift for UI chrome). No arbitrary colors.
-2. Do not add blues. The only cool-toned values allowed are the steel patina type accent (`#8aa8b8` dark / `#2a5868` light) and `info-color` (which maps to that same accent).
+2. Do not add blues. The only cool-toned values allowed are the steel patina type accent (`#90aec0` dark / `#285464` light) and `info-color` (which maps to that same accent).
 3. When HA updates its default theme with new variables, add them to the theme with appropriate warm mappings.
 4. Keep both `dark` and `light` modes in sync: same variable set, same structure, different values.
 5. Test changes with `cargo test --test home_assistant`.

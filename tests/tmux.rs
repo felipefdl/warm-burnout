@@ -131,7 +131,7 @@ fn dark_status_bg_is_sidebar() {
 #[test]
 fn dark_status_fg_is_comments() {
   let style = tmux_option_value(DARK, "status-style");
-  assert_eq!(tmux_style_fg(&style), "#aea195");
+  assert_eq!(tmux_style_fg(&style), "#b4a89c");
 }
 
 #[test]
@@ -175,7 +175,7 @@ fn light_status_bg_is_sidebar() {
 #[test]
 fn light_status_fg_is_comments() {
   let style = tmux_option_value(LIGHT, "status-style");
-  assert_eq!(tmux_style_fg(&style), "#5a5244");
+  assert_eq!(tmux_style_fg(&style), "#544c40");
 }
 
 #[test]

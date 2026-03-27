@@ -47,7 +47,7 @@
       "errorBackground": "f8e8e8",
       "errorBorderColor": "b03434",
       "infoBackground": "f0e8dc",
-      "infoBorderColor": "2a5868",
+      "infoBorderColor": "285464",
       "successBackground": "e8f0e8",
       "successBorderColor": "226414",
       "warningBackground": "f0e8d8",
@@ -88,7 +88,7 @@
       "selectionBackground": "e3dbd0",
       "matchForeground": "855700",
       "Advertiser": {
-        "foreground": "5a5244",
+        "foreground": "544c40",
         "background": "f0e8dc"
       }
     },
@@ -133,7 +133,7 @@
       "borderColor": "e0d8cc",
       "foreground": "3a3630",
       "shortcutForeground": "855700",
-      "linkForeground": "2a5868",
+      "linkForeground": "285464",
       "Button": {
         "foreground": "f5ede0",
         "startBackground": "b8522e",
@@ -146,16 +146,16 @@
       "foreground": "3a3630",
       "disabledForeground": "a89880",
       "selectedForeground": "3a3630",
-      "infoForeground": "5a5244",
+      "infoForeground": "544c40",
       "errorForeground": "b03434",
       "successForeground": "226414"
     },
     "Link": {
-      "activeForeground": "2a5868",
-      "hoverForeground": "2a5868",
-      "pressedForeground": "2a5868",
-      "visitedForeground": "2a5868",
-      "secondaryForeground": "5a5244"
+      "activeForeground": "285464",
+      "hoverForeground": "285464",
+      "pressedForeground": "285464",
+      "visitedForeground": "285464",
+      "secondaryForeground": "544c40"
     },
     "List": {
       "background": "ede6da",
@@ -200,7 +200,7 @@
       "foreground": "3a3630",
       "selectionBackground": "e3dbd0",
       "selectionForeground": "3a3630",
-      "acceleratorForeground": "5a5244",
+      "acceleratorForeground": "544c40",
       "acceleratorSelectionForeground": "3a3630",
       "disabledForeground": "a89880"
     },
@@ -216,7 +216,7 @@
       "errorForeground": "b03434",
       "ToolWindow": {
         "informativeBackground": "f0e8dc",
-        "informativeBorderColor": "2a5868",
+        "informativeBorderColor": "285464",
         "warningBackground": "f0e8d8",
         "warningBorderColor": "b8522e",
         "warningForeground": "3a3630",
@@ -261,7 +261,7 @@
       },
       "Advertiser": {
         "background": "f0e8dc",
-        "foreground": "5a5244",
+        "foreground": "544c40",
         "borderColor": "e0d8cc"
       }
     },
@@ -279,17 +279,17 @@
       "background": "ede6da",
       "hoverTrackColor": "f0e8dc",
       "thumbColor": "a89880",
-      "hoverThumbColor": "5a5244",
+      "hoverThumbColor": "544c40",
       "Transparent": {
         "thumbColor": "a89880",
-        "hoverThumbColor": "5a5244"
+        "hoverThumbColor": "544c40"
       },
       "Mac": {
         "thumbColor": "a89880",
-        "hoverThumbColor": "5a5244",
+        "hoverThumbColor": "544c40",
         "Transparent": {
           "thumbColor": "a89880",
-          "hoverThumbColor": "5a5244"
+          "hoverThumbColor": "544c40"
         }
       }
     },
@@ -349,7 +349,7 @@
       "selectionBackground": "e5e8e2",
       "selectionForeground": "3a3630",
       "caretForeground": "8a6600",
-      "inactiveForeground": "5a5244"
+      "inactiveForeground": "544c40"
     },
     "TextField": {
       "background": "f0e8dc",
@@ -362,7 +362,7 @@
       "background": "ede6da",
       "inactiveBackground": "ede6da",
       "foreground": "3a3630",
-      "inactiveForeground": "5a5244",
+      "inactiveForeground": "544c40",
       "borderColor": "ede6da",
       "Button": {
         "hoverBackground": "e3dbd0"
@@ -423,9 +423,9 @@
       "GitLog": {
         "headIconColor": "b8522e",
         "localBranchIconColor": "226414",
-        "remoteBranchIconColor": "2a5868",
+        "remoteBranchIconColor": "285464",
         "tagIconColor": "855700",
-        "otherIconColor": "5a5244"
+        "otherIconColor": "544c40"
       },
       "Log": {
         "Commit.currentBranchBackground": "e3dbd0",
@@ -453,11 +453,11 @@
     "RecentProject.Color1.MainToolbarGradientStart": "92480018",
     "RecentProject.Color2.MainToolbarGradientStart": "85570018",
     "RecentProject.Color3.MainToolbarGradientStart": "4d5c1a18",
-    "RecentProject.Color4.MainToolbarGradientStart": "2a586818",
+    "RecentProject.Color4.MainToolbarGradientStart": "28546418",
     "RecentProject.Color5.MainToolbarGradientStart": "7e406018",
     "RecentProject.Color6.MainToolbarGradientStart": "7a5a1c18",
     "RecentProject.Color7.MainToolbarGradientStart": "8e463218",
-    "RecentProject.Color8.MainToolbarGradientStart": "a0283818",
+    "RecentProject.Color8.MainToolbarGradientStart": "88385018",
     "RecentProject.Color9.MainToolbarGradientStart": "74501c18"
   }
 }

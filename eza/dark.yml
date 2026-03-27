@@ -2,13 +2,13 @@ colourful: true
 # Warm Burnout Dark -- eza theme
 #
 # Palette reference:
-#   foreground  #bfbdb6    comment     #aea195
+#   foreground  #bfbdb6    comment     #b4a89c
 #   amber       #ffb454    burnt_orange #ff8f40
 #   gold        #e6c08a    aged_brass   #deb074
-#   terra_cotta #d49484    coral        #f58088
+#   terra_cotta #dc9e92    coral        #ec9878
 #   dusty_mauve #d4a8b8    dried_sage   #b4bc78
-#   verdigris   #96b898    steel_patina #8aa8b8
-#   error       #f08888    accent       #b8522e
+#   verdigris   #96b898    steel_patina #90aec0
+#   error       #f49090    accent       #b8522e
 
 filekinds:
   normal:
@@ -18,13 +18,13 @@ filekinds:
   symlink:
     foreground: "#96b898"
   pipe:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   block_device:
-    foreground: "#f08888"
+    foreground: "#f49090"
   char_device:
-    foreground: "#f08888"
+    foreground: "#f49090"
   socket:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   special:
     foreground: "#d4a8b8"
   executable:
@@ -36,7 +36,7 @@ perms:
   user_read:
     foreground: "#e6c08a"
   user_write:
-    foreground: "#f58088"
+    foreground: "#ec9878"
   user_execute_file:
     foreground: "#b4bc78"
   user_execute_other:
@@ -44,19 +44,19 @@ perms:
   group_read:
     foreground: "#e6c08a"
   group_write:
-    foreground: "#f58088"
+    foreground: "#ec9878"
   group_execute:
     foreground: "#b4bc78"
   other_read:
     foreground: "#e6c08a"
   other_write:
-    foreground: "#f58088"
+    foreground: "#ec9878"
   other_execute:
     foreground: "#b4bc78"
   special_user_file:
     foreground: "#d4a8b8"
   special_other:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   attribute:
     foreground: "#ada69c"
 
@@ -72,9 +72,9 @@ size:
   number_mega:
     foreground: "#ffb454"
   number_giga:
-    foreground: "#f58088"
+    foreground: "#ec9878"
   number_huge:
-    foreground: "#f08888"
+    foreground: "#f49090"
   unit_byte:
     foreground: "#ada69c"
   unit_kilo:
@@ -90,15 +90,15 @@ users:
   user_you:
     foreground: "#e6c08a"
   user_root:
-    foreground: "#f08888"
+    foreground: "#f49090"
   user_other:
     foreground: "#d4a8b8"
   group_yours:
     foreground: "#e6c08a"
   group_other:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   group_root:
-    foreground: "#f08888"
+    foreground: "#f49090"
 
 links:
   normal:
@@ -112,15 +112,15 @@ git:
   modified:
     foreground: "#ffb454"
   deleted:
-    foreground: "#f58088"
+    foreground: "#ec9878"
   renamed:
     foreground: "#96b898"
   typechange:
     foreground: "#d4a8b8"
   ignored:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   conflicted:
-    foreground: "#f08888"
+    foreground: "#f49090"
 
 git_repo:
   branch_main:
@@ -130,17 +130,17 @@ git_repo:
   git_clean:
     foreground: "#b4bc78"
   git_dirty:
-    foreground: "#f58088"
+    foreground: "#ec9878"
 
 security_context:
   colon:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   user:
     foreground: "#bfbdb6"
   role:
     foreground: "#d4a8b8"
   typ:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   range:
     foreground: "#d4a8b8"
 
@@ -148,31 +148,31 @@ file_type:
   image:
     foreground: "#ffb454"
   video:
-    foreground: "#f58088"
+    foreground: "#ec9878"
   music:
     foreground: "#b4bc78"
   lossless:
     foreground: "#96b898"
   crypto:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   document:
     foreground: "#bfbdb6"
   compressed:
     foreground: "#d4a8b8"
   temp:
-    foreground: "#f08888"
+    foreground: "#f49090"
   compiled:
-    foreground: "#8aa8b8"
+    foreground: "#90aec0"
   build:
-    foreground: "#aea195"
+    foreground: "#b4a89c"
   source:
-    foreground: "#8aa8b8"
+    foreground: "#90aec0"
 
 punctuation:
-  foreground: "#aea195"
+  foreground: "#b4a89c"
 
 date:
-  foreground: "#aea195"
+  foreground: "#b4a89c"
 
 inode:
   foreground: "#ada69c"
@@ -194,10 +194,10 @@ symlink_path:
   foreground: "#96b898"
 
 control_char:
-  foreground: "#8aa8b8"
+  foreground: "#90aec0"
 
 broken_symlink:
-  foreground: "#f08888"
+  foreground: "#f49090"
 
 broken_path_overlay:
-  foreground: "#aea195"
+  foreground: "#b4a89c"

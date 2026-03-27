@@ -163,9 +163,9 @@ fn dark_syntax_colors_match_palette() {
   let expected = [
     ("keyword", "#ff8f40"),
     ("function", "#ffb454"),
-    ("type", "#8aa8b8"),
+    ("type", "#90aec0"),
     ("string", "#b4bc78"),
-    ("comment", "#aea195"),
+    ("comment", "#b4a89c"),
     ("variable", "#bfbdb6"),
     ("constant", "#d4a8b8"),
     ("number", "#d4a8b8"),
@@ -185,9 +185,9 @@ fn light_syntax_colors_match_palette() {
   let expected = [
     ("keyword", "#924800"),
     ("function", "#855700"),
-    ("type", "#2a5868"),
+    ("type", "#285464"),
     ("string", "#4d5c1a"),
-    ("comment", "#5a5244"),
+    ("comment", "#544c40"),
     ("variable", "#3a3630"),
     ("constant", "#7e4060"),
     ("number", "#7e4060"),
@@ -365,4 +365,86 @@ fn both_variants_have_same_syntax_keys() {
       "light has syntax key '{key}' but dark does not"
     );
   }
+}
+
+// -- extension.toml validation --
+
+const EXTENSION_TOML: &str = include_str!("../zed/extension.toml");
+
+#[test]
+fn extension_toml_is_valid() {
+  EXTENSION_TOML
+    .parse::<toml::Table>()
+    .expect("extension.toml is not valid TOML");
+}
+
+#[test]
+fn extension_toml_has_required_fields() {
+  let table: toml::Table = EXTENSION_TOML.parse().unwrap();
+  for field in [
+    "id",
+    "name",
+    "version",
+    "schema_version",
+    "authors",
+    "description",
+    "repository",
+  ] {
+    assert!(
+      table.contains_key(field),
+      "extension.toml missing required field: {field}"
+    );
+  }
+}
+
+#[test]
+fn extension_toml_id_is_string() {
+  let table: toml::Table = EXTENSION_TOML.parse().unwrap();
+  assert!(table["id"].is_str(), "extension.toml 'id' should be a string");
+}
+
+#[test]
+fn extension_toml_name_is_string() {
+  let table: toml::Table = EXTENSION_TOML.parse().unwrap();
+  assert!(table["name"].is_str(), "extension.toml 'name' should be a string");
+}
+
+#[test]
+fn extension_toml_version_is_semver() {
+  let table: toml::Table = EXTENSION_TOML.parse().unwrap();
+  let version = table["version"].as_str().expect("version should be a string");
+  let parts: Vec<&str> = version.split('.').collect();
+  assert_eq!(parts.len(), 3, "version should have 3 parts (semver), got: {version}");
+  for part in &parts {
+    assert!(
+      part.parse::<u32>().is_ok(),
+      "version part '{part}' is not a number in: {version}"
+    );
+  }
+}
+
+#[test]
+fn extension_toml_schema_version_is_integer() {
+  let table: toml::Table = EXTENSION_TOML.parse().unwrap();
+  assert!(
+    table["schema_version"].is_integer(),
+    "schema_version should be an integer"
+  );
+}
+
+#[test]
+fn extension_toml_authors_is_nonempty_array() {
+  let table: toml::Table = EXTENSION_TOML.parse().unwrap();
+  let authors = table["authors"].as_array().expect("authors should be an array");
+  assert!(!authors.is_empty(), "authors should not be empty");
+}
+
+#[test]
+fn extension_toml_repository_is_url() {
+  let table: toml::Table = EXTENSION_TOML.parse().unwrap();
+  let repo = table["repository"].as_str().expect("repository should be a string");
+  assert!(
+    repo.starts_with("https://"),
+    "repository should be an https URL, got: {repo}"
+  );
 }

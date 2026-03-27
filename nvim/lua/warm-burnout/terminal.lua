@@ -28,7 +28,7 @@ function M.setup(p, variant)
     vim.g.terminal_color_6 = "#146858"
     vim.g.terminal_color_7 = "#c0b8aa"
     vim.g.terminal_color_8 = "#686868"
-    vim.g.terminal_color_9 = "#b82820"
+    vim.g.terminal_color_9 = "#c83028"
     vim.g.terminal_color_10 = "#3a7a20"
     vim.g.terminal_color_11 = "#9a7008"
     vim.g.terminal_color_12 = "#2870b0"

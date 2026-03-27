@@ -67,14 +67,14 @@ Inspired by materials that age well. Unlike your eyes.
 |----------|------|-------|----------|
 | Amber | `#ffb454` | `#855700` | Functions |
 | Burnt orange | `#ff8f40` | `#924800` | Keywords |
-| Terra cotta | `#d49484` | `#8e4632` | HTML tags |
+| Terra cotta | `#dc9e92` | `#8e4632` | HTML tags |
 | Dried sage | `#b4bc78` | `#4d5c1a` | Strings |
 | Verdigris | `#96b898` | `#286a48` | Regex, escapes |
 | Dusty mauve | `#d4a8b8` | `#7e4060` | Numbers, constants |
-| Coral | `#f58088` | `#a02838` | Member variables |
-| Warm stone | `#aea195` | `#5a5244` | Comments |
+| Coral | `#ec9878` | `#883850` | Member variables |
+| Warm stone | `#b4a89c` | `#544c40` | Comments |
 | Aged brass | `#deb074` | `#74501c` | CSS properties |
-| Steel patina | `#8aa8b8` | `#2a5868` | Types, classes |
+| Steel patina | `#90aec0` | `#285464` | Types, classes |
 | Gold | `#e6c08a` | `#7a5a1c` | Decorators |
 
 The burnout is spreading.

@@ -146,16 +146,16 @@ fn dark_syntax_colors_match_palette() {
   let expected = [
     ("keyword", "#ff8f40"),
     ("func", "#ffb454"),
-    ("type", "#8aa8b8"),
+    ("type", "#90aec0"),
     ("string", "#b4bc78"),
-    ("comment", "#aea195"),
+    ("comment", "#b4a89c"),
     ("number", "#d4a8b8"),
     ("operator", "#f29668"),
-    ("tag", "#d49484"),
+    ("tag", "#dc9e92"),
     ("regex", "#96b898"),
     ("decorator", "#e6c08a"),
     ("property", "#deb074"),
-    ("member", "#f58088"),
+    ("member", "#ec9878"),
   ];
   for (key, color) in expected {
     assert_eq!(
@@ -172,16 +172,16 @@ fn light_syntax_colors_match_palette() {
   let expected = [
     ("keyword", "#924800"),
     ("func", "#855700"),
-    ("type", "#2a5868"),
+    ("type", "#285464"),
     ("string", "#4d5c1a"),
-    ("comment", "#5a5244"),
+    ("comment", "#544c40"),
     ("number", "#7e4060"),
     ("operator", "#8f4418"),
     ("tag", "#8e4632"),
     ("regex", "#286a48"),
     ("decorator", "#7a5a1c"),
     ("property", "#74501c"),
-    ("member", "#a02838"),
+    ("member", "#883850"),
   ];
   for (key, color) in expected {
     assert_eq!(
@@ -197,10 +197,10 @@ fn light_syntax_colors_match_palette() {
 #[test]
 fn dark_diagnostic_colors() {
   let block = dark_block();
-  assert_eq!(nvim_palette_color(block, "error"), "#f08888");
+  assert_eq!(nvim_palette_color(block, "error"), "#f49090");
   assert_eq!(nvim_palette_color(block, "warn"), "#b8522e");
-  assert_eq!(nvim_palette_color(block, "info"), "#8aa8b8");
-  assert_eq!(nvim_palette_color(block, "hint"), "#aea195");
+  assert_eq!(nvim_palette_color(block, "info"), "#90aec0");
+  assert_eq!(nvim_palette_color(block, "hint"), "#b4a89c");
 }
 
 #[test]
@@ -208,8 +208,8 @@ fn light_diagnostic_colors() {
   let block = light_block();
   assert_eq!(nvim_palette_color(block, "error"), "#b03434");
   assert_eq!(nvim_palette_color(block, "warn"), "#b8522e");
-  assert_eq!(nvim_palette_color(block, "info"), "#2a5868");
-  assert_eq!(nvim_palette_color(block, "hint"), "#5a5244");
+  assert_eq!(nvim_palette_color(block, "info"), "#285464");
+  assert_eq!(nvim_palette_color(block, "hint"), "#544c40");
 }
 
 // -- Git diff colors --

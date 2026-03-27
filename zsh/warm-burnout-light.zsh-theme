@@ -40,8 +40,8 @@ ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=#8f4418'
 ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='fg=#8f4418'
 
 # Types (cool accent) -- options/flags
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#2a5868'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#2a5868'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#285464'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#285464'
 
 # Decorators -- filesystem references
 ZSH_HIGHLIGHT_STYLES[path]='fg=#7a5a1c'
@@ -61,7 +61,7 @@ ZSH_HIGHLIGHT_STYLES[named-fd]='fg=#7e4060'
 ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=#7e4060'
 
 # Comments
-ZSH_HIGHLIGHT_STYLES[comment]='fg=#5a5244,italic'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#544c40,italic'
 
 # Foreground
 ZSH_HIGHLIGHT_STYLES[default]='fg=#3a3630'

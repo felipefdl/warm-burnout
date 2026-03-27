@@ -45,9 +45,9 @@
       "foreground": "bfbdb6",
       "borderColor": "2a2620",
       "errorBackground": "2a1510",
-      "errorBorderColor": "f08888",
+      "errorBorderColor": "f49090",
       "infoBackground": "1f1d17",
-      "infoBorderColor": "8aa8b8",
+      "infoBorderColor": "90aec0",
       "successBackground": "1a2a1a",
       "successBorderColor": "70bf56",
       "warningBackground": "2a2010",
@@ -88,7 +88,7 @@
       "selectionBackground": "222018",
       "matchForeground": "ffb454",
       "Advertiser": {
-        "foreground": "aea195",
+        "foreground": "b4a89c",
         "background": "1f1d17"
       }
     },
@@ -133,7 +133,7 @@
       "borderColor": "2a2620",
       "foreground": "bfbdb6",
       "shortcutForeground": "ffb454",
-      "linkForeground": "8aa8b8",
+      "linkForeground": "90aec0",
       "Button": {
         "foreground": "f5ede0",
         "startBackground": "b8522e",
@@ -146,16 +146,16 @@
       "foreground": "bfbdb6",
       "disabledForeground": "4a4438",
       "selectedForeground": "bfbdb6",
-      "infoForeground": "aea195",
-      "errorForeground": "f08888",
+      "infoForeground": "b4a89c",
+      "errorForeground": "f49090",
       "successForeground": "70bf56"
     },
     "Link": {
-      "activeForeground": "8aa8b8",
-      "hoverForeground": "8aa8b8",
-      "pressedForeground": "8aa8b8",
-      "visitedForeground": "8aa8b8",
-      "secondaryForeground": "aea195"
+      "activeForeground": "90aec0",
+      "hoverForeground": "90aec0",
+      "pressedForeground": "90aec0",
+      "visitedForeground": "90aec0",
+      "secondaryForeground": "b4a89c"
     },
     "List": {
       "background": "14120f",
@@ -200,7 +200,7 @@
       "foreground": "bfbdb6",
       "selectionBackground": "222018",
       "selectionForeground": "bfbdb6",
-      "acceleratorForeground": "aea195",
+      "acceleratorForeground": "b4a89c",
       "acceleratorSelectionForeground": "bfbdb6",
       "disabledForeground": "4a4438"
     },
@@ -212,16 +212,16 @@
       "foreground": "bfbdb6",
       "borderColor": "2a2620",
       "errorBackground": "2a1510",
-      "errorBorderColor": "f08888",
-      "errorForeground": "f08888",
+      "errorBorderColor": "f49090",
+      "errorForeground": "f49090",
       "ToolWindow": {
         "informativeBackground": "1f1d17",
-        "informativeBorderColor": "8aa8b8",
+        "informativeBorderColor": "90aec0",
         "warningBackground": "2a2010",
         "warningBorderColor": "b8522e",
         "warningForeground": "bfbdb6",
         "errorBackground": "2a1510",
-        "errorBorderColor": "f08888",
+        "errorBorderColor": "f49090",
         "errorForeground": "bfbdb6"
       }
     },
@@ -261,7 +261,7 @@
       },
       "Advertiser": {
         "background": "1f1d17",
-        "foreground": "aea195",
+        "foreground": "b4a89c",
         "borderColor": "2a2620"
       }
     },
@@ -270,8 +270,8 @@
       "progressColor": "b8522e",
       "indeterminateStartColor": "b8522e",
       "indeterminateEndColor": "f29668",
-      "failedColor": "f08888",
-      "failedEndColor": "f08888",
+      "failedColor": "f49090",
+      "failedEndColor": "f49090",
       "passedColor": "70bf56",
       "passedEndColor": "70bf56"
     },
@@ -279,17 +279,17 @@
       "background": "14120f",
       "hoverTrackColor": "1f1d17",
       "thumbColor": "4a4438",
-      "hoverThumbColor": "aea195",
+      "hoverThumbColor": "b4a89c",
       "Transparent": {
         "thumbColor": "4a4438",
-        "hoverThumbColor": "aea195"
+        "hoverThumbColor": "b4a89c"
       },
       "Mac": {
         "thumbColor": "4a4438",
-        "hoverThumbColor": "aea195",
+        "hoverThumbColor": "b4a89c",
         "Transparent": {
           "thumbColor": "4a4438",
-          "hoverThumbColor": "aea195"
+          "hoverThumbColor": "b4a89c"
         }
       }
     },
@@ -316,7 +316,7 @@
       "background": "1f1d17",
       "foreground": "bfbdb6",
       "borderColor": "b8522e",
-      "errorForeground": "f08888"
+      "errorForeground": "f49090"
     },
     "StatusBar": {
       "background": "14120f",
@@ -349,7 +349,7 @@
       "selectionBackground": "3a4550",
       "selectionForeground": "bfbdb6",
       "caretForeground": "f5c56e",
-      "inactiveForeground": "aea195"
+      "inactiveForeground": "b4a89c"
     },
     "TextField": {
       "background": "1f1d17",
@@ -362,7 +362,7 @@
       "background": "14120f",
       "inactiveBackground": "14120f",
       "foreground": "bfbdb6",
-      "inactiveForeground": "aea195",
+      "inactiveForeground": "b4a89c",
       "borderColor": "14120f",
       "Button": {
         "hoverBackground": "222018"
@@ -415,7 +415,7 @@
     },
     "ValidationTooltip": {
       "errorBackground": "2a1510",
-      "errorBorderColor": "f08888",
+      "errorBorderColor": "f49090",
       "warningBackground": "2a2010",
       "warningBorderColor": "b8522e"
     },
@@ -423,9 +423,9 @@
       "GitLog": {
         "headIconColor": "b8522e",
         "localBranchIconColor": "70bf56",
-        "remoteBranchIconColor": "8aa8b8",
+        "remoteBranchIconColor": "90aec0",
         "tagIconColor": "ffb454",
-        "otherIconColor": "aea195"
+        "otherIconColor": "b4a89c"
       },
       "Log": {
         "Commit.currentBranchBackground": "222018",
@@ -453,11 +453,11 @@
     "RecentProject.Color1.MainToolbarGradientStart": "ff8f4018",
     "RecentProject.Color2.MainToolbarGradientStart": "ffb45418",
     "RecentProject.Color3.MainToolbarGradientStart": "b4bc7818",
-    "RecentProject.Color4.MainToolbarGradientStart": "8aa8b818",
+    "RecentProject.Color4.MainToolbarGradientStart": "90aec018",
     "RecentProject.Color5.MainToolbarGradientStart": "d4a8b818",
     "RecentProject.Color6.MainToolbarGradientStart": "e6c08a18",
-    "RecentProject.Color7.MainToolbarGradientStart": "d4948418",
-    "RecentProject.Color8.MainToolbarGradientStart": "f5808818",
+    "RecentProject.Color7.MainToolbarGradientStart": "dc9e9218",
+    "RecentProject.Color8.MainToolbarGradientStart": "ec987818",
     "RecentProject.Color9.MainToolbarGradientStart": "deb07418"
   }
 }

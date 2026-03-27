@@ -258,6 +258,60 @@ pub fn home_assistant_color(src: &str, theme_name: &str, mode: &str, key: &str) 
   hex_to_lower(val)
 }
 
+/// Parse a hex color string (with or without `#` prefix) into (R, G, B) as f64 in 0.0..1.0.
+fn parse_hex_rgb(hex: &str) -> (f64, f64, f64) {
+  let hex = hex.strip_prefix('#').unwrap_or(hex);
+  assert_eq!(hex.len(), 6, "expected 6-digit hex color, got: {hex}");
+  let r = u8::from_str_radix(&hex[0..2], 16).unwrap() as f64 / 255.0;
+  let g = u8::from_str_radix(&hex[2..4], 16).unwrap() as f64 / 255.0;
+  let b = u8::from_str_radix(&hex[4..6], 16).unwrap() as f64 / 255.0;
+  (r, g, b)
+}
+
+/// Linearize a single sRGB channel value per WCAG 2.x spec.
+fn linearize(val: f64) -> f64 {
+  if val <= 0.04045 {
+    val / 12.92
+  } else {
+    ((val + 0.055) / 1.055).powf(2.4)
+  }
+}
+
+/// Compute relative luminance per WCAG 2.x: L = 0.2126*R + 0.7152*G + 0.0722*B
+/// where R, G, B are linearized sRGB channels.
+fn relative_luminance(hex: &str) -> f64 {
+  let (r, g, b) = parse_hex_rgb(hex);
+  0.2126 * linearize(r) + 0.7152 * linearize(g) + 0.0722 * linearize(b)
+}
+
+/// Compute WCAG contrast ratio between two hex colors.
+/// Returns (L_lighter + 0.05) / (L_darker + 0.05), always >= 1.0.
+pub fn contrast_ratio(fg_hex: &str, bg_hex: &str) -> f64 {
+  let l1 = relative_luminance(fg_hex);
+  let l2 = relative_luminance(bg_hex);
+  let (lighter, darker) = if l1 > l2 { (l1, l2) } else { (l2, l1) };
+  (lighter + 0.05) / (darker + 0.05)
+}
+
+/// Extract a color from a Ghostty ANSI palette entry by index.
+/// Parses lines like `palette = 1=#f06b73` and returns `#f06b73`.
+pub fn ghostty_ansi_color(src: &str, index: u8) -> String {
+  let prefix = format!("{index}=");
+  src
+    .lines()
+    .filter(|l| l.trim().starts_with("palette"))
+    .find_map(|l| {
+      let (_, val) = l.split_once('=')?;
+      let val = val.trim();
+      if val.starts_with(&prefix) {
+        Some(hex_to_lower(&val[prefix.len()..]))
+      } else {
+        None
+      }
+    })
+    .unwrap_or_else(|| panic!("no palette index {index} in ghostty theme"))
+}
+
 /// Extract all key-value pairs from a Lua palette table block (M.dark or M.light).
 /// Returns vec of (key, hex_value) pairs.
 pub fn nvim_palette_keys(src: &str) -> Vec<String> {

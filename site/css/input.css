@@ -28,7 +28,7 @@
 
   /* Foregrounds (light) */
   --color-fg-light: #3a3630;
-  --color-fg-light-dim: #5a5244;
+  --color-fg-light-dim: #544c40;
   --color-fg-light-muted: #8a8070;
 
   /* Brand accent */
@@ -48,12 +48,12 @@
   --color-keyword: #ff8f40;
   --color-func: #ffb454;
   --color-string: #b4bc78;
-  --color-type: #8aa8b8;
+  --color-type: #90aec0;
   --color-operator: #f29668;
   --color-number: #d4a8b8;
-  --color-tag: #d49484;
-  --color-coral: #f58088;
-  --color-comment: #aea195;
+  --color-tag: #dc9e92;
+  --color-coral: #ec9878;
+  --color-comment: #b4a89c;
   --color-decorator: #e6c08a;
   --color-regex: #96b898;
   --color-property: #deb074;
@@ -62,11 +62,11 @@
   --color-keyword-light: #924800;
   --color-func-light: #855700;
   --color-string-light: #4d5c1a;
-  --color-type-light: #2a5868;
+  --color-type-light: #285464;
   --color-number-light: #7e4060;
   --color-tag-light: #8e4632;
-  --color-coral-light: #a02838;
-  --color-comment-light: #5a5244;
+  --color-coral-light: #883850;
+  --color-comment-light: #544c40;
   --color-decorator-light: #7a5a1c;
   --color-regex-light: #286a48;
   --color-property-light: #74501c;
@@ -136,11 +136,11 @@ body {
   --theme-keyword: #ff8f40;
   --theme-func: #ffb454;
   --theme-string: #b4bc78;
-  --theme-type: #8aa8b8;
+  --theme-type: #90aec0;
   --theme-number: #d4a8b8;
-  --theme-tag: #d49484;
-  --theme-coral: #f58088;
-  --theme-comment: #aea195;
+  --theme-tag: #dc9e92;
+  --theme-coral: #ec9878;
+  --theme-comment: #b4a89c;
   --theme-decorator: #e6c08a;
   --theme-regex: #96b898;
   --theme-property: #deb074;
@@ -157,7 +157,7 @@ body {
   --theme-bg-surface: #EAE2D6;
   --theme-bg-highlight: #E2DBCF;
   --theme-fg: #3a3630;
-  --theme-fg-dim: #5a5244;
+  --theme-fg-dim: #544c40;
   --theme-fg-muted: #8a8070;
   --theme-accent: #b8522e;
   --theme-accent-hover: #a04828;
@@ -167,11 +167,11 @@ body {
   --theme-keyword: #924800;
   --theme-func: #855700;
   --theme-string: #4d5c1a;
-  --theme-type: #2a5868;
+  --theme-type: #285464;
   --theme-number: #7e4060;
   --theme-tag: #8e4632;
-  --theme-coral: #a02838;
-  --theme-comment: #5a5244;
+  --theme-coral: #883850;
+  --theme-comment: #544c40;
   --theme-decorator: #7a5a1c;
   --theme-regex: #286a48;
   --theme-property: #74501c;

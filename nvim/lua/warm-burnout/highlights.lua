@@ -94,7 +94,7 @@ function M.get(p)
     Typedef = { fg = p.type, italic = true },
     Special = { fg = p.operator },
     SpecialChar = { fg = p.regex },
-    Tag = { fg = p.tag },
+    Tag = { fg = p.tag, bold = true },
     Delimiter = { fg = p.punctuation },
     SpecialComment = { fg = p.comment, italic = true },
     Debug = { fg = p.warn },
@@ -165,10 +165,10 @@ function M.get(p)
     ["@type.definition"] = { fg = p.type, italic = true },
     ["@type.qualifier"] = { fg = p.keyword, bold = true },
 
-    ["@attribute"] = { fg = p.decorator },
-    ["@attribute.builtin"] = { fg = p.decorator },
+    ["@attribute"] = { fg = p.decorator, italic = true },
+    ["@attribute.builtin"] = { fg = p.decorator, italic = true },
 
-    ["@property"] = { fg = p.property },
+    ["@property"] = { fg = p.property, italic = true },
 
     ["@operator"] = { fg = p.operator },
 
@@ -176,8 +176,8 @@ function M.get(p)
     ["@punctuation.delimiter"] = { fg = p.punctuation_dim },
     ["@punctuation.special"] = { fg = p.interpolation },
 
-    ["@tag"] = { fg = p.tag },
-    ["@tag.builtin"] = { fg = p.tag },
+    ["@tag"] = { fg = p.tag, bold = true },
+    ["@tag.builtin"] = { fg = p.tag, bold = true },
     ["@tag.attribute"] = { fg = p.attribute },
     ["@tag.delimiter"] = { fg = p.tag },
 
@@ -210,7 +210,7 @@ function M.get(p)
 
     -- LSP semantic tokens
     ["@lsp.type.class"] = { fg = p.type, italic = true },
-    ["@lsp.type.decorator"] = { fg = p.decorator },
+    ["@lsp.type.decorator"] = { fg = p.decorator, italic = true },
     ["@lsp.type.enum"] = { fg = p.type, italic = true },
     ["@lsp.type.enumMember"] = { fg = p.regex },
     ["@lsp.type.function"] = { fg = p.func },
@@ -222,7 +222,7 @@ function M.get(p)
     ["@lsp.type.number"] = { fg = p.number },
     ["@lsp.type.operator"] = { fg = p.operator },
     ["@lsp.type.parameter"] = { fg = p.parameter },
-    ["@lsp.type.property"] = { fg = p.property },
+    ["@lsp.type.property"] = { fg = p.property, italic = true },
     ["@lsp.type.regexp"] = { fg = p.regex },
     ["@lsp.type.string"] = { fg = p.string },
     ["@lsp.type.struct"] = { fg = p.type, italic = true },

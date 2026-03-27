@@ -126,23 +126,23 @@ fn dark_syntax_colors_match_palette() {
     ("DEFAULT_KEYWORD", "FOREGROUND", "#ff8f40"),
     ("DEFAULT_FUNCTION_DECLARATION", "FOREGROUND", "#ffb454"),
     ("DEFAULT_FUNCTION_CALL", "FOREGROUND", "#ffb454"),
-    ("DEFAULT_CLASS_NAME", "FOREGROUND", "#8aa8b8"),
-    ("DEFAULT_INTERFACE_NAME", "FOREGROUND", "#8aa8b8"),
+    ("DEFAULT_CLASS_NAME", "FOREGROUND", "#90aec0"),
+    ("DEFAULT_INTERFACE_NAME", "FOREGROUND", "#90aec0"),
     ("DEFAULT_STRING", "FOREGROUND", "#b4bc78"),
     ("DEFAULT_NUMBER", "FOREGROUND", "#d4a8b8"),
     ("DEFAULT_CONSTANT", "FOREGROUND", "#d4a8b8"),
     ("DEFAULT_OPERATION_SIGN", "FOREGROUND", "#f29668"),
-    ("DEFAULT_LINE_COMMENT", "FOREGROUND", "#aea195"),
-    ("DEFAULT_BLOCK_COMMENT", "FOREGROUND", "#aea195"),
-    ("DEFAULT_DOC_COMMENT", "FOREGROUND", "#aea195"),
+    ("DEFAULT_LINE_COMMENT", "FOREGROUND", "#b4a89c"),
+    ("DEFAULT_BLOCK_COMMENT", "FOREGROUND", "#b4a89c"),
+    ("DEFAULT_DOC_COMMENT", "FOREGROUND", "#b4a89c"),
     ("DEFAULT_METADATA", "FOREGROUND", "#e6c08a"),
-    ("DEFAULT_MARKUP_TAG", "FOREGROUND", "#d49484"),
-    ("DEFAULT_INSTANCE_FIELD", "FOREGROUND", "#f58088"),
-    ("DEFAULT_STATIC_METHOD", "FOREGROUND", "#f58088"),
+    ("DEFAULT_MARKUP_TAG", "FOREGROUND", "#dc9e92"),
+    ("DEFAULT_INSTANCE_FIELD", "FOREGROUND", "#ec9878"),
+    ("DEFAULT_STATIC_METHOD", "FOREGROUND", "#ec9878"),
     ("DEFAULT_VALID_STRING_ESCAPE", "FOREGROUND", "#96b898"),
-    ("DEFAULT_INVALID_STRING_ESCAPE", "FOREGROUND", "#f08888"),
+    ("DEFAULT_INVALID_STRING_ESCAPE", "FOREGROUND", "#f49090"),
     ("CSS.PROPERTY_NAME", "FOREGROUND", "#deb074"),
-    ("HTML_TAG_NAME", "FOREGROUND", "#d49484"),
+    ("HTML_TAG_NAME", "FOREGROUND", "#dc9e92"),
   ];
   for (attr, prop, color) in expected {
     assert_eq!(
@@ -162,19 +162,19 @@ fn light_syntax_colors_match_palette() {
     ("DEFAULT_KEYWORD", "FOREGROUND", "#924800"),
     ("DEFAULT_FUNCTION_DECLARATION", "FOREGROUND", "#855700"),
     ("DEFAULT_FUNCTION_CALL", "FOREGROUND", "#855700"),
-    ("DEFAULT_CLASS_NAME", "FOREGROUND", "#2a5868"),
-    ("DEFAULT_INTERFACE_NAME", "FOREGROUND", "#2a5868"),
+    ("DEFAULT_CLASS_NAME", "FOREGROUND", "#285464"),
+    ("DEFAULT_INTERFACE_NAME", "FOREGROUND", "#285464"),
     ("DEFAULT_STRING", "FOREGROUND", "#4d5c1a"),
     ("DEFAULT_NUMBER", "FOREGROUND", "#7e4060"),
     ("DEFAULT_CONSTANT", "FOREGROUND", "#7e4060"),
     ("DEFAULT_OPERATION_SIGN", "FOREGROUND", "#8f4418"),
-    ("DEFAULT_LINE_COMMENT", "FOREGROUND", "#5a5244"),
-    ("DEFAULT_BLOCK_COMMENT", "FOREGROUND", "#5a5244"),
-    ("DEFAULT_DOC_COMMENT", "FOREGROUND", "#5a5244"),
+    ("DEFAULT_LINE_COMMENT", "FOREGROUND", "#544c40"),
+    ("DEFAULT_BLOCK_COMMENT", "FOREGROUND", "#544c40"),
+    ("DEFAULT_DOC_COMMENT", "FOREGROUND", "#544c40"),
     ("DEFAULT_METADATA", "FOREGROUND", "#7a5a1c"),
     ("DEFAULT_MARKUP_TAG", "FOREGROUND", "#8e4632"),
-    ("DEFAULT_INSTANCE_FIELD", "FOREGROUND", "#a02838"),
-    ("DEFAULT_STATIC_METHOD", "FOREGROUND", "#a02838"),
+    ("DEFAULT_INSTANCE_FIELD", "FOREGROUND", "#883850"),
+    ("DEFAULT_STATIC_METHOD", "FOREGROUND", "#883850"),
     ("DEFAULT_VALID_STRING_ESCAPE", "FOREGROUND", "#286a48"),
     ("DEFAULT_INVALID_STRING_ESCAPE", "FOREGROUND", "#b03434"),
     ("CSS.PROPERTY_NAME", "FOREGROUND", "#74501c"),
@@ -554,13 +554,13 @@ fn light_search_result_uses_warm_highlight() {
 #[test]
 fn dark_has_breadcrumbs_override() {
   let fg = jetbrains_attribute(DARK, "BREADCRUMBS_DEFAULT", "FOREGROUND");
-  assert_eq!(fg, "#aea195", "dark breadcrumbs should use warm stone color");
+  assert_eq!(fg, "#b4a89c", "dark breadcrumbs should use warm stone color");
 }
 
 #[test]
 fn light_has_breadcrumbs_override() {
   let fg = jetbrains_attribute(LIGHT, "BREADCRUMBS_DEFAULT", "FOREGROUND");
-  assert_eq!(fg, "#5a5244", "light breadcrumbs should use warm stone color");
+  assert_eq!(fg, "#544c40", "light breadcrumbs should use warm stone color");
 }
 
 // -- Islands theme validation --

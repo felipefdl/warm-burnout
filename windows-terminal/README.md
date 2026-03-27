@@ -63,7 +63,7 @@ Create the directory if it doesn't exist, then place a single `warm-burnout.json
       "cyan": "#146858",
       "white": "#C0B8AA",
       "brightBlack": "#686868",
-      "brightRed": "#B82820",
+      "brightRed": "#C83028",
       "brightGreen": "#3A7A20",
       "brightYellow": "#9A7008",
       "brightBlue": "#2870B0",

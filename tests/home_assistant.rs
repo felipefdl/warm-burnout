@@ -237,7 +237,7 @@ fn light_primary_text() {
 fn dark_error_color() {
   assert_eq!(
     home_assistant_color(THEME, "Warm Burnout", "dark", "error-color"),
-    "#f08888"
+    "#f49090"
   );
 }
 

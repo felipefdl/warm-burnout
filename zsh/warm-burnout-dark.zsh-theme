@@ -25,11 +25,11 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=#b4bc78'
 ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=#b4bc78'
 
 # Error/invalid
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=#f08888'
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=#f08888'
-ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=#f08888'
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=#f08888'
-ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#f08888'
+ZSH_HIGHLIGHT_STYLES[single-quoted-argument-unclosed]='fg=#f49090'
+ZSH_HIGHLIGHT_STYLES[double-quoted-argument-unclosed]='fg=#f49090'
+ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument-unclosed]='fg=#f49090'
+ZSH_HIGHLIGHT_STYLES[back-quoted-argument-unclosed]='fg=#f49090'
+ZSH_HIGHLIGHT_STYLES[unknown-token]='fg=#f49090'
 
 # Operators
 ZSH_HIGHLIGHT_STYLES[commandseparator]='fg=#f29668'
@@ -40,8 +40,8 @@ ZSH_HIGHLIGHT_STYLES[path_prefix_pathseparator]='fg=#f29668'
 ZSH_HIGHLIGHT_STYLES[back-quoted-argument-delimiter]='fg=#f29668'
 
 # Types (cool accent) -- options/flags
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#8aa8b8'
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#8aa8b8'
+ZSH_HIGHLIGHT_STYLES[single-hyphen-option]='fg=#90aec0'
+ZSH_HIGHLIGHT_STYLES[double-hyphen-option]='fg=#90aec0'
 
 # Decorators -- filesystem references
 ZSH_HIGHLIGHT_STYLES[path]='fg=#e6c08a'
@@ -61,7 +61,7 @@ ZSH_HIGHLIGHT_STYLES[named-fd]='fg=#d4a8b8'
 ZSH_HIGHLIGHT_STYLES[numeric-fd]='fg=#d4a8b8'
 
 # Comments
-ZSH_HIGHLIGHT_STYLES[comment]='fg=#aea195,italic'
+ZSH_HIGHLIGHT_STYLES[comment]='fg=#b4a89c,italic'
 
 # Foreground
 ZSH_HIGHLIGHT_STYLES[default]='fg=#bfbdb6'

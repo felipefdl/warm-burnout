@@ -29,7 +29,7 @@ See the root [`AGENTS.md`](../AGENTS.md) for the canonical palette, design princ
 | `Cursor Text Color` | Same as background (readable cursor character) |
 | `Selection Color` | Opaque selection blend (`#33393a` dark, `#e5e8e2` light) |
 | `Selected Text Color` | Same as foreground |
-| `Link Color` | Types color (`#8aa8b8` dark, `#2a5868` light) |
+| `Link Color` | Types color (`#90aec0` dark, `#285464` light) |
 | `Cursor Guide Color` | Selection color with 0.25 alpha |
 
 ## File Naming

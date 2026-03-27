@@ -1,13 +1,18 @@
 mod common;
 
 use common::{
-  ghostty_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute, jetbrains_color,
-  nvim_palette_color, starship_palette_color, tmux_option_value, tmux_style_fg, vscode_color, windows_terminal_color,
-  xcode_color, xcode_syntax_color, zed_editor_color,
+  ghostty_ansi_color, ghostty_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute,
+  jetbrains_color, nvim_palette_color, starship_palette_color, tmux_option_value, tmux_style_fg, vscode_color,
+  windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
-  src.lines().find(|l| l.contains("[default]")).and_then(|l| {
+  zsh_style_fg(src, "default")
+}
+
+fn zsh_style_fg(src: &str, style_key: &str) -> Option<String> {
+  let pattern = format!("[{style_key}]");
+  src.lines().find(|l| l.contains(&pattern)).and_then(|l| {
     l.split("fg=").nth(1).map(|s| {
       let hex = s.split('\'').next().unwrap_or(s).split(',').next().unwrap_or(s);
       hex_to_lower(hex)
@@ -692,4 +697,224 @@ fn dark_accent_home_assistant_matches_canonical() {
 fn light_accent_home_assistant_matches_canonical() {
   let ha = home_assistant_color(HA_THEME, "Warm Burnout", "light", "accent-color");
   assert_eq!(ha, "#b8522e", "light accent should be canonical copper rust");
+}
+
+// -- Starship ANSI palette colors match Ghostty ANSI palette --
+
+#[test]
+fn dark_ansi_red_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-dark.toml"),
+    "warm_burnout_dark",
+    "red",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 1);
+  assert_eq!(
+    starship, ghostty,
+    "dark ansi red: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_red_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-light.toml"),
+    "warm_burnout_light",
+    "red",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 1);
+  assert_eq!(
+    starship, ghostty,
+    "light ansi red: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_ansi_green_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-dark.toml"),
+    "warm_burnout_dark",
+    "green",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 2);
+  assert_eq!(
+    starship, ghostty,
+    "dark ansi green: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_green_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-light.toml"),
+    "warm_burnout_light",
+    "green",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 2);
+  assert_eq!(
+    starship, ghostty,
+    "light ansi green: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_ansi_yellow_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-dark.toml"),
+    "warm_burnout_dark",
+    "yellow",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 3);
+  assert_eq!(
+    starship, ghostty,
+    "dark ansi yellow: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_yellow_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-light.toml"),
+    "warm_burnout_light",
+    "yellow",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 3);
+  assert_eq!(
+    starship, ghostty,
+    "light ansi yellow: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_ansi_blue_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-dark.toml"),
+    "warm_burnout_dark",
+    "blue",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 4);
+  assert_eq!(
+    starship, ghostty,
+    "dark ansi blue: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_blue_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-light.toml"),
+    "warm_burnout_light",
+    "blue",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 4);
+  assert_eq!(
+    starship, ghostty,
+    "light ansi blue: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_ansi_magenta_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-dark.toml"),
+    "warm_burnout_dark",
+    "magenta",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 5);
+  assert_eq!(
+    starship, ghostty,
+    "dark ansi magenta: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_magenta_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-light.toml"),
+    "warm_burnout_light",
+    "magenta",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 5);
+  assert_eq!(
+    starship, ghostty,
+    "light ansi magenta: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_ansi_cyan_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-dark.toml"),
+    "warm_burnout_dark",
+    "cyan",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 6);
+  assert_eq!(
+    starship, ghostty,
+    "dark ansi cyan: starship={starship} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_cyan_starship_matches_ghostty() {
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-light.toml"),
+    "warm_burnout_light",
+    "cyan",
+  );
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 6);
+  assert_eq!(
+    starship, ghostty,
+    "light ansi cyan: starship={starship} ghostty={ghostty}"
+  );
+}
+
+// -- Zsh comment color matches Ghostty/Starship palette --
+
+#[test]
+fn dark_zsh_comment_matches_starship() {
+  let zsh =
+    zsh_style_fg(include_str!("../zsh/warm-burnout-dark.zsh-theme"), "comment").expect("no comment fg in zsh dark");
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-dark.toml"),
+    "warm_burnout_dark",
+    "comment",
+  );
+  assert_eq!(zsh, starship, "dark comment: zsh={zsh} starship={starship}");
+}
+
+#[test]
+fn light_zsh_comment_matches_starship() {
+  let zsh =
+    zsh_style_fg(include_str!("../zsh/warm-burnout-light.zsh-theme"), "comment").expect("no comment fg in zsh light");
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-light.toml"),
+    "warm_burnout_light",
+    "comment",
+  );
+  assert_eq!(zsh, starship, "light comment: zsh={zsh} starship={starship}");
+}
+
+#[test]
+fn dark_zsh_error_matches_starship() {
+  let zsh = zsh_style_fg(include_str!("../zsh/warm-burnout-dark.zsh-theme"), "unknown-token")
+    .expect("no unknown-token fg in zsh dark");
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-dark.toml"),
+    "warm_burnout_dark",
+    "error",
+  );
+  assert_eq!(zsh, starship, "dark error: zsh={zsh} starship={starship}");
+}
+
+#[test]
+fn light_zsh_error_matches_starship() {
+  let zsh = zsh_style_fg(include_str!("../zsh/warm-burnout-light.zsh-theme"), "unknown-token")
+    .expect("no unknown-token fg in zsh light");
+  let starship = starship_palette_color(
+    include_str!("../starship/warm-burnout-light.toml"),
+    "warm_burnout_light",
+    "error",
+  );
+  assert_eq!(zsh, starship, "light error: zsh={zsh} starship={starship}");
 }

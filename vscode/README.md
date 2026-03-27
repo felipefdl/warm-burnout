@@ -27,11 +27,11 @@ Every syntax color meets **WCAG AAA** (>= 7:1 contrast ratio) against the editor
 | Foreground | `#bfbdb6` | 9.6:1 | normal |
 | Keywords | `#ff8f40` | 8.0:1 | **bold** |
 | Functions | `#ffb454` | 10.3:1 | normal |
-| Types/classes | `#8aa8b8` | 7.2:1 | *italic* |
+| Types/classes | `#90aec0` | 7.8:1 | *italic* |
 | Strings | `#b4bc78` | 9.0:1 | normal |
 | Constants | `#d4a8b8` | 8.7:1 | normal |
-| Comments | `#aea195` | 7.2:1 | *italic* |
-| Errors | `#f08888` | 7.4:1 | normal |
+| Comments | `#b4a89c` | 7.8:1 | *italic* |
+| Errors | `#f49090` | 7.9:1 | normal |
 
 Your comments are readable at 3am. On purpose.
 
@@ -46,10 +46,10 @@ The light theme uses `#F5EDE0`, a warm sepia cream, not white. 14.6% less bright
 | Foreground | `#3a3630` | 10.3:1 | normal |
 | Keywords | `#924800` | 5.7:1 | **bold** |
 | Functions | `#855700` | 5.4:1 | normal |
-| Types/classes | `#2a5868` | 6.7:1 | *italic* |
+| Types/classes | `#285464` | 7.2:1 | *italic* |
 | Strings | `#4d5c1a` | 6.3:1 | normal |
 | Constants | `#7e4060` | 6.5:1 | normal |
-| Comments | `#5a5244` | 6.6:1 | *italic* |
+| Comments | `#544c40` | 7.3:1 | *italic* |
 | Errors | `#b03434` | 5.3:1 | normal |
 
 All 15 syntax tokens pass AA. No exceptions.
@@ -76,7 +76,7 @@ A protanopic developer running on no sleep can distinguish structure from types 
 
 ### One cool accent: oxidized copper
 
-The palette is fully warm except types/classes: `#8aa8b8` (dark) / `#2a5868` (light). This is the literal color of oxidized copper. One cool landmark in a warm field improves color distinctiveness without adding blue light load.
+The palette is fully warm except types/classes: `#90aec0` (dark) / `#285464` (light). This is the literal color of oxidized copper. One cool landmark in a warm field improves color distinctiveness without adding blue light load.
 
 ### Cursor: gold, not red
 
@@ -90,14 +90,14 @@ Inspired by materials that age well. Unlike your eyes.
 |----------|------|-------|----------|
 | Amber | `#ffb454` | `#855700` | Functions |
 | Burnt orange | `#ff8f40` | `#924800` | Keywords |
-| Terra cotta | `#d49484` | `#8e4632` | HTML tags |
+| Terra cotta | `#dc9e92` | `#8e4632` | HTML tags |
 | Dried sage | `#b4bc78` | `#4d5c1a` | Strings |
 | Verdigris | `#96b898` | `#286a48` | Regex, escapes |
 | Dusty mauve | `#d4a8b8` | `#7e4060` | Numbers, constants |
-| Coral | `#f58088` | `#a02838` | Member variables |
-| Warm stone | `#aea195` | `#5a5244` | Comments |
+| Coral | `#ec9878` | `#883850` | Member variables |
+| Warm stone | `#b4a89c` | `#544c40` | Comments |
 | Aged brass | `#deb074` | `#74501c` | CSS properties |
-| Steel patina | `#8aa8b8` | `#2a5868` | Types, classes |
+| Steel patina | `#90aec0` | `#285464` | Types, classes |
 | Gold | `#e6c08a` | `#7a5a1c` | Decorators |
 
 ## Languages Tested

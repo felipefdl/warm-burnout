@@ -6,7 +6,33 @@ on:
       - "v*"
 
 jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          components: clippy, rustfmt
+
+      - uses: Swatinem/rust-cache@v2
+
+      - name: Install Neovim
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y neovim
+
+      - name: Check formatting
+        run: cargo fmt -- --check
+
+      - name: Run clippy
+        run: cargo clippy -- -D warnings
+
+      - name: Run theme validation tests
+        run: cargo test
+
   package:
+    needs: [validate]
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -83,7 +109,9 @@ jobs:
             warm-burnout.tmux
 
       - name: Package eza
-        run: cp eza/theme.yml warm-burnout-eza.yml
+        run: |
+          cd eza
+          zip -j ../warm-burnout-eza.zip dark.yml light.yml
 
       - name: Package Home Assistant
         run: cp themes/warm-burnout.yaml warm-burnout-home-assistant.yaml
@@ -107,7 +135,7 @@ jobs:
             warm-burnout-iterm2.zip
             warm-burnout-windows-terminal.zip
             warm-burnout-tmux.zip
-            warm-burnout-eza.yml
+            warm-burnout-eza.zip
             warm-burnout-home-assistant.yaml
             jetbrains/warm-burnout-theme.jar
 

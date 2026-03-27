@@ -7,7 +7,7 @@
 	<key>DVTConsoleDebuggerInputTextFont</key>
 	<string>SFMono-Medium - 12.0</string>
 	<key>DVTConsoleDebuggerOutputTextColor</key>
-	<string>0.352941 0.321569 0.266667 1</string>
+	<string>0.329412 0.298039 0.250980 1</string>
 	<key>DVTConsoleDebuggerOutputTextFont</key>
 	<string>SFMono-Medium - 12.0</string>
 	<key>DVTConsoleDebuggerPromptTextColor</key>
@@ -43,15 +43,15 @@
 	<key>DVTMarkupTextFont</key>
 	<string>.AppleSystemUIFont - 12.0</string>
 	<key>DVTMarkupTextLinkColor</key>
-	<string>0.164706 0.345098 0.407843 1</string>
+	<string>0.156863 0.329412 0.392157 1</string>
 	<key>DVTMarkupTextNormalColor</key>
 	<string>0.227451 0.211765 0.188235 1</string>
 	<key>DVTScrollbarMarkerAnalyzerColor</key>
 	<string>0.494118 0.250980 0.376471 1</string>
 	<key>DVTScrollbarMarkerBreakpointColor</key>
-	<string>0.164706 0.345098 0.407843 1</string>
+	<string>0.156863 0.329412 0.392157 1</string>
 	<key>DVTScrollbarMarkerDiffColor</key>
-	<string>0.352941 0.321569 0.266667 1</string>
+	<string>0.329412 0.298039 0.250980 1</string>
 	<key>DVTScrollbarMarkerDiffConflictColor</key>
 	<string>0.690196 0.203922 0.203922 1</string>
 	<key>DVTScrollbarMarkerErrorColor</key>
@@ -77,19 +77,19 @@
 		<key>xcode.syntax.character</key>
 		<string>0.301961 0.360784 0.101961 1</string>
 		<key>xcode.syntax.comment</key>
-		<string>0.352941 0.321569 0.266667 1</string>
+		<string>0.329412 0.298039 0.250980 1</string>
 		<key>xcode.syntax.comment.doc</key>
-		<string>0.352941 0.321569 0.266667 1</string>
+		<string>0.329412 0.298039 0.250980 1</string>
 		<key>xcode.syntax.comment.doc.keyword</key>
-		<string>0.352941 0.321569 0.266667 1</string>
+		<string>0.329412 0.298039 0.250980 1</string>
 		<key>xcode.syntax.declaration.other</key>
 		<string>0.521569 0.341176 0.000000 1</string>
 		<key>xcode.syntax.declaration.type</key>
-		<string>0.164706 0.345098 0.407843 1</string>
+		<string>0.156863 0.329412 0.392157 1</string>
 		<key>xcode.syntax.identifier.class</key>
-		<string>0.164706 0.345098 0.407843 1</string>
+		<string>0.156863 0.329412 0.392157 1</string>
 		<key>xcode.syntax.identifier.class.system</key>
-		<string>0.164706 0.345098 0.407843 1</string>
+		<string>0.156863 0.329412 0.392157 1</string>
 		<key>xcode.syntax.identifier.constant</key>
 		<string>0.494118 0.250980 0.376471 1</string>
 		<key>xcode.syntax.identifier.constant.system</key>
@@ -97,23 +97,23 @@
 		<key>xcode.syntax.identifier.function</key>
 		<string>0.521569 0.341176 0.000000 1</string>
 		<key>xcode.syntax.identifier.function.system</key>
-		<string>0.627451 0.156863 0.219608 1</string>
+		<string>0.533333 0.219608 0.313725 1</string>
 		<key>xcode.syntax.identifier.macro</key>
 		<string>0.478431 0.352941 0.109804 1</string>
 		<key>xcode.syntax.identifier.macro.system</key>
 		<string>0.478431 0.352941 0.109804 1</string>
 		<key>xcode.syntax.identifier.type</key>
-		<string>0.164706 0.345098 0.407843 1</string>
+		<string>0.156863 0.329412 0.392157 1</string>
 		<key>xcode.syntax.identifier.type.system</key>
-		<string>0.164706 0.345098 0.407843 1</string>
+		<string>0.156863 0.329412 0.392157 1</string>
 		<key>xcode.syntax.identifier.variable</key>
-		<string>0.627451 0.156863 0.219608 1</string>
+		<string>0.533333 0.219608 0.313725 1</string>
 		<key>xcode.syntax.identifier.variable.system</key>
-		<string>0.627451 0.156863 0.219608 1</string>
+		<string>0.533333 0.219608 0.313725 1</string>
 		<key>xcode.syntax.keyword</key>
 		<string>0.572549 0.282353 0.000000 1</string>
 		<key>xcode.syntax.mark</key>
-		<string>0.352941 0.321569 0.266667 1</string>
+		<string>0.329412 0.298039 0.250980 1</string>
 		<key>xcode.syntax.markup.aside.kind</key>
 		<string>0.478431 0.352941 0.109804 1</string>
 		<key>xcode.syntax.markup.code</key>
@@ -127,12 +127,12 @@
 		<key>xcode.syntax.string</key>
 		<string>0.301961 0.360784 0.101961 1</string>
 		<key>xcode.syntax.url</key>
-		<string>0.164706 0.345098 0.407843 1</string>
+		<string>0.156863 0.329412 0.392157 1</string>
 	</dict>
 	<key>DVTSourceTextSyntaxFonts</key>
 	<dict>
 		<key>xcode.syntax.attribute</key>
-		<string>SFMono-Medium - 12.0</string>
+		<string>SFMono-MediumItalic - 12.0</string>
 		<key>xcode.syntax.character</key>
 		<string>SFMono-Medium - 12.0</string>
 		<key>xcode.syntax.comment</key>
