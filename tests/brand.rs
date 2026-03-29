@@ -10,6 +10,7 @@ const READMES: &[(&str, &str)] = &[
   ("tmux", include_str!("../tmux/README.md")),
   ("iterm2", include_str!("../iterm2/README.md")),
   ("jetbrains", include_str!("../jetbrains/README.md")),
+  ("obsidian", include_str!("../obsidian/README.md")),
 ];
 
 #[test]
@@ -48,11 +49,16 @@ fn no_theme_file_uses_patina_as_label() {
       "jetbrains/light-theme",
       include_str!("../jetbrains/Warm Burnout Islands Light.theme.json"),
     ),
+    ("obsidian/theme", include_str!("../obsidian/theme.css")),
   ];
   for (name, content) in theme_files {
     for line in content.lines() {
       let lower = line.to_lowercase();
-      if lower.contains("patina") && !lower.contains("steel_patina") && !lower.contains("steel patina") {
+      if lower.contains("patina")
+        && !lower.contains("steel_patina")
+        && !lower.contains("steel patina")
+        && !lower.contains("steel-patina")
+      {
         panic!("{name}: line uses 'Patina' as brand name (should be 'Warm Burnout'): {line}");
       }
     }

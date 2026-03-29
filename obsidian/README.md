@@ -1,0 +1,1 @@
+# Warm Burnout for Obsidian
