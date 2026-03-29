@@ -116,6 +116,13 @@ jobs:
       - name: Package Home Assistant
         run: cp themes/warm-burnout.yaml warm-burnout-home-assistant.yaml
 
+      - name: Package Obsidian
+        run: |
+          cd obsidian
+          zip -j ../warm-burnout-obsidian.zip \
+            theme.css \
+            manifest.json
+
       - name: Package JetBrains
         run: |
           cd jetbrains
@@ -137,6 +144,7 @@ jobs:
             warm-burnout-tmux.zip
             warm-burnout-eza.zip
             warm-burnout-home-assistant.yaml
+            warm-burnout-obsidian.zip
             jetbrains/warm-burnout-theme.jar
 
       - name: Publish to JetBrains Marketplace
@@ -149,3 +157,36 @@ jobs:
             https://plugins.jetbrains.com/api/updates/upload
         env:
           JETBRAINS_TOKEN: ${{ secrets.JETBRAINS_TOKEN }}
+
+  sync-obsidian-mirror:
+    needs: [validate]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Sync to mirror repo
+        env:
+          MIRROR_DEPLOY_KEY: ${{ secrets.OBSIDIAN_MIRROR_DEPLOY_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$MIRROR_DEPLOY_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          export GIT_SSH_COMMAND="ssh -i ~/.ssh/deploy_key -o StrictHostKeyChecking=no"
+
+          git clone git@github.com:felipefdl/warm-burnout-obsidian.git mirror
+          cp obsidian/theme.css mirror/
+          cp obsidian/manifest.json mirror/
+          cp obsidian/README.md mirror/
+          cp LICENSE mirror/
+
+          cd mirror
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to sync"
+          else
+            git commit -m "Sync from warm-burnout ${GITHUB_REF_NAME}"
+            git tag "${GITHUB_REF_NAME}"
+            git push origin main --tags
+          fi
