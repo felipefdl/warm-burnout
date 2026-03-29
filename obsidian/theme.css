@@ -1,3 +1,237 @@
-/* stub */
-.theme-dark {}
-.theme-light {}
+/* ==========================================================================
+   Warm Burnout for Obsidian
+   Warm, contrast-audited color theme. Dark + Light.
+   https://warmburnout.com
+   ========================================================================== */
+
+/* -- Dark variant --------------------------------------------------------- */
+.theme-dark {
+  /* Palette (canonical hex values, test harness reads from these) */
+  --wb-bg: #1a1510;
+  --wb-fg: #bfbdb6;
+  --wb-accent: #b8522e;
+  --wb-cursor: #f5c56e;
+  --wb-amber: #ffb454;
+  --wb-burnt-orange: #ff8f40;
+  --wb-operator: #f29668;
+  --wb-terra-cotta: #dc9e92;
+  --wb-dried-sage: #b4bc78;
+  --wb-verdigris: #96b898;
+  --wb-dusty-mauve: #d4a8b8;
+  --wb-coral: #ec9878;
+  --wb-warm-stone: #b4a89c;
+  --wb-aged-brass: #deb074;
+  --wb-steel-patina: #90aec0;
+  --wb-gold: #e6c08a;
+  --wb-error: #f49090;
+
+  /* Surface ramp (warm undertone throughout, no neutral grays) */
+  --color-base-00: #14120f;
+  --color-base-05: #1a1510;
+  --color-base-10: #1f1d17;
+  --color-base-20: #2a2520;
+  --color-base-25: #302a22;
+  --color-base-30: #3a342c;
+  --color-base-35: #443d34;
+  --color-base-40: #5a5348;
+  --color-base-50: #6e665c;
+  --color-base-60: #8a8278;
+  --color-base-70: #9e968c;
+  --color-base-100: #bfbdb6;
+
+  /* Extended colors */
+  --color-red: var(--wb-error);
+  --color-red-rgb: 244, 144, 144;
+  --color-orange: var(--wb-burnt-orange);
+  --color-orange-rgb: 255, 143, 64;
+  --color-yellow: var(--wb-amber);
+  --color-yellow-rgb: 255, 180, 84;
+  --color-green: var(--wb-dried-sage);
+  --color-green-rgb: 180, 188, 120;
+  --color-cyan: var(--wb-verdigris);
+  --color-cyan-rgb: 150, 184, 152;
+  --color-blue: var(--wb-steel-patina);
+  --color-blue-rgb: 144, 174, 192;
+  --color-purple: var(--wb-dusty-mauve);
+  --color-purple-rgb: 212, 168, 184;
+  --color-pink: var(--wb-coral);
+  --color-pink-rgb: 236, 152, 120;
+
+  /* Headings */
+  --h1-color: var(--wb-amber);
+  --h2-color: var(--wb-burnt-orange);
+  --h3-color: var(--wb-aged-brass);
+  --h4-color: var(--wb-terra-cotta);
+  --h5-color: var(--wb-steel-patina);
+  --h6-color: var(--wb-warm-stone);
+
+  /* Selection and highlights */
+  --text-selection: rgba(245, 197, 110, 0.2);
+  --text-highlight-bg: rgba(245, 197, 110, 0.15);
+}
+
+/* -- Light variant -------------------------------------------------------- */
+.theme-light {
+  /* Palette (canonical hex values, test harness reads from these) */
+  --wb-bg: #f5ede0;
+  --wb-fg: #3a3630;
+  --wb-accent: #b8522e;
+  --wb-cursor: #8a6600;
+  --wb-amber: #855700;
+  --wb-burnt-orange: #924800;
+  --wb-operator: #8f4418;
+  --wb-terra-cotta: #8e4632;
+  --wb-dried-sage: #4d5c1a;
+  --wb-verdigris: #286a48;
+  --wb-dusty-mauve: #7e4060;
+  --wb-coral: #883850;
+  --wb-warm-stone: #544c40;
+  --wb-aged-brass: #74501c;
+  --wb-steel-patina: #285464;
+  --wb-gold: #7a5a1c;
+  --wb-error: #b03434;
+
+  /* Surface ramp (warm undertone throughout, no neutral grays) */
+  --color-base-00: #f5ede0;
+  --color-base-05: #ede5d8;
+  --color-base-10: #e5ddd0;
+  --color-base-20: #d5cbbd;
+  --color-base-25: #c8bfb0;
+  --color-base-30: #b8ae9e;
+  --color-base-35: #a89e8e;
+  --color-base-40: #968c7c;
+  --color-base-50: #7e7568;
+  --color-base-60: #665e52;
+  --color-base-70: #524a40;
+  --color-base-100: #3a3630;
+
+  /* Extended colors */
+  --color-red: var(--wb-error);
+  --color-red-rgb: 176, 52, 52;
+  --color-orange: var(--wb-burnt-orange);
+  --color-orange-rgb: 146, 72, 0;
+  --color-yellow: var(--wb-amber);
+  --color-yellow-rgb: 133, 87, 0;
+  --color-green: var(--wb-dried-sage);
+  --color-green-rgb: 77, 92, 26;
+  --color-cyan: var(--wb-verdigris);
+  --color-cyan-rgb: 40, 106, 72;
+  --color-blue: var(--wb-steel-patina);
+  --color-blue-rgb: 40, 84, 100;
+  --color-purple: var(--wb-dusty-mauve);
+  --color-purple-rgb: 126, 64, 96;
+  --color-pink: var(--wb-coral);
+  --color-pink-rgb: 136, 56, 80;
+
+  /* Headings */
+  --h1-color: var(--wb-amber);
+  --h2-color: var(--wb-burnt-orange);
+  --h3-color: var(--wb-aged-brass);
+  --h4-color: var(--wb-terra-cotta);
+  --h5-color: var(--wb-steel-patina);
+  --h6-color: var(--wb-warm-stone);
+
+  /* Selection and highlights */
+  --text-selection: rgba(138, 102, 0, 0.15);
+  --text-highlight-bg: rgba(138, 102, 0, 0.12);
+}
+
+/* -- Shared (resolves per-variant via cascade) ---------------------------- */
+body {
+  /* Accent: copper rust HSL decomposition of #b8522e */
+  --accent-h: 16;
+  --accent-s: 60%;
+  --accent-l: 45%;
+
+  /* Code syntax highlighting (CodeMirror 6 + Prism.js shared tokens) */
+  --code-background: var(--color-base-00);
+  --code-normal: var(--wb-fg);
+  --code-function: var(--wb-amber);
+  --code-keyword: var(--wb-burnt-orange);
+  --code-string: var(--wb-dried-sage);
+  --code-comment: var(--wb-warm-stone);
+  --code-tag: var(--wb-terra-cotta);
+  --code-value: var(--wb-dusty-mauve);
+  --code-property: var(--wb-aged-brass);
+  --code-important: var(--wb-verdigris);
+  --code-operator: var(--wb-operator);
+  --code-punctuation: var(--color-base-60);
+
+  /* Warm shadows */
+  --background-modifier-box-shadow: rgba(26, 21, 16, 0.3);
+  --input-shadow: 0 1px 2px rgba(26, 21, 16, 0.15);
+  --shadow-s: 0px 1px 2px rgba(26, 21, 16, 0.12), 0px 3px 6px rgba(26, 21, 16, 0.08);
+  --shadow-l: 0px 2px 4px rgba(26, 21, 16, 0.12), 0px 8px 24px rgba(26, 21, 16, 0.16);
+
+  /* Warm scrollbars */
+  --scrollbar-bg: var(--color-base-10);
+  --scrollbar-thumb-bg: var(--color-base-35);
+  --scrollbar-active-thumb-bg: var(--color-base-40);
+
+  /* Softer radii */
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 10px;
+}
+
+/* -- Prism.js token overrides (reading view) ------------------------------ */
+.markdown-reading-view .token.keyword {
+  color: var(--wb-burnt-orange);
+  font-weight: bold;
+}
+
+.markdown-reading-view .token.function {
+  color: var(--wb-amber);
+}
+
+.markdown-reading-view .token.string,
+.markdown-reading-view .token.char,
+.markdown-reading-view .token.attr-value {
+  color: var(--wb-dried-sage);
+}
+
+.markdown-reading-view .token.number,
+.markdown-reading-view .token.boolean,
+.markdown-reading-view .token.constant {
+  color: var(--wb-dusty-mauve);
+}
+
+.markdown-reading-view .token.comment {
+  color: var(--wb-warm-stone);
+  font-style: italic;
+}
+
+.markdown-reading-view .token.operator {
+  color: var(--wb-operator);
+}
+
+.markdown-reading-view .token.punctuation {
+  color: var(--color-base-60);
+}
+
+.markdown-reading-view .token.property {
+  color: var(--wb-aged-brass);
+  font-style: italic;
+}
+
+.markdown-reading-view .token.class-name {
+  color: var(--wb-steel-patina);
+  font-style: italic;
+}
+
+.markdown-reading-view .token.tag {
+  color: var(--wb-terra-cotta);
+  font-weight: bold;
+}
+
+.markdown-reading-view .token.regex {
+  color: var(--wb-verdigris);
+}
+
+.markdown-reading-view .token.symbol {
+  color: var(--wb-terra-cotta);
+}
+
+.markdown-reading-view .token.selector {
+  color: var(--wb-coral);
+}
