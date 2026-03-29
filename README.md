@@ -153,6 +153,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Zsh | Available | [`zsh/`](zsh/) |
 | Home Assistant | Available | [`home-assistant/`](home-assistant/) |
 | eza | Available | [`eza/`](eza/) |
+| Obsidian | Available | [`obsidian/`](obsidian/) |
 
 Each platform lives in its own directory with its own README, build process, and release workflow.
 

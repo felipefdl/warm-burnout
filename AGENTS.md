@@ -39,6 +39,7 @@ warm-burnout/
     windows_terminal.rs       # Windows Terminal theme validation tests
     tmux.rs                   # tmux theme validation tests
     zsh.rs                    # Zsh theme validation tests
+    obsidian.rs               # Obsidian theme validation tests
   .github/workflows/
     validate.yml              # CI: run theme validation on push/PR
     release-vscode.yml        # VS Code extension release workflow
@@ -133,6 +134,11 @@ warm-burnout/
     light.yml                 # Light variant
     README.md                 # eza install instructions
     AGENTS.md                 # eza-specific agent rules
+  obsidian/                    # Obsidian community theme
+    theme.css                  # Dark + light variants (CSS custom properties)
+    manifest.json              # Community theme manifest
+    README.md                  # Obsidian install instructions
+    AGENTS.md                  # Obsidian-specific agent rules
   screenshots/                # Theme preview screenshots
     AGENTS.md                 # Screenshot-specific agent rules
     generate.mjs              # Playwright script to render HTML -> PNG
