@@ -918,3 +918,119 @@ fn light_zsh_error_matches_starship() {
   );
   assert_eq!(zsh, starship, "light error: zsh={zsh} starship={starship}");
 }
+
+// -- Obsidian cross-platform consistency --
+
+const OBSIDIAN_THEME: &str = include_str!("../obsidian/theme.css");
+
+#[test]
+fn dark_background_obsidian_matches_vscode() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "dark", "bg");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-dark.json"),
+    "editor.background",
+  );
+  assert_eq!(obsidian, vscode, "dark background: obsidian={obsidian} vscode={vscode}");
+}
+
+#[test]
+fn light_background_obsidian_matches_vscode() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "light", "bg");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-light.json"),
+    "editor.background",
+  );
+  assert_eq!(
+    obsidian, vscode,
+    "light background: obsidian={obsidian} vscode={vscode}"
+  );
+}
+
+#[test]
+fn dark_foreground_obsidian_matches_vscode() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "dark", "fg");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-dark.json"),
+    "editor.foreground",
+  );
+  assert_eq!(obsidian, vscode, "dark foreground: obsidian={obsidian} vscode={vscode}");
+}
+
+#[test]
+fn light_foreground_obsidian_matches_vscode() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "light", "fg");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-light.json"),
+    "editor.foreground",
+  );
+  assert_eq!(
+    obsidian, vscode,
+    "light foreground: obsidian={obsidian} vscode={vscode}"
+  );
+}
+
+#[test]
+fn dark_accent_obsidian_matches_canonical() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "dark", "accent");
+  assert_eq!(obsidian, "#b8522e", "dark accent should be canonical copper rust");
+}
+
+#[test]
+fn light_accent_obsidian_matches_canonical() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "light", "accent");
+  assert_eq!(obsidian, "#b8522e", "light accent should be canonical copper rust");
+}
+
+#[test]
+fn dark_background_obsidian_matches_ghostty() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "dark", "bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(
+    obsidian, ghostty,
+    "dark background: obsidian={obsidian} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_background_obsidian_matches_ghostty() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "light", "bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(
+    obsidian, ghostty,
+    "light background: obsidian={obsidian} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_foreground_obsidian_matches_ghostty() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "dark", "fg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(
+    obsidian, ghostty,
+    "dark foreground: obsidian={obsidian} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_foreground_obsidian_matches_ghostty() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "light", "fg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(
+    obsidian, ghostty,
+    "light foreground: obsidian={obsidian} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_cursor_obsidian_matches_ghostty() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "dark", "cursor");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "cursor-color");
+  assert_eq!(obsidian, ghostty, "dark cursor: obsidian={obsidian} ghostty={ghostty}");
+}
+
+#[test]
+fn light_cursor_obsidian_matches_ghostty() {
+  let obsidian = obsidian_color(OBSIDIAN_THEME, "light", "cursor");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
+  assert_eq!(obsidian, ghostty, "light cursor: obsidian={obsidian} ghostty={ghostty}");
+}
