@@ -2,8 +2,8 @@ mod common;
 
 use common::{
   ghostty_ansi_color, ghostty_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute,
-  jetbrains_color, nvim_palette_color, starship_palette_color, tmux_option_value, tmux_style_fg, vscode_color,
-  windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color,
+  jetbrains_color, nvim_palette_color, obsidian_color, starship_palette_color, tmux_option_value, tmux_style_fg,
+  vscode_color, windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {

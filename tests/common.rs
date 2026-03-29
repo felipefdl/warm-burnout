@@ -327,3 +327,47 @@ pub fn nvim_palette_keys(src: &str) -> Vec<String> {
     })
     .collect()
 }
+
+/// Extract a color from an Obsidian theme CSS file.
+/// Finds `--wb-{key}: #hex;` inside the `.theme-{variant}` block.
+pub fn obsidian_color(src: &str, variant: &str, key: &str) -> String {
+  let selector = format!(".theme-{variant}");
+  let var_decl = format!("--wb-{}:", key);
+
+  let sel_pos = src
+    .find(&selector)
+    .unwrap_or_else(|| panic!("no {selector} block in obsidian theme"));
+  let rest = &src[sel_pos..];
+  let brace_pos = rest
+    .find('{')
+    .unwrap_or_else(|| panic!("no opening brace after {selector}"));
+  let block_start = &rest[brace_pos + 1..];
+
+  let mut depth = 1;
+  let mut block_end = 0;
+  for (i, c) in block_start.char_indices() {
+    match c {
+      '{' => depth += 1,
+      '}' => {
+        depth -= 1;
+        if depth == 0 {
+          block_end = i;
+          break;
+        }
+      }
+      _ => {}
+    }
+  }
+  let block = &block_start[..block_end];
+
+  block
+    .lines()
+    .find(|l| l.trim().starts_with(&var_decl))
+    .and_then(|l| {
+      l.split_once(':').map(|(_, v)| {
+        let v = v.trim().trim_end_matches(';').trim();
+        hex_to_lower(v)
+      })
+    })
+    .unwrap_or_else(|| panic!("no --wb-{key} in {selector} block"))
+}
