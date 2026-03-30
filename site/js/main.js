@@ -8,17 +8,24 @@
   const root = document.documentElement;
   const toggle = document.getElementById("theme-toggle");
 
+  var prefersDark = matchMedia("(prefers-color-scheme: dark)");
+
   function setTheme(theme) {
     root.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]').content =
       theme === "dark" ? "#1a1510" : "#F5EDE0";
     toggle.textContent = theme === "dark" ? "3AM" : "BLINDS OPEN";
-    localStorage.setItem("wb-theme", theme);
   }
 
-  const stored = localStorage.getItem("wb-theme");
-  const preferred = stored || (matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
-  setTheme(preferred);
+  function systemTheme() {
+    return prefersDark.matches ? "dark" : "light";
+  }
+
+  setTheme(systemTheme());
+
+  prefersDark.addEventListener("change", function () {
+    setTheme(systemTheme());
+  });
 
   toggle.addEventListener("click", function () {
     setTheme(root.dataset.theme === "dark" ? "light" : "dark");
