@@ -273,6 +273,7 @@ GitHub Pages source must be set to "GitHub Actions" in repo Settings > Pages.
 2. Variant names: "Warm Burnout Dark" and "Warm Burnout Light".
 3. Maintain the dark humor tone in all user-facing text.
 4. Do not explain or apologize for the name.
+5. Never hardcode platform counts (e.g. "16 platforms") or test counts in user-facing text, meta tags, or screenshots. These go stale the moment a platform is added or a test is written. Use count-free phrasing instead ("multi-platform", "the burnout is spreading", etc.).
 
 ### Brand Phrases
 
@@ -282,7 +283,7 @@ Use these as inspiration for copy, commit messages, taglines, and descriptions:
 - "your eyes deserved this"
 - "warm everywhere, blue nowhere"
 - "the burnout is spreading"
-- "now with 62 proofs of care"
+- "proofs of care in every test"
 - "because your retinas asked nicely"
 - "less blue, more therapy"
 - "clinically warm, emotionally cold"
