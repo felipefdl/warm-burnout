@@ -108,6 +108,13 @@ jobs:
             warm-burnout-light.conf \
             warm-burnout.tmux
 
+      - name: Package Zellij
+        run: |
+          cd zellij
+          zip -j ../warm-burnout-zellij.zip \
+            warm-burnout-dark.kdl \
+            warm-burnout-light.kdl
+
       - name: Package eza
         run: |
           cd eza
@@ -143,6 +150,7 @@ jobs:
             warm-burnout-iterm2.zip
             warm-burnout-windows-terminal.zip
             warm-burnout-tmux.zip
+            warm-burnout-zellij.zip
             warm-burnout-eza.zip
             warm-burnout-home-assistant.yaml
             warm-burnout-obsidian.zip

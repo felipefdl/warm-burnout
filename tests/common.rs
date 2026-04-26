@@ -328,6 +328,119 @@ pub fn nvim_palette_keys(src: &str) -> Vec<String> {
     .collect()
 }
 
+// Substring-based parser for Zellij theme files.
+// Assumptions baked in: each `themes { name { component { attr ... } } }` declaration
+// keeps `name {` on a single line, no string-quoted braces, no block comments.
+// Line comments (`//`) are skipped during brace counting.
+
+/// Returns the offset of the matching `}` for an implicit opening `{` at depth 0.
+/// `s` must start at the first byte AFTER the opening brace. Panics if unbalanced.
+fn kdl_block_body_end(s: &str, context: &str) -> usize {
+  let mut depth = 1usize;
+  let mut iter = s.char_indices();
+  while let Some((i, c)) = iter.next() {
+    match c {
+      '/' if s[i..].starts_with("//") => {
+        for (_, nc) in iter.by_ref() {
+          if nc == '\n' {
+            break;
+          }
+        }
+      }
+      '{' => depth += 1,
+      '}' => {
+        depth -= 1;
+        if depth == 0 {
+          return i;
+        }
+      }
+      _ => {}
+    }
+  }
+  panic!("unclosed brace in KDL block: {context}");
+}
+
+/// Locate the body of a named KDL block (`name {` ... `}`) starting at `from` in `src`.
+/// Returns the slice between the braces. Panics with the missing-name context.
+fn kdl_named_block_body<'a>(src: &'a str, name: &str, context: &str) -> &'a str {
+  let header = format!("{name} {{");
+  let pos = src.find(&header).unwrap_or_else(|| panic!("no {context} '{name}'"));
+  let body_start = src[pos..].find('{').expect("header guarantees '{'") + pos + 1;
+  let body_end = kdl_block_body_end(&src[body_start..], &format!("{context} '{name}'"));
+  &src[body_start..body_start + body_end]
+}
+
+/// Extract a Zellij theme component attribute as a hex color, or `"0"` for the terminal-default sentinel.
+/// Parses `themes { theme_name { component { attr R G B } } }` from a `.kdl` file.
+pub fn zellij_color(src: &str, theme: &str, component: &str, attr: &str) -> String {
+  let theme_body = kdl_named_block_body(src, theme, "zellij theme");
+  let comp_body = kdl_named_block_body(theme_body, component, "zellij component");
+
+  let line = comp_body
+    .lines()
+    .map(str::trim)
+    .find(|l| {
+      l.split("//")
+        .next()
+        .unwrap()
+        .split_whitespace()
+        .next()
+        .is_some_and(|first| first == attr)
+    })
+    .unwrap_or_else(|| panic!("no attr '{attr}' in component '{component}'"));
+
+  let stripped = line.split("//").next().unwrap().trim();
+  let parts: Vec<&str> = stripped.split_whitespace().skip(1).collect();
+  match parts.as_slice() {
+    [single] if *single == "0" => "0".to_string(),
+    [r, g, b] => {
+      let r: u8 = r.parse().unwrap_or_else(|_| panic!("bad R for '{attr}': {r}"));
+      let g: u8 = g.parse().unwrap_or_else(|_| panic!("bad G for '{attr}': {g}"));
+      let b: u8 = b.parse().unwrap_or_else(|_| panic!("bad B for '{attr}': {b}"));
+      format!("#{r:02x}{g:02x}{b:02x}")
+    }
+    _ => panic!("invalid color value for '{attr}' in '{component}': {stripped}"),
+  }
+}
+
+/// List the component names defined inside a Zellij theme block, in declaration order.
+pub fn zellij_component_names(src: &str, theme: &str) -> Vec<String> {
+  let theme_body = kdl_named_block_body(src, theme, "zellij theme");
+
+  let mut names = Vec::new();
+  let mut cursor = 0;
+  while cursor < theme_body.len() {
+    let rest = &theme_body[cursor..];
+    let Some(brace_off) = rest.find('{') else { break };
+    let header = rest[..brace_off].trim();
+    let name = header.lines().next_back().unwrap_or("").trim();
+    if !name.is_empty() {
+      names.push(name.to_string());
+    }
+    let body_start = cursor + brace_off + 1;
+    let body_end_rel = kdl_block_body_end(&theme_body[body_start..], &format!("component '{name}'"));
+    cursor = body_start + body_end_rel + 1;
+  }
+  names
+}
+
+/// List attribute names declared inside a Zellij theme component block, in declaration order.
+pub fn zellij_component_attrs(src: &str, theme: &str, component: &str) -> Vec<String> {
+  let theme_body = kdl_named_block_body(src, theme, "zellij theme");
+  let comp_body = kdl_named_block_body(theme_body, component, "zellij component");
+
+  comp_body
+    .lines()
+    .filter_map(|l| {
+      let stripped = l.split("//").next().unwrap().trim();
+      if stripped.is_empty() {
+        return None;
+      }
+      stripped.split_whitespace().next().map(|s| s.to_string())
+    })
+    .collect()
+}
+
 /// Extract a color from an Obsidian theme CSS file.
 /// Finds `--wb-{key}: #hex;` inside the `.theme-{variant}` block.
 pub fn obsidian_color(src: &str, variant: &str, key: &str) -> String {

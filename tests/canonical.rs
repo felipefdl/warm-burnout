@@ -2,8 +2,8 @@ mod common;
 
 use common::{
   ghostty_ansi_color, ghostty_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute,
-  jetbrains_color, nvim_palette_color, obsidian_color, starship_palette_color, tmux_option_value, tmux_style_fg,
-  vscode_color, windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color,
+  jetbrains_color, nvim_palette_color, obsidian_color, starship_palette_color, tmux_option_value, tmux_style_bg,
+  tmux_style_fg, vscode_color, windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color, zellij_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -459,6 +459,142 @@ fn light_tmux_accent_matches_canonical() {
   );
   let accent = tmux_style_fg(&tmux_border);
   assert_eq!(accent, "#b8522e", "light tmux accent should be canonical copper rust");
+}
+
+// -- Zellij cross-platform consistency --
+
+#[test]
+fn dark_zellij_active_ribbon_matches_tmux_active_window() {
+  let zellij_bg = zellij_color(
+    include_str!("../zellij/warm-burnout-dark.kdl"),
+    "warm-burnout-dark",
+    "ribbon_selected",
+    "background",
+  );
+  let tmux_active = tmux_option_value(
+    include_str!("../tmux/warm-burnout-dark.conf"),
+    "window-status-current-style",
+  );
+  let tmux_bg = tmux_style_bg(&tmux_active);
+  assert_eq!(
+    zellij_bg, tmux_bg,
+    "dark zellij ribbon_selected.background should match tmux active window bg"
+  );
+}
+
+#[test]
+fn light_zellij_active_ribbon_matches_tmux_active_window() {
+  let zellij_bg = zellij_color(
+    include_str!("../zellij/warm-burnout-light.kdl"),
+    "warm-burnout-light",
+    "ribbon_selected",
+    "background",
+  );
+  let tmux_active = tmux_option_value(
+    include_str!("../tmux/warm-burnout-light.conf"),
+    "window-status-current-style",
+  );
+  let tmux_bg = tmux_style_bg(&tmux_active);
+  assert_eq!(
+    zellij_bg, tmux_bg,
+    "light zellij ribbon_selected.background should match tmux active window bg"
+  );
+}
+
+#[test]
+fn dark_zellij_bar_bg_matches_ghostty_terminal_bg() {
+  let zellij_bar = zellij_color(
+    include_str!("../zellij/warm-burnout-dark.kdl"),
+    "warm-burnout-dark",
+    "text_unselected",
+    "background",
+  );
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(
+    zellij_bar, ghostty,
+    "dark zellij status bar bg must match ghostty terminal bg so the bar feels integrated"
+  );
+}
+
+#[test]
+fn light_zellij_bar_bg_matches_ghostty_terminal_bg() {
+  let zellij_bar = zellij_color(
+    include_str!("../zellij/warm-burnout-light.kdl"),
+    "warm-burnout-light",
+    "text_unselected",
+    "background",
+  );
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(
+    zellij_bar, ghostty,
+    "light zellij status bar bg must match ghostty terminal bg so the bar feels integrated"
+  );
+}
+
+#[test]
+fn dark_zellij_focused_frame_matches_tmux_active_pane_border() {
+  let zellij_frame = zellij_color(
+    include_str!("../zellij/warm-burnout-dark.kdl"),
+    "warm-burnout-dark",
+    "frame_selected",
+    "base",
+  );
+  let tmux_border = tmux_option_value(
+    include_str!("../tmux/warm-burnout-dark.conf"),
+    "pane-active-border-style",
+  );
+  let tmux_fg = tmux_style_fg(&tmux_border);
+  assert_eq!(
+    zellij_frame, tmux_fg,
+    "dark zellij frame_selected should match tmux active pane border"
+  );
+}
+
+#[test]
+fn light_zellij_focused_frame_matches_tmux_active_pane_border() {
+  let zellij_frame = zellij_color(
+    include_str!("../zellij/warm-burnout-light.kdl"),
+    "warm-burnout-light",
+    "frame_selected",
+    "base",
+  );
+  let tmux_border = tmux_option_value(
+    include_str!("../tmux/warm-burnout-light.conf"),
+    "pane-active-border-style",
+  );
+  let tmux_fg = tmux_style_fg(&tmux_border);
+  assert_eq!(
+    zellij_frame, tmux_fg,
+    "light zellij frame_selected should match tmux active pane border"
+  );
+}
+
+#[test]
+fn dark_zellij_accent_matches_canonical() {
+  let zellij_frame = zellij_color(
+    include_str!("../zellij/warm-burnout-dark.kdl"),
+    "warm-burnout-dark",
+    "frame_selected",
+    "base",
+  );
+  assert_eq!(
+    zellij_frame, "#b8522e",
+    "dark zellij accent should be canonical copper rust"
+  );
+}
+
+#[test]
+fn light_zellij_accent_matches_canonical() {
+  let zellij_frame = zellij_color(
+    include_str!("../zellij/warm-burnout-light.kdl"),
+    "warm-burnout-light",
+    "frame_selected",
+    "base",
+  );
+  assert_eq!(
+    zellij_frame, "#b8522e",
+    "light zellij accent should be canonical copper rust"
+  );
 }
 
 // -- iTerm2 cross-platform consistency --

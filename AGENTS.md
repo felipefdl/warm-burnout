@@ -38,6 +38,7 @@ warm-burnout/
     jetbrains.rs              # JetBrains theme validation tests
     windows_terminal.rs       # Windows Terminal theme validation tests
     tmux.rs                   # tmux theme validation tests
+    zellij.rs                 # Zellij theme validation tests
     zsh.rs                    # Zsh theme validation tests
     obsidian.rs               # Obsidian theme validation tests
   .github/workflows/
@@ -129,6 +130,11 @@ warm-burnout/
     warm-burnout-dark.conf    # Dark variant
     warm-burnout-light.conf   # Light variant
     warm-burnout.tmux         # TPM plugin entry point
+  zellij/                     # Zellij multiplexer theme
+    README.md                 # Zellij install instructions
+    AGENTS.md                 # Zellij-specific agent rules
+    warm-burnout-dark.kdl     # Dark variant (KDL, modern UI-component spec)
+    warm-burnout-light.kdl    # Light variant
   eza/                        # eza file listing theme
     dark.yml                  # Dark variant
     light.yml                 # Light variant

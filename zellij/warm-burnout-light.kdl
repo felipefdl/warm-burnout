@@ -1,0 +1,157 @@
+// Warm Burnout Light -- Zellij theme
+// https://github.com/felipefdl/warm-burnout
+//
+// Modern UI-component spec. Colors are RGB triplets (0-255).
+// Single `0` means terminal default (transparent).
+// Terminal ANSI colors come from your terminal emulator, not from Zellij.
+//
+// Brand rule: warm everywhere, blue nowhere. Steel blue is reserved for
+// syntax types only and is not used in Zellij UI chrome.
+
+themes {
+  warm-burnout-light {
+    // Bare text in the UI (Ctrl/Alt modifier hints, mode names in status bar).
+    // Background matches Ghostty terminal bg so the bar feels integrated, not like a darker strip.
+    text_unselected {
+      base 84 76 64             // comments / warm stone
+      background 245 237 224    // terminal bg (matches Ghostty)
+      emphasis_0 133 87 0       // functions / amber
+      emphasis_1 77 92 26       // strings / sage
+      emphasis_2 142 70 50      // tags / terra cotta
+      emphasis_3 126 64 96      // constants / dusty mauve
+    }
+    text_selected {
+      base 58 54 48             // foreground
+      background 240 232 220    // widget surface
+      emphasis_0 146 72 0       // keywords / burnt orange
+      emphasis_1 77 92 26       // strings
+      emphasis_2 142 70 50      // tags / terra cotta
+      emphasis_3 126 64 96      // constants
+    }
+    // Inactive tabs and inactive keybinding modes in the status bar.
+    // Background raised one tone above the bar so chips read as pills, not floating text.
+    ribbon_unselected {
+      base 84 76 64             // comments
+      background 240 232 220    // widget surface (raised)
+      emphasis_0 133 87 0       // functions
+      emphasis_1 77 92 26       // strings
+      emphasis_2 142 70 50      // tags / terra cotta
+      emphasis_3 126 64 96      // constants
+    }
+    // Active tab and active keybinding mode. Strongest landmark.
+    // Mirrors tmux active window: light text on burnt orange.
+    ribbon_selected {
+      base 245 237 224          // bg
+      background 146 72 0       // keywords / burnt orange
+      emphasis_0 245 237 224    // bg, for emphasized indices
+      emphasis_1 138 102 0      // cursor / gold
+      emphasis_2 184 82 46      // accent / copper rust
+      emphasis_3 245 237 224    // bg
+    }
+    table_title {
+      base 133 87 0             // functions / amber
+      background 0
+      emphasis_0 146 72 0       // keywords
+      emphasis_1 142 70 50      // tags / terra cotta
+      emphasis_2 77 92 26       // strings
+      emphasis_3 126 64 96      // constants
+    }
+    table_cell_unselected {
+      base 58 54 48             // foreground
+      background 0
+      emphasis_0 133 87 0       // functions
+      emphasis_1 142 70 50      // tags / terra cotta
+      emphasis_2 77 92 26       // strings
+      emphasis_3 126 64 96      // constants
+    }
+    table_cell_selected {
+      base 58 54 48             // foreground
+      background 221 214 202    // line-highlight
+      emphasis_0 133 87 0       // functions
+      emphasis_1 142 70 50      // tags / terra cotta
+      emphasis_2 77 92 26       // strings
+      emphasis_3 126 64 96      // constants
+    }
+    list_unselected {
+      base 58 54 48             // foreground
+      background 0
+      emphasis_0 133 87 0       // functions
+      emphasis_1 142 70 50      // tags / terra cotta
+      emphasis_2 77 92 26       // strings
+      emphasis_3 126 64 96      // constants
+    }
+    list_selected {
+      base 58 54 48             // foreground
+      background 221 214 202    // line-highlight
+      emphasis_0 133 87 0       // functions
+      emphasis_1 142 70 50      // tags / terra cotta
+      emphasis_2 77 92 26       // strings
+      emphasis_3 126 64 96      // constants
+    }
+    // Frame around non-focused panes. Subtle stone tone, ~1.5:1 against bg.
+    // Stepped past line-highlight (further from bg) so unfocused borders stay legible without competing.
+    frame_unselected {
+      base 197 190 178          // recessed stone
+      background 0
+      emphasis_0 84 76 64       // comments
+      emphasis_1 77 92 26       // strings
+      emphasis_2 142 70 50      // tags / terra cotta
+      emphasis_3 126 64 96      // constants
+    }
+    // Frame around focused pane. Accent copper.
+    // Mirrors tmux pane-active-border-style.
+    // emphasis_3 = 0 (terminal default) so the most prominent emphasis defers to the pane bg
+    // instead of stacking another warm hue on the focused border.
+    frame_selected {
+      base 184 82 46            // accent / copper rust
+      background 0
+      emphasis_0 133 87 0       // functions
+      emphasis_1 142 70 50      // tags / terra cotta
+      emphasis_2 138 102 0      // cursor / gold
+      emphasis_3 0
+    }
+    // Frame in PANE/TAB mode. Functions amber for mode signal.
+    // Three-tier hierarchy: cursor=gold, focus=copper, mode=amber. All distinct.
+    // emphasis_1..3 collapse to amber so the compact-bar plugin renders the active mode
+    // name (NORMAL, PANE, TAB, ...) as a single warm signal instead of fanning out.
+    frame_highlight {
+      base 133 87 0             // functions / amber
+      background 0
+      emphasis_0 146 72 0       // keywords
+      emphasis_1 133 87 0       // amber
+      emphasis_2 133 87 0       // amber
+      emphasis_3 133 87 0       // amber
+    }
+    // Successful command exit code in command panes.
+    exit_code_success {
+      base 77 92 26             // strings / sage
+      background 0
+      emphasis_0 40 106 72      // regex / forest sage
+      emphasis_1 58 54 48       // foreground
+      emphasis_2 142 70 50      // tags / terra cotta
+      emphasis_3 84 76 64       // comments
+    }
+    // Failed command exit code in command panes.
+    exit_code_error {
+      base 176 52 52            // error / brick red
+      background 0
+      emphasis_0 138 102 0      // cursor / gold
+      emphasis_1 0
+      emphasis_2 0
+      emphasis_3 0
+    }
+    // Multi-user session colors. Warm hues only, accent last.
+    multiplayer_user_colors {
+      player_1 146 72 0         // keywords / burnt orange
+      player_2 142 70 50        // tags / terra cotta
+      player_3 77 92 26         // strings / sage
+      player_4 126 64 96        // constants / dusty mauve
+      player_5 40 106 72        // regex / forest sage
+      player_6 138 102 0        // cursor / gold
+      player_7 176 52 52        // error / brick red
+      player_8 136 56 80        // member vars / rose
+      player_9 122 90 28        // decorators / wheat
+      player_10 184 82 46       // accent / copper rust
+    }
+  }
+}

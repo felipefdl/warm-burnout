@@ -149,6 +149,7 @@ Inspired by materials that age well. Unlike your eyes.
 | iTerm2 | Available | [`iterm2/`](iterm2/) |
 | Windows Terminal | Available | [`windows-terminal/`](windows-terminal/) |
 | tmux | Available | [`tmux/`](tmux/) |
+| Zellij | Available | [`zellij/`](zellij/) |
 | Starship | Available | [`starship/`](starship/) |
 | Zsh | Available | [`zsh/`](zsh/) |
 | Home Assistant | Available | [`home-assistant/`](home-assistant/) |
