@@ -106,7 +106,7 @@ fn dark_has_all_required_keys() {
   let dict = v.as_dictionary().unwrap();
   for key in REQUIRED_KEYS {
     assert!(
-      dict.get(*key).and_then(|v| v.as_dictionary()).is_some(),
+      dict.get(key).and_then(|v| v.as_dictionary()).is_some(),
       "dark missing required key: {key}"
     );
   }
@@ -118,7 +118,7 @@ fn light_has_all_required_keys() {
   let dict = v.as_dictionary().unwrap();
   for key in REQUIRED_KEYS {
     assert!(
-      dict.get(*key).and_then(|v| v.as_dictionary()).is_some(),
+      dict.get(key).and_then(|v| v.as_dictionary()).is_some(),
       "light missing required key: {key}"
     );
   }

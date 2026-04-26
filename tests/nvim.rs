@@ -379,7 +379,7 @@ fn dark_terminal_ansi_matches_ghostty() {
     let nvim_hex = nvim_line
       .split('"')
       .nth(1)
-      .map(|s| hex_to_lower(s))
+      .map(hex_to_lower)
       .unwrap_or_else(|| panic!("no hex value in {key}"));
     assert_eq!(
       nvim_hex, *expected,
@@ -425,7 +425,7 @@ fn light_terminal_ansi_matches_vscode() {
     let nvim_hex = nvim_line
       .split('"')
       .nth(1)
-      .map(|s| hex_to_lower(s))
+      .map(hex_to_lower)
       .unwrap_or_else(|| panic!("no hex value in {nvim_key}"));
     assert_eq!(
       nvim_hex, vscode_hex,

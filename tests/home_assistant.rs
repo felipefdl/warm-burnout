@@ -108,7 +108,7 @@ fn dark_mode_has_required_keys() {
     .expect("dark mode should be a mapping");
   for key in REQUIRED_KEYS {
     assert!(
-      dark.contains_key(&Value::String((*key).to_string())),
+      dark.contains_key(Value::String((*key).to_string())),
       "dark mode missing required key: {key}"
     );
   }
@@ -122,7 +122,7 @@ fn light_mode_has_required_keys() {
     .expect("light mode should be a mapping");
   for key in REQUIRED_KEYS {
     assert!(
-      light.contains_key(&Value::String((*key).to_string())),
+      light.contains_key(Value::String((*key).to_string())),
       "light mode missing required key: {key}"
     );
   }
