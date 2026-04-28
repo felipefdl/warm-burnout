@@ -25,7 +25,7 @@ style = "bold bright-yellow"
 
 [git_branch]
 format = "[$branch]($style)"
-style = "blue"
+style = "green"
 
 [git_status]
 format = "[[(*$conflicted$untracked$modified$staged$renamed$deleted)](red) ($ahead_behind$stashed)]($style)"
