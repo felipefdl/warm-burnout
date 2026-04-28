@@ -37,6 +37,7 @@ warm-burnout/
     iterm2.rs                 # iTerm2 theme validation tests
     jetbrains.rs              # JetBrains theme validation tests
     windows_terminal.rs       # Windows Terminal theme validation tests
+    warp.rs                   # Warp theme validation tests
     tmux.rs                   # tmux theme validation tests
     zellij.rs                 # Zellij theme validation tests
     zsh.rs                    # Zsh theme validation tests
@@ -124,6 +125,11 @@ warm-burnout/
     warm-burnout-dark.json    # Dark variant (standalone scheme)
     warm-burnout-light.json   # Light variant (standalone scheme)
     warm-burnout.json         # Fragment file (both schemes, drop-in install)
+  warp/                       # Warp terminal theme
+    README.md                 # Warp install instructions
+    AGENTS.md                 # Warp-specific agent rules
+    warm-burnout-dark.yaml    # Dark variant
+    warm-burnout-light.yaml   # Light variant
   tmux/                       # tmux status bar theme
     README.md                 # tmux install instructions
     AGENTS.md                 # tmux-specific agent rules

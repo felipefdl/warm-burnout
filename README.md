@@ -148,6 +148,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Xcode | Available | [`xcode/`](xcode/) |
 | iTerm2 | Available | [`iterm2/`](iterm2/) |
 | Windows Terminal | Available | [`windows-terminal/`](windows-terminal/) |
+| Warp | Available | [`warp/`](warp/) |
 | tmux | Available | [`tmux/`](tmux/) |
 | Zellij | Available | [`zellij/`](zellij/) |
 | Starship | Available | [`starship/`](starship/) |

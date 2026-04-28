@@ -3,7 +3,8 @@ mod common;
 use common::{
   ghostty_ansi_color, ghostty_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute,
   jetbrains_color, nvim_palette_color, obsidian_color, starship_palette_color, tmux_option_value, tmux_style_bg,
-  tmux_style_fg, vscode_color, windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color, zellij_color,
+  tmux_style_fg, vscode_color, warp_ansi_color, warp_color, windows_terminal_color, xcode_color, xcode_syntax_color,
+  zed_editor_color, zellij_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -789,6 +790,130 @@ fn light_cursor_windows_terminal_matches_ghostty() {
   );
   let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
   assert_eq!(wt, ghostty, "light cursor: wt={wt} ghostty={ghostty}");
+}
+
+// -- Warp cross-platform consistency --
+
+const WARP_DARK: &str = include_str!("../warp/warm-burnout-dark.yaml");
+const WARP_LIGHT: &str = include_str!("../warp/warm-burnout-light.yaml");
+
+#[test]
+fn dark_background_warp_matches_ghostty() {
+  let warp = warp_color(WARP_DARK, "background");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(warp, ghostty, "dark background: warp={warp} ghostty={ghostty}");
+}
+
+#[test]
+fn light_background_warp_matches_ghostty() {
+  let warp = warp_color(WARP_LIGHT, "background");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(warp, ghostty, "light background: warp={warp} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_foreground_warp_matches_ghostty() {
+  let warp = warp_color(WARP_DARK, "foreground");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(warp, ghostty, "dark foreground: warp={warp} ghostty={ghostty}");
+}
+
+#[test]
+fn light_foreground_warp_matches_ghostty() {
+  let warp = warp_color(WARP_LIGHT, "foreground");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(warp, ghostty, "light foreground: warp={warp} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_cursor_warp_matches_ghostty() {
+  let warp = warp_color(WARP_DARK, "cursor");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "cursor-color");
+  assert_eq!(warp, ghostty, "dark cursor: warp={warp} ghostty={ghostty}");
+}
+
+#[test]
+fn light_cursor_warp_matches_ghostty() {
+  let warp = warp_color(WARP_LIGHT, "cursor");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
+  assert_eq!(warp, ghostty, "light cursor: warp={warp} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_accent_warp_matches_canonical() {
+  assert_eq!(
+    warp_color(WARP_DARK, "accent"),
+    "#b8522e",
+    "dark warp accent must be canonical copper rust"
+  );
+}
+
+#[test]
+fn light_accent_warp_matches_canonical() {
+  assert_eq!(
+    warp_color(WARP_LIGHT, "accent"),
+    "#b8522e",
+    "light warp accent must be canonical copper rust"
+  );
+}
+
+const WARP_ANSI_KEYS: &[&str] = &["black", "red", "green", "yellow", "blue", "magenta", "cyan", "white"];
+
+fn assert_warp_bank_matches_ghostty(warp_src: &str, ghostty_src: &str, bank: &str, base: u8, variant: &str) {
+  for (offset, name) in WARP_ANSI_KEYS.iter().enumerate() {
+    let warp = warp_ansi_color(warp_src, bank, name);
+    let ghostty = ghostty_ansi_color(ghostty_src, base + offset as u8);
+    assert_eq!(
+      warp,
+      ghostty,
+      "{variant} {bank}.{name} (palette {}): warp={warp} ghostty={ghostty}",
+      base + offset as u8
+    );
+  }
+}
+
+#[test]
+fn dark_normal_ansi_warp_matches_ghostty() {
+  assert_warp_bank_matches_ghostty(
+    WARP_DARK,
+    include_str!("../ghostty/warm-burnout-dark"),
+    "normal",
+    0,
+    "dark",
+  );
+}
+
+#[test]
+fn dark_bright_ansi_warp_matches_ghostty() {
+  assert_warp_bank_matches_ghostty(
+    WARP_DARK,
+    include_str!("../ghostty/warm-burnout-dark"),
+    "bright",
+    8,
+    "dark",
+  );
+}
+
+#[test]
+fn light_normal_ansi_warp_matches_ghostty() {
+  assert_warp_bank_matches_ghostty(
+    WARP_LIGHT,
+    include_str!("../ghostty/warm-burnout-light"),
+    "normal",
+    0,
+    "light",
+  );
+}
+
+#[test]
+fn light_bright_ansi_warp_matches_ghostty() {
+  assert_warp_bank_matches_ghostty(
+    WARP_LIGHT,
+    include_str!("../ghostty/warm-burnout-light"),
+    "bright",
+    8,
+    "light",
+  );
 }
 
 // -- Home Assistant cross-platform consistency --

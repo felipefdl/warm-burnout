@@ -1,0 +1,25 @@
+name: 'Warm Burnout Dark'
+accent: '#b8522e'
+background: '#1a1510'
+foreground: '#bfbdb6'
+cursor: '#f5c56e'
+details: darker
+terminal_colors:
+  normal:
+    black: '#23211b'
+    red: '#f06b73'
+    green: '#70bf56'
+    yellow: '#fdb04c'
+    blue: '#4fbfff'
+    magenta: '#d0a1ff'
+    cyan: '#93e2c8'
+    white: '#c7c7c7'
+  bright:
+    black: '#686868'
+    red: '#f07178'
+    green: '#aad94c'
+    yellow: '#ffb454'
+    blue: '#59c2ff'
+    magenta: '#d2a6ff'
+    cyan: '#95e6cb'
+    white: '#ffffff'

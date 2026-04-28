@@ -258,6 +258,28 @@ pub fn home_assistant_color(src: &str, theme_name: &str, mode: &str, key: &str) 
   hex_to_lower(val)
 }
 
+/// Extract a top-level chrome color (`accent`, `background`, `foreground`, `cursor`)
+/// from a Warp theme YAML file.
+pub fn warp_color(src: &str, key: &str) -> String {
+  let v: serde_yml::Value = serde_yml::from_str(src).expect("invalid YAML");
+  hex_to_lower(
+    v.get(key)
+      .and_then(|x| x.as_str())
+      .unwrap_or_else(|| panic!("missing top-level key: {key}")),
+  )
+}
+
+/// Extract an ANSI color from a Warp theme YAML file.
+/// `bank` is `"normal"` or `"bright"`. `name` is one of `black, red, green, yellow, blue, magenta, cyan, white`.
+pub fn warp_ansi_color(src: &str, bank: &str, name: &str) -> String {
+  let v: serde_yml::Value = serde_yml::from_str(src).expect("invalid YAML");
+  hex_to_lower(
+    v["terminal_colors"][bank][name]
+      .as_str()
+      .unwrap_or_else(|| panic!("missing terminal_colors.{bank}.{name}")),
+  )
+}
+
 /// Parse a hex color string (with or without `#` prefix) into (R, G, B) as f64 in 0.0..1.0.
 fn parse_hex_rgb(hex: &str) -> (f64, f64, f64) {
   let hex = hex.strip_prefix('#').unwrap_or(hex);

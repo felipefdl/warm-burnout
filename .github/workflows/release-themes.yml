@@ -100,6 +100,13 @@ jobs:
             warm-burnout-light.json \
             warm-burnout.json
 
+      - name: Package Warp
+        run: |
+          cd warp
+          zip -j ../warm-burnout-warp.zip \
+            warm-burnout-dark.yaml \
+            warm-burnout-light.yaml
+
       - name: Package tmux
         run: |
           cd tmux
@@ -149,6 +156,7 @@ jobs:
             warm-burnout-xcode.zip
             warm-burnout-iterm2.zip
             warm-burnout-windows-terminal.zip
+            warm-burnout-warp.zip
             warm-burnout-tmux.zip
             warm-burnout-zellij.zip
             warm-burnout-eza.zip
