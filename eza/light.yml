@@ -162,11 +162,11 @@ file_type:
   temp:
     foreground: "#b03434"
   compiled:
-    foreground: "#285464"
+    foreground: "#8e4632"
   build:
     foreground: "#544c40"
   source:
-    foreground: "#285464"
+    foreground: "#8f4418"
 
 punctuation:
   foreground: "#544c40"
@@ -194,7 +194,7 @@ symlink_path:
   foreground: "#286a48"
 
 control_char:
-  foreground: "#285464"
+  foreground: "#7e4060"
 
 broken_symlink:
   foreground: "#b03434"
