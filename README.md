@@ -145,6 +145,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Ghostty | Available | [`ghostty/`](ghostty/) |
 | Zed | Available | [`zed/`](zed/) |
 | Neovim | Available | [`nvim/`](nvim/) |
+| Vim | Available | [`vim/`](vim/) |
 | Xcode | Available | [`xcode/`](xcode/) |
 | iTerm2 | Available | [`iterm2/`](iterm2/) |
 | Windows Terminal | Available | [`windows-terminal/`](windows-terminal/) |

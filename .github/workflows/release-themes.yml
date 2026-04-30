@@ -78,6 +78,12 @@ jobs:
             colors/ \
             lua/
 
+      - name: Package Vim
+        run: |
+          cd vim
+          zip -r ../warm-burnout-vim.zip \
+            colors/
+
       - name: Package Xcode
         run: |
           cd xcode
@@ -153,6 +159,7 @@ jobs:
             warm-burnout-starship.zip
             warm-burnout-zed.zip
             warm-burnout-nvim.zip
+            warm-burnout-vim.zip
             warm-burnout-xcode.zip
             warm-burnout-iterm2.zip
             warm-burnout-windows-terminal.zip

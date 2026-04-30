@@ -41,6 +41,8 @@ warm-burnout/
     tmux.rs                   # tmux theme validation tests
     zellij.rs                 # Zellij theme validation tests
     zsh.rs                    # Zsh theme validation tests
+    nvim.rs                   # Neovim theme validation tests
+    vim.rs                    # Vim theme validation tests
     obsidian.rs               # Obsidian theme validation tests
   .github/workflows/
     validate.yml              # CI: run theme validation on push/PR
@@ -99,6 +101,12 @@ warm-burnout/
         palette.lua           # Dark + light palette tables
         highlights.lua        # All highlight group definitions
         terminal.lua          # Terminal ANSI colors (16 colors)
+  vim/                        # Vim colorscheme (Vim 8+)
+    README.md                 # Vim install instructions
+    AGENTS.md                 # Vim-specific agent rules
+    colors/
+      warm-burnout-dark.vim   # Self-contained dark variant
+      warm-burnout-light.vim  # Self-contained light variant
   xcode/                      # Xcode color theme
     README.md                 # Xcode install instructions
     AGENTS.md                 # Xcode-specific agent rules
