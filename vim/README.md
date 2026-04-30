@@ -1,6 +1,6 @@
 # Warm Burnout for Vim
 
-Your retinas asked nicely. A classic Vim colorscheme -- no Lua, no Treesitter, no runtime dependencies. Just 200+ highlight groups of clinically warm, emotionally cold syntax highlighting.
+Your retinas asked nicely. A classic Vim colorscheme: no Lua, no Treesitter, no runtime dependencies. Just 200+ highlight groups of clinically warm, emotionally cold syntax highlighting.
 
 Requires Vim 8.0 or newer. For Neovim, use the [`nvim/`](../nvim/) platform instead.
 

@@ -1,5 +1,7 @@
 mod common;
 
+use std::process::Command;
+
 use common::{extract_hex_colors, hex_to_lower, is_valid_hex};
 
 const DARK: &str = include_str!("../vim/colors/warm-burnout-dark.vim");
@@ -336,6 +338,36 @@ const REQUIRED_DIAGNOSTIC: &[&str] = &[
 
 const REQUIRED_GIT: &[&str] = &["GitGutterAdd", "GitGutterChange", "GitGutterDelete"];
 
+const REQUIRED_ALE: &[&str] = &[
+  "ALEErrorSign",
+  "ALEWarningSign",
+  "ALEInfoSign",
+  "ALEError",
+  "ALEWarning",
+];
+
+const REQUIRED_COC: &[&str] = &[
+  "CocErrorSign",
+  "CocWarningSign",
+  "CocInfoSign",
+  "CocHintSign",
+  "CocErrorHighlight",
+  "CocWarningHighlight",
+];
+
+const REQUIRED_SIGNIFY: &[&str] = &["SignifySignAdd", "SignifySignChange", "SignifySignDelete"];
+
+const REQUIRED_NERDTREE: &[&str] = &[
+  "NERDTreeDir",
+  "NERDTreeDirSlash",
+  "NERDTreeFile",
+  "NERDTreeCWD",
+  "NERDTreeOpenable",
+  "NERDTreeClosable",
+];
+
+const REQUIRED_NETRW: &[&str] = &["netrwDir", "netrwExe", "netrwClassify"];
+
 #[test]
 fn dark_has_editor_ui_groups() {
   for group in REQUIRED_EDITOR_UI {
@@ -413,6 +445,67 @@ fn light_has_git_groups() {
   }
 }
 
+// -- Plugin highlight coverage (ALE, coc.nvim, vim-signify, NERDTree, netrw) --
+
+fn assert_groups(src: &str, groups: &[&str], variant: &str, plugin: &str) {
+  for group in groups {
+    assert!(
+      highlight_line(src, group).is_some(),
+      "{variant} missing {plugin} group: {group}"
+    );
+  }
+}
+
+#[test]
+fn dark_has_ale_groups() {
+  assert_groups(DARK, REQUIRED_ALE, "dark", "ALE");
+}
+
+#[test]
+fn light_has_ale_groups() {
+  assert_groups(LIGHT, REQUIRED_ALE, "light", "ALE");
+}
+
+#[test]
+fn dark_has_coc_groups() {
+  assert_groups(DARK, REQUIRED_COC, "dark", "coc.nvim");
+}
+
+#[test]
+fn light_has_coc_groups() {
+  assert_groups(LIGHT, REQUIRED_COC, "light", "coc.nvim");
+}
+
+#[test]
+fn dark_has_signify_groups() {
+  assert_groups(DARK, REQUIRED_SIGNIFY, "dark", "vim-signify");
+}
+
+#[test]
+fn light_has_signify_groups() {
+  assert_groups(LIGHT, REQUIRED_SIGNIFY, "light", "vim-signify");
+}
+
+#[test]
+fn dark_has_nerdtree_groups() {
+  assert_groups(DARK, REQUIRED_NERDTREE, "dark", "NERDTree");
+}
+
+#[test]
+fn light_has_nerdtree_groups() {
+  assert_groups(LIGHT, REQUIRED_NERDTREE, "light", "NERDTree");
+}
+
+#[test]
+fn dark_has_netrw_groups() {
+  assert_groups(DARK, REQUIRED_NETRW, "dark", "netrw");
+}
+
+#[test]
+fn light_has_netrw_groups() {
+  assert_groups(LIGHT, REQUIRED_NETRW, "light", "netrw");
+}
+
 // -- Font style system: bold keywords, italic types, italic comments --
 
 fn assert_style(src: &str, group: &str, style: &str, variant: &str) {
@@ -475,6 +568,38 @@ fn light_types_are_italic() {
   assert_style(LIGHT, "Type", "italic", "light");
   assert_style(LIGHT, "Typedef", "italic", "light");
   assert_style(LIGHT, "Structure", "italic", "light");
+}
+
+#[test]
+fn dark_storage_is_bold() {
+  assert_style(DARK, "StorageClass", "bold", "dark");
+}
+
+#[test]
+fn light_storage_is_bold() {
+  assert_style(LIGHT, "StorageClass", "bold", "light");
+}
+
+#[test]
+fn dark_decorators_are_italic() {
+  assert_style(DARK, "pythonDecorator", "italic", "dark");
+  assert_style(DARK, "rustAttribute", "italic", "dark");
+}
+
+#[test]
+fn light_decorators_are_italic() {
+  assert_style(LIGHT, "pythonDecorator", "italic", "light");
+  assert_style(LIGHT, "rustAttribute", "italic", "light");
+}
+
+#[test]
+fn dark_css_props_are_italic() {
+  assert_style(DARK, "cssProp", "italic", "dark");
+}
+
+#[test]
+fn light_css_props_are_italic() {
+  assert_style(LIGHT, "cssProp", "italic", "light");
 }
 
 // -- Diagnostics use undercurl --
@@ -636,4 +761,74 @@ fn light_color_highlights_have_cterm_equivalents() {
       line.trim()
     );
   }
+}
+
+// -- Headless Vim load tests --
+// These tests require `vim` to be installed. They run the colorscheme in
+// silent ex mode and verify it loads without errors.
+
+fn vim_available() -> bool {
+  Command::new("vim").arg("--version").output().is_ok()
+}
+
+fn run_vim_load_test(variant: &str) -> (bool, String) {
+  let manifest_dir = env!("CARGO_MANIFEST_DIR");
+  let rtp_path = format!("{manifest_dir}/vim");
+  let script_path = format!("{manifest_dir}/tests/vim_load_test.vim");
+
+  let out_path = std::env::temp_dir().join(format!("warm-burnout-vim-test-{variant}.out"));
+  let _ = std::fs::remove_file(&out_path);
+
+  let status = Command::new("vim")
+    .args([
+      "-N",
+      "-es",
+      "-u",
+      "NONE",
+      "-i",
+      "NONE",
+      "--not-a-term",
+      "--cmd",
+      &format!("set rtp+={rtp_path}"),
+      "--cmd",
+      &format!("let g:variant='{variant}'"),
+      "--cmd",
+      &format!("let g:test_out='{}'", out_path.display()),
+      "-S",
+      &script_path,
+    ])
+    .status()
+    .expect("failed to run vim");
+
+  let output = std::fs::read_to_string(&out_path).unwrap_or_else(|_| "<no output file written>".into());
+  let _ = std::fs::remove_file(&out_path);
+  (status.success(), output)
+}
+
+#[test]
+fn headless_vim_loads_dark_variant() {
+  if !vim_available() {
+    eprintln!("skipping: vim not found");
+    return;
+  }
+  let (success, output) = run_vim_load_test("dark");
+  assert!(success, "dark variant failed to load in vim:\n{output}");
+  assert!(
+    output.contains("OK:warm-burnout-dark"),
+    "dark variant did not produce expected output:\n{output}"
+  );
+}
+
+#[test]
+fn headless_vim_loads_light_variant() {
+  if !vim_available() {
+    eprintln!("skipping: vim not found");
+    return;
+  }
+  let (success, output) = run_vim_load_test("light");
+  assert!(success, "light variant failed to load in vim:\n{output}");
+  assert!(
+    output.contains("OK:warm-burnout-light"),
+    "light variant did not produce expected output:\n{output}"
+  );
 }

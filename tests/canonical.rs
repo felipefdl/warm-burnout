@@ -328,6 +328,90 @@ fn light_foreground_nvim_matches_ghostty() {
   assert_eq!(nvim, ghostty, "light foreground: nvim={nvim} ghostty={ghostty}");
 }
 
+// -- Vim cross-platform consistency --
+//
+// Vim mirrors the nvim platform but is self-contained vimscript. Pin its
+// background, foreground, and cursor to the nvim palette so the warm core
+// can never drift between the two editors.
+
+const VIM_DARK: &str = include_str!("../vim/colors/warm-burnout-dark.vim");
+const VIM_LIGHT: &str = include_str!("../vim/colors/warm-burnout-light.vim");
+
+fn vim_highlight_attr(src: &str, group: &str, key: &str) -> String {
+  for line in src.lines() {
+    let t = line.trim_start();
+    let Some(rest) = t.strip_prefix("highlight ").or_else(|| t.strip_prefix("hi ")) else {
+      continue;
+    };
+    let mut tokens = rest.split_whitespace();
+    if tokens.next() != Some(group) {
+      continue;
+    }
+    for token in tokens {
+      if let Some(val) = token.strip_prefix(&format!("{key}=")) {
+        return hex_to_lower(val);
+      }
+    }
+  }
+  panic!("no {key} for {group} in vim source");
+}
+
+#[test]
+fn dark_background_vim_matches_nvim() {
+  let vim = vim_highlight_attr(VIM_DARK, "Normal", "guibg");
+  let nvim = nvim_palette_color(nvim_dark_block(), "bg");
+  assert_eq!(vim, nvim, "dark background: vim={vim} nvim={nvim}");
+}
+
+#[test]
+fn light_background_vim_matches_nvim() {
+  let vim = vim_highlight_attr(VIM_LIGHT, "Normal", "guibg");
+  let nvim = nvim_palette_color(nvim_light_block(), "bg");
+  assert_eq!(vim, nvim, "light background: vim={vim} nvim={nvim}");
+}
+
+#[test]
+fn dark_foreground_vim_matches_nvim() {
+  let vim = vim_highlight_attr(VIM_DARK, "Normal", "guifg");
+  let nvim = nvim_palette_color(nvim_dark_block(), "fg");
+  assert_eq!(vim, nvim, "dark foreground: vim={vim} nvim={nvim}");
+}
+
+#[test]
+fn light_foreground_vim_matches_nvim() {
+  let vim = vim_highlight_attr(VIM_LIGHT, "Normal", "guifg");
+  let nvim = nvim_palette_color(nvim_light_block(), "fg");
+  assert_eq!(vim, nvim, "light foreground: vim={vim} nvim={nvim}");
+}
+
+#[test]
+fn dark_cursor_vim_matches_nvim() {
+  let vim = vim_highlight_attr(VIM_DARK, "Cursor", "guibg");
+  let nvim = nvim_palette_color(nvim_dark_block(), "cursor");
+  assert_eq!(vim, nvim, "dark cursor: vim={vim} nvim={nvim}");
+}
+
+#[test]
+fn light_cursor_vim_matches_nvim() {
+  let vim = vim_highlight_attr(VIM_LIGHT, "Cursor", "guibg");
+  let nvim = nvim_palette_color(nvim_light_block(), "cursor");
+  assert_eq!(vim, nvim, "light cursor: vim={vim} nvim={nvim}");
+}
+
+#[test]
+fn dark_background_vim_matches_ghostty() {
+  let vim = vim_highlight_attr(VIM_DARK, "Normal", "guibg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(vim, ghostty, "dark background: vim={vim} ghostty={ghostty}");
+}
+
+#[test]
+fn light_background_vim_matches_ghostty() {
+  let vim = vim_highlight_attr(VIM_LIGHT, "Normal", "guibg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(vim, ghostty, "light background: vim={vim} ghostty={ghostty}");
+}
+
 // -- Background/foreground matches: vscode <-> xcode --
 
 #[test]
