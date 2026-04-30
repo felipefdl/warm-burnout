@@ -140,6 +140,13 @@ jobs:
           cd eza
           zip -j ../warm-burnout-eza.zip dark.yml light.yml
 
+      - name: Package Helix
+        run: |
+          cd helix
+          zip -j ../warm-burnout-helix.zip \
+            warm_burnout_dark.toml \
+            warm_burnout_light.toml
+
       - name: Package Home Assistant
         run: cp themes/warm-burnout.yaml warm-burnout-home-assistant.yaml
 
@@ -183,6 +190,7 @@ jobs:
             warm-burnout-tmux.zip
             warm-burnout-zellij.zip
             warm-burnout-eza.zip
+            warm-burnout-helix.zip
             warm-burnout-home-assistant.yaml
             warm-burnout-obsidian.zip
             warm-burnout-emacs.zip

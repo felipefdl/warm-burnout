@@ -1,0 +1,244 @@
+# Warm Burnout Light -- Helix theme
+# Copy to ~/.config/helix/themes/warm_burnout_light.toml
+# Then set: theme = "warm_burnout_light" in ~/.config/helix/config.toml
+
+# -- Syntax highlighting -----------------------------------------------
+
+"attribute" = { fg = "decorator", modifiers = ["italic"] }
+
+"type" = { fg = "type", modifiers = ["italic"] }
+"type.builtin" = { fg = "type", modifiers = ["italic"] }
+"type.parameter" = { fg = "type", modifiers = ["italic"] }
+"type.enum.variant" = { fg = "regex" }
+
+"constructor" = { fg = "type", modifiers = ["italic"] }
+
+"constant" = { fg = "number" }
+"constant.builtin" = { fg = "number" }
+"constant.builtin.boolean" = { fg = "number" }
+"constant.character" = { fg = "string" }
+"constant.character.escape" = { fg = "regex" }
+"constant.numeric" = { fg = "number" }
+"constant.numeric.integer" = { fg = "number" }
+"constant.numeric.float" = { fg = "number" }
+
+"string" = { fg = "string" }
+"string.regexp" = { fg = "regex" }
+"string.special" = { fg = "regex" }
+"string.special.path" = { fg = "string" }
+"string.special.url" = { fg = "tag", modifiers = ["underlined"] }
+"string.special.symbol" = { fg = "string" }
+
+"comment" = { fg = "comment", modifiers = ["italic"] }
+"comment.line" = { fg = "comment", modifiers = ["italic"] }
+"comment.line.documentation" = { fg = "comment", modifiers = ["italic"] }
+"comment.block" = { fg = "comment", modifiers = ["italic"] }
+"comment.block.documentation" = { fg = "comment", modifiers = ["italic"] }
+
+"variable" = { fg = "fg" }
+"variable.builtin" = { fg = "tag", modifiers = ["italic"] }
+"variable.parameter" = { fg = "number" }
+"variable.other.member" = { fg = "member" }
+
+"label" = { fg = "keyword" }
+
+"punctuation" = { fg = "fg" }
+"punctuation.delimiter" = { fg = "fg-dim" }
+"punctuation.bracket" = { fg = "fg" }
+"punctuation.special" = { fg = "keyword" }
+
+"keyword" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.control" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.control.conditional" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.control.repeat" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.control.import" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.control.return" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.control.exception" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.operator" = { fg = "operator" }
+"keyword.directive" = { fg = "keyword" }
+"keyword.function" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.storage" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.storage.type" = { fg = "keyword", modifiers = ["bold"] }
+"keyword.storage.modifier" = { fg = "keyword", modifiers = ["bold"] }
+
+"operator" = { fg = "operator" }
+
+"function" = { fg = "func" }
+"function.builtin" = { fg = "member" }
+"function.method" = { fg = "func" }
+"function.macro" = { fg = "decorator" }
+"function.special" = { fg = "decorator" }
+
+"tag" = { fg = "tag", modifiers = ["bold"] }
+"tag.builtin" = { fg = "tag", modifiers = ["bold"] }
+
+"namespace" = { fg = "string" }
+
+"special" = { fg = "decorator", modifiers = ["italic"] }
+
+# -- Markup ------------------------------------------------------------
+
+"markup.heading" = { fg = "string", modifiers = ["bold"] }
+"markup.heading.marker" = { fg = "func" }
+"markup.heading.1" = { fg = "string", modifiers = ["bold"] }
+"markup.heading.2" = { fg = "string", modifiers = ["bold"] }
+"markup.heading.3" = { fg = "string", modifiers = ["bold"] }
+"markup.heading.4" = { fg = "string", modifiers = ["bold"] }
+"markup.heading.5" = { fg = "string", modifiers = ["bold"] }
+"markup.heading.6" = { fg = "string", modifiers = ["bold"] }
+"markup.list" = { fg = "func" }
+"markup.list.numbered" = { fg = "func" }
+"markup.list.unnumbered" = { fg = "func" }
+"markup.list.checked" = { fg = "added" }
+"markup.list.unchecked" = { fg = "fg-dim" }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.strikethrough" = { modifiers = ["crossed_out"] }
+"markup.link" = { fg = "tag" }
+"markup.link.url" = { fg = "tag", modifiers = ["underlined"] }
+"markup.link.label" = { fg = "info" }
+"markup.link.text" = { fg = "info" }
+"markup.quote" = { fg = "regex", modifiers = ["italic"] }
+"markup.raw" = { fg = "operator" }
+"markup.raw.inline" = { fg = "operator" }
+"markup.raw.block" = { fg = "fg" }
+
+# -- Diff --------------------------------------------------------------
+
+"diff.plus" = { fg = "added" }
+"diff.plus.gutter" = { fg = "added" }
+"diff.minus" = { fg = "deleted" }
+"diff.minus.gutter" = { fg = "deleted" }
+"diff.delta" = { fg = "modified" }
+"diff.delta.gutter" = { fg = "modified" }
+
+# -- Interface ---------------------------------------------------------
+
+"ui.background" = { bg = "bg" }
+"ui.background.separator" = { fg = "bg-highlight" }
+
+"ui.cursor" = { modifiers = ["reversed"] }
+"ui.cursor.normal" = { fg = "bg", bg = "cursor" }
+"ui.cursor.insert" = { fg = "bg", bg = "fg" }
+"ui.cursor.select" = { fg = "bg", bg = "accent" }
+"ui.cursor.match" = { fg = "accent", modifiers = ["bold"] }
+"ui.cursor.primary" = { modifiers = ["reversed"] }
+"ui.cursor.primary.normal" = { fg = "bg", bg = "cursor" }
+"ui.cursor.primary.insert" = { fg = "bg", bg = "fg" }
+"ui.cursor.primary.select" = { fg = "bg", bg = "accent" }
+
+"ui.gutter" = { bg = "bg" }
+"ui.gutter.selected" = { bg = "bg-highlight" }
+
+"ui.linenr" = { fg = "fg-gutter" }
+"ui.linenr.selected" = { fg = "fg-gutter-active" }
+
+"ui.statusline" = { fg = "fg-dim", bg = "bg-dim" }
+"ui.statusline.inactive" = { fg = "fg-gutter", bg = "bg-dim" }
+"ui.statusline.normal" = { fg = "bg", bg = "accent", modifiers = ["bold"] }
+"ui.statusline.insert" = { fg = "bg", bg = "added", modifiers = ["bold"] }
+"ui.statusline.select" = { fg = "bg", bg = "keyword", modifiers = ["bold"] }
+"ui.statusline.separator" = { fg = "fg-gutter" }
+
+"ui.bufferline" = { fg = "fg-gutter", bg = "bg-dim" }
+"ui.bufferline.active" = { fg = "fg", bg = "bg" }
+"ui.bufferline.background" = { bg = "bg-dim" }
+
+"ui.popup" = { fg = "fg", bg = "bg-float" }
+"ui.popup.info" = { fg = "fg", bg = "bg-float" }
+
+"ui.window" = { fg = "bg-highlight" }
+
+"ui.help" = { fg = "fg", bg = "bg-float" }
+
+"ui.text" = { fg = "fg" }
+"ui.text.focus" = { fg = "fg", bg = "bg-highlight" }
+"ui.text.inactive" = { fg = "fg-gutter" }
+"ui.text.info" = { fg = "fg-dim" }
+"ui.text.directory" = { fg = "func" }
+
+"ui.virtual" = { fg = "fg-gutter" }
+"ui.virtual.ruler" = { bg = "bg-highlight" }
+"ui.virtual.whitespace" = { fg = "fg-gutter" }
+"ui.virtual.indent-guide" = { fg = "fg-gutter" }
+"ui.virtual.inlay-hint" = { fg = "fg-gutter" }
+"ui.virtual.inlay-hint.parameter" = { fg = "fg-gutter" }
+"ui.virtual.inlay-hint.type" = { fg = "fg-gutter", modifiers = ["italic"] }
+"ui.virtual.jump-label" = { fg = "accent", modifiers = ["bold"] }
+"ui.virtual.wrap" = { fg = "fg-gutter" }
+
+"ui.menu" = { fg = "fg", bg = "bg-float" }
+"ui.menu.selected" = { fg = "fg", bg = "bg-selection" }
+"ui.menu.scroll" = { fg = "fg-gutter", bg = "bg-float" }
+
+"ui.selection" = { bg = "bg-selection" }
+"ui.selection.primary" = { bg = "bg-selection" }
+
+"ui.highlight" = { bg = "bg-highlight" }
+"ui.highlight.frameline" = { bg = "bg-highlight" }
+
+"ui.cursorline.primary" = { bg = "bg-highlight" }
+"ui.cursorline.secondary" = { bg = "bg-highlight" }
+"ui.cursorcolumn.primary" = { bg = "bg-highlight" }
+"ui.cursorcolumn.secondary" = { bg = "bg-highlight" }
+
+"ui.debug.breakpoint" = { fg = "error" }
+"ui.debug.active" = { fg = "accent" }
+
+"ui.picker.header" = { fg = "fg-dim", modifiers = ["bold"] }
+"ui.picker.header.column" = { fg = "fg-dim" }
+"ui.picker.header.column.active" = { fg = "fg", modifiers = ["bold"] }
+
+# -- Diagnostics -------------------------------------------------------
+
+"diagnostic" = { underline = { style = "curl" } }
+"diagnostic.hint" = { underline = { color = "hint", style = "curl" } }
+"diagnostic.info" = { underline = { color = "info", style = "curl" } }
+"diagnostic.warning" = { underline = { color = "warn", style = "curl" } }
+"diagnostic.error" = { underline = { color = "error", style = "curl" } }
+"diagnostic.unnecessary" = { modifiers = ["dim"] }
+"diagnostic.deprecated" = { modifiers = ["crossed_out"] }
+
+warning = { fg = "warn" }
+error = { fg = "error" }
+info = { fg = "info" }
+hint = { fg = "hint" }
+
+# -- Palette -----------------------------------------------------------
+
+[palette]
+bg = "#F5EDE0"
+bg-dim = "#EDE6DA"
+bg-float = "#F0E8DC"
+bg-highlight = "#e2dace"
+bg-selection = "#dadcd6"
+
+fg = "#3a3630"
+fg-dim = "#5c5750"
+fg-gutter = "#8a8070"
+fg-gutter-active = "#6a6258"
+
+comment = "#544c40"
+cursor = "#8a6600"
+accent = "#b8522e"
+
+keyword = "#924800"
+func = "#855700"
+string = "#4d5c1a"
+type = "#285464"
+operator = "#8f4418"
+number = "#7e4060"
+tag = "#8e4632"
+property = "#74501c"
+member = "#883850"
+regex = "#286a48"
+decorator = "#7a5a1c"
+
+error = "#b03434"
+warn = "#b8522e"
+info = "#285464"
+hint = "#544c40"
+
+added = "#226414"
+modified = "#2868a0"
+deleted = "#c43040"

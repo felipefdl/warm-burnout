@@ -1,10 +1,10 @@
 mod common;
 
 use common::{
-  alacritty_color, emacs_palette_color, ghostty_ansi_color, ghostty_color, hex_to_lower, home_assistant_color,
-  iterm2_color, jetbrains_attribute, jetbrains_color, nvim_palette_color, obsidian_color, starship_palette_color,
-  tmux_option_value, tmux_style_bg, tmux_style_fg, vscode_color, warp_ansi_color, warp_color, windows_terminal_color,
-  xcode_color, xcode_syntax_color, zed_editor_color, zellij_color,
+  alacritty_color, emacs_palette_color, ghostty_ansi_color, ghostty_color, helix_palette_color, hex_to_lower,
+  home_assistant_color, iterm2_color, jetbrains_attribute, jetbrains_color, nvim_palette_color, obsidian_color,
+  starship_palette_color, tmux_option_value, tmux_style_bg, tmux_style_fg, vscode_color, warp_ansi_color, warp_color,
+  windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color, zellij_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -1574,4 +1574,96 @@ fn light_comment_emacs_matches_nvim() {
   let emacs = emacs_palette_color(EMACS_SHARED, "light", "comment");
   let nvim = nvim_palette_color(nvim_light_block(), "comment");
   assert_eq!(emacs, nvim, "light comment: emacs={emacs} nvim={nvim}");
+}
+
+// -- Helix cross-platform consistency --
+
+const HELIX_DARK: &str = include_str!("../helix/warm_burnout_dark.toml");
+const HELIX_LIGHT: &str = include_str!("../helix/warm_burnout_light.toml");
+
+#[test]
+fn dark_background_helix_matches_vscode() {
+  let helix = helix_palette_color(HELIX_DARK, "bg");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-dark.json"),
+    "editor.background",
+  );
+  assert_eq!(helix, vscode, "dark background: helix={helix} vscode={vscode}");
+}
+
+#[test]
+fn light_background_helix_matches_vscode() {
+  let helix = helix_palette_color(HELIX_LIGHT, "bg");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-light.json"),
+    "editor.background",
+  );
+  assert_eq!(helix, vscode, "light background: helix={helix} vscode={vscode}");
+}
+
+#[test]
+fn dark_foreground_helix_matches_vscode() {
+  let helix = helix_palette_color(HELIX_DARK, "fg");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-dark.json"),
+    "editor.foreground",
+  );
+  assert_eq!(helix, vscode, "dark foreground: helix={helix} vscode={vscode}");
+}
+
+#[test]
+fn light_foreground_helix_matches_vscode() {
+  let helix = helix_palette_color(HELIX_LIGHT, "fg");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-light.json"),
+    "editor.foreground",
+  );
+  assert_eq!(helix, vscode, "light foreground: helix={helix} vscode={vscode}");
+}
+
+#[test]
+fn dark_cursor_helix_matches_ghostty() {
+  let helix = helix_palette_color(HELIX_DARK, "cursor");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "cursor-color");
+  assert_eq!(helix, ghostty, "dark cursor: helix={helix} ghostty={ghostty}");
+}
+
+#[test]
+fn light_cursor_helix_matches_ghostty() {
+  let helix = helix_palette_color(HELIX_LIGHT, "cursor");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
+  assert_eq!(helix, ghostty, "light cursor: helix={helix} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_accent_helix_matches_canonical() {
+  let helix = helix_palette_color(HELIX_DARK, "accent");
+  assert_eq!(helix, "#b8522e", "dark helix accent must be canonical copper rust");
+}
+
+#[test]
+fn light_accent_helix_matches_canonical() {
+  let helix = helix_palette_color(HELIX_LIGHT, "accent");
+  assert_eq!(helix, "#b8522e", "light helix accent must be canonical copper rust");
+}
+
+#[test]
+fn dark_background_helix_matches_ghostty() {
+  let helix = helix_palette_color(HELIX_DARK, "bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(helix, ghostty, "dark background: helix={helix} ghostty={ghostty}");
+}
+
+#[test]
+fn light_background_helix_matches_ghostty() {
+  let helix = helix_palette_color(HELIX_LIGHT, "bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(helix, ghostty, "light background: helix={helix} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_foreground_helix_matches_ghostty() {
+  let helix = helix_palette_color(HELIX_DARK, "fg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(helix, ghostty, "dark foreground: helix={helix} ghostty={ghostty}");
 }

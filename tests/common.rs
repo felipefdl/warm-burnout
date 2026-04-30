@@ -46,6 +46,15 @@ pub fn starship_palette_color(src: &str, palette: &str, key: &str) -> String {
   hex_to_lower(table["palettes"][palette][key].as_str().unwrap())
 }
 
+pub fn helix_palette_color(src: &str, key: &str) -> String {
+  let table = src.parse::<toml::Table>().unwrap();
+  hex_to_lower(
+    table["palette"][key]
+      .as_str()
+      .unwrap_or_else(|| panic!("no palette.{key} in helix theme")),
+  )
+}
+
 pub fn vscode_color(src: &str, key: &str) -> String {
   let v: serde_json::Value = serde_json::from_str(src).unwrap();
   hex_to_lower(v["colors"][key].as_str().unwrap())
