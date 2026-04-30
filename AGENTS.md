@@ -13,6 +13,11 @@
 
 Warm Burnout is a multi-platform color theme suite designed for extended coding sessions. Mostly warm palette, one cool type accent, contrast-audited to WCAG standards. Two variants: dark and light.
 
+## Agent Instruction Files
+
+- `AGENTS.md` is the source of truth for repo-level agent instructions.
+- `CLAUDE.md` is a symbolic link to `AGENTS.md`. Do not edit or review both as separate files.
+
 ## Project Structure
 
 ```
@@ -356,6 +361,16 @@ User-facing text must read like a human wrote it. AI-generated text has recogniz
 3. **Commit messages**: conventional commits with scope. Format: `type(scope): short description`. Scope is the platform or area (`vim`, `nvim`, `vscode`, `tests`, `site`, etc.). Subject under 72 characters, lowercase, no trailing period. Types: `feat`, `fix`, `refactor`, `test`, `docs`, `chore`, `perf`.
 4. **Branch names**: `feature/`, `fix/`, `chore/`, `refactor/`, `test/`, `perf/`, `docs/` prefix with kebab-case (`feature/add-vim`, `fix/light-gutter-drift`).
 5. **PR titles**: human-readable summary, not conventional-commit format. Capitalize the first word. Reads like a one-line changelog entry.
+
+### Issue Labels
+
+1. Use the repo taxonomy for every issue: `type:*`, `area:*`, `priority:*`, `status:*`, and `platform:*`.
+2. Every issue needs one `type:*`, one `priority:*`, and one `status:*` label.
+3. Platform-specific issues need the matching `platform:<name>` label.
+4. Use `type:port` for new platform or editor support.
+5. Use `area:palette`, `area:syntax`, `area:ui`, `area:accessibility`, `area:packaging`, `area:site`, or `area:screenshots` when the work touches that concern.
+6. Use `status:needs-info` when an issue is missing details. Use `status:ready` only when the issue can be picked up without another decision.
+7. Keep `good first issue` for small, scoped contributor tasks and `help wanted` when outside help is welcome.
 
 ### Code Quality
 
