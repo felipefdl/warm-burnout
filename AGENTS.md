@@ -11,13 +11,13 @@
 
 ## Project Overview
 
-Warm Burnout is a multi-platform color theme suite designed to reduce eye strain during extended coding sessions. Fully warm palette, minimal blue-spectrum emission, contrast-audited to WCAG standards. Two variants: dark and light.
+Warm Burnout is a multi-platform color theme suite designed for extended coding sessions. Mostly warm palette, one cool type accent, contrast-audited to WCAG standards. Two variants: dark and light.
 
 ## Project Structure
 
 ```
 warm-burnout/
-  README.md                   # Suite README -- brand, science, scores, palette
+  README.md                   # Suite README -- brand, contrast, palette
   AGENTS.md                   # This file -- suite-level agent rules
   LICENSE                     # MIT, Felipe Lima
   Cargo.toml                  # Rust test harness for all platforms
@@ -307,14 +307,14 @@ Use these as inspiration for copy, commit messages, taglines, and descriptions:
 
 - "consistent damage across all platforms"
 - "your eyes deserved this"
-- "warm everywhere, blue nowhere"
+- "mostly warm, rarely blue"
 - "the burnout is spreading"
 - "proofs of care in every test"
 - "because your retinas asked nicely"
-- "less blue, more therapy"
-- "clinically warm, emotionally cold"
-- "every pixel, audited to hurt less"
-- "the ophthalmologist approves, probably"
+- "less neon, more burnt toast"
+- "contrast audited, morale pending"
+- "every token audited, every pixel still doomed"
+- "one cool accent, because mud is not a palette"
 
 ### Writing Style: Avoid AI-Typical Language
 
@@ -362,6 +362,7 @@ User-facing text must read like a human wrote it. AI-generated text has recogniz
 1. Always run `cargo fmt` after modifying Rust files.
 2. Always run `cargo clippy -- -D warnings` before committing -- all warnings are errors.
 3. Run `cargo test` to verify all theme validation tests pass.
+4. Run `rumdl fmt .` and `rumdl check .` after modifying Markdown files.
 
 ### Adding a New Platform
 

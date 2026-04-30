@@ -3,5 +3,5 @@ name = "Warm Burnout"
 version = "1.6.0"
 schema_version = 1
 authors = ["Felipe Lima"]
-description = "Fully warm palette, minimal blue light, contrast-audited. Your eyes deserved this."
+description = "Mostly warm palette, one cool type accent, WCAG-audited contrast. Your eyes deserved this."
 repository = "https://github.com/felipefdl/warm-burnout"

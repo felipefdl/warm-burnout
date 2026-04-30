@@ -48,7 +48,7 @@ run-shell /path/to/warm-burnout/tmux/warm-burnout.tmux
 
 After loading, your status bar should show warm amber session names and burnt orange active windows. If everything is default gray, your tmux is too old or the path is wrong.
 
-## What This Themes
+## What It Covers
 
 tmux themes control UI chrome only: status bar, pane borders, messages, copy-mode highlights, and the clock. Terminal ANSI colors come from your terminal emulator (Ghostty, Alacritty, etc.), not from tmux.
 

@@ -24,6 +24,15 @@ jobs:
       - name: Check formatting
         run: cargo fmt -- --check
 
+      - name: Install rumdl
+        run: cargo install rumdl --version 0.1.84 --locked
+
+      - name: Check Markdown
+        run: |
+          rumdl fmt .
+          git diff --exit-code
+          rumdl check .
+
       - name: Run clippy
         run: cargo clippy -- -D warnings
 

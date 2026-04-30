@@ -400,7 +400,7 @@ fn light_no_pure_white_background() {
   );
 }
 
-// -- Brand rule: warm everywhere, blue nowhere (chrome only). --
+// Brand rule: chrome stays warm; steel type accent is reserved.
 // ANSI blue must literally exist in colors.normal/bright, so we exclude those.
 
 #[test]

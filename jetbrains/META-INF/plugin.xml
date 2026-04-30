@@ -4,9 +4,9 @@
   <version>1.0.2</version>
   <vendor url="https://github.com/felipefdl">Felipe Lima</vendor>
   <description><![CDATA[
-    <p>The theme for developers who already burned out but still have deadlines.</p>
+    <p>The theme for developers who are already burned out but still have deadlines.</p>
 
-    <p>Fully warm palette, minimal blue light, contrast-audited to WCAG standards.
+    <p>Mostly warm palette, one cool type accent, contrast-audited to WCAG standards.
     Full UI theme: editor, sidebar, tabs, toolbar, popups, everything.</p>
 
     <ul>
@@ -14,11 +14,11 @@
       <li><b>Light</b>: AA contrast (4.5:1+) on warm sepia cream. For when someone opens the blinds.</li>
     </ul>
 
-    <p>Bold keywords, italic types, readable comments. Three-tier font style system
-    so fatigued and colorblind developers can still distinguish code structure.</p>
+    <p>Bold keywords, italic types, readable comments. The style system adds
+    non-color cues for code structure when the warm palette starts to blur together.</p>
   ]]></description>
   <change-notes><![CDATA[
-    <p>1.0.2: Drop classic variants, Islands-only. Fix toolbar borders and project gradient.</p>
+    <p>1.0.2: Dropped classic variants. Islands themes only. Fixed toolbar borders and project gradient.</p>
     <p>1.0.1: Fix editor color scheme not loading when selecting the UI theme.</p>
     <p>1.0.0: Initial release.</p>
   ]]></change-notes>

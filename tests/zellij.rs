@@ -418,7 +418,7 @@ fn light_player_10_is_accent() {
   );
 }
 
-// -- Brand rule: warm everywhere, blue nowhere --
+// Brand rule: chrome stays warm; steel type accent is reserved.
 
 #[test]
 fn dark_no_canonical_steel_blue_in_chrome() {
@@ -433,7 +433,7 @@ fn dark_no_canonical_steel_blue_in_chrome() {
       let value = zellij_color(DARK, "warm-burnout-dark", component, attr);
       assert_ne!(
         value, forbidden,
-        "dark {component}.{attr} uses steel blue {forbidden}: brand rule says warm only in zellij chrome"
+        "dark {component}.{attr} uses steel blue {forbidden}: zellij chrome must stay warm"
       );
     }
   }
@@ -452,7 +452,7 @@ fn light_no_canonical_steel_blue_in_chrome() {
       let value = zellij_color(LIGHT, "warm-burnout-light", component, attr);
       assert_ne!(
         value, forbidden,
-        "light {component}.{attr} uses steel blue {forbidden}: brand rule says warm only in zellij chrome"
+        "light {component}.{attr} uses steel blue {forbidden}: zellij chrome must stay warm"
       );
     }
   }

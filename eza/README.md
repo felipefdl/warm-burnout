@@ -90,7 +90,7 @@ The theme maps the full Warm Burnout palette to every eza element:
 
 ## Verify
 
-Run `ll` or `eza -la`. Warm tones everywhere, no blue.
+Run `ll` or `eza -la`. Mostly warm tones; source files keep the steel-blue accent.
 
 ## Palette
 

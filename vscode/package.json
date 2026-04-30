@@ -1,7 +1,7 @@
 {
   "name": "warm-burnout",
   "displayName": "Warm Burnout",
-  "description": "The theme for developers who already burned out but still have deadlines. Fully warm palette, minimal blue light, contrast-audited to WCAG standards.",
+  "description": "The theme for developers who are already burned out but still have deadlines. Mostly warm palette, one cool type accent, WCAG-audited contrast.",
   "version": "1.6.0",
   "publisher": "felip3fdl",
   "license": "MIT",
@@ -20,8 +20,8 @@
     "dark-theme",
     "light-theme",
     "warm",
-    "eye-strain",
-    "low-blue-light",
+    "warm-palette",
+    "contrast",
     "wcag"
   ],
   "galleryBanner": {

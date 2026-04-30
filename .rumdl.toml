@@ -1,0 +1,8 @@
+[global]
+disable = [
+  "MD013", # line length: docs use long tables, paths, and install snippets
+  "MD031", # fenced code blocks: existing docs keep compact list/code layouts
+  "MD032", # lists: existing AGENTS files intentionally keep tight supporting lists
+  "MD040", # code fence language: tree diagrams and config fragments are common here
+  "MD057", # relative links: VS Code README screenshot paths exist after packaging
+]

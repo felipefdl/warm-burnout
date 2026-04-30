@@ -44,7 +44,7 @@ zellij options --theme warm-burnout-dark
 
 Edit `theme "..."` in your config and reload with `Ctrl + o, w` (session manager) or restart the session.
 
-## What This Themes
+## What It Covers
 
 Zellij themes control UI chrome only: tabs, status bar ribbons, pane frames, command-pane exit codes, tables, lists, and multi-user player colors. Terminal ANSI colors come from your terminal emulator (Ghostty, Alacritty, etc.), not from Zellij.
 

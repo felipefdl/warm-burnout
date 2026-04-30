@@ -33,9 +33,9 @@ The 8-key set in each ANSI block must be exactly `black, red, green, yellow, blu
 
 ## Emphasis Color Discipline
 
-Warp themes are pure terminal colors plus a single chrome accent. The chrome fields (`accent`, `background`, `foreground`, `cursor`) must follow the brand rule: warm everywhere, blue nowhere. Steel-blue `#90aec0` (dark types) and `#285464` (light types) are reserved for editor types and must not appear in chrome.
+Warp themes are pure terminal colors plus a single chrome accent. The chrome fields (`accent`, `background`, `foreground`, `cursor`) must stay warm. Steel-blue `#90aec0` (dark types) and `#285464` (light types) are reserved for editor types and must not appear in chrome.
 
-ANSI blue (`terminal_colors.normal.blue` and `.bright.blue`) is exempt: programs depend on the standard 16-color slot for ANSI blue, and shells render this color in syntax-highlighted prompts and `ls` output. Drop the canonical ghostty values verbatim.
+ANSI blue (`terminal_colors.normal.blue` and `.bright.blue`) is exempt: programs depend on the standard 16-color slot for ANSI blue, and terminal programs may use this color in syntax-highlighted prompts and file listings. Drop the canonical ghostty values verbatim.
 
 ## Out of Scope
 

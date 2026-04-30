@@ -2,7 +2,7 @@
 
 Your smart home dashboard was the last screen not burning warm. That changes now.
 
-Fully warm palette for the entire HA UI: cards, sidebar, graphs, energy dashboard, code editor, everything. Zero blues in the chrome. Your 2am automation debugging sessions just got 40% less hostile to your retinas.
+Warm-first palette for the entire HA UI: cards, sidebar, graphs, energy dashboard, code editor, everything. Chrome stays warm; the code editor keeps the steel-blue type accent. Your 2am automation debugging session still has deadlines, but at least the dashboard stopped dressing like a hospital monitor.
 
 ## Install
 
@@ -37,7 +37,7 @@ frontend:
 2. Under Theme, select **Warm Burnout**
 3. Pick Dark or Light mode (or leave it on Auto)
 
-## What This Themes
+## What It Covers
 
 The theme covers every CSS variable in HA's default theme surface:
 

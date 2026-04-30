@@ -76,11 +76,11 @@ The `0` sentinel is used for `background` wherever a component should let the un
 
 Each component carries four `emphasis_N` slots that plugins may use to colorize subcomponents (indices in fuzzy results, key hints, mode names in the compact-bar plugin). The compact-bar plugin in particular uses one of these emphases to render the current mode name (NORMAL, PANE, TAB, etc.) in the status bar, so an inappropriate color here shows up as the most prominent text in your bar.
 
-Brand rule: **warm everywhere, blue nowhere**. The steel-blue type color (`#90aec0` dark, `#285464` light) is reserved for syntax token coloring only and must not appear in any Zellij UI component, including emphases. Use warm tokens only:
+Brand rule: Zellij chrome stays warm. The steel-blue type color (`#90aec0` dark, `#285464` light) is reserved for syntax token coloring only and must not appear in any Zellij UI component, including emphases. Use warm tokens only:
 
 - `emphasis_0`: functions amber (`#ffb454` / `#855700`)
 - `emphasis_1`: strings sage (`#b4bc78` / `#4d5c1a`)
-- `emphasis_2`: tags terra cotta (`#dc9e92` / `#8e4632`) -- replaces what would otherwise be types steel
+- `emphasis_2`: tags terra cotta (`#dc9e92` / `#8e4632`): replaces the steel-blue type color that would otherwise be used
 - `emphasis_3`: constants dusty mauve (`#d4a8b8` / `#7e4060`)
 
 Per-context exceptions:

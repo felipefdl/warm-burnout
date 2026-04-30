@@ -1,8 +1,8 @@
 # Warm Burnout
 
-The theme suite for developers who already burned out but still have deadlines.
+The theme suite for developers who are already burned out but still have deadlines.
 
-Built on one premise: your eyes are taking damage and your current theme doesn't care. Warm Burnout does. Fully warm palette, minimal blue light, contrast-audited to clinical standards. Two variants: **Dark** for the 3am sessions and **Light** for when someone forces you to open the blinds.
+Built on one premise: your eyes have been bullied enough by radioactive blue themes. Warm Burnout is a mostly warm syntax palette with one cool steel-blue accent for types and WCAG-audited contrast. Two variants: **Dark** for the 3am sessions and **Light** for when someone forces you to open the blinds.
 
 ![Dark and Light side by side](screenshots/split-comparison.png)
 
@@ -10,17 +10,17 @@ Built on one premise: your eyes are taking damage and your current theme doesn't
 
 Most themes look great in screenshots. Then you use them for 14 hours straight and your eyes feel like they've been sandpapered.
 
-The blues, cyans, and purples that make themes look "cool" emit at 450-500nm, the exact wavelength range that suppresses melatonin, triggers digital eye strain, and makes your ophthalmologist wince. Your theme is fighting your body's ability to rest, even after you close the laptop.
+The blues, cyans, and purples that make themes look "cool" also turn code into a neon aquarium after twelve hours of work and pretending it is fine.
 
-Warm Burnout strips out almost all blue-spectrum syntax colors, leaving a fully warm palette (550-630nm dominant) that your retinas can survive.
+Warm Burnout pushes almost every syntax role into warm materials: amber, terra cotta, sage, brass, coral, and old stone. Types keep one cool accent because otherwise warm themes turn into mud.
 
-## Eye Safety Audit
+## Contrast Audit
 
-We ran a full ophthalmological contrast audit. Not vibes. Math.
+We ran a WCAG contrast audit. Not taste. Math.
 
 ### Dark: Every Token AAA
 
-Every syntax color meets **WCAG AAA** (>= 7:1 contrast ratio) against the editor background. Every single one. Most themes can't even get comments past 4:1.
+Every syntax color meets **WCAG AAA** (>= 7:1 contrast ratio) against the editor background. Most themes can't even get comments past 4:1.
 
 | Role | Color | Ratio | Style |
 |------|-------|-------|-------|
@@ -39,7 +39,7 @@ Your comments are readable at 3am. On purpose.
 
 ### Light: AA Minimum, Sepia Cream Background
 
-The light theme uses `#F5EDE0`, a warm sepia cream, not white. 14.6% less bright than pure white. Estimated ~4000K color temperature vs white's ~6500K, which means roughly **40-50% less melatonin suppression** compared to white-background themes.
+The light theme uses `#F5EDE0`, a warm sepia cream, not white. It is 14.6% less bright than pure white by relative luminance. Still bright enough to read code, less like staring into a dentist lamp.
 
 | Role | Color | Ratio | Style |
 |------|-------|-------|-------|
@@ -56,60 +56,42 @@ All 15 syntax tokens pass AA. No exceptions.
 
 ![Editor - Light variant](screenshots/editor-light.png)
 
-## Comfort Scores
+## Design Checks
 
-Scored across two real scenarios, not marketing fantasies.
+No fake scores, just checks.
 
-### Scenario A: You haven't slept in 72 hours
-
-Dark office. Energy drinks. You open the blinds for the first time since Tuesday.
-
-| Factor | Score | Why |
-|--------|-------|-----|
-| Photophobia risk | 7/10 | 15% dimmer than white, warm 4000K tint |
-| Melatonin preservation | 8/10 | Sepia tint vs 6500K white |
-| Cursor findability | 7/10 | 4.54:1 gold cursor (not invisible) |
-| Reading code | 9/10 | 10.33:1 primary text |
-| Ctrl+F searching | 8/10 | Gold highlight, increased opacity in light theme |
-| Reading diffs | 8/10 | 19-25% opacity tints, visible in both variants |
-| **Overall** | **8.5/10** | |
-
-### Scenario B: Normal human who cares about their eyes
-
-| Factor | Score | Why |
-|--------|-------|-----|
-| Long-session comfort | 8.5/10 | Warm, not harsh, good hierarchy |
-| Readability | 10/10 | 10.33:1 primary, all dark tokens >= 8:1, 2 light tokens at AAA |
-| Blue light reduction | 8.5/10 | Only types add blue, everything else warm |
-| Colorblind accessibility | 9/10 | Bold keywords + tags, italic types/CSS/decorators, member vars separated from error |
-| vs. pure-white themes | 9/10 | Measurably better in every metric |
-| **Overall** | **9.5/10** | |
-
-**Combined: 9/10.**
+| Check | Decision | Why |
+|-------|----------|-----|
+| Contrast | Dark syntax is AAA, light syntax is AA | Tired eyes still need legible comments |
+| Backgrounds | No pure black, no pure white | The abyss and the dentist lamp can both stay away |
+| Palette | Mostly warm, one cool type accent | Warm themes without one landmark turn into mud |
+| Font styles | Bold structure, italic types and comments | Color alone gets worse when you are exhausted |
+| Cursor | Gold, not red | A red cursor looks like an error having a panic attack |
+| Search and diffs | Warm tints, visible in both variants | Finding bugs should not require finding your cursor first |
 
 ## How It Works
 
 ### Background: no pure black, no pure white
 
-The dark background (`#1a1510`) is a warm brown-black. Pure black (#000000) causes **halation**, a glow/bleed effect around text that affects roughly 33% of the population (those with astigmatism). The warm tint eliminates this.
+The dark background (`#1a1510`) is a warm brown-black. Pure black (#000000) can make text bloom or bleed for some users, especially with astigmatism. The warm brown-black steps back from pure black.
 
 The light background (`#F5EDE0`) is warm sepia cream. Inspired by Solarized Light's cream approach but shifted toward brown-sepia. No pure white anywhere.
 
 ### Three-tier font style system
 
-Color alone fails under fatigue. When you've been staring at code for 12 hours, your color discrimination drops. For the ~8% of males with red-green color vision deficiency, warm tones blur together.
+Color alone gets worse under fatigue and color vision differences. When warm tones blur together, shape still has to carry meaning.
 
 Warm Burnout uses font styles as a second discrimination channel:
 
 - **Bold**: structural keywords (`if`, `return`, `const`) and HTML tags. Your eye scans these for code flow.
-- *Italic*: types and comments. The single cool accent (steel-blue/teal) + italic makes types unmistakable.
+- *Italic*: types and comments. The single cool accent (steel-blue/teal) plus italic makes types easier to pick out.
 - Normal: everything else.
 
-A protanopic developer running on no sleep can distinguish structure from types from data.
+A developer running on no sleep can rely on more than color. Luxury.
 
 ### One cool accent: oxidized copper
 
-The palette is fully warm except types/classes: `#90aec0` (dark) / `#285464` (light). This is the literal color of oxidized copper. One cool landmark in a warm field improves color distinctiveness without adding blue light load.
+The palette is mostly warm, not fully warm. Types/classes use `#90aec0` (dark) / `#285464` (light), the color of oxidized copper. One cool accent keeps the warm palette from turning into mud.
 
 ### Cursor: gold, not red
 

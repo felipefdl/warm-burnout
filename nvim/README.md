@@ -1,6 +1,6 @@
 # Warm Burnout for Neovim
 
-Your retinas asked nicely. Treesitter, LSP, and 200+ highlight groups of clinically warm, emotionally cold syntax highlighting.
+Your retinas asked nicely. Treesitter, LSP, and 200+ mostly warm highlight groups.
 
 ## Installation
 

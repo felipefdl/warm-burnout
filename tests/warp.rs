@@ -273,7 +273,7 @@ fn light_bright_ansi_matches_ghostty() {
   assert_ansi_bank_matches_ghostty(LIGHT, GHOSTTY_LIGHT, "bright", 8, "light");
 }
 
-// -- Brand rule: warm everywhere, blue nowhere (chrome only). --
+// Brand rule: chrome stays warm; steel type accent is reserved.
 // ANSI blue must literally exist in terminal_colors, so we exclude that block.
 
 #[test]

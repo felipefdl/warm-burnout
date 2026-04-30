@@ -2,7 +2,7 @@
 
 Your second brain was running on factory-default colors. Cold blues, harsh whites, zero consideration for 2am rabbit holes through your note graph. Fixed.
 
-Full community theme for Obsidian with dark and light variants. Warm palette, contrast-audited, zero blues in the chrome.
+Full community theme for Obsidian with dark and light variants. Warm-first palette, contrast-audited chrome, one steel-blue accent where structure needs it.
 
 ![Dark mode screenshot](screenshot.png)
 
@@ -77,13 +77,13 @@ Six card colors mapped to palette entries: copper rust, amber, dried sage, steel
 
 ### Surface hierarchy
 
-13-step warm ramp from deep brown-black to warm cream. No neutral grays anywhere. Every intermediate carries warm undertone.
+13-step warm ramp from deep brown-black to warm cream. No neutral grays anywhere. Every intermediate carries a warm undertone.
 
 Dark background: `#1a1510`. Light background: `#F5EDE0`. Accent: `#b8522e` (copper rust).
 
-### Warm everywhere
+### Warm chrome
 
-Tinted shadows, warm scrollbar tracks, soft selection highlights, warm cursor (gold, not red). Tags, checkboxes, metadata, blockquotes, embeds, tooltips, modals, prompts: all warm.
+Tinted shadows, warm scrollbar tracks, soft selection highlights, warm cursor (gold, not red). Tags, checkboxes, metadata, blockquotes, embeds, tooltips, modals, and prompts stay warm.
 
 ## Fonts
 

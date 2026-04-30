@@ -83,12 +83,12 @@
 
   var phrases = [
     "your eyes deserved this",
-    "warm everywhere, blue nowhere",
-    "clinically warm, emotionally cold",
-    "every pixel, audited to hurt less",
-    "less blue, more therapy",
-    "the ophthalmologist approves, probably",
-    "because your retinas asked nicely"
+    "mostly warm, rarely blue",
+    "contrast audited, morale pending",
+    "one cool accent, because mud is not a palette",
+    "less neon, more burnt toast",
+    "the burnout is spreading",
+    "deadlines stay, most of the blue glare goes away",
   ];
   var idx = 0;
   var taglineEl = document.querySelector("[data-tagline-rotate]");
