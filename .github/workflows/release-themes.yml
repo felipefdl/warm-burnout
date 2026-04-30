@@ -107,6 +107,13 @@ jobs:
             warm-burnout-dark.yaml \
             warm-burnout-light.yaml
 
+      - name: Package Alacritty
+        run: |
+          cd alacritty
+          zip -j ../warm-burnout-alacritty.zip \
+            warm-burnout-dark.toml \
+            warm-burnout-light.toml
+
       - name: Package tmux
         run: |
           cd tmux
@@ -157,6 +164,7 @@ jobs:
             warm-burnout-iterm2.zip
             warm-burnout-windows-terminal.zip
             warm-burnout-warp.zip
+            warm-burnout-alacritty.zip
             warm-burnout-tmux.zip
             warm-burnout-zellij.zip
             warm-burnout-eza.zip

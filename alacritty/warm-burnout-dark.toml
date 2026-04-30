@@ -1,0 +1,58 @@
+# Warm Burnout Dark
+
+[colors.primary]
+background        = "#1a1510"
+foreground        = "#bfbdb6"
+bright_foreground = "#bfbdb6"
+
+[colors.cursor]
+cursor = "#f5c56e"
+text   = "#1a1510"
+
+[colors.selection]
+background = "#33393a"
+text       = "#bfbdb6"
+
+[colors.normal]
+black   = "#23211b"
+red     = "#f06b73"
+green   = "#70bf56"
+yellow  = "#fdb04c"
+blue    = "#4fbfff"
+magenta = "#d0a1ff"
+cyan    = "#93e2c8"
+white   = "#c7c7c7"
+
+[colors.bright]
+black   = "#686868"
+red     = "#f07178"
+green   = "#aad94c"
+yellow  = "#ffb454"
+blue    = "#59c2ff"
+magenta = "#d2a6ff"
+cyan    = "#95e6cb"
+white   = "#ffffff"
+
+[colors.vi_mode_cursor]
+cursor = "#f5c56e"
+text   = "#1a1510"
+
+[colors.search.matches]
+foreground = "#1a1510"
+background = "#ffb454"
+
+[colors.search.focused_match]
+foreground = "#1a1510"
+background = "#ff8f40"
+
+[colors.footer_bar]
+foreground = "#b4a89c"
+background = "#14120f"
+
+[colors.hints.start]
+foreground = "#1a1510"
+background = "#90aec0"
+
+[colors.hints.end]
+foreground = "#90aec0"
+background = "#1a1510"

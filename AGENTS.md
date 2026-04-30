@@ -38,6 +38,7 @@ warm-burnout/
     jetbrains.rs              # JetBrains theme validation tests
     windows_terminal.rs       # Windows Terminal theme validation tests
     warp.rs                   # Warp theme validation tests
+    alacritty.rs              # Alacritty theme validation tests
     tmux.rs                   # tmux theme validation tests
     zellij.rs                 # Zellij theme validation tests
     zsh.rs                    # Zsh theme validation tests
@@ -130,6 +131,11 @@ warm-burnout/
     AGENTS.md                 # Warp-specific agent rules
     warm-burnout-dark.yaml    # Dark variant
     warm-burnout-light.yaml   # Light variant
+  alacritty/                  # Alacritty terminal theme
+    README.md                 # Alacritty install instructions
+    AGENTS.md                 # Alacritty-specific agent rules
+    warm-burnout-dark.toml    # Dark variant (TOML, importable)
+    warm-burnout-light.toml   # Light variant
   tmux/                       # tmux status bar theme
     README.md                 # tmux install instructions
     AGENTS.md                 # tmux-specific agent rules

@@ -269,6 +269,24 @@ pub fn warp_color(src: &str, key: &str) -> String {
   )
 }
 
+/// Read a hex color from an Alacritty TOML theme by dotted path.
+/// Example: `alacritty_color(src, "colors.primary.background")`.
+pub fn alacritty_color(src: &str, path: &str) -> String {
+  let table: toml::Table = src.parse().expect("invalid TOML");
+  let mut value: toml::Value = toml::Value::Table(table);
+  for part in path.split('.') {
+    value = value
+      .get(part)
+      .cloned()
+      .unwrap_or_else(|| panic!("missing path segment '{part}' in '{path}'"));
+  }
+  hex_to_lower(
+    value
+      .as_str()
+      .unwrap_or_else(|| panic!("path '{path}' is not a string")),
+  )
+}
+
 /// Extract an ANSI color from a Warp theme YAML file.
 /// `bank` is `"normal"` or `"bright"`. `name` is one of `black, red, green, yellow, blue, magenta, cyan, white`.
 pub fn warp_ansi_color(src: &str, bank: &str, name: &str) -> String {
