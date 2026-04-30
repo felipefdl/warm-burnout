@@ -312,7 +312,7 @@ Use these as inspiration for copy, commit messages, taglines, and descriptions:
 - "proofs of care in every test"
 - "because your retinas asked nicely"
 - "less neon, more burnt toast"
-- "contrast audited, morale pending"
+- "contrast audited, deadlines remain"
 - "every token audited, every pixel still doomed"
 - "one cool accent, because mud is not a palette"
 

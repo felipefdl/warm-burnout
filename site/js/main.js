@@ -84,7 +84,7 @@
   var phrases = [
     "your eyes deserved this",
     "mostly warm, rarely blue",
-    "contrast audited, morale pending",
+    "contrast audited, deadlines remain",
     "one cool accent, because mud is not a palette",
     "less neon, more burnt toast",
     "the burnout is spreading",
