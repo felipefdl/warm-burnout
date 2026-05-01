@@ -481,6 +481,37 @@ pub fn zellij_component_attrs(src: &str, theme: &str, component: &str) -> Vec<St
     .collect()
 }
 
+/// Extract a color from an Emacs Lisp palette alist.
+/// Locates `(defvar warm-burnout-{variant}-palette '(...))` and returns the hex
+/// value bound to `key`. Variant is `"dark"` or `"light"`. Stops at the
+/// docstring trailing the alist so a key in one palette can't leak into the other.
+pub fn emacs_palette_color(src: &str, variant: &str, key: &str) -> String {
+  let header = format!("(defvar warm-burnout-{variant}-palette");
+  let start = src
+    .find(&header)
+    .unwrap_or_else(|| panic!("no {variant} palette in emacs source"));
+  let block = &src[start..];
+  let needle = format!("({key}");
+  let mut cursor = 0;
+  while let Some(rel) = block[cursor..].find(&needle) {
+    let pos = cursor + rel;
+    let after_key = &block[pos + needle.len()..];
+    let next = after_key.chars().next();
+    if next.is_some_and(|c| matches!(c, ' ' | '\t' | '.')) {
+      let hex_open = after_key
+        .find('"')
+        .unwrap_or_else(|| panic!("no quoted hex for '{key}' in {variant} palette"));
+      let hex_start = pos + needle.len() + hex_open + 1;
+      let hex_len = block[hex_start..]
+        .find('"')
+        .unwrap_or_else(|| panic!("unterminated hex for '{key}' in {variant} palette"));
+      return hex_to_lower(&block[hex_start..hex_start + hex_len]);
+    }
+    cursor = pos + needle.len();
+  }
+  panic!("no key '{key}' in {variant} emacs palette");
+}
+
 /// Extract a color from an Obsidian theme CSS file.
 /// Finds `--wb-{key}: #hex;` inside the `.theme-{variant}` block.
 pub fn obsidian_color(src: &str, variant: &str, key: &str) -> String {

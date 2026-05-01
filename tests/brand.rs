@@ -13,6 +13,7 @@ const READMES: &[(&str, &str)] = &[
   ("iterm2", include_str!("../iterm2/README.md")),
   ("jetbrains", include_str!("../jetbrains/README.md")),
   ("obsidian", include_str!("../obsidian/README.md")),
+  ("emacs", include_str!("../emacs/README.md")),
 ];
 
 #[test]
@@ -56,6 +57,9 @@ fn no_theme_file_uses_patina_as_label() {
       include_str!("../jetbrains/Warm Burnout Islands Light.theme.json"),
     ),
     ("obsidian/theme", include_str!("../obsidian/theme.css")),
+    ("emacs/shared", include_str!("../emacs/warm-burnout.el")),
+    ("emacs/dark", include_str!("../emacs/warm-burnout-dark-theme.el")),
+    ("emacs/light", include_str!("../emacs/warm-burnout-light-theme.el")),
   ];
   for (name, content) in theme_files {
     for line in content.lines() {

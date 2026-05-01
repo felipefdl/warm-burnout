@@ -1,10 +1,10 @@
 mod common;
 
 use common::{
-  alacritty_color, ghostty_ansi_color, ghostty_color, hex_to_lower, home_assistant_color, iterm2_color,
-  jetbrains_attribute, jetbrains_color, nvim_palette_color, obsidian_color, starship_palette_color, tmux_option_value,
-  tmux_style_bg, tmux_style_fg, vscode_color, warp_ansi_color, warp_color, windows_terminal_color, xcode_color,
-  xcode_syntax_color, zed_editor_color, zellij_color,
+  alacritty_color, emacs_palette_color, ghostty_ansi_color, ghostty_color, hex_to_lower, home_assistant_color,
+  iterm2_color, jetbrains_attribute, jetbrains_color, nvim_palette_color, obsidian_color, starship_palette_color,
+  tmux_option_value, tmux_style_bg, tmux_style_fg, vscode_color, warp_ansi_color, warp_color, windows_terminal_color,
+  xcode_color, xcode_syntax_color, zed_editor_color, zellij_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -1456,4 +1456,122 @@ fn light_cursor_obsidian_matches_ghostty() {
   let obsidian = obsidian_color(OBSIDIAN_THEME, "light", "cursor");
   let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
   assert_eq!(obsidian, ghostty, "light cursor: obsidian={obsidian} ghostty={ghostty}");
+}
+
+// -- Emacs cross-platform consistency --
+//
+// Pin background, foreground, cursor, accent, and the syntax tokens that have
+// a 1:1 palette key to ghostty/nvim so the emacs port can never silently drift
+// from the rest of the suite.
+
+const EMACS_SHARED: &str = include_str!("../emacs/warm-burnout.el");
+
+#[test]
+fn dark_background_emacs_matches_ghostty() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "dark", "bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(emacs, ghostty, "dark background: emacs={emacs} ghostty={ghostty}");
+}
+
+#[test]
+fn light_background_emacs_matches_ghostty() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "light", "bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(emacs, ghostty, "light background: emacs={emacs} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_foreground_emacs_matches_ghostty() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "dark", "fg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(emacs, ghostty, "dark foreground: emacs={emacs} ghostty={ghostty}");
+}
+
+#[test]
+fn light_foreground_emacs_matches_ghostty() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "light", "fg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(emacs, ghostty, "light foreground: emacs={emacs} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_cursor_emacs_matches_ghostty() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "dark", "cursor");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "cursor-color");
+  assert_eq!(emacs, ghostty, "dark cursor: emacs={emacs} ghostty={ghostty}");
+}
+
+#[test]
+fn light_cursor_emacs_matches_ghostty() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "light", "cursor");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
+  assert_eq!(emacs, ghostty, "light cursor: emacs={emacs} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_accent_emacs_matches_canonical() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "dark", "warn");
+  assert_eq!(emacs, "#b8522e", "dark emacs accent should be canonical copper rust");
+}
+
+#[test]
+fn light_accent_emacs_matches_canonical() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "light", "warn");
+  assert_eq!(emacs, "#b8522e", "light emacs accent should be canonical copper rust");
+}
+
+#[test]
+fn dark_type_emacs_matches_nvim() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "dark", "type");
+  let nvim = nvim_palette_color(nvim_dark_block(), "type");
+  assert_eq!(emacs, nvim, "dark type: emacs={emacs} nvim={nvim}");
+}
+
+#[test]
+fn light_type_emacs_matches_nvim() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "light", "type");
+  let nvim = nvim_palette_color(nvim_light_block(), "type");
+  assert_eq!(emacs, nvim, "light type: emacs={emacs} nvim={nvim}");
+}
+
+#[test]
+fn dark_keyword_emacs_matches_nvim() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "dark", "keyword");
+  let nvim = nvim_palette_color(nvim_dark_block(), "keyword");
+  assert_eq!(emacs, nvim, "dark keyword: emacs={emacs} nvim={nvim}");
+}
+
+#[test]
+fn light_keyword_emacs_matches_nvim() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "light", "keyword");
+  let nvim = nvim_palette_color(nvim_light_block(), "keyword");
+  assert_eq!(emacs, nvim, "light keyword: emacs={emacs} nvim={nvim}");
+}
+
+#[test]
+fn dark_string_emacs_matches_nvim() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "dark", "string");
+  let nvim = nvim_palette_color(nvim_dark_block(), "string");
+  assert_eq!(emacs, nvim, "dark string: emacs={emacs} nvim={nvim}");
+}
+
+#[test]
+fn light_string_emacs_matches_nvim() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "light", "string");
+  let nvim = nvim_palette_color(nvim_light_block(), "string");
+  assert_eq!(emacs, nvim, "light string: emacs={emacs} nvim={nvim}");
+}
+
+#[test]
+fn dark_comment_emacs_matches_nvim() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "dark", "comment");
+  let nvim = nvim_palette_color(nvim_dark_block(), "comment");
+  assert_eq!(emacs, nvim, "dark comment: emacs={emacs} nvim={nvim}");
+}
+
+#[test]
+fn light_comment_emacs_matches_nvim() {
+  let emacs = emacs_palette_color(EMACS_SHARED, "light", "comment");
+  let nvim = nvim_palette_color(nvim_light_block(), "comment");
+  assert_eq!(emacs, nvim, "light comment: emacs={emacs} nvim={nvim}");
 }
