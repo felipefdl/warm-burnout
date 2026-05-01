@@ -356,6 +356,33 @@
    `(vc-up-to-date-state ((t (:foreground ,fg-dim))))
    `(vc-state-base ((t (:foreground ,fg-dim))))
 
+   ;; --- Customize buffers ---
+   `(custom-button ((t (:foreground ,func :background ,bg-float
+                                    :box (:line-width 1 :color ,border) :weight bold))))
+   `(custom-button-mouse ((t (:foreground ,func :background ,bg-highlight
+                                          :box (:line-width 1 :color ,func) :weight bold))))
+   `(custom-button-pressed ((t (:foreground ,fg :background ,bg-highlight
+                                            :box (:line-width 1 :color ,operator) :weight bold))))
+   `(custom-button-unraised ((t (:foreground ,func :weight bold :underline t))))
+   `(custom-button-pressed-unraised ((t (:foreground ,operator :weight bold :underline t))))
+   `(custom-link ((t (:foreground ,info :underline t))))
+   `(custom-state ((t (:foreground ,added))))
+   `(custom-changed ((t (:foreground ,modified))))
+   `(custom-modified ((t (:foreground ,modified))))
+   `(custom-set ((t (:foreground ,added))))
+   `(custom-saved ((t (:foreground ,added :underline t))))
+   `(custom-themed ((t (:foreground ,decorator))))
+   `(custom-invalid ((t (:foreground ,error :weight bold))))
+   `(custom-rogue ((t (:foreground ,warn))))
+   `(custom-comment ((t (:foreground ,comment :slant italic))))
+   `(custom-comment-tag ((t (:foreground ,decorator :slant italic))))
+   `(custom-variable-tag ((t (:foreground ,member :weight bold))))
+   `(custom-variable-button ((t (:foreground ,func :weight bold :underline t))))
+   `(custom-group-tag ((t (:foreground ,keyword :weight bold :height 1.1))))
+   `(custom-group-tag-1 ((t (:foreground ,func :weight bold))))
+   `(custom-face-tag ((t (:foreground ,type :weight bold :slant italic))))
+   `(custom-visibility ((t (:foreground ,info :underline t))))
+
    ;; --- Misc built-ins ---
    `(secondary-selection ((t (:background ,bg-highlight))))
    `(tooltip ((t (:foreground ,fg :background ,bg-float))))
