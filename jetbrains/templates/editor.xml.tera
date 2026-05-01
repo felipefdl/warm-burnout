@@ -118,6 +118,11 @@
         <option name="FOREGROUND" value="{{ member_var.hex }}"/>
       </value>
     </option>
+    <option name="DEFAULT_INSTANCE_METHOD">
+      <value>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
+      </value>
+    </option>
     <option name="DEFAULT_STATIC_FIELD">
       <value>
         <option name="FOREGROUND" value="{{ number.hex }}"/>
@@ -126,6 +131,64 @@
     <option name="DEFAULT_STATIC_METHOD">
       <value>
         <option name="FOREGROUND" value="{{ member_var.hex }}"/>
+      </value>
+    </option>
+    <option name="DEFAULT_LOCAL_VARIABLE">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="DEFAULT_REASSIGNED_LOCAL_VARIABLE">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="DEFAULT_PARAMETER">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="DEFAULT_REASSIGNED_PARAMETER">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="DEFAULT_GLOBAL_VARIABLE">
+      <value>
+        <option name="FOREGROUND" value="{{ number.hex }}"/>
+      </value>
+    </option>
+    <option name="DEFAULT_PREDEFINED_SYMBOL">
+      <value>
+        <option name="FOREGROUND" value="{{ keyword.hex }}"/>
+      </value>
+    </option>
+    <option name="DEFAULT_LABEL">
+      <value>
+        <option name="FOREGROUND" value="{{ tag.hex }}"/>
+      </value>
+    </option>
+    <option name="DEFAULT_TYPE_PARAMETER_NAME">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="DEFAULT_ENUM_NAME">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="DEFAULT_ABSTRACT_CLASS_NAME">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="KOTLIN_NAMED_ARGUMENT">
+      <value>
+        <option name="FOREGROUND" value="{{ decorator.hex }}"/>
       </value>
     </option>
     <option name="DEFAULT_VALID_STRING_ESCAPE">

@@ -717,3 +717,40 @@ fn dark_covers_resharper_csharp_attributes() {
 fn light_covers_resharper_csharp_attributes() {
   assert_resharper_coverage(LIGHT, "light");
 }
+
+// -- Generic identifier coverage so Kotlin, Java, JS, Python, etc. do not
+//    fall through to the parent scheme's teal/blue defaults. --
+
+const IDENTIFIER_COVERAGE_SENTINEL: &[&str] = &[
+  "DEFAULT_LOCAL_VARIABLE",
+  "DEFAULT_REASSIGNED_LOCAL_VARIABLE",
+  "DEFAULT_PARAMETER",
+  "DEFAULT_REASSIGNED_PARAMETER",
+  "DEFAULT_GLOBAL_VARIABLE",
+  "DEFAULT_INSTANCE_METHOD",
+  "DEFAULT_PREDEFINED_SYMBOL",
+  "DEFAULT_LABEL",
+  "DEFAULT_TYPE_PARAMETER_NAME",
+  "DEFAULT_ENUM_NAME",
+  "DEFAULT_ABSTRACT_CLASS_NAME",
+];
+
+fn assert_identifier_coverage(scheme: &str, label: &str) {
+  for key in IDENTIFIER_COVERAGE_SENTINEL {
+    let needle = format!("<option name=\"{key}\">");
+    assert!(
+      scheme.contains(&needle),
+      "{label} editor scheme missing override for {key}; required so language plugins do not inherit teal/blue defaults"
+    );
+  }
+}
+
+#[test]
+fn dark_covers_default_identifiers() {
+  assert_identifier_coverage(DARK, "dark");
+}
+
+#[test]
+fn light_covers_default_identifiers() {
+  assert_identifier_coverage(LIGHT, "light");
+}
