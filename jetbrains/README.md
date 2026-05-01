@@ -9,11 +9,12 @@ Full UI theme, not just syntax colors. Sidebar, tabs, toolbar, popups, everythin
 ## Install
 
 ```sh
-cd jetbrains
-./build.sh
+just jetbrains-build
 ```
 
-Then in your IDE: **Settings** > **Plugins** > gear icon > **Install Plugin from Disk...** > select `warm-burnout-theme.jar`.
+Then in your IDE: **Settings** > **Plugins** > gear icon > **Install Plugin from Disk...** > select `jetbrains/warm-burnout-theme.jar`.
+
+The recipe runs the local codegen binary, generates the theme files from `jetbrains/palette.yaml` and the Tera templates, and zips the result into a plugin JAR.
 
 ## Configure
 

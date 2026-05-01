@@ -124,16 +124,19 @@ warm-burnout/
     AGENTS.md                 # iTerm2-specific agent rules
     Warm Burnout Dark.itermcolors   # Dark variant (XML plist)
     Warm Burnout Light.itermcolors  # Light variant (XML plist)
-  jetbrains/                  # JetBrains IDE theme (full UI + editor)
+  jetbrains/                  # JetBrains IDE theme (full UI + editor, codegen-driven)
     META-INF/
       plugin.xml              # Plugin manifest
-    Warm Burnout Islands Dark.theme.json  # Dark UI theme (Islands)
-    Warm Burnout Islands Light.theme.json # Light UI theme (Islands)
-    Warm-Burnout-Dark.xml     # Dark editor scheme
-    Warm-Burnout-Light.xml    # Light editor scheme
-    build.sh                  # Build plugin JAR
+    palette.yaml              # Palette source of truth, both variants (codegen input)
+    templates/
+      theme.json.tera         # UI theme template, dark + light
+      editor.xml.tera         # Editor scheme template, dark + light
+    UPSTREAM_REVISION.txt     # Pinned JetBrains/rider-theme-pack SHA for sync
+    build.sh                  # Zip generated files into the JAR
     README.md                 # JetBrains install instructions
     AGENTS.md                 # JetBrains-specific agent rules
+    # Generated, gitignored: Warm Burnout Islands {Dark,Light}.theme.json,
+    # Warm-Burnout-{Dark,Light}.xml, warm-burnout-theme.jar
   windows-terminal/           # Windows Terminal color scheme
     README.md                 # Windows Terminal install instructions
     AGENTS.md                 # Windows Terminal-specific agent rules

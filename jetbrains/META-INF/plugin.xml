@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.warm-burnout.theme</id>
   <name>Warm Burnout</name>
-  <version>1.0.2</version>
+  <version>1.1.0</version>
   <vendor url="https://github.com/felipefdl">Felipe Lima</vendor>
   <description><![CDATA[
     <p>The theme for developers who are already burned out but still have deadlines.</p>
@@ -18,6 +18,7 @@
     non-color cues for code structure when the warm palette starts to blur together.</p>
   ]]></description>
   <change-notes><![CDATA[
+    <p>1.1.0: Tame bold TODO highlight. Fix Rider/C# variables, fields, methods, and types rendering gray. Fill in popup, completion, and tooltip backgrounds for Islands users.</p>
     <p>1.0.2: Dropped classic variants. Islands themes only. Fixed toolbar borders and project gradient.</p>
     <p>1.0.1: Fix editor color scheme not loading when selecting the UI theme.</p>
     <p>1.0.0: Initial release.</p>
