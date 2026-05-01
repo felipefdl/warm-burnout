@@ -208,7 +208,7 @@
     <option name="TODO_DEFAULT_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="{{ cursor.hex }}"/>
-        <option name="FONT_TYPE" value="1"/>
+        <option name="FONT_TYPE" value="0"/>
         <option name="ERROR_STRIPE_COLOR" value="{{ cursor.hex }}"/>
       </value>
     </option>
@@ -242,6 +242,216 @@
     <option name="BREADCRUMBS_INACTIVE">
       <value>
         <option name="FOREGROUND" value="{{ muted.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_KEYWORD">
+      <value>
+        <option name="FOREGROUND" value="{{ keyword.hex }}"/>
+        <option name="FONT_TYPE" value="1"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_PREPROCESSOR_KEYWORD">
+      <value>
+        <option name="FOREGROUND" value="{{ decorator.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_LOCAL_VARIABLE_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_MUTABLE_LOCAL_VARIABLE_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_PARAMETER_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_FIELD_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_STATIC_FIELD_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_PROPERTY_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_STATIC_PROPERTY_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_EVENT_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_TUPLE_COMPONENT_NAME">
+      <value>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_METHOD_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_STATIC_METHOD_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_LOCAL_FUNCTION_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_EXTENSION_METHOD_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_ACCESSOR_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_CLASS_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_STATIC_CLASS_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_STRUCT_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_RECORD_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_RECORD_STRUCT_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_INTERFACE_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_DELEGATE_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_ENUM_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_TYPE_PARAMETER_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_NAMESPACE_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_CONSTANT_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ number.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_LATE_BOUND_IDENTIFIER">
+      <value>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_OPERATOR_SIGN">
+      <value>
+        <option name="FOREGROUND" value="{{ operator.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_NUMBER">
+      <value>
+        <option name="FOREGROUND" value="{{ number.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_STRING">
+      <value>
+        <option name="FOREGROUND" value="{{ string.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_LINE_COMMENT">
+      <value>
+        <option name="FOREGROUND" value="{{ comment.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_BLOCK_COMMENT">
+      <value>
+        <option name="FOREGROUND" value="{{ comment.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_DOC_COMMENT">
+      <value>
+        <option name="FOREGROUND" value="{{ comment.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_DOC_COMMENT_TAG_NAME">
+      <value>
+        <option name="FOREGROUND" value="{{ comment.hex }}"/>
+        <option name="FONT_TYPE" value="1"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_DOC_COMMENT_ATTRIBUTE">
+      <value>
+        <option name="FOREGROUND" value="{{ comment.hex }}"/>
+        <option name="FONT_TYPE" value="2"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_DOC_COMMENT_ATTRIBUTE_VALUE">
+      <value>
+        <option name="FOREGROUND" value="{{ string.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_ESCAPE_CHARACTER_1">
+      <value>
+        <option name="FOREGROUND" value="{{ regex_escape.hex }}"/>
+      </value>
+    </option>
+    <option name="ReSharper.CSHARP_ESCAPE_CHARACTER_2">
+      <value>
+        <option name="FOREGROUND" value="{{ error.hex }}"/>
       </value>
     </option>
   </attributes>

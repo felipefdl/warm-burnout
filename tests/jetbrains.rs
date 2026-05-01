@@ -622,3 +622,98 @@ fn light_theme_transparent_stripe_border() {
     "light ToolWindow.Stripe.borderColor must be transparent"
   );
 }
+
+// -- Issue #5: TODO highlight must not render bold (was reported as too loud) --
+
+#[test]
+fn dark_todo_not_bold() {
+  assert_ne!(
+    jetbrains_attribute(DARK, "TODO_DEFAULT_ATTRIBUTES", "FONT_TYPE"),
+    "1",
+    "TODO_DEFAULT_ATTRIBUTES.FONT_TYPE must not be bold (1); reported as too loud in #5"
+  );
+}
+
+#[test]
+fn light_todo_not_bold() {
+  assert_ne!(
+    jetbrains_attribute(LIGHT, "TODO_DEFAULT_ATTRIBUTES", "FONT_TYPE"),
+    "1",
+    "TODO_DEFAULT_ATTRIBUTES.FONT_TYPE must not be bold (1); reported as too loud in #5"
+  );
+}
+
+// -- Issue #5: explicit overrides for surfaces that misrender under Islands inheritance --
+
+const ISSUE_5_SURFACES: &[(&str, &[&str])] = &[
+  ("Editor", &["background"]),
+  ("Popup", &["background"]),
+  ("CompletionPopup", &["background"]),
+  ("ToolTip", &["background", "foreground", "borderColor"]),
+  ("Island", &["borderColor"]),
+  ("TitlePane", &["background", "inactiveBackground"]),
+];
+
+fn assert_issue_5_surfaces(theme_src: &str, label: &str) {
+  let v = parse_theme(theme_src);
+  for (component, keys) in ISSUE_5_SURFACES {
+    for key in *keys {
+      assert!(
+        v["ui"][component][key].is_string(),
+        "{label} theme.json missing override {component}.{key}; required to keep #5 surfaces from drifting under parentTheme inheritance"
+      );
+    }
+  }
+}
+
+#[test]
+fn dark_overrides_issue_5_surfaces() {
+  assert_issue_5_surfaces(DARK_THEME, "dark");
+}
+
+#[test]
+fn light_overrides_issue_5_surfaces() {
+  assert_issue_5_surfaces(LIGHT_THEME, "light");
+}
+
+// -- Issue #8: ReSharper / Rider C# attribute coverage sentinel --
+
+const RESHARPER_CSHARP_SENTINEL: &[&str] = &[
+  "ReSharper.CSHARP_LOCAL_VARIABLE_IDENTIFIER",
+  "ReSharper.CSHARP_PARAMETER_IDENTIFIER",
+  "ReSharper.CSHARP_FIELD_IDENTIFIER",
+  "ReSharper.CSHARP_PROPERTY_IDENTIFIER",
+  "ReSharper.CSHARP_METHOD_IDENTIFIER",
+  "ReSharper.CSHARP_CLASS_IDENTIFIER",
+  "ReSharper.CSHARP_INTERFACE_IDENTIFIER",
+  "ReSharper.CSHARP_STRUCT_IDENTIFIER",
+  "ReSharper.CSHARP_ENUM_IDENTIFIER",
+  "ReSharper.CSHARP_DELEGATE_IDENTIFIER",
+  "ReSharper.CSHARP_RECORD_IDENTIFIER",
+  "ReSharper.CSHARP_TYPE_PARAMETER_IDENTIFIER",
+  "ReSharper.CSHARP_NAMESPACE_IDENTIFIER",
+  "ReSharper.CSHARP_KEYWORD",
+  "ReSharper.CSHARP_CONSTANT_IDENTIFIER",
+  "ReSharper.CSHARP_EVENT_IDENTIFIER",
+  "ReSharper.CSHARP_EXTENSION_METHOD_IDENTIFIER",
+];
+
+fn assert_resharper_coverage(scheme: &str, label: &str) {
+  for key in RESHARPER_CSHARP_SENTINEL {
+    let needle = format!("<option name=\"{key}\">");
+    assert!(
+      scheme.contains(&needle),
+      "{label} editor scheme missing override for {key}; required to fix Rider/C# gray fallback (#8)"
+    );
+  }
+}
+
+#[test]
+fn dark_covers_resharper_csharp_attributes() {
+  assert_resharper_coverage(DARK, "dark");
+}
+
+#[test]
+fn light_covers_resharper_csharp_attributes() {
+  assert_resharper_coverage(LIGHT, "light");
+}

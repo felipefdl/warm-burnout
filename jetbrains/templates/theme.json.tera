@@ -85,7 +85,10 @@
       }
     },
     "CompletionPopup": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
       "selectionBackground": "{{ hover.hex }}",
+      "selectionInactiveBackground": "{{ inactive_selection_bg.hex }}",
       "matchForeground": "{{ function.hex }}",
       "Advertiser": {
         "foreground": "{{ comment.hex }}",
@@ -367,6 +370,12 @@
       "Button": {
         "hoverBackground": "{{ hover.hex }}"
       }
+    },
+    "ToolTip": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "shortcutForeground": "{{ function.hex }}"
     },
     "ToggleButton": {
       "onBackground": "{{ accent.hex }}",
