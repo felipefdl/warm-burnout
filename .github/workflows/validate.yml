@@ -35,8 +35,13 @@ jobs:
           git diff --exit-code
           rumdl check .
 
+      - uses: extractions/setup-just@v3
+
+      - name: Generate JetBrains theme files
+        run: just jetbrains-build
+
       - name: Run clippy
-        run: cargo clippy -- -D warnings
+        run: cargo clippy --workspace -- -D warnings
 
       - name: Run theme validation tests
-        run: cargo test
+        run: cargo test --workspace
