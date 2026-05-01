@@ -84,6 +84,15 @@
    `(mode-line-emphasis ((t (:foreground ,keyword :weight bold))))
    `(mode-line-buffer-id ((t (:foreground ,func :weight bold))))
 
+   ;; --- Header / tool / menu bars ---
+   `(header-line ((t (:foreground ,fg :background ,bg-float :box (:line-width 1 :color ,border)))))
+   `(header-line-highlight ((t (:foreground ,keyword :weight bold))))
+   `(tool-bar ((t (:foreground ,fg :background ,bg-dim :box (:line-width 1 :color ,border)))))
+   `(menu ((t (:foreground ,fg :background ,bg-dim))))
+   `(tty-menu-enabled-face ((t (:foreground ,fg :background ,bg-dim))))
+   `(tty-menu-disabled-face ((t (:foreground ,fg-dim :background ,bg-dim))))
+   `(tty-menu-selected-face ((t (:foreground ,fg :background ,bg-highlight :weight bold))))
+
    ;; --- Completions ---
    `(completions-common-part ((t (:foreground ,func))))
    `(completions-first-difference ((t (:foreground ,keyword :weight bold))))
@@ -257,7 +266,100 @@
    `(compilation-error ((t (:foreground ,error))))
    `(compilation-warning ((t (:foreground ,warn))))
    `(compilation-info ((t (:foreground ,info))))
-   `(compilation-line-number ((t (:foreground ,fg-dim)))))
+   `(compilation-line-number ((t (:foreground ,fg-dim))))
+
+   ;; --- Eshell / comint / term ---
+   `(eshell-prompt ((t (:foreground ,keyword :weight bold))))
+   `(eshell-ls-archive ((t (:foreground ,number))))
+   `(eshell-ls-backup ((t (:foreground ,fg-dim))))
+   `(eshell-ls-clutter ((t (:foreground ,fg-dim))))
+   `(eshell-ls-directory ((t (:foreground ,func :weight bold))))
+   `(eshell-ls-executable ((t (:foreground ,added))))
+   `(eshell-ls-missing ((t (:foreground ,error))))
+   `(eshell-ls-product ((t (:foreground ,fg-dim))))
+   `(eshell-ls-readonly ((t (:foreground ,decorator))))
+   `(eshell-ls-special ((t (:foreground ,member))))
+   `(eshell-ls-symlink ((t (:foreground ,type :slant italic))))
+   `(eshell-ls-unreadable ((t (:foreground ,error))))
+   `(comint-highlight-prompt ((t (:foreground ,keyword :weight bold))))
+   `(comint-highlight-input ((t (:foreground ,fg))))
+   `(term-color-black ((t (:foreground ,bg-highlight :background ,bg-highlight))))
+   `(term-color-red ((t (:foreground ,error :background ,error))))
+   `(term-color-green ((t (:foreground ,added :background ,added))))
+   `(term-color-yellow ((t (:foreground ,decorator :background ,decorator))))
+   `(term-color-blue ((t (:foreground ,modified :background ,modified))))
+   `(term-color-magenta ((t (:foreground ,number :background ,number))))
+   `(term-color-cyan ((t (:foreground ,regex :background ,regex))))
+   `(term-color-white ((t (:foreground ,fg :background ,fg))))
+
+   ;; --- Eglot ---
+   `(eglot-highlight-symbol-face ((t (:background ,bg-highlight))))
+   `(eglot-mode-line ((t (:foreground ,func :weight bold))))
+   `(eglot-diagnostic-tag-unnecessary-face ((t (:foreground ,fg-dim))))
+   `(eglot-diagnostic-tag-deprecated-face ((t (:foreground ,fg-dim :strike-through t))))
+   `(eglot-parameter-hint-face ((t (:foreground ,fg-dim :slant italic))))
+   `(eglot-type-hint-face ((t (:foreground ,fg-dim :slant italic))))
+   `(eglot-inlay-hint-face ((t (:foreground ,fg-dim :slant italic))))
+
+   ;; --- Eldoc ---
+   `(eldoc-highlight-function-argument ((t (:foreground ,keyword :weight bold))))
+
+   ;; --- Ediff ---
+   `(ediff-current-diff-A ((t (:background "#341f1c"))))
+   `(ediff-current-diff-B ((t (:background "#242918"))))
+   `(ediff-current-diff-C ((t (:background "#24282d"))))
+   `(ediff-current-diff-Ancestor ((t (:background ,bg-highlight))))
+   `(ediff-fine-diff-A ((t (:background "#502b2a" :weight bold))))
+   `(ediff-fine-diff-B ((t (:background "#2a351d" :weight bold))))
+   `(ediff-fine-diff-C ((t (:background "#303d4b" :weight bold))))
+   `(ediff-fine-diff-Ancestor ((t (:background ,bg-highlight :weight bold))))
+   `(ediff-even-diff-A ((t (:background ,bg-dim))))
+   `(ediff-odd-diff-A ((t (:background ,bg-dim))))
+   `(ediff-even-diff-B ((t (:background ,bg-dim))))
+   `(ediff-odd-diff-B ((t (:background ,bg-dim))))
+   `(ediff-even-diff-C ((t (:background ,bg-dim))))
+   `(ediff-odd-diff-C ((t (:background ,bg-dim))))
+
+   ;; --- Xref / pulse ---
+   `(xref-match ((t (:background ,bg-search :weight bold))))
+   `(xref-line-number ((t (:foreground ,fg-dim))))
+   `(xref-file-header ((t (:foreground ,keyword :weight bold))))
+   `(pulse-highlight-face ((t (:background ,bg-search))))
+   `(pulse-highlight-start-face ((t (:background ,bg-search))))
+
+   ;; --- Outline ---
+   `(outline-1 ((t (:foreground ,keyword :weight bold))))
+   `(outline-2 ((t (:foreground ,func :weight bold))))
+   `(outline-3 ((t (:foreground ,type :weight bold))))
+   `(outline-4 ((t (:foreground ,string :weight bold))))
+   `(outline-5 ((t (:foreground ,decorator :weight bold))))
+   `(outline-6 ((t (:foreground ,number :weight bold))))
+   `(outline-7 ((t (:foreground ,member :weight bold))))
+   `(outline-8 ((t (:foreground ,regex :weight bold))))
+
+   ;; --- Buttons / widgets ---
+   `(button ((t (:foreground ,info :underline t))))
+   `(widget-button ((t (:foreground ,func :weight bold))))
+   `(widget-button-pressed ((t (:foreground ,operator))))
+   `(widget-field ((t (:foreground ,fg :background ,bg-dim))))
+   `(widget-single-line-field ((t (:foreground ,fg :background ,bg-dim))))
+   `(widget-inactive ((t (:foreground ,fg-dim))))
+   `(widget-documentation ((t (:foreground ,fg-dim :slant italic))))
+
+   ;; --- VC state ---
+   `(vc-edited-state ((t (:foreground ,modified))))
+   `(vc-locally-added-state ((t (:foreground ,added))))
+   `(vc-needs-update-state ((t (:foreground ,warn))))
+   `(vc-removed-state ((t (:foreground ,deleted))))
+   `(vc-conflict-state ((t (:foreground ,error :weight bold))))
+   `(vc-missing-state ((t (:foreground ,error))))
+   `(vc-up-to-date-state ((t (:foreground ,fg-dim))))
+   `(vc-state-base ((t (:foreground ,fg-dim))))
+
+   ;; --- Misc built-ins ---
+   `(secondary-selection ((t (:background ,bg-highlight))))
+   `(tooltip ((t (:foreground ,fg :background ,bg-float))))
+   `(Info-quoted ((t (:foreground ,string :inherit fixed-pitch)))))
 
   (custom-theme-set-variables
    'warm-burnout-dark
