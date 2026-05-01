@@ -8,7 +8,7 @@ Copy the theme files to your Helix themes directory:
 
 ```sh
 mkdir -p ~/.config/helix/themes
-cp warm_burnout_dark.toml warm_burnout_light.toml ~/.config/helix/themes/
+cp warm-burnout-dark.toml warm-burnout-light.toml ~/.config/helix/themes/
 ```
 
 ## Configure
@@ -16,16 +16,16 @@ cp warm_burnout_dark.toml warm_burnout_light.toml ~/.config/helix/themes/
 Add to the top of your `~/.config/helix/config.toml`:
 
 ```toml
-theme = "warm_burnout_dark"
+theme = "warm-burnout-dark"
 ```
 
 Or for the light variant:
 
 ```toml
-theme = "warm_burnout_light"
+theme = "warm-burnout-light"
 ```
 
-Switch at runtime with `:theme warm_burnout_dark` or `:theme warm_burnout_light`.
+Switch at runtime with `:theme warm-burnout-dark` or `:theme warm-burnout-light`.
 
 ## What you get
 

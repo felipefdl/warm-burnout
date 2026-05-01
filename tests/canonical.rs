@@ -1578,8 +1578,8 @@ fn light_comment_emacs_matches_nvim() {
 
 // -- Helix cross-platform consistency --
 
-const HELIX_DARK: &str = include_str!("../helix/warm_burnout_dark.toml");
-const HELIX_LIGHT: &str = include_str!("../helix/warm_burnout_light.toml");
+const HELIX_DARK: &str = include_str!("../helix/warm-burnout-dark.toml");
+const HELIX_LIGHT: &str = include_str!("../helix/warm-burnout-light.toml");
 
 #[test]
 fn dark_background_helix_matches_vscode() {
@@ -1666,4 +1666,11 @@ fn dark_foreground_helix_matches_ghostty() {
   let helix = helix_palette_color(HELIX_DARK, "fg");
   let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
   assert_eq!(helix, ghostty, "dark foreground: helix={helix} ghostty={ghostty}");
+}
+
+#[test]
+fn light_foreground_helix_matches_ghostty() {
+  let helix = helix_palette_color(HELIX_LIGHT, "fg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(helix, ghostty, "light foreground: helix={helix} ghostty={ghostty}");
 }

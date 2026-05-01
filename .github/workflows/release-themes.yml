@@ -144,8 +144,8 @@ jobs:
         run: |
           cd helix
           zip -j ../warm-burnout-helix.zip \
-            warm_burnout_dark.toml \
-            warm_burnout_light.toml
+            warm-burnout-dark.toml \
+            warm-burnout-light.toml
 
       - name: Package Home Assistant
         run: cp themes/warm-burnout.yaml warm-burnout-home-assistant.yaml

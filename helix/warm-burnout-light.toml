@@ -1,10 +1,10 @@
-# Warm Burnout Dark -- Helix theme
-# Copy to ~/.config/helix/themes/warm_burnout_dark.toml
-# Then set: theme = "warm_burnout_dark" in ~/.config/helix/config.toml
+# Warm Burnout Light -- Helix theme
+# Copy to ~/.config/helix/themes/warm-burnout-light.toml
+# Then set: theme = "warm-burnout-light" in ~/.config/helix/config.toml
 
 # -- Syntax highlighting -----------------------------------------------
 
-"attribute" = { fg = "decorator", modifiers = ["italic"] }
+"attribute" = { fg = "func", modifiers = ["italic"] }
 
 "type" = { fg = "type", modifiers = ["italic"] }
 "type.builtin" = { fg = "type", modifiers = ["italic"] }
@@ -207,38 +207,37 @@ hint = { fg = "hint" }
 # -- Palette -----------------------------------------------------------
 
 [palette]
-bg = "#1a1510"
-bg-dim = "#14120f"
-bg-float = "#1f1d17"
-bg-highlight = "#222018"
-bg-selection = "#363a3a"
+bg = "#F5EDE0"
+bg-dim = "#EDE6DA"
+bg-float = "#F0E8DC"
+bg-highlight = "#e2dace"
+bg-selection = "#dadcd6"
 
-fg = "#bfbdb6"
-fg-dim = "#ada69c"
-fg-gutter = "#746f67"
-fg-gutter-active = "#a59f96"
+fg = "#3a3630"
+fg-dim = "#5c5750"
+fg-gutter = "#8a8070"
+fg-gutter-active = "#6a6258"
 
-comment = "#b4a89c"
-cursor = "#f5c56e"
+comment = "#544c40"
+cursor = "#8a6600"
 accent = "#b8522e"
 
-keyword = "#ff8f40"
-func = "#ffb454"
-string = "#b4bc78"
-type = "#90aec0"
-operator = "#f29668"
-number = "#d4a8b8"
-tag = "#dc9e92"
-property = "#deb074"
-member = "#ec9878"
-regex = "#96b898"
-decorator = "#e6c08a"
+keyword = "#924800"
+func = "#855700"
+string = "#4d5c1a"
+type = "#285464"
+operator = "#8f4418"
+number = "#7e4060"
+tag = "#8e4632"
+member = "#883850"
+regex = "#286a48"
+decorator = "#7a5a1c"
 
-error = "#f49090"
+error = "#b03434"
 warn = "#b8522e"
-info = "#90aec0"
-hint = "#b4a89c"
+info = "#285464"
+hint = "#544c40"
 
-added = "#70bf56"
-modified = "#73b8ff"
-deleted = "#f26d78"
+added = "#226414"
+modified = "#2868a0"
+deleted = "#c43040"
