@@ -754,3 +754,88 @@ fn dark_covers_default_identifiers() {
 fn light_covers_default_identifiers() {
   assert_identifier_coverage(LIGHT, "light");
 }
+
+// -- Per-language baseAttributes inheritance, ported from Catppuccin's editor.tera.
+//    Each language plugin (Bash, Go, PHP, Python, Rust, Ruby, Swift, JS, TS, Dart, etc.)
+//    declares its own attribute keys and falls back to the parent theme's teal/blue defaults
+//    unless we explicitly point them at our DEFAULT_* customizations. --
+
+const LANGUAGE_INHERITANCE_SENTINEL: &[(&str, &str)] = &[
+  ("BASH.FUNCTION_CALL", "DEFAULT_FUNCTION_CALL"),
+  ("BASH.HERE_DOC_END", "DEFAULT_KEYWORD"),
+  ("BASH.SHEBANG", "DEFAULT_LINE_COMMENT"),
+  ("DART_FAT_ARROW", "DEFAULT_OPERATION_SIGN"),
+  ("DART_LOCAL_FUNCTION_REFERENCE", "DEFAULT_FUNCTION_CALL"),
+  ("DART_TYPE_NAME_DYNAMIC", "DEFAULT_KEYWORD"),
+  ("GO_BUILTIN_FUNCTION_CALL", "DEFAULT_FUNCTION_CALL"),
+  ("GO_BUILTIN_TYPE", "DEFAULT_CLASS_NAME"),
+  ("GO_BUILTIN_VARIABLE", "DEFAULT_LOCAL_VARIABLE"),
+  ("GO_PACKAGE", "DEFAULT_LOCAL_VARIABLE"),
+  ("HTML_ATTRIBUTE_VALUE", "DEFAULT_STRING"),
+  ("INI.SECTION", "DEFAULT_MARKUP_TAG"),
+  ("JS.DECORATOR", "DEFAULT_METADATA"),
+  ("JS.GLOBAL_FUNCTION", "DEFAULT_FUNCTION_DECLARATION"),
+  ("JS.GLOBAL_VARIABLE", "DEFAULT_LOCAL_VARIABLE"),
+  ("JS.LOCAL_VARIABLE", "DEFAULT_LOCAL_VARIABLE"),
+  ("JS.PARAMETER", "DEFAULT_PARAMETER"),
+  ("JS.REGEXP", "DEFAULT_VALID_STRING_ESCAPE"),
+  ("JSON.PROPERTY_KEY", "DEFAULT_INSTANCE_FIELD"),
+  ("OC.METHOD_DECLARATION", "DEFAULT_INSTANCE_METHOD"),
+  ("OC.PROTOCOL_REFERENCE", "DEFAULT_INTERFACE_NAME"),
+  ("PHP_INSTANCE_FIELD", "DEFAULT_INSTANCE_FIELD"),
+  ("PHP_INTERFACE", "DEFAULT_INTERFACE_NAME"),
+  ("PHP_PARAMETER", "DEFAULT_PARAMETER"),
+  ("PHP_VAR", "DEFAULT_LOCAL_VARIABLE"),
+  ("PROPERTIES.KEY", "DEFAULT_INSTANCE_FIELD"),
+  ("PUPPET_KEYWORD", "DEFAULT_KEYWORD"),
+  ("PY.ANNOTATION", "DEFAULT_METADATA"),
+  ("PY.BUILTIN_NAME", "DEFAULT_LOCAL_VARIABLE"),
+  ("PY.DECORATOR", "DEFAULT_METADATA"),
+  ("PY.KEYWORD", "DEFAULT_KEYWORD"),
+  ("PY.KEYWORD_ARGUMENT", "DEFAULT_PARAMETER"),
+  ("PY.SELF_PARAMETER", "DEFAULT_PARAMETER"),
+  ("PY.STRING", "DEFAULT_STRING"),
+  ("RUBY_LOCAL_VAR_ID", "DEFAULT_LOCAL_VARIABLE"),
+  ("RUBY_METHOD_NAME", "DEFAULT_INSTANCE_METHOD"),
+  ("RUBY_PARAMETER_ID", "DEFAULT_PARAMETER"),
+  ("SWIFT_EXTERNAL_PARAMETER", "DEFAULT_PARAMETER"),
+  ("TS.MODULE_NAME", "DEFAULT_LOCAL_VARIABLE"),
+  ("TS.TYPE_GUARD", "DEFAULT_KEYWORD"),
+  ("TS.TYPE_PARAMETER", "DEFAULT_TYPE_PARAMETER_NAME"),
+  ("XML_ATTRIBUTE_NAME", "DEFAULT_MARKUP_ATTRIBUTE"),
+  ("XML_TAG_NAME", "DEFAULT_MARKUP_TAG"),
+  ("YAML_ANCHOR", "DEFAULT_LABEL"),
+  ("YAML_SCALAR_KEY", "DEFAULT_INSTANCE_FIELD"),
+  ("org.rust.FUNCTION", "DEFAULT_FUNCTION_DECLARATION"),
+  ("org.rust.FUNCTION_CALL", "DEFAULT_FUNCTION_CALL"),
+  ("org.rust.LIFETIME", "DEFAULT_LABEL"),
+  ("org.rust.MACRO", "DEFAULT_FUNCTION_CALL"),
+  ("org.rust.METHOD", "DEFAULT_INSTANCE_METHOD"),
+  ("org.rust.PARAMETER", "DEFAULT_PARAMETER"),
+  ("org.rust.SELF_PARAMETER", "DEFAULT_PARAMETER"),
+  ("org.rust.STRUCT", "DEFAULT_CLASS_NAME"),
+  ("org.rust.TRAIT", "DEFAULT_INTERFACE_NAME"),
+  ("org.rust.TYPE_PARAMETER", "DEFAULT_TYPE_PARAMETER_NAME"),
+  ("org.rust.VARIABLE", "DEFAULT_LOCAL_VARIABLE"),
+  ("org.toml.KEY", "DEFAULT_INSTANCE_FIELD"),
+];
+
+fn assert_language_inheritance(scheme: &str, label: &str) {
+  for (key, target) in LANGUAGE_INHERITANCE_SENTINEL {
+    let needle = format!("<option name=\"{key}\" baseAttributes=\"{target}\"/>");
+    assert!(
+      scheme.contains(&needle),
+      "{label} editor scheme missing inheritance: expected `{needle}`. Without this the language plugin falls back to the parent theme."
+    );
+  }
+}
+
+#[test]
+fn dark_covers_language_inheritance() {
+  assert_language_inheritance(DARK, "dark");
+}
+
+#[test]
+fn light_covers_language_inheritance() {
+  assert_language_inheritance(LIGHT, "light");
+}
