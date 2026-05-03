@@ -653,8 +653,13 @@
       </value>
     </option>
     <!-- Compose composable function calls (NavigationBar, Box, Icon, Text, etc.).
-         Without this they inherit from Darcula's Compose attribute and pick up rainbow / sapphire. -->
-    <option name="ComposableCallTextAttributes" baseAttributes="DEFAULT_FUNCTION_CALL"/>
+         baseAttributes inheritance is unreliable here because the Compose plugin registers
+         this key with its own fallback that wins over our chain. Explicit value forces amber. -->
+    <option name="ComposableCallTextAttributes">
+      <value>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
+      </value>
+    </option>
     <!-- Annotation name (@OptIn, @Composable, @Override). Parent themes color these yellow;
          we want them in the decorator slot, italic, matching Python @decorator and Java @Annotation. -->
     <option name="ANNOTATION_NAME_ATTRIBUTES">

@@ -875,17 +875,19 @@ fn light_covers_language_inheritance() {
 
 #[test]
 fn dark_overrides_composable_call_attribute() {
-  assert!(
-    DARK.contains("<option name=\"ComposableCallTextAttributes\" baseAttributes=\"DEFAULT_FUNCTION_CALL\"/>"),
-    "dark scheme must override ComposableCallTextAttributes so @Composable calls render as DEFAULT_FUNCTION_CALL"
+  assert_eq!(
+    jetbrains_attribute(DARK, "ComposableCallTextAttributes", "FOREGROUND"),
+    "#ffb454",
+    "dark @Composable call must render in the function color (amber)"
   );
 }
 
 #[test]
 fn light_overrides_composable_call_attribute() {
-  assert!(
-    LIGHT.contains("<option name=\"ComposableCallTextAttributes\" baseAttributes=\"DEFAULT_FUNCTION_CALL\"/>"),
-    "light scheme must override ComposableCallTextAttributes so @Composable calls render as DEFAULT_FUNCTION_CALL"
+  assert_eq!(
+    jetbrains_attribute(LIGHT, "ComposableCallTextAttributes", "FOREGROUND"),
+    "#855700",
+    "light @Composable call must render in the function color"
   );
 }
 
