@@ -699,7 +699,7 @@
       </value>
     </option>
     <!-- Rainbow brackets: collapse all nesting levels to a single subtle color.
-         Same approach as semantic highlighting -- we don't want bracket depth to dominate. -->
+         Same approach as semantic highlighting; bracket depth should not dominate. -->
     <option name="ROUND_BRACKETS_RAINBOW_COLOR0">
       <value>
         <option name="FOREGROUND" value="{{ foreground.hex }}"/>

@@ -21,6 +21,35 @@ fn light_has_xml_declaration() {
   assert!(LIGHT.starts_with("<?xml"), "light .xml must start with XML declaration");
 }
 
+// XML comments may not contain "--" except as the closing "-->". IntelliJ silently rejects
+// editor schemes that fail to parse, which removes the theme from the picker and was the
+// regression behind v1.1.0 not appearing after install. Catch it before it ships.
+fn assert_no_bad_xml_comments(xml: &str, label: &str) {
+  let mut idx = 0;
+  while let Some(open) = xml[idx..].find("<!--") {
+    let start = idx + open + 4;
+    let close = xml[start..]
+      .find("-->")
+      .unwrap_or_else(|| panic!("{label} has unterminated XML comment"));
+    let body = &xml[start..start + close];
+    assert!(
+      !body.contains("--"),
+      "{label} editor scheme has invalid XML comment containing '--' at byte offset {start}: {body:?}"
+    );
+    idx = start + close + 3;
+  }
+}
+
+#[test]
+fn dark_xml_comments_are_well_formed() {
+  assert_no_bad_xml_comments(DARK, "dark");
+}
+
+#[test]
+fn light_xml_comments_are_well_formed() {
+  assert_no_bad_xml_comments(LIGHT, "light");
+}
+
 #[test]
 fn dark_has_scheme_element() {
   assert!(DARK.contains("<scheme"), "dark .xml must have <scheme> element");
