@@ -912,38 +912,56 @@ fn light_overrides_annotation_name() {
   );
 }
 
+// Rainbow palettes: five on-brand warm tones. Catppuccin parity, our colors only.
+const DARK_RAINBOW: [&str; 5] = [
+  "#bfbdb6", // foreground
+  "#ffb454", // function
+  "#ec9878", // member_var
+  "#b4bc78", // string
+  "#90aec0", // type (the one cool accent)
+];
+
+const LIGHT_RAINBOW: [&str; 5] = [
+  "#3a3630", // foreground
+  "#855700", // function
+  "#883850", // member_var
+  "#4d5c1a", // string
+  "#285464", // type
+];
+
+const RAINBOW_PREFIXES: &[&str] = &[
+  "RAINBOW_COLOR",
+  "ROUND_BRACKETS_RAINBOW_COLOR",
+  "SQUARE_BRACKETS_RAINBOW_COLOR",
+  "SQUIGGLY_BRACKETS_RAINBOW_COLOR",
+  "ANGLE_BRACKETS_RAINBOW_COLOR",
+  "INDENT_GUIDES_RAINBOW_COLOR",
+];
+
 #[test]
-fn dark_collapses_rainbow_palette() {
-  for slot in 0..5 {
-    let key = format!("RAINBOW_COLOR{slot}");
-    assert_eq!(
-      jetbrains_attribute(DARK, &key, "FOREGROUND"),
-      "#bfbdb6",
-      "dark {key} must collapse to foreground so semantic highlighting stays consistent"
-    );
+fn dark_rainbow_palettes_use_warm_tones() {
+  for prefix in RAINBOW_PREFIXES {
+    for (slot, expected) in DARK_RAINBOW.iter().enumerate() {
+      let key = format!("{prefix}{slot}");
+      assert_eq!(
+        jetbrains_attribute(DARK, &key, "FOREGROUND"),
+        *expected,
+        "dark {key} must use the on-brand warm tone for slot {slot}"
+      );
+    }
   }
 }
 
 #[test]
-fn dark_collapses_round_brackets_rainbow() {
-  for slot in 0..5 {
-    let key = format!("ROUND_BRACKETS_RAINBOW_COLOR{slot}");
-    assert_eq!(
-      jetbrains_attribute(DARK, &key, "FOREGROUND"),
-      "#bfbdb6",
-      "dark {key} must collapse to foreground"
-    );
-  }
-}
-
-#[test]
-fn light_collapses_rainbow_palette() {
-  for slot in 0..5 {
-    let key = format!("RAINBOW_COLOR{slot}");
-    assert_eq!(
-      jetbrains_attribute(LIGHT, &key, "FOREGROUND"),
-      "#3a3630",
-      "light {key} must collapse to foreground"
-    );
+fn light_rainbow_palettes_use_warm_tones() {
+  for prefix in RAINBOW_PREFIXES {
+    for (slot, expected) in LIGHT_RAINBOW.iter().enumerate() {
+      let key = format!("{prefix}{slot}");
+      assert_eq!(
+        jetbrains_attribute(LIGHT, &key, "FOREGROUND"),
+        *expected,
+        "light {key} must use the on-brand warm tone for slot {slot}"
+      );
+    }
   }
 }

@@ -670,9 +670,9 @@
       </value>
     </option>
     <!-- Semantic highlighting / rainbow per-identifier palette. Android Studio enables this by
-         default for Kotlin which is why .navigate goes purple, Box goes blue, Icon goes green, etc.
-         We collapse all five buckets to the same foreground so semantic highlighting stops
-         shadowing our DEFAULT_FUNCTION_CALL / DEFAULT_LOCAL_VARIABLE colors. -->
+         default for Kotlin (why .navigate, Box, Icon land on different colors). We map the five
+         buckets to five on-brand warm tones so semantic highlighting stays a useful feature
+         without dragging Darcula's red/yellow/green/blue/magenta into the editor. -->
     <option name="RAINBOW_COLOR0">
       <value>
         <option name="FOREGROUND" value="{{ foreground.hex }}"/>
@@ -680,26 +680,26 @@
     </option>
     <option name="RAINBOW_COLOR1">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
       </value>
     </option>
     <option name="RAINBOW_COLOR2">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
       </value>
     </option>
     <option name="RAINBOW_COLOR3">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ string.hex }}"/>
       </value>
     </option>
     <option name="RAINBOW_COLOR4">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
       </value>
     </option>
-    <!-- Rainbow brackets: collapse all nesting levels to a single subtle color.
-         Same approach as semantic highlighting; bracket depth should not dominate. -->
+    <!-- Rainbow brackets / indent guides: same five-tone warm rotation. Catppuccin parity,
+         palette discipline. -->
     <option name="ROUND_BRACKETS_RAINBOW_COLOR0">
       <value>
         <option name="FOREGROUND" value="{{ foreground.hex }}"/>
@@ -707,22 +707,22 @@
     </option>
     <option name="ROUND_BRACKETS_RAINBOW_COLOR1">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
       </value>
     </option>
     <option name="ROUND_BRACKETS_RAINBOW_COLOR2">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
       </value>
     </option>
     <option name="ROUND_BRACKETS_RAINBOW_COLOR3">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ string.hex }}"/>
       </value>
     </option>
     <option name="ROUND_BRACKETS_RAINBOW_COLOR4">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
       </value>
     </option>
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR0">
@@ -732,22 +732,22 @@
     </option>
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR1">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
       </value>
     </option>
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR2">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
       </value>
     </option>
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR3">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ string.hex }}"/>
       </value>
     </option>
     <option name="SQUARE_BRACKETS_RAINBOW_COLOR4">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
       </value>
     </option>
     <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR0">
@@ -757,22 +757,22 @@
     </option>
     <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR1">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
       </value>
     </option>
     <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR2">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
       </value>
     </option>
     <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR3">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ string.hex }}"/>
       </value>
     </option>
     <option name="SQUIGGLY_BRACKETS_RAINBOW_COLOR4">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
       </value>
     </option>
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR0">
@@ -782,48 +782,47 @@
     </option>
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR1">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
       </value>
     </option>
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR2">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
       </value>
     </option>
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR3">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ string.hex }}"/>
       </value>
     </option>
     <option name="ANGLE_BRACKETS_RAINBOW_COLOR4">
       <value>
-        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
       </value>
     </option>
-    <!-- Indent guide rainbow: collapse to a single muted color so guides stay subtle. -->
     <option name="INDENT_GUIDES_RAINBOW_COLOR0">
       <value>
-        <option name="FOREGROUND" value="{{ pressed.hex }}"/>
+        <option name="FOREGROUND" value="{{ foreground.hex }}"/>
       </value>
     </option>
     <option name="INDENT_GUIDES_RAINBOW_COLOR1">
       <value>
-        <option name="FOREGROUND" value="{{ pressed.hex }}"/>
+        <option name="FOREGROUND" value="{{ function.hex }}"/>
       </value>
     </option>
     <option name="INDENT_GUIDES_RAINBOW_COLOR2">
       <value>
-        <option name="FOREGROUND" value="{{ pressed.hex }}"/>
+        <option name="FOREGROUND" value="{{ member_var.hex }}"/>
       </value>
     </option>
     <option name="INDENT_GUIDES_RAINBOW_COLOR3">
       <value>
-        <option name="FOREGROUND" value="{{ pressed.hex }}"/>
+        <option name="FOREGROUND" value="{{ string.hex }}"/>
       </value>
     </option>
     <option name="INDENT_GUIDES_RAINBOW_COLOR4">
       <value>
-        <option name="FOREGROUND" value="{{ pressed.hex }}"/>
+        <option name="FOREGROUND" value="{{ type.hex }}"/>
       </value>
     </option>
     <!-- Per-language attribute coverage. Every language plugin (Bash, Go, PHP, Python, Rust, Ruby,
