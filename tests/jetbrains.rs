@@ -839,3 +839,82 @@ fn dark_covers_language_inheritance() {
 fn light_covers_language_inheritance() {
   assert_language_inheritance(LIGHT, "light");
 }
+
+// -- Compose / annotation / rainbow overrides. Without these, Compose function calls inherit
+//    from Darcula's special Compose attribute, annotations render in Darcula's yellow, and
+//    Android Studio's semantic-highlighting rainbow colors leak in for every identifier. --
+
+#[test]
+fn dark_overrides_composable_call_attribute() {
+  assert!(
+    DARK.contains("<option name=\"ComposableCallTextAttributes\" baseAttributes=\"DEFAULT_FUNCTION_CALL\"/>"),
+    "dark scheme must override ComposableCallTextAttributes so @Composable calls render as DEFAULT_FUNCTION_CALL"
+  );
+}
+
+#[test]
+fn light_overrides_composable_call_attribute() {
+  assert!(
+    LIGHT.contains("<option name=\"ComposableCallTextAttributes\" baseAttributes=\"DEFAULT_FUNCTION_CALL\"/>"),
+    "light scheme must override ComposableCallTextAttributes so @Composable calls render as DEFAULT_FUNCTION_CALL"
+  );
+}
+
+#[test]
+fn dark_overrides_annotation_name() {
+  assert_eq!(
+    jetbrains_attribute(DARK, "ANNOTATION_NAME_ATTRIBUTES", "FOREGROUND"),
+    "#e6c08a",
+    "dark annotation name must use the decorator color"
+  );
+  assert_eq!(
+    jetbrains_attribute(DARK, "KOTLIN_ANNOTATION", "FOREGROUND"),
+    "#e6c08a",
+    "dark Kotlin annotation must use the decorator color"
+  );
+}
+
+#[test]
+fn light_overrides_annotation_name() {
+  assert_eq!(
+    jetbrains_attribute(LIGHT, "ANNOTATION_NAME_ATTRIBUTES", "FOREGROUND"),
+    "#7a5a1c",
+    "light annotation name must use the decorator color"
+  );
+}
+
+#[test]
+fn dark_collapses_rainbow_palette() {
+  for slot in 0..5 {
+    let key = format!("RAINBOW_COLOR{slot}");
+    assert_eq!(
+      jetbrains_attribute(DARK, &key, "FOREGROUND"),
+      "#bfbdb6",
+      "dark {key} must collapse to foreground so semantic highlighting stays consistent"
+    );
+  }
+}
+
+#[test]
+fn dark_collapses_round_brackets_rainbow() {
+  for slot in 0..5 {
+    let key = format!("ROUND_BRACKETS_RAINBOW_COLOR{slot}");
+    assert_eq!(
+      jetbrains_attribute(DARK, &key, "FOREGROUND"),
+      "#bfbdb6",
+      "dark {key} must collapse to foreground"
+    );
+  }
+}
+
+#[test]
+fn light_collapses_rainbow_palette() {
+  for slot in 0..5 {
+    let key = format!("RAINBOW_COLOR{slot}");
+    assert_eq!(
+      jetbrains_attribute(LIGHT, &key, "FOREGROUND"),
+      "#3a3630",
+      "light {key} must collapse to foreground"
+    );
+  }
+}
