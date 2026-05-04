@@ -379,6 +379,51 @@ pub fn alacritty_color(src: &str, path: &str) -> String {
   )
 }
 
+/// Read a color/string value from a WezTerm TOML theme by dotted path.
+/// Example: `wezterm_color(src, "colors.background")`.
+pub fn wezterm_color(src: &str, path: &str) -> String {
+  let table: toml::Table = src.parse().expect("invalid TOML");
+  let mut value: toml::Value = toml::Value::Table(table);
+  for part in path.split('.') {
+    value = value
+      .get(part)
+      .cloned()
+      .unwrap_or_else(|| panic!("missing path segment '{part}' in '{path}'"));
+  }
+  let value = value.as_str().or_else(|| {
+    value
+      .as_table()
+      .and_then(|table| table.get("Color"))
+      .and_then(|color| color.as_str())
+  });
+  let value = value.unwrap_or_else(|| panic!("path '{path}' is not a string or Color table"));
+  if value.starts_with('#') {
+    hex_to_lower(value)
+  } else {
+    value.to_string()
+  }
+}
+
+/// Extract an ANSI color from a WezTerm `ansi` or `brights` array.
+pub fn wezterm_ansi_color(src: &str, bank: &str, index: usize) -> String {
+  let table: toml::Table = src.parse().expect("invalid TOML");
+  let colors = table
+    .get("colors")
+    .and_then(|v| v.as_table())
+    .expect("missing colors table");
+  let array = colors
+    .get(bank)
+    .and_then(|v| v.as_array())
+    .unwrap_or_else(|| panic!("missing colors.{bank} array"));
+  assert_eq!(array.len(), 8, "colors.{bank} must contain exactly 8 entries");
+  hex_to_lower(
+    array
+      .get(index)
+      .and_then(|v| v.as_str())
+      .unwrap_or_else(|| panic!("missing colors.{bank}[{index}]")),
+  )
+}
+
 /// Extract an ANSI color from a Warp theme YAML file.
 /// `bank` is `"normal"` or `"bright"`. `name` is one of `black, red, green, yellow, blue, magenta, cyan, white`.
 pub fn warp_ansi_color(src: &str, bank: &str, name: &str) -> String {

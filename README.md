@@ -134,6 +134,7 @@ Inspired by materials that age well. Unlike your eyes.
 | iTerm2 | Available | [`iterm2/`](iterm2/) |
 | Windows Terminal | Available | [`windows-terminal/`](windows-terminal/) |
 | Warp | Available | [`warp/`](warp/) |
+| WezTerm | Available | [`wezterm/`](wezterm/) |
 | Alacritty | Available | [`alacritty/`](alacritty/) |
 | tmux | Available | [`tmux/`](tmux/) |
 | Zellij | Available | [`zellij/`](zellij/) |

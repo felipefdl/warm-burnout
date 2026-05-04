@@ -4,8 +4,8 @@ use common::{
   alacritty_color, bat_tmtheme_global_setting, emacs_palette_color, ghostty_ansi_color, ghostty_color,
   helix_palette_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute, jetbrains_color,
   nvim_palette_color, obsidian_color, starship_palette_color, tmux_option_value, tmux_style_bg, tmux_style_fg,
-  vscode_color, warp_ansi_color, warp_color, windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color,
-  zellij_color,
+  vscode_color, warp_ansi_color, warp_color, wezterm_ansi_color, wezterm_color, windows_terminal_color, xcode_color,
+  xcode_syntax_color, zed_editor_color, zellij_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -1110,6 +1110,286 @@ fn light_foreground_bat_matches_ghostty() {
   let bat = bat_tmtheme_global_setting(BAT_LIGHT, "foreground");
   let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
   assert_eq!(bat, ghostty, "light foreground: bat={bat} ghostty={ghostty}");
+}
+
+// -- WezTerm cross-platform consistency --
+
+const WEZTERM_DARK: &str = include_str!("../wezterm/warm-burnout-dark.toml");
+const WEZTERM_LIGHT: &str = include_str!("../wezterm/warm-burnout-light.toml");
+
+#[test]
+fn dark_background_wezterm_matches_ghostty() {
+  let wezterm = wezterm_color(WEZTERM_DARK, "colors.background");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(wezterm, ghostty, "dark background: wezterm={wezterm} ghostty={ghostty}");
+}
+
+#[test]
+fn light_background_wezterm_matches_ghostty() {
+  let wezterm = wezterm_color(WEZTERM_LIGHT, "colors.background");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(
+    wezterm, ghostty,
+    "light background: wezterm={wezterm} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_foreground_wezterm_matches_ghostty() {
+  let wezterm = wezterm_color(WEZTERM_DARK, "colors.foreground");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(wezterm, ghostty, "dark foreground: wezterm={wezterm} ghostty={ghostty}");
+}
+
+#[test]
+fn light_foreground_wezterm_matches_ghostty() {
+  let wezterm = wezterm_color(WEZTERM_LIGHT, "colors.foreground");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(
+    wezterm, ghostty,
+    "light foreground: wezterm={wezterm} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_cursor_wezterm_matches_ghostty() {
+  let wezterm = wezterm_color(WEZTERM_DARK, "colors.cursor_bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "cursor-color");
+  assert_eq!(wezterm, ghostty, "dark cursor: wezterm={wezterm} ghostty={ghostty}");
+}
+
+#[test]
+fn light_cursor_wezterm_matches_ghostty() {
+  let wezterm = wezterm_color(WEZTERM_LIGHT, "colors.cursor_bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "cursor-color");
+  assert_eq!(wezterm, ghostty, "light cursor: wezterm={wezterm} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_selection_wezterm_matches_ghostty() {
+  let wezterm = wezterm_color(WEZTERM_DARK, "colors.selection_bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "selection-background");
+  assert_eq!(wezterm, ghostty, "dark selection: wezterm={wezterm} ghostty={ghostty}");
+}
+
+#[test]
+fn light_selection_wezterm_matches_ghostty() {
+  let wezterm = wezterm_color(WEZTERM_LIGHT, "colors.selection_bg");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "selection-background");
+  assert_eq!(wezterm, ghostty, "light selection: wezterm={wezterm} ghostty={ghostty}");
+}
+
+fn assert_wezterm_bank_matches_ghostty(wezterm_src: &str, ghostty_src: &str, bank: &str, base: u8, variant: &str) {
+  for index in 0..8 {
+    let wezterm = wezterm_ansi_color(wezterm_src, bank, index);
+    let ghostty = ghostty_ansi_color(ghostty_src, base + index as u8);
+    assert_eq!(
+      wezterm,
+      ghostty,
+      "{variant} {bank}[{index}] (palette {}): wezterm={wezterm} ghostty={ghostty}",
+      base + index as u8
+    );
+  }
+}
+
+#[test]
+fn dark_ansi_wezterm_matches_ghostty() {
+  assert_wezterm_bank_matches_ghostty(
+    WEZTERM_DARK,
+    include_str!("../ghostty/warm-burnout-dark"),
+    "ansi",
+    0,
+    "dark",
+  );
+}
+
+#[test]
+fn dark_brights_wezterm_matches_ghostty() {
+  assert_wezterm_bank_matches_ghostty(
+    WEZTERM_DARK,
+    include_str!("../ghostty/warm-burnout-dark"),
+    "brights",
+    8,
+    "dark",
+  );
+}
+
+#[test]
+fn light_ansi_wezterm_matches_ghostty() {
+  assert_wezterm_bank_matches_ghostty(
+    WEZTERM_LIGHT,
+    include_str!("../ghostty/warm-burnout-light"),
+    "ansi",
+    0,
+    "light",
+  );
+}
+
+#[test]
+fn light_brights_wezterm_matches_ghostty() {
+  assert_wezterm_bank_matches_ghostty(
+    WEZTERM_LIGHT,
+    include_str!("../ghostty/warm-burnout-light"),
+    "brights",
+    8,
+    "light",
+  );
+}
+
+#[test]
+fn dark_wezterm_active_tab_matches_tmux_and_zellij() {
+  let wezterm_tab = wezterm_color(WEZTERM_DARK, "colors.tab_bar.active_tab.bg_color");
+  let tmux_active = tmux_option_value(
+    include_str!("../tmux/warm-burnout-dark.conf"),
+    "window-status-current-style",
+  );
+  let tmux_bg = tmux_style_bg(&tmux_active);
+  let zellij_ribbon = zellij_color(
+    include_str!("../zellij/warm-burnout-dark.kdl"),
+    "warm-burnout-dark",
+    "ribbon_selected",
+    "background",
+  );
+  assert_eq!(
+    wezterm_tab, tmux_bg,
+    "dark WezTerm active tab should match tmux active window"
+  );
+  assert_eq!(
+    wezterm_tab, zellij_ribbon,
+    "dark WezTerm active tab should match Zellij active ribbon"
+  );
+}
+
+#[test]
+fn light_wezterm_active_tab_matches_tmux_and_zellij() {
+  let wezterm_tab = wezterm_color(WEZTERM_LIGHT, "colors.tab_bar.active_tab.bg_color");
+  let tmux_active = tmux_option_value(
+    include_str!("../tmux/warm-burnout-light.conf"),
+    "window-status-current-style",
+  );
+  let tmux_bg = tmux_style_bg(&tmux_active);
+  let zellij_ribbon = zellij_color(
+    include_str!("../zellij/warm-burnout-light.kdl"),
+    "warm-burnout-light",
+    "ribbon_selected",
+    "background",
+  );
+  assert_eq!(
+    wezterm_tab, tmux_bg,
+    "light WezTerm active tab should match tmux active window"
+  );
+  assert_eq!(
+    wezterm_tab, zellij_ribbon,
+    "light WezTerm active tab should match Zellij active ribbon"
+  );
+}
+
+#[test]
+fn dark_wezterm_split_matches_tmux_and_zellij_focus() {
+  let wezterm_split = wezterm_color(WEZTERM_DARK, "colors.split");
+  let tmux_border = tmux_option_value(
+    include_str!("../tmux/warm-burnout-dark.conf"),
+    "pane-active-border-style",
+  );
+  let tmux_fg = tmux_style_fg(&tmux_border);
+  let zellij_frame = zellij_color(
+    include_str!("../zellij/warm-burnout-dark.kdl"),
+    "warm-burnout-dark",
+    "frame_selected",
+    "base",
+  );
+  assert_eq!(
+    wezterm_split, tmux_fg,
+    "dark WezTerm split should match tmux active pane border"
+  );
+  assert_eq!(
+    wezterm_split, zellij_frame,
+    "dark WezTerm split should match Zellij focused frame"
+  );
+}
+
+#[test]
+fn light_wezterm_split_matches_tmux_and_zellij_focus() {
+  let wezterm_split = wezterm_color(WEZTERM_LIGHT, "colors.split");
+  let tmux_border = tmux_option_value(
+    include_str!("../tmux/warm-burnout-light.conf"),
+    "pane-active-border-style",
+  );
+  let tmux_fg = tmux_style_fg(&tmux_border);
+  let zellij_frame = zellij_color(
+    include_str!("../zellij/warm-burnout-light.kdl"),
+    "warm-burnout-light",
+    "frame_selected",
+    "base",
+  );
+  assert_eq!(
+    wezterm_split, tmux_fg,
+    "light WezTerm split should match tmux active pane border"
+  );
+  assert_eq!(
+    wezterm_split, zellij_frame,
+    "light WezTerm split should match Zellij focused frame"
+  );
+}
+
+#[test]
+fn dark_wezterm_inactive_tab_matches_zellij_raised_surface() {
+  let wezterm_tab = wezterm_color(WEZTERM_DARK, "colors.tab_bar.inactive_tab.bg_color");
+  let zellij_ribbon = zellij_color(
+    include_str!("../zellij/warm-burnout-dark.kdl"),
+    "warm-burnout-dark",
+    "ribbon_unselected",
+    "background",
+  );
+  assert_eq!(
+    wezterm_tab, zellij_ribbon,
+    "dark WezTerm inactive tab should match Zellij raised ribbon"
+  );
+}
+
+#[test]
+fn light_wezterm_inactive_tab_matches_zellij_raised_surface() {
+  let wezterm_tab = wezterm_color(WEZTERM_LIGHT, "colors.tab_bar.inactive_tab.bg_color");
+  let zellij_ribbon = zellij_color(
+    include_str!("../zellij/warm-burnout-light.kdl"),
+    "warm-burnout-light",
+    "ribbon_unselected",
+    "background",
+  );
+  assert_eq!(
+    wezterm_tab, zellij_ribbon,
+    "light WezTerm inactive tab should match Zellij raised ribbon"
+  );
+}
+
+#[test]
+fn dark_wezterm_scrollbar_matches_zellij_unfocused_frame() {
+  let wezterm_scrollbar = wezterm_color(WEZTERM_DARK, "colors.scrollbar_thumb");
+  let zellij_frame = zellij_color(
+    include_str!("../zellij/warm-burnout-dark.kdl"),
+    "warm-burnout-dark",
+    "frame_unselected",
+    "base",
+  );
+  assert_eq!(
+    wezterm_scrollbar, zellij_frame,
+    "dark WezTerm scrollbar should match Zellij unfocused frame"
+  );
+}
+
+#[test]
+fn light_wezterm_scrollbar_matches_zellij_unfocused_frame() {
+  let wezterm_scrollbar = wezterm_color(WEZTERM_LIGHT, "colors.scrollbar_thumb");
+  let zellij_frame = zellij_color(
+    include_str!("../zellij/warm-burnout-light.kdl"),
+    "warm-burnout-light",
+    "frame_unselected",
+    "base",
+  );
+  assert_eq!(
+    wezterm_scrollbar, zellij_frame,
+    "light WezTerm scrollbar should match Zellij unfocused frame"
+  );
 }
 
 // -- Home Assistant cross-platform consistency --

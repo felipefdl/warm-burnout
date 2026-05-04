@@ -1,0 +1,85 @@
+# Warm Burnout Dark
+
+[colors]
+foreground = "#bfbdb6"
+background = "#1a1510"
+
+cursor_bg = "#f5c56e"
+cursor_fg = "#1a1510"
+cursor_border = "#f5c56e"
+
+selection_fg = "#bfbdb6"
+selection_bg = "#33393a"
+
+scrollbar_thumb = "#3a342a"
+split = "#b8522e"
+visual_bell = "#ffb454"
+compose_cursor = "#f5c56e"
+
+ansi = [
+  "#23211b",
+  "#f06b73",
+  "#70bf56",
+  "#fdb04c",
+  "#4fbfff",
+  "#d0a1ff",
+  "#93e2c8",
+  "#c7c7c7",
+]
+
+brights = [
+  "#686868",
+  "#f07178",
+  "#aad94c",
+  "#ffb454",
+  "#59c2ff",
+  "#d2a6ff",
+  "#95e6cb",
+  "#ffffff",
+]
+
+copy_mode_active_highlight_bg = { Color = "#ff8f40" }
+copy_mode_active_highlight_fg = { Color = "#1a1510" }
+copy_mode_inactive_highlight_bg = { Color = "#33393a" }
+copy_mode_inactive_highlight_fg = { Color = "#bfbdb6" }
+
+quick_select_label_bg = { Color = "#ffb454" }
+quick_select_label_fg = { Color = "#1a1510" }
+quick_select_match_bg = { Color = "#33393a" }
+quick_select_match_fg = { Color = "#bfbdb6" }
+
+[colors.indexed]
+16 = "#b8522e"
+17 = "#ffb454"
+
+[colors.tab_bar]
+background = "#1a1510"
+inactive_tab_edge = "#3a342a"
+inactive_tab_edge_hover = "#b8522e"
+
+[colors.tab_bar.active_tab]
+bg_color = "#ff8f40"
+fg_color = "#1a1510"
+intensity = "Bold"
+
+[colors.tab_bar.inactive_tab]
+bg_color = "#1f1d17"
+fg_color = "#b4a89c"
+
+[colors.tab_bar.inactive_tab_hover]
+bg_color = "#3a342a"
+fg_color = "#bfbdb6"
+italic = true
+
+[colors.tab_bar.new_tab]
+bg_color = "#1f1d17"
+fg_color = "#b4a89c"
+
+[colors.tab_bar.new_tab_hover]
+bg_color = "#3a342a"
+fg_color = "#bfbdb6"
+italic = true
+
+[metadata]
+name = "Warm Burnout Dark"
+origin_url = "https://github.com/felipefdl/warm-burnout"
