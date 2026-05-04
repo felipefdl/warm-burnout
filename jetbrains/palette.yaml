@@ -36,6 +36,7 @@ flavors:
       pressed: "#2a2620"
       border: "#2a2620"
       muted: "#4a4438"
+      chrome_selected: "#3a3128"
 
       # Selection
       selection_neutral: "#3a4550"
@@ -98,6 +99,7 @@ flavors:
       pressed: "#e0d8cc"
       border: "#ddd6ca"
       muted: "#a89880"
+      chrome_selected: "#cdc1a8"
 
       # Selection
       selection_neutral: "#e5e8e2"

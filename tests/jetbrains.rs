@@ -512,6 +512,46 @@ fn dark_theme_json_accent_color() {
   assert_eq!(v["ui"]["EditorTabs"]["underlineColor"].as_str(), Some("b8522e"));
 }
 
+// Toolwindow stripe button hover/selected must be clearly distinguishable from the panel
+// background -- this was the regression that left the project / git / bookmark icons looking
+// almost transparent on hover.
+#[test]
+fn dark_theme_toolwindow_button_states_are_visible() {
+  let v = parse_theme(DARK_THEME);
+  assert_eq!(
+    v["ui"]["ToolWindow"]["Button"]["hoverBackground"].as_str(),
+    Some("2a2620"),
+    "hoverBackground must use the elevated `pressed` token, not the near-invisible `hover`"
+  );
+  assert_eq!(
+    v["ui"]["ToolWindow"]["Button"]["selectedBackground"].as_str(),
+    Some("3a3128"),
+    "selectedBackground must use chrome_selected so the active tool window stands out"
+  );
+  assert_ne!(
+    v["ui"]["ToolWindow"]["Button"]["hoverBackground"].as_str(),
+    v["ui"]["ToolWindow"]["Button"]["selectedBackground"].as_str(),
+    "hover and selected stripe button states must be distinct"
+  );
+}
+
+#[test]
+fn light_theme_toolwindow_button_states_are_visible() {
+  let v = parse_theme(LIGHT_THEME);
+  assert_eq!(
+    v["ui"]["ToolWindow"]["Button"]["hoverBackground"].as_str(),
+    Some("e0d8cc")
+  );
+  assert_eq!(
+    v["ui"]["ToolWindow"]["Button"]["selectedBackground"].as_str(),
+    Some("cdc1a8")
+  );
+  assert_ne!(
+    v["ui"]["ToolWindow"]["Button"]["hoverBackground"].as_str(),
+    v["ui"]["ToolWindow"]["Button"]["selectedBackground"].as_str()
+  );
+}
+
 // -- Light .theme.json uses canonical palette colors --
 
 #[test]
