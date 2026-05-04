@@ -151,6 +151,84 @@ pub fn xcode_syntax_font(src: &str, key: &str) -> String {
     .to_string()
 }
 
+fn bat_tmtheme_root(src: &str) -> plist::Value {
+  let cursor = std::io::Cursor::new(src.as_bytes());
+  plist::from_reader(cursor).expect("invalid tmTheme plist")
+}
+
+fn bat_tmtheme_settings_array(src: &str) -> Vec<plist::Value> {
+  bat_tmtheme_root(src)
+    .as_dictionary()
+    .expect("tmTheme root is not a dict")
+    .get("settings")
+    .and_then(|v| v.as_array())
+    .expect("tmTheme missing settings array")
+    .clone()
+}
+
+pub fn bat_tmtheme_name(src: &str) -> String {
+  bat_tmtheme_root(src)
+    .as_dictionary()
+    .expect("tmTheme root is not a dict")
+    .get("name")
+    .and_then(|v| v.as_string())
+    .expect("tmTheme missing name")
+    .to_string()
+}
+
+pub fn bat_tmtheme_global_setting(src: &str, key: &str) -> String {
+  let settings = bat_tmtheme_settings_array(src);
+  let first = settings.first().expect("tmTheme settings array is empty");
+  let settings = first
+    .as_dictionary()
+    .and_then(|dict| dict.get("settings"))
+    .and_then(|v| v.as_dictionary())
+    .expect("tmTheme first settings entry missing settings dict");
+  let value = settings
+    .get(key)
+    .and_then(|v| v.as_string())
+    .unwrap_or_else(|| panic!("tmTheme missing global setting: {key}"));
+  if value.starts_with('#') {
+    hex_to_lower(value)
+  } else {
+    value.to_string()
+  }
+}
+
+fn bat_tmtheme_scope_setting(src: &str, scope: &str, key: &str) -> String {
+  for entry in &bat_tmtheme_settings_array(src) {
+    let Some(dict) = entry.as_dictionary() else {
+      continue;
+    };
+    let scopes = dict.get("scope").and_then(|v| v.as_string()).unwrap_or_default();
+    let has_scope = scopes.split(',').map(str::trim).any(|candidate| candidate == scope);
+    if !has_scope {
+      continue;
+    }
+    let settings = dict
+      .get("settings")
+      .and_then(|v| v.as_dictionary())
+      .unwrap_or_else(|| panic!("tmTheme scope '{scope}' missing settings dict"));
+    let value = settings
+      .get(key)
+      .and_then(|v| v.as_string())
+      .unwrap_or_else(|| panic!("tmTheme scope '{scope}' missing setting: {key}"));
+    if value.starts_with('#') {
+      return hex_to_lower(value);
+    }
+    return value.to_string();
+  }
+  panic!("tmTheme missing scope: {scope}");
+}
+
+pub fn bat_tmtheme_scope_foreground(src: &str, scope: &str) -> String {
+  bat_tmtheme_scope_setting(src, scope, "foreground")
+}
+
+pub fn bat_tmtheme_scope_font_style(src: &str, scope: &str) -> String {
+  bat_tmtheme_scope_setting(src, scope, "fontStyle")
+}
+
 fn rgba_float_to_hex(rgba: &str) -> String {
   let parts: Vec<f64> = rgba.split_whitespace().map(|s| s.parse().unwrap()).collect();
   assert!(parts.len() >= 3, "rgba string must have at least 3 components");

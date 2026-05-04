@@ -1,10 +1,11 @@
 mod common;
 
 use common::{
-  alacritty_color, emacs_palette_color, ghostty_ansi_color, ghostty_color, helix_palette_color, hex_to_lower,
-  home_assistant_color, iterm2_color, jetbrains_attribute, jetbrains_color, nvim_palette_color, obsidian_color,
-  starship_palette_color, tmux_option_value, tmux_style_bg, tmux_style_fg, vscode_color, warp_ansi_color, warp_color,
-  windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color, zellij_color,
+  alacritty_color, bat_tmtheme_global_setting, emacs_palette_color, ghostty_ansi_color, ghostty_color,
+  helix_palette_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute, jetbrains_color,
+  nvim_palette_color, obsidian_color, starship_palette_color, tmux_option_value, tmux_style_bg, tmux_style_fg,
+  vscode_color, warp_ansi_color, warp_color, windows_terminal_color, xcode_color, xcode_syntax_color, zed_editor_color,
+  zellij_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -1076,6 +1077,39 @@ fn light_bright_ansi_warp_matches_ghostty() {
     8,
     "light",
   );
+}
+
+// -- Bat cross-platform consistency --
+
+const BAT_DARK: &str = include_str!("../bat/Warm Burnout Dark.tmTheme");
+const BAT_LIGHT: &str = include_str!("../bat/Warm Burnout Light.tmTheme");
+
+#[test]
+fn dark_background_bat_matches_ghostty() {
+  let bat = bat_tmtheme_global_setting(BAT_DARK, "background");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(bat, ghostty, "dark background: bat={bat} ghostty={ghostty}");
+}
+
+#[test]
+fn light_background_bat_matches_ghostty() {
+  let bat = bat_tmtheme_global_setting(BAT_LIGHT, "background");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(bat, ghostty, "light background: bat={bat} ghostty={ghostty}");
+}
+
+#[test]
+fn dark_foreground_bat_matches_ghostty() {
+  let bat = bat_tmtheme_global_setting(BAT_DARK, "foreground");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(bat, ghostty, "dark foreground: bat={bat} ghostty={ghostty}");
+}
+
+#[test]
+fn light_foreground_bat_matches_ghostty() {
+  let bat = bat_tmtheme_global_setting(BAT_LIGHT, "foreground");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(bat, ghostty, "light foreground: bat={bat} ghostty={ghostty}");
 }
 
 // -- Home Assistant cross-platform consistency --
