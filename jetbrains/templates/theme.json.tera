@@ -408,7 +408,7 @@
         "inactiveUnderlineColor": "{{ muted.hex }}"
       },
       "Button": {
-        "hoverBackground": "{{ pressed.hex }}",
+        "hoverBackground": "{{ hover.hex }}",
         "selectedBackground": "{{ chrome_selected.hex }}",
         "selectedForeground": "{{ foreground.hex }}"
       },
