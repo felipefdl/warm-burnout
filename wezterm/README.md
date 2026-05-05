@@ -50,7 +50,7 @@ WezTerm reloads config automatically. Use **Ctrl+Shift+R** if you enjoy pressing
 
 ## Verify
 
-Run `ls --color` or an ANSI color test script. Tabs should use burnt orange for the active tab, selection should stay muted, and splits should land on copper rust instead of default gray despair.
+Run `ls --color` or an ANSI color test script. Tabs should use burnt orange for the active tab, the cursor should land on amber gold (or oxidized brass on light), selection should stay muted, splits should land on copper rust instead of default gray despair, and copy mode (default `Ctrl+Shift+X`) should highlight the active match in the same burnt orange as the active tab.
 
 ## Palette
 

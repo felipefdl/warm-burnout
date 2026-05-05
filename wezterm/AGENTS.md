@@ -18,7 +18,9 @@ WezTerm standalone color schemes are TOML files with `[colors]` and `[metadata]`
 | `colors.selection_bg` / `selection_fg` | Ghostty selection background and foreground |
 | `colors.ansi` | Ghostty `palette = 0` through `palette = 7` |
 | `colors.brights` | Ghostty `palette = 8` through `palette = 15` |
+| `colors.scrollbar_thumb` / `tab_bar.inactive_tab_edge` | Zellij `frame_unselected.base` stone (`#3a342a` dark, `#c5beb2` light) |
 | `colors.split` | Canonical copper rust accent (`#b8522e`) |
+| `colors.tab_bar.background` | Mirrors `colors.background` so the tab bar reads as part of the terminal |
 | `colors.tab_bar.active_tab.bg_color` | Keywords token (`#ff8f40` dark, `#924800` light) |
 
 The `ansi` and `brights` arrays must stay in conventional terminal order: black, red, green, yellow, blue, magenta, cyan, white.
