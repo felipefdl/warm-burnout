@@ -43,6 +43,7 @@ warm-burnout/
     jetbrains.rs              # JetBrains theme validation tests
     windows_terminal.rs       # Windows Terminal theme validation tests
     warp.rs                   # Warp theme validation tests
+    wezterm.rs                # WezTerm theme validation tests
     alacritty.rs              # Alacritty theme validation tests
     tmux.rs                   # tmux theme validation tests
     zellij.rs                 # Zellij theme validation tests
@@ -149,6 +150,11 @@ warm-burnout/
     AGENTS.md                 # Warp-specific agent rules
     warm-burnout-dark.yaml    # Dark variant
     warm-burnout-light.yaml   # Light variant
+  wezterm/                    # WezTerm terminal theme
+    README.md                 # WezTerm install instructions
+    AGENTS.md                 # WezTerm-specific agent rules
+    warm-burnout-dark.toml    # Dark variant (TOML color scheme)
+    warm-burnout-light.toml   # Light variant
   alacritty/                  # Alacritty terminal theme
     README.md                 # Alacritty install instructions
     AGENTS.md                 # Alacritty-specific agent rules

@@ -16,6 +16,7 @@ const READMES: &[(&str, &str)] = &[
   ("emacs", include_str!("../emacs/README.md")),
   ("helix", include_str!("../helix/README.md")),
   ("bat", include_str!("../bat/README.md")),
+  ("wezterm", include_str!("../wezterm/README.md")),
 ];
 
 #[test]
@@ -46,6 +47,8 @@ fn no_theme_file_uses_patina_as_label() {
     ("zellij/light", include_str!("../zellij/warm-burnout-light.kdl")),
     ("warp/dark", include_str!("../warp/warm-burnout-dark.yaml")),
     ("warp/light", include_str!("../warp/warm-burnout-light.yaml")),
+    ("wezterm/dark", include_str!("../wezterm/warm-burnout-dark.toml")),
+    ("wezterm/light", include_str!("../wezterm/warm-burnout-light.toml")),
     ("iterm2/dark", include_str!("../iterm2/Warm Burnout Dark.itermcolors")),
     ("iterm2/light", include_str!("../iterm2/Warm Burnout Light.itermcolors")),
     ("jetbrains/dark", include_str!("../jetbrains/Warm-Burnout-Dark.xml")),
