@@ -1,9 +1,11 @@
 {
-  "name": "Warm Burnout Islands {% if dark %}Dark{% else %}Light{% endif %}",
+  "name": "Warm Burnout {% if islands %}Islands {% endif %}{% if dark %}Dark{% else %}Light{% endif %}",
   "dark": {{ dark }},
   "author": "Felipe Lima",
   "editorScheme": "/Warm-Burnout-{% if dark %}Dark{% else %}Light{% endif %}.xml",
+{%- if islands %}
   "parentTheme": "Islands {% if dark %}Dark{% else %}Light{% endif %}",
+{%- endif %}
   "ui": {
     "*": {
       "arc": "4",
@@ -23,6 +25,7 @@
       "disabledBorderColor": "{{ border.hex }}",
       "lineSeparatorColor": "{{ border.hex }}"
     },
+{%- if islands %}
     "Island": {
       "arc": "20",
       "arc.compact": "16",
@@ -31,6 +34,7 @@
       "borderColor": "{{ canvas.hex }}",
       "inactiveAlpha": "0.44"
     },
+{%- endif %}
     "MainWindow": {
       "background": "{{ canvas.hex }}"
     },

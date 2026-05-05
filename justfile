@@ -6,12 +6,18 @@ default:
 
 # Generate JetBrains theme files from templates and palette, then build the JAR.
 jetbrains-build:
-    {{codegen}} --palette jetbrains/palette.yaml --variant dark \
+    {{codegen}} --palette jetbrains/palette.yaml --variant dark --shell islands \
       --template jetbrains/templates/theme.json.tera \
       --output 'jetbrains/Warm Burnout Islands Dark.theme.json'
-    {{codegen}} --palette jetbrains/palette.yaml --variant light \
+    {{codegen}} --palette jetbrains/palette.yaml --variant light --shell islands \
       --template jetbrains/templates/theme.json.tera \
       --output 'jetbrains/Warm Burnout Islands Light.theme.json'
+    {{codegen}} --palette jetbrains/palette.yaml --variant dark --shell classic \
+      --template jetbrains/templates/theme.json.tera \
+      --output 'jetbrains/Warm Burnout Dark.theme.json'
+    {{codegen}} --palette jetbrains/palette.yaml --variant light --shell classic \
+      --template jetbrains/templates/theme.json.tera \
+      --output 'jetbrains/Warm Burnout Light.theme.json'
     {{codegen}} --palette jetbrains/palette.yaml --variant dark \
       --template jetbrains/templates/editor.xml.tera \
       --output jetbrains/Warm-Burnout-Dark.xml
@@ -29,6 +35,8 @@ jetbrains-clean:
     rm -f \
       'jetbrains/Warm Burnout Islands Dark.theme.json' \
       'jetbrains/Warm Burnout Islands Light.theme.json' \
+      'jetbrains/Warm Burnout Dark.theme.json' \
+      'jetbrains/Warm Burnout Light.theme.json' \
       jetbrains/Warm-Burnout-Dark.xml \
       jetbrains/Warm-Burnout-Light.xml \
       jetbrains/warm-burnout-theme.jar

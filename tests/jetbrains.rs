@@ -7,6 +7,8 @@ const DARK: &str = include_str!("../jetbrains/Warm-Burnout-Dark.xml");
 const LIGHT: &str = include_str!("../jetbrains/Warm-Burnout-Light.xml");
 const DARK_THEME: &str = include_str!("../jetbrains/Warm Burnout Islands Dark.theme.json");
 const LIGHT_THEME: &str = include_str!("../jetbrains/Warm Burnout Islands Light.theme.json");
+const DARK_CLASSIC_THEME: &str = include_str!("../jetbrains/Warm Burnout Dark.theme.json");
+const LIGHT_CLASSIC_THEME: &str = include_str!("../jetbrains/Warm Burnout Light.theme.json");
 const PLUGIN_XML: &str = include_str!("../jetbrains/META-INF/plugin.xml");
 
 // -- Valid XML structure --
@@ -570,6 +572,78 @@ fn light_theme_json_sidebar_background() {
 fn light_theme_json_accent_color() {
   let v = parse_theme(LIGHT_THEME);
   assert_eq!(v["ui"]["EditorTabs"]["underlineColor"].as_str(), Some("b8522e"));
+}
+
+// -- Classic (non-Islands) variants. Same palette, no Islands chrome. --
+
+#[test]
+fn classic_dark_theme_json_name() {
+  let v = parse_theme(DARK_CLASSIC_THEME);
+  assert_eq!(v["name"].as_str(), Some("Warm Burnout Dark"));
+}
+
+#[test]
+fn classic_light_theme_json_name() {
+  let v = parse_theme(LIGHT_CLASSIC_THEME);
+  assert_eq!(v["name"].as_str(), Some("Warm Burnout Light"));
+}
+
+#[test]
+fn classic_themes_have_no_parent() {
+  // parentTheme on a classic theme would pull in Islands chrome and defeat the point.
+  for (label, theme) in [("dark", DARK_CLASSIC_THEME), ("light", LIGHT_CLASSIC_THEME)] {
+    let v = parse_theme(theme);
+    assert!(
+      v.get("parentTheme").is_none(),
+      "classic {label} variant must not declare parentTheme"
+    );
+  }
+}
+
+#[test]
+fn classic_themes_have_no_island_block() {
+  for (label, theme) in [("dark", DARK_CLASSIC_THEME), ("light", LIGHT_CLASSIC_THEME)] {
+    let v = parse_theme(theme);
+    assert!(
+      v["ui"].get("Island").is_none(),
+      "classic {label} variant must not emit the Island {{...}} block"
+    );
+  }
+}
+
+#[test]
+fn classic_themes_share_editor_scheme_with_islands() {
+  // Same XML driver -- Islands and classic only diverge in chrome.
+  assert_eq!(
+    parse_theme(DARK_CLASSIC_THEME)["editorScheme"].as_str(),
+    parse_theme(DARK_THEME)["editorScheme"].as_str()
+  );
+  assert_eq!(
+    parse_theme(LIGHT_CLASSIC_THEME)["editorScheme"].as_str(),
+    parse_theme(LIGHT_THEME)["editorScheme"].as_str()
+  );
+}
+
+#[test]
+fn classic_themes_keep_palette_backgrounds() {
+  let dark = parse_theme(DARK_CLASSIC_THEME);
+  assert_eq!(dark["ui"]["Editor"]["background"].as_str(), Some("1a1510"));
+  assert_eq!(dark["ui"]["Panel"]["background"].as_str(), Some("14120f"));
+  let light = parse_theme(LIGHT_CLASSIC_THEME);
+  assert_eq!(light["ui"]["Editor"]["background"].as_str(), Some("f5ede0"));
+  assert_eq!(light["ui"]["Panel"]["background"].as_str(), Some("ede6da"));
+}
+
+#[test]
+fn plugin_xml_registers_all_four_themes() {
+  for needle in [
+    "Warm Burnout Islands Dark.theme.json",
+    "Warm Burnout Islands Light.theme.json",
+    "Warm Burnout Dark.theme.json",
+    "Warm Burnout Light.theme.json",
+  ] {
+    assert!(PLUGIN_XML.contains(needle), "plugin.xml must reference {needle}");
+  }
 }
 
 // -- plugin.xml validation --

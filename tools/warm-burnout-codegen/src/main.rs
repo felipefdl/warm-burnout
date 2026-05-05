@@ -22,6 +22,10 @@ struct Cli {
   #[arg(long)]
   variant: String,
 
+  /// UI shell: "islands" (Islands UI, requires JetBrains 2024.2+) or "classic" (no parentTheme).
+  #[arg(long, default_value = "islands")]
+  shell: String,
+
   /// Output file path.
   #[arg(long)]
   output: PathBuf,
@@ -56,10 +60,19 @@ fn main() -> Result<()> {
     .get(&cli.variant)
     .with_context(|| format!("variant '{}' not present in palette", cli.variant))?;
 
+  let islands = match cli.shell.as_str() {
+    "islands" => true,
+    "classic" => false,
+    other => bail!("--shell must be 'islands' or 'classic', got {other:?}"),
+  };
+
   let mut ctx = TeraContext::new();
   ctx.insert("variant", &cli.variant);
   ctx.insert("dark", &flavor.dark);
   ctx.insert("light", &!flavor.dark);
+  ctx.insert("shell", &cli.shell);
+  ctx.insert("islands", &islands);
+  ctx.insert("classic", &!islands);
   for (token, hex) in &flavor.colors {
     let normalized = normalize_hex(hex)
       .with_context(|| format!("flavor '{}' token '{}' has invalid hex '{}'", cli.variant, token, hex))?;

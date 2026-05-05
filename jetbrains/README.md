@@ -18,7 +18,12 @@ The recipe runs the local codegen binary, generates the theme files from `jetbra
 
 ## Configure
 
-After installing the plugin, go to **Settings** > **Appearance & Behavior** > **Appearance**, then select **Warm Burnout Dark** or **Warm Burnout Light** from the Theme dropdown.
+After installing the plugin, go to **Settings** > **Appearance & Behavior** > **Appearance**, then pick one of:
+
+- **Warm Burnout Islands Dark** / **Warm Burnout Islands Light** -- new Islands UI chrome (rounded toolwindow pills, requires 2024.2+)
+- **Warm Burnout Dark** / **Warm Burnout Light** -- classic flat IntelliJ chrome
+
+Same palette, same syntax highlighting across all four. Pick whichever shell you prefer.
 
 ## Verify
 
