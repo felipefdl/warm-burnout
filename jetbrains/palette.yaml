@@ -1,0 +1,130 @@
+# Warm Burnout palette, source of truth for the JetBrains plugin codegen.
+# Mirrors the canonical palette table in root AGENTS.md. When a token changes
+# here, regenerate via `just jetbrains-build`.
+
+flavors:
+  dark:
+    dark: true
+    colors:
+      # Syntax tokens
+      background: "#1a1510"
+      foreground: "#bfbdb6"
+      keyword: "#ff8f40"
+      function: "#ffb454"
+      operator: "#f29668"
+      decorator: "#e6c08a"
+      type: "#90aec0"
+      string: "#b4bc78"
+      regex_escape: "#96b898"
+      number: "#d4a8b8"
+      tag: "#dc9e92"
+      member_var: "#ec9878"
+      comment: "#b4a89c"
+      error: "#f49090"
+      css_property: "#deb074"
+
+      # Brand
+      accent: "#b8522e"
+      cursor: "#f5c56e"
+      inverse_text: "#f5ede0"
+
+      # UI hierarchy
+      canvas: "#0e0c09"
+      panel: "#14120f"
+      popup: "#1f1d17"
+      hover: "#2a2620"
+      pressed: "#322c23"
+      border: "#2a2620"
+      muted: "#4a4438"
+      chrome_selected: "#3a3128"
+
+      # Selection
+      selection_neutral: "#3a4550"
+      inactive_selection_bg: "#1f1d17"
+
+      # Highlights
+      caret_row_bg: "#222018"
+      identifier_match_bg: "#2a2620"
+      search_match_bg: "#4c4126"
+      write_match_bg: "#3a2a1a"
+
+      # Status
+      git_added: "#70bf56"
+      git_modified: "#73b8ff"
+      git_deleted_lines: "#f26d78"
+
+      # Banners
+      banner_error_bg: "#2a1510"
+      banner_success_bg: "#1a2a1a"
+      banner_warning_bg: "#2a2010"
+
+      # File color tints
+      file_yellow: "#2a2620"
+      file_green: "#1a2a1a"
+      file_blue: "#1a2030"
+      file_violet: "#2a1a30"
+      file_orange: "#2a2010"
+      file_rose: "#2a1a20"
+
+  light:
+    dark: false
+    colors:
+      # Syntax tokens
+      background: "#f5ede0"
+      foreground: "#3a3630"
+      keyword: "#924800"
+      function: "#855700"
+      operator: "#8f4418"
+      decorator: "#7a5a1c"
+      type: "#285464"
+      string: "#4d5c1a"
+      regex_escape: "#286a48"
+      number: "#7e4060"
+      tag: "#8e4632"
+      member_var: "#883850"
+      comment: "#544c40"
+      error: "#b03434"
+      css_property: "#74501c"
+
+      # Brand
+      accent: "#b8522e"
+      cursor: "#8a6600"
+      inverse_text: "#f5ede0"
+
+      # UI hierarchy
+      canvas: "#e0d8cc"
+      panel: "#ede6da"
+      popup: "#f0e8dc"
+      hover: "#d8d0c2"
+      pressed: "#ccbfa8"
+      border: "#ddd6ca"
+      muted: "#a89880"
+      chrome_selected: "#cdc1a8"
+
+      # Selection
+      selection_neutral: "#e5e8e2"
+      inactive_selection_bg: "#e0d8cc"
+
+      # Highlights
+      caret_row_bg: "#ede5d8"
+      identifier_match_bg: "#e3dbd0"
+      search_match_bg: "#e0c890"
+      write_match_bg: "#d8c888"
+
+      # Status
+      git_added: "#226414"
+      git_modified: "#2868a0"
+      git_deleted_lines: "#c43040"
+
+      # Banners
+      banner_error_bg: "#f8e8e8"
+      banner_success_bg: "#e8f0e8"
+      banner_warning_bg: "#f0e8d8"
+
+      # File color tints
+      file_yellow: "#f0e8d8"
+      file_green: "#e8f0e8"
+      file_blue: "#e8ecf0"
+      file_violet: "#f0e8f0"
+      file_orange: "#f0e8d0"
+      file_rose: "#f0e8e8"

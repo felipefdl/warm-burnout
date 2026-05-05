@@ -1,3 +1,7 @@
+[workspace]
+members = [".", "tools/warm-burnout-codegen"]
+resolver = "3"
+
 [package]
 name = "warm-burnout-tests"
 version = "0.0.0"

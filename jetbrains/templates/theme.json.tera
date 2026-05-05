@@ -1,0 +1,476 @@
+{
+  "name": "Warm Burnout {% if islands %}Islands {% endif %}{% if dark %}Dark{% else %}Light{% endif %}",
+  "dark": {{ dark }},
+  "author": "Felipe Lima",
+  "editorScheme": "/Warm-Burnout-{% if dark %}Dark{% else %}Light{% endif %}.xml",
+{%- if islands %}
+  "parentTheme": "Islands {% if dark %}Dark{% else %}Light{% endif %}",
+{%- endif %}
+  "ui": {
+    "*": {
+      "arc": "4",
+      "background": "{{ panel.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "disabledBackground": "{{ panel.hex }}",
+      "disabledForeground": "{{ muted.hex }}",
+      "inactiveBackground": "{{ panel.hex }}",
+      "selectionBackground": "{{ selection_neutral.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "hoverBackground": "{{ hover.hex }}",
+      "pressedBackground": "{{ pressed.hex }}",
+      "focusColor": "{{ accent.hex }}",
+      "focusedBorderColor": "{{ accent.hex }}",
+      "separatorColor": "{{ border.hex }}",
+      "borderColor": "{{ border.hex }}",
+      "disabledBorderColor": "{{ border.hex }}",
+      "lineSeparatorColor": "{{ border.hex }}"
+    },
+{%- if islands %}
+    "Island": {
+      "arc": "20",
+      "arc.compact": "16",
+      "borderWidth": "5",
+      "borderWidth.compact": "4",
+      "borderColor": "{{ canvas.hex }}",
+      "inactiveAlpha": "0.44"
+    },
+{%- endif %}
+    "MainWindow": {
+      "background": "{{ canvas.hex }}"
+    },
+    "ActionButton": {
+      "hoverBackground": "{{ hover.hex }}",
+      "hoverBorderColor": "{{ pressed.hex }}",
+      "pressedBackground": "{{ pressed.hex }}",
+      "pressedBorderColor": "{{ muted.hex }}"
+    },
+    "Banner": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "errorBackground": "{{ banner_error_bg.hex }}",
+      "errorBorderColor": "{{ error.hex }}",
+      "infoBackground": "{{ popup.hex }}",
+      "infoBorderColor": "{{ type.hex }}",
+      "successBackground": "{{ banner_success_bg.hex }}",
+      "successBorderColor": "{{ git_added.hex }}",
+      "warningBackground": "{{ banner_warning_bg.hex }}",
+      "warningBorderColor": "{{ accent.hex }}"
+    },
+    "Button": {
+      "startBackground": "{{ pressed.hex }}",
+      "endBackground": "{{ pressed.hex }}",
+      "startBorderColor": "{{ muted.hex }}",
+      "endBorderColor": "{{ muted.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "default": {
+        "startBackground": "{{ accent.hex }}",
+        "endBackground": "{{ accent.hex }}",
+        "startBorderColor": "{{ accent.hex }}",
+        "endBorderColor": "{{ accent.hex }}",
+        "foreground": "{{ inverse_text.hex }}",
+        "focusedBorderColor": "{{ cursor.hex }}"
+      }
+    },
+    "CheckBox": {
+      "background": "{{ panel.hex }}",
+      "select": "{{ accent.hex }}"
+    },
+    "ComboBox": {
+      "background": "{{ popup.hex }}",
+      "nonEditableBackground": "{{ popup.hex }}",
+      "selectionBackground": "{{ hover.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "ArrowButton": {
+        "background": "{{ popup.hex }}",
+        "nonEditableBackground": "{{ popup.hex }}",
+        "iconColor": "{{ foreground.hex }}",
+        "disabledIconColor": "{{ muted.hex }}"
+      }
+    },
+    "CompletionPopup": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "selectionBackground": "{{ hover.hex }}",
+      "selectionInactiveBackground": "{{ inactive_selection_bg.hex }}",
+      "matchForeground": "{{ function.hex }}",
+      "Advertiser": {
+        "foreground": "{{ comment.hex }}",
+        "background": "{{ popup.hex }}"
+      }
+    },
+    "Counter": {
+      "background": "{{ accent.hex }}",
+      "foreground": "{{ inverse_text.hex }}"
+    },
+    "DragAndDrop": {
+      "borderColor": "{{ accent.hex }}"
+    },
+    "Editor": {
+      "background": "{{ background.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "SearchField.background": "{{ popup.hex }}",
+      "shortcutForeground": "{{ function.hex }}"
+    },
+    "EditorTabs": {
+      "background": "{{ background.hex }}",
+      "underTabsBorderColor": "00000000",
+      "underlineColor": "{{ accent.hex }}",
+      "underlineHeight": 2,
+      "selectedBackground": "{{ background.hex }}",
+      "selectedForeground": "{{ foreground.hex }}",
+      "inactiveUnderlineColor": "{{ muted.hex }}",
+      "inactiveColoredFileBackground": "{{ panel.hex }}",
+      "hoverBackground": "{{ popup.hex }}",
+      "underlinedBorderColor": "{{ accent.hex }}",
+      "inactiveUnderlinedTabBorderColor": "{{ muted.hex }}",
+      "underlinedTabBackground": "{{ background.hex }}",
+      "inactiveUnderlinedTabBackground": "{{ panel.hex }}"
+    },
+    "FileColor": {
+      "Yellow": "{{ file_yellow.hex }}",
+      "Green": "{{ file_green.hex }}",
+      "Blue": "{{ file_blue.hex }}",
+      "Violet": "{{ file_violet.hex }}",
+      "Orange": "{{ file_orange.hex }}",
+      "Rose": "{{ file_rose.hex }}"
+    },
+    "GotItTooltip": {
+      "background": "{{ popup.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "shortcutForeground": "{{ function.hex }}",
+      "linkForeground": "{{ type.hex }}",
+      "Button": {
+        "foreground": "{{ inverse_text.hex }}",
+        "startBackground": "{{ accent.hex }}",
+        "endBackground": "{{ accent.hex }}",
+        "startBorderColor": "{{ accent.hex }}",
+        "endBorderColor": "{{ accent.hex }}"
+      }
+    },
+    "Label": {
+      "foreground": "{{ foreground.hex }}",
+      "disabledForeground": "{{ muted.hex }}",
+      "selectedForeground": "{{ foreground.hex }}",
+      "infoForeground": "{{ comment.hex }}",
+      "errorForeground": "{{ error.hex }}",
+      "successForeground": "{{ git_added.hex }}"
+    },
+    "Link": {
+      "activeForeground": "{{ type.hex }}",
+      "hoverForeground": "{{ type.hex }}",
+      "pressedForeground": "{{ type.hex }}",
+      "visitedForeground": "{{ type.hex }}",
+      "secondaryForeground": "{{ comment.hex }}"
+    },
+    "List": {
+      "background": "{{ panel.hex }}",
+      "selectionBackground": "{{ hover.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "selectionInactiveBackground": "{{ inactive_selection_bg.hex }}",
+      "hoverBackground": "{{ popup.hex }}"
+    },
+    "MainToolbar": {
+      "background": "{{ panel.hex }}",
+      "inactiveBackground": "{{ panel.hex }}",
+      "borderColor": "00000000",
+      "separatorColor": "{{ panel.hex }}",
+      "Icon": {
+        "background": "{{ panel.hex }}",
+        "hoverBackground": "{{ hover.hex }}",
+        "pressedBackground": "{{ pressed.hex }}"
+      },
+      "Dropdown": {
+        "background": "{{ panel.hex }}",
+        "hoverBackground": "{{ hover.hex }}",
+        "pressedBackground": "{{ pressed.hex }}",
+        "transparentHoverBackground": "{{ hover.hex }}"
+      }
+    },
+    "Menu": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "selectionBackground": "{{ hover.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "separatorColor": "{{ pressed.hex }}"
+    },
+    "MenuBar": {
+      "background": "{{ panel.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "selectionBackground": "{{ hover.hex }}",
+      "selectionForeground": "{{ foreground.hex }}"
+    },
+    "MenuItem": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "selectionBackground": "{{ hover.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "acceleratorForeground": "{{ comment.hex }}",
+      "acceleratorSelectionForeground": "{{ foreground.hex }}",
+      "disabledForeground": "{{ muted.hex }}"
+    },
+    "NavBar": {
+      "borderColor": "{{ pressed.hex }}"
+    },
+    "Notification": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "errorBackground": "{{ banner_error_bg.hex }}",
+      "errorBorderColor": "{{ error.hex }}",
+      "errorForeground": "{{ error.hex }}",
+      "ToolWindow": {
+        "informativeBackground": "{{ popup.hex }}",
+        "informativeBorderColor": "{{ type.hex }}",
+        "warningBackground": "{{ banner_warning_bg.hex }}",
+        "warningBorderColor": "{{ accent.hex }}",
+        "warningForeground": "{{ foreground.hex }}",
+        "errorBackground": "{{ banner_error_bg.hex }}",
+        "errorBorderColor": "{{ error.hex }}",
+        "errorForeground": "{{ foreground.hex }}"
+      }
+    },
+    "Panel": {
+      "background": "{{ panel.hex }}",
+      "foreground": "{{ foreground.hex }}"
+    },
+    "Plugins": {
+      "background": "{{ panel.hex }}",
+      "SearchField.background": "{{ popup.hex }}",
+      "hoverBackground": "{{ popup.hex }}",
+      "lightSelectionBackground": "{{ hover.hex }}",
+      "tagBackground": "{{ pressed.hex }}",
+      "tagForeground": "{{ foreground.hex }}",
+      "Button": {
+        "installBackground": "{{ accent.hex }}",
+        "installForeground": "{{ inverse_text.hex }}",
+        "installBorderColor": "{{ accent.hex }}",
+        "installFocusedBackground": "{{ accent.hex }}",
+        "updateBackground": "{{ git_added.hex }}",
+        "updateForeground": "{{ background.hex }}",
+        "updateBorderColor": "{{ git_added.hex }}"
+      }
+    },
+    "Popup": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "separatorColor": "{{ pressed.hex }}",
+      "Header": {
+        "activeBackground": "{{ hover.hex }}",
+        "inactiveBackground": "{{ popup.hex }}"
+      },
+      "Toolbar": {
+        "background": "{{ popup.hex }}",
+        "borderColor": "{{ pressed.hex }}"
+      },
+      "Advertiser": {
+        "background": "{{ popup.hex }}",
+        "foreground": "{{ comment.hex }}",
+        "borderColor": "{{ pressed.hex }}"
+      }
+    },
+    "ProgressBar": {
+      "trackColor": "{{ pressed.hex }}",
+      "progressColor": "{{ accent.hex }}",
+      "indeterminateStartColor": "{{ accent.hex }}",
+      "indeterminateEndColor": "{{ operator.hex }}",
+      "failedColor": "{{ error.hex }}",
+      "failedEndColor": "{{ error.hex }}",
+      "passedColor": "{{ git_added.hex }}",
+      "passedEndColor": "{{ git_added.hex }}"
+    },
+    "ScrollBar": {
+      "background": "{{ panel.hex }}",
+      "hoverTrackColor": "{{ popup.hex }}",
+      "thumbColor": "{{ muted.hex }}",
+      "hoverThumbColor": "{{ comment.hex }}",
+      "Transparent": {
+        "thumbColor": "{{ muted.hex }}",
+        "hoverThumbColor": "{{ comment.hex }}"
+      },
+      "Mac": {
+        "thumbColor": "{{ muted.hex }}",
+        "hoverThumbColor": "{{ comment.hex }}",
+        "Transparent": {
+          "thumbColor": "{{ muted.hex }}",
+          "hoverThumbColor": "{{ comment.hex }}"
+        }
+      }
+    },
+    "SearchEverywhere": {
+      "SearchField.background": "{{ popup.hex }}",
+      "Tab": {
+        "selectedBackground": "{{ hover.hex }}",
+        "selectedForeground": "{{ foreground.hex }}"
+      }
+    },
+    "SearchMatch": {
+      "startBackground": "{{ search_match_bg.hex }}",
+      "endBackground": "{{ search_match_bg.hex }}"
+    },
+    "SidePanel": {
+      "background": "{{ panel.hex }}"
+    },
+    "Slider": {
+      "trackColor": "{{ pressed.hex }}",
+      "buttonColor": "{{ accent.hex }}",
+      "buttonBorderColor": "{{ accent.hex }}"
+    },
+    "SpeedSearch": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "borderColor": "{{ accent.hex }}",
+      "errorForeground": "{{ error.hex }}"
+    },
+    "StatusBar": {
+      "background": "{{ panel.hex }}",
+      "borderColor": "00000000",
+      "hoverBackground": "{{ hover.hex }}",
+      "Widget": {
+        "hoverBackground": "{{ hover.hex }}"
+      }
+    },
+    "Tab": {
+      "hoverBackground": "{{ hover.hex }}",
+      "selectedBackground": "{{ background.hex }}"
+    },
+    "Table": {
+      "background": "{{ panel.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "alternateRowBackground": "{{ popup.hex }}",
+      "selectionBackground": "{{ hover.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "selectionInactiveBackground": "{{ inactive_selection_bg.hex }}",
+      "gridColor": "{{ pressed.hex }}",
+      "hoverBackground": "{{ popup.hex }}",
+      "lightSelectionBackground": "{{ hover.hex }}",
+      "lightSelectionForeground": "{{ foreground.hex }}",
+      "stripeColor": "{{ popup.hex }}"
+    },
+    "TextArea": {
+      "background": "{{ background.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "selectionBackground": "{{ selection_neutral.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "caretForeground": "{{ cursor.hex }}",
+      "inactiveForeground": "{{ comment.hex }}"
+    },
+    "TextField": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "selectionBackground": "{{ selection_neutral.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "caretForeground": "{{ cursor.hex }}"
+    },
+    "TitlePane": {
+      "background": "{{ panel.hex }}",
+      "inactiveBackground": "{{ panel.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "inactiveForeground": "{{ comment.hex }}",
+      "borderColor": "{{ panel.hex }}",
+      "Button": {
+        "hoverBackground": "{{ hover.hex }}"
+      }
+    },
+    "ToolTip": {
+      "background": "{{ popup.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "shortcutForeground": "{{ function.hex }}"
+    },
+    "ToggleButton": {
+      "onBackground": "{{ accent.hex }}",
+      "onForeground": "{{ inverse_text.hex }}",
+      "offBackground": "{{ pressed.hex }}",
+      "offForeground": "{{ foreground.hex }}",
+      "buttonColor": "{{ foreground.hex }}"
+    },
+    "ToolBar": {
+      "background": "{{ panel.hex }}",
+      "foreground": "{{ foreground.hex }}"
+    },
+    "ToolWindow": {
+      "background": "{{ panel.hex }}",
+      "Header": {
+        "background": "{{ panel.hex }}",
+        "inactiveBackground": "{{ panel.hex }}",
+        "borderColor": "{{ panel.hex }}"
+      },
+      "HeaderTab": {
+        "selectedBackground": "{{ background.hex }}",
+        "selectedInactiveBackground": "{{ popup.hex }}",
+        "hoverBackground": "{{ hover.hex }}",
+        "hoverInactiveBackground": "{{ popup.hex }}",
+        "underlineColor": "{{ accent.hex }}",
+        "inactiveUnderlineColor": "{{ muted.hex }}"
+      },
+      "Button": {
+        "hoverBackground": "{{ hover.hex }}",
+        "selectedBackground": "{{ chrome_selected.hex }}",
+        "selectedForeground": "{{ foreground.hex }}"
+      },
+      "Stripe": {
+        "borderColor": "00000000"
+      }
+    },
+    "Tree": {
+      "background": "{{ panel.hex }}",
+      "foreground": "{{ foreground.hex }}",
+      "selectionBackground": "{{ hover.hex }}",
+      "selectionForeground": "{{ foreground.hex }}",
+      "selectionInactiveBackground": "{{ inactive_selection_bg.hex }}",
+      "hoverBackground": "{{ popup.hex }}",
+      "modifiedItemForeground": "{{ git_modified.hex }}",
+      "rowHeight": 24
+    },
+    "ValidationTooltip": {
+      "errorBackground": "{{ banner_error_bg.hex }}",
+      "errorBorderColor": "{{ error.hex }}",
+      "warningBackground": "{{ banner_warning_bg.hex }}",
+      "warningBorderColor": "{{ accent.hex }}"
+    },
+    "VersionControl": {
+      "GitLog": {
+        "headIconColor": "{{ accent.hex }}",
+        "localBranchIconColor": "{{ git_added.hex }}",
+        "remoteBranchIconColor": "{{ type.hex }}",
+        "tagIconColor": "{{ function.hex }}",
+        "otherIconColor": "{{ comment.hex }}"
+      },
+      "Log": {
+        "Commit.currentBranchBackground": "{{ hover.hex }}",
+        "Commit.unmatchedForeground": "{{ muted.hex }}"
+      },
+      "Ref.foreground": "{{ foreground.hex }}",
+      "RefLabel.foreground": "{{ foreground.hex }}"
+    },
+    "WelcomeScreen": {
+      "background": "{{ panel.hex }}",
+      "borderColor": "{{ pressed.hex }}",
+      "headerBackground": "{{ panel.hex }}",
+      "separatorColor": "{{ pressed.hex }}",
+      "Projects": {
+        "background": "{{ popup.hex }}",
+        "selectionBackground": "{{ hover.hex }}",
+        "selectionInactiveBackground": "{{ inactive_selection_bg.hex }}",
+        "actions.background": "{{ pressed.hex }}"
+      },
+      "SidePanel": {
+        "background": "{{ panel.hex }}"
+      }
+    },
+    "RecentProject.Color0.MainToolbarGradientStart": "{{ accent.hex }}18",
+    "RecentProject.Color1.MainToolbarGradientStart": "{{ keyword.hex }}18",
+    "RecentProject.Color2.MainToolbarGradientStart": "{{ function.hex }}18",
+    "RecentProject.Color3.MainToolbarGradientStart": "{{ string.hex }}18",
+    "RecentProject.Color4.MainToolbarGradientStart": "{{ type.hex }}18",
+    "RecentProject.Color5.MainToolbarGradientStart": "{{ number.hex }}18",
+    "RecentProject.Color6.MainToolbarGradientStart": "{{ decorator.hex }}18",
+    "RecentProject.Color7.MainToolbarGradientStart": "{{ tag.hex }}18",
+    "RecentProject.Color8.MainToolbarGradientStart": "{{ member_var.hex }}18",
+    "RecentProject.Color9.MainToolbarGradientStart": "{{ css_property.hex }}18"
+  }
+}

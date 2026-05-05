@@ -124,16 +124,19 @@ warm-burnout/
     AGENTS.md                 # iTerm2-specific agent rules
     Warm Burnout Dark.itermcolors   # Dark variant (XML plist)
     Warm Burnout Light.itermcolors  # Light variant (XML plist)
-  jetbrains/                  # JetBrains IDE theme (full UI + editor)
+  jetbrains/                  # JetBrains IDE theme (full UI + editor, codegen-driven)
     META-INF/
       plugin.xml              # Plugin manifest
-    Warm Burnout Islands Dark.theme.json  # Dark UI theme (Islands)
-    Warm Burnout Islands Light.theme.json # Light UI theme (Islands)
-    Warm-Burnout-Dark.xml     # Dark editor scheme
-    Warm-Burnout-Light.xml    # Light editor scheme
-    build.sh                  # Build plugin JAR
+    palette.yaml              # Palette source of truth, both variants (codegen input)
+    templates/
+      theme.json.tera         # UI theme template, dark + light
+      editor.xml.tera         # Editor scheme template, dark + light
+    UPSTREAM_REVISION.txt     # Pinned JetBrains/rider-theme-pack SHA for sync
+    build.sh                  # Zip generated files into the JAR
     README.md                 # JetBrains install instructions
     AGENTS.md                 # JetBrains-specific agent rules
+    # Generated, gitignored: Warm Burnout Islands {Dark,Light}.theme.json,
+    # Warm-Burnout-{Dark,Light}.xml, warm-burnout-theme.jar
   windows-terminal/           # Windows Terminal color scheme
     README.md                 # Windows Terminal install instructions
     AGENTS.md                 # Windows Terminal-specific agent rules
@@ -271,13 +274,28 @@ Light: foreground needs L <= 0.144 for AA.
 - All publishing is handled by GitHub Actions workflows triggered by `v*` tags.
 - To release a new version: bump the version in the platform's manifest, commit, create a `v{version}` tag, and push the tag.
 
+### Versioning Convention
+
+- The whole suite shares one version. When releasing, every platform manifest bumps in lockstep to the same number; agents never bump a single platform out of band.
+- The suite version lives in four files, all of which must match before tagging:
+  - `vscode/package.json` -> `"version"`
+  - `zed/extension.toml` -> `version = "..."`
+  - `obsidian/manifest.json` -> `"version"`
+  - `jetbrains/META-INF/plugin.xml` -> `<version>...</version>`
+- Do not bump versions speculatively when adding features mid-cycle. Bumping is a release-time action triggered by an explicit "release" or "tag" instruction. Until then, manifests stay at the last shipped suite version.
+- Pick the next number by reading the highest published `v*` git tag (`git describe --tags --abbrev=0`) and bumping minor (or major if breaking).
+
 ### Release Checklist
 
-1. Bump version in `vscode/package.json`, `zed/extension.toml`, and `obsidian/manifest.json`.
-2. Commit, create `v{version}` tag, push both.
-3. The tag push triggers `release-vscode.yml` (VS Code/Open VSX) and `release-themes.yml` (all platform zips attached to GitHub Release).
-4. **Update release notes** on the GitHub Release. Write real notes, not a changelog dump. Structure them by what matters to users: palette changes, font style changes, UI fixes, new platform coverage, infrastructure, fixes. End with the comfort score and test count. Match the tone of v1.4.2 release notes. Use `gh release edit` to update after the workflow creates the release.
-5. **Zed marketplace** requires a separate PR to `zed-industries/extensions`. Clone the fork at `felipefdl/extensions`, sync with upstream, update the submodule to the new tag, bump the version in the central `extensions.toml` (only the `[warm-burnout-theme]` entry), and open a PR against `zed-industries/extensions`.
+1. Confirm the working tree is clean and on `main`. Pull latest.
+2. Decide the next version: `git describe --tags --abbrev=0` -> bump minor.
+3. Bump the version string in **all four** manifests above. Mismatches will cause release artifacts to drift apart.
+4. For `jetbrains/META-INF/plugin.xml`, also prepend a new `<change-notes>` `<p>...</p>` entry describing what shipped since the last released JetBrains version (which may be older than the suite version if JetBrains skipped releases). Keep it under ~3 sentences, user-facing tone.
+5. Run `cargo test --workspace` and `just jetbrains-build` to confirm everything still builds.
+6. Commit ("chore(release): bump to vX.Y.Z"), create `v{version}` tag, push both.
+7. The tag push triggers `release-vscode.yml` (VS Code/Open VSX) and `release-themes.yml` (all platform zips attached to GitHub Release).
+8. **Update release notes** on the GitHub Release. Write real notes, not a changelog dump. Structure them by what matters to users: palette changes, font style changes, UI fixes, new platform coverage, infrastructure, fixes. End with the comfort score and test count. Match the tone of v1.4.2 release notes. Use `gh release edit` to update after the workflow creates the release.
+9. **Zed marketplace** requires a separate PR to `zed-industries/extensions`. Clone the fork at `felipefdl/extensions`, sync with upstream, update the submodule to the new tag, bump the version in the central `extensions.toml` (only the `[warm-burnout-theme]` entry), and open a PR against `zed-industries/extensions`.
 
 ### Website
 

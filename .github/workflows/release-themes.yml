@@ -25,11 +25,16 @@ jobs:
       - name: Check formatting
         run: cargo fmt -- --check
 
+      - uses: extractions/setup-just@v3
+
+      - name: Generate JetBrains theme files
+        run: just jetbrains-build
+
       - name: Run clippy
-        run: cargo clippy -- -D warnings
+        run: cargo clippy --workspace -- -D warnings
 
       - name: Run theme validation tests
-        run: cargo test
+        run: cargo test --workspace
 
   package:
     needs: [validate]
@@ -38,6 +43,12 @@ jobs:
       contents: write
     steps:
       - uses: actions/checkout@v6
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - uses: Swatinem/rust-cache@v2
+
+      - uses: extractions/setup-just@v3
 
       - name: Package Ghostty
         run: |
@@ -167,10 +178,7 @@ jobs:
             warm-burnout-light-theme.el
 
       - name: Package JetBrains
-        run: |
-          cd jetbrains
-          chmod +x build.sh
-          ./build.sh
+        run: just jetbrains-build
 
       - name: Attach to GitHub Release
         uses: softprops/action-gh-release@v2

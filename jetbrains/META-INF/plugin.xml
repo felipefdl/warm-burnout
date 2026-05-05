@@ -27,5 +27,7 @@
   <extensions defaultExtensionNs="com.intellij">
     <themeProvider id="com.warm-burnout.dark" path="/Warm Burnout Islands Dark.theme.json"/>
     <themeProvider id="com.warm-burnout.light" path="/Warm Burnout Islands Light.theme.json"/>
+    <themeProvider id="com.warm-burnout.classic.dark" path="/Warm Burnout Dark.theme.json"/>
+    <themeProvider id="com.warm-burnout.classic.light" path="/Warm Burnout Light.theme.json"/>
   </extensions>
 </idea-plugin>

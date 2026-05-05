@@ -7,6 +7,8 @@ const DARK: &str = include_str!("../jetbrains/Warm-Burnout-Dark.xml");
 const LIGHT: &str = include_str!("../jetbrains/Warm-Burnout-Light.xml");
 const DARK_THEME: &str = include_str!("../jetbrains/Warm Burnout Islands Dark.theme.json");
 const LIGHT_THEME: &str = include_str!("../jetbrains/Warm Burnout Islands Light.theme.json");
+const DARK_CLASSIC_THEME: &str = include_str!("../jetbrains/Warm Burnout Dark.theme.json");
+const LIGHT_CLASSIC_THEME: &str = include_str!("../jetbrains/Warm Burnout Light.theme.json");
 const PLUGIN_XML: &str = include_str!("../jetbrains/META-INF/plugin.xml");
 
 // -- Valid XML structure --
@@ -19,6 +21,35 @@ fn dark_has_xml_declaration() {
 #[test]
 fn light_has_xml_declaration() {
   assert!(LIGHT.starts_with("<?xml"), "light .xml must start with XML declaration");
+}
+
+// XML comments may not contain "--" except as the closing "-->". IntelliJ silently rejects
+// editor schemes that fail to parse, which removes the theme from the picker and was the
+// regression behind v1.1.0 not appearing after install. Catch it before it ships.
+fn assert_no_bad_xml_comments(xml: &str, label: &str) {
+  let mut idx = 0;
+  while let Some(open) = xml[idx..].find("<!--") {
+    let start = idx + open + 4;
+    let close = xml[start..]
+      .find("-->")
+      .unwrap_or_else(|| panic!("{label} has unterminated XML comment"));
+    let body = &xml[start..start + close];
+    assert!(
+      !body.contains("--"),
+      "{label} editor scheme has invalid XML comment containing '--' at byte offset {start}: {body:?}"
+    );
+    idx = start + close + 3;
+  }
+}
+
+#[test]
+fn dark_xml_comments_are_well_formed() {
+  assert_no_bad_xml_comments(DARK, "dark");
+}
+
+#[test]
+fn light_xml_comments_are_well_formed() {
+  assert_no_bad_xml_comments(LIGHT, "light");
 }
 
 #[test]
@@ -483,6 +514,43 @@ fn dark_theme_json_accent_color() {
   assert_eq!(v["ui"]["EditorTabs"]["underlineColor"].as_str(), Some("b8522e"));
 }
 
+// Chrome icon hover/selected must be clearly distinguishable from the panel background.
+// `hover` was previously near-invisible (~4% delta vs panel); bumped so every action button,
+// stripe button, and menu icon picks up a visible hover state through the standard token.
+#[test]
+fn dark_theme_toolwindow_button_states_are_visible() {
+  let v = parse_theme(DARK_THEME);
+  assert_eq!(
+    v["ui"]["ToolWindow"]["Button"]["hoverBackground"].as_str(),
+    Some("2a2620")
+  );
+  assert_eq!(
+    v["ui"]["ToolWindow"]["Button"]["selectedBackground"].as_str(),
+    Some("3a3128")
+  );
+  assert_ne!(
+    v["ui"]["ToolWindow"]["Button"]["hoverBackground"].as_str(),
+    v["ui"]["ToolWindow"]["Button"]["selectedBackground"].as_str()
+  );
+}
+
+#[test]
+fn light_theme_toolwindow_button_states_are_visible() {
+  let v = parse_theme(LIGHT_THEME);
+  assert_eq!(
+    v["ui"]["ToolWindow"]["Button"]["hoverBackground"].as_str(),
+    Some("d8d0c2")
+  );
+  assert_eq!(
+    v["ui"]["ToolWindow"]["Button"]["selectedBackground"].as_str(),
+    Some("cdc1a8")
+  );
+  assert_ne!(
+    v["ui"]["ToolWindow"]["Button"]["hoverBackground"].as_str(),
+    v["ui"]["ToolWindow"]["Button"]["selectedBackground"].as_str()
+  );
+}
+
 // -- Light .theme.json uses canonical palette colors --
 
 #[test]
@@ -501,6 +569,78 @@ fn light_theme_json_sidebar_background() {
 fn light_theme_json_accent_color() {
   let v = parse_theme(LIGHT_THEME);
   assert_eq!(v["ui"]["EditorTabs"]["underlineColor"].as_str(), Some("b8522e"));
+}
+
+// -- Classic (non-Islands) variants. Same palette, no Islands chrome. --
+
+#[test]
+fn classic_dark_theme_json_name() {
+  let v = parse_theme(DARK_CLASSIC_THEME);
+  assert_eq!(v["name"].as_str(), Some("Warm Burnout Dark"));
+}
+
+#[test]
+fn classic_light_theme_json_name() {
+  let v = parse_theme(LIGHT_CLASSIC_THEME);
+  assert_eq!(v["name"].as_str(), Some("Warm Burnout Light"));
+}
+
+#[test]
+fn classic_themes_have_no_parent() {
+  // parentTheme on a classic theme would pull in Islands chrome and defeat the point.
+  for (label, theme) in [("dark", DARK_CLASSIC_THEME), ("light", LIGHT_CLASSIC_THEME)] {
+    let v = parse_theme(theme);
+    assert!(
+      v.get("parentTheme").is_none(),
+      "classic {label} variant must not declare parentTheme"
+    );
+  }
+}
+
+#[test]
+fn classic_themes_have_no_island_block() {
+  for (label, theme) in [("dark", DARK_CLASSIC_THEME), ("light", LIGHT_CLASSIC_THEME)] {
+    let v = parse_theme(theme);
+    assert!(
+      v["ui"].get("Island").is_none(),
+      "classic {label} variant must not emit the Island {{...}} block"
+    );
+  }
+}
+
+#[test]
+fn classic_themes_share_editor_scheme_with_islands() {
+  // Same XML driver -- Islands and classic only diverge in chrome.
+  assert_eq!(
+    parse_theme(DARK_CLASSIC_THEME)["editorScheme"].as_str(),
+    parse_theme(DARK_THEME)["editorScheme"].as_str()
+  );
+  assert_eq!(
+    parse_theme(LIGHT_CLASSIC_THEME)["editorScheme"].as_str(),
+    parse_theme(LIGHT_THEME)["editorScheme"].as_str()
+  );
+}
+
+#[test]
+fn classic_themes_keep_palette_backgrounds() {
+  let dark = parse_theme(DARK_CLASSIC_THEME);
+  assert_eq!(dark["ui"]["Editor"]["background"].as_str(), Some("1a1510"));
+  assert_eq!(dark["ui"]["Panel"]["background"].as_str(), Some("14120f"));
+  let light = parse_theme(LIGHT_CLASSIC_THEME);
+  assert_eq!(light["ui"]["Editor"]["background"].as_str(), Some("f5ede0"));
+  assert_eq!(light["ui"]["Panel"]["background"].as_str(), Some("ede6da"));
+}
+
+#[test]
+fn plugin_xml_registers_all_four_themes() {
+  for needle in [
+    "Warm Burnout Islands Dark.theme.json",
+    "Warm Burnout Islands Light.theme.json",
+    "Warm Burnout Dark.theme.json",
+    "Warm Burnout Light.theme.json",
+  ] {
+    assert!(PLUGIN_XML.contains(needle), "plugin.xml must reference {needle}");
+  }
 }
 
 // -- plugin.xml validation --
@@ -621,4 +761,320 @@ fn light_theme_transparent_stripe_border() {
     border.ends_with("00") || border == "00000000",
     "light ToolWindow.Stripe.borderColor must be transparent"
   );
+}
+
+// -- Issue #5: TODO highlight must not render bold (was reported as too loud) --
+
+#[test]
+fn dark_todo_not_bold() {
+  assert_ne!(
+    jetbrains_attribute(DARK, "TODO_DEFAULT_ATTRIBUTES", "FONT_TYPE"),
+    "1",
+    "TODO_DEFAULT_ATTRIBUTES.FONT_TYPE must not be bold (1); reported as too loud in #5"
+  );
+}
+
+#[test]
+fn light_todo_not_bold() {
+  assert_ne!(
+    jetbrains_attribute(LIGHT, "TODO_DEFAULT_ATTRIBUTES", "FONT_TYPE"),
+    "1",
+    "TODO_DEFAULT_ATTRIBUTES.FONT_TYPE must not be bold (1); reported as too loud in #5"
+  );
+}
+
+// -- Issue #5: explicit overrides for surfaces that misrender under Islands inheritance --
+
+const ISSUE_5_SURFACES: &[(&str, &[&str])] = &[
+  ("Editor", &["background"]),
+  ("Popup", &["background"]),
+  ("CompletionPopup", &["background"]),
+  ("ToolTip", &["background", "foreground", "borderColor"]),
+  ("Island", &["borderColor"]),
+  ("TitlePane", &["background", "inactiveBackground"]),
+];
+
+fn assert_issue_5_surfaces(theme_src: &str, label: &str) {
+  let v = parse_theme(theme_src);
+  for (component, keys) in ISSUE_5_SURFACES {
+    for key in *keys {
+      assert!(
+        v["ui"][component][key].is_string(),
+        "{label} theme.json missing override {component}.{key}; required to keep #5 surfaces from drifting under parentTheme inheritance"
+      );
+    }
+  }
+}
+
+#[test]
+fn dark_overrides_issue_5_surfaces() {
+  assert_issue_5_surfaces(DARK_THEME, "dark");
+}
+
+#[test]
+fn light_overrides_issue_5_surfaces() {
+  assert_issue_5_surfaces(LIGHT_THEME, "light");
+}
+
+// -- Issue #8: ReSharper / Rider C# attribute coverage sentinel --
+
+const RESHARPER_CSHARP_SENTINEL: &[&str] = &[
+  "ReSharper.CSHARP_LOCAL_VARIABLE_IDENTIFIER",
+  "ReSharper.CSHARP_PARAMETER_IDENTIFIER",
+  "ReSharper.CSHARP_FIELD_IDENTIFIER",
+  "ReSharper.CSHARP_PROPERTY_IDENTIFIER",
+  "ReSharper.CSHARP_METHOD_IDENTIFIER",
+  "ReSharper.CSHARP_CLASS_IDENTIFIER",
+  "ReSharper.CSHARP_INTERFACE_IDENTIFIER",
+  "ReSharper.CSHARP_STRUCT_IDENTIFIER",
+  "ReSharper.CSHARP_ENUM_IDENTIFIER",
+  "ReSharper.CSHARP_DELEGATE_IDENTIFIER",
+  "ReSharper.CSHARP_RECORD_IDENTIFIER",
+  "ReSharper.CSHARP_TYPE_PARAMETER_IDENTIFIER",
+  "ReSharper.CSHARP_NAMESPACE_IDENTIFIER",
+  "ReSharper.CSHARP_KEYWORD",
+  "ReSharper.CSHARP_CONSTANT_IDENTIFIER",
+  "ReSharper.CSHARP_EVENT_IDENTIFIER",
+  "ReSharper.CSHARP_EXTENSION_METHOD_IDENTIFIER",
+];
+
+fn assert_resharper_coverage(scheme: &str, label: &str) {
+  for key in RESHARPER_CSHARP_SENTINEL {
+    let needle = format!("<option name=\"{key}\">");
+    assert!(
+      scheme.contains(&needle),
+      "{label} editor scheme missing override for {key}; required to fix Rider/C# gray fallback (#8)"
+    );
+  }
+}
+
+#[test]
+fn dark_covers_resharper_csharp_attributes() {
+  assert_resharper_coverage(DARK, "dark");
+}
+
+#[test]
+fn light_covers_resharper_csharp_attributes() {
+  assert_resharper_coverage(LIGHT, "light");
+}
+
+// -- Generic identifier coverage so Kotlin, Java, JS, Python, etc. do not
+//    fall through to the parent scheme's teal/blue defaults. --
+
+const IDENTIFIER_COVERAGE_SENTINEL: &[&str] = &[
+  "DEFAULT_LOCAL_VARIABLE",
+  "DEFAULT_REASSIGNED_LOCAL_VARIABLE",
+  "DEFAULT_PARAMETER",
+  "DEFAULT_REASSIGNED_PARAMETER",
+  "DEFAULT_GLOBAL_VARIABLE",
+  "DEFAULT_INSTANCE_METHOD",
+  "DEFAULT_PREDEFINED_SYMBOL",
+  "DEFAULT_LABEL",
+  "DEFAULT_TYPE_PARAMETER_NAME",
+  "DEFAULT_ENUM_NAME",
+  "DEFAULT_ABSTRACT_CLASS_NAME",
+];
+
+fn assert_identifier_coverage(scheme: &str, label: &str) {
+  for key in IDENTIFIER_COVERAGE_SENTINEL {
+    let needle = format!("<option name=\"{key}\">");
+    assert!(
+      scheme.contains(&needle),
+      "{label} editor scheme missing override for {key}; required so language plugins do not inherit teal/blue defaults"
+    );
+  }
+}
+
+#[test]
+fn dark_covers_default_identifiers() {
+  assert_identifier_coverage(DARK, "dark");
+}
+
+#[test]
+fn light_covers_default_identifiers() {
+  assert_identifier_coverage(LIGHT, "light");
+}
+
+// -- Per-language baseAttributes inheritance, ported from Catppuccin's editor.tera.
+//    Each language plugin (Bash, Go, PHP, Python, Rust, Ruby, Swift, JS, TS, Dart, etc.)
+//    declares its own attribute keys and falls back to the parent theme's teal/blue defaults
+//    unless we explicitly point them at our DEFAULT_* customizations. --
+
+const LANGUAGE_INHERITANCE_SENTINEL: &[(&str, &str)] = &[
+  ("BASH.FUNCTION_CALL", "DEFAULT_FUNCTION_CALL"),
+  ("BASH.HERE_DOC_END", "DEFAULT_KEYWORD"),
+  ("BASH.SHEBANG", "DEFAULT_LINE_COMMENT"),
+  ("DART_FAT_ARROW", "DEFAULT_OPERATION_SIGN"),
+  ("DART_LOCAL_FUNCTION_REFERENCE", "DEFAULT_FUNCTION_CALL"),
+  ("DART_TYPE_NAME_DYNAMIC", "DEFAULT_KEYWORD"),
+  ("GO_BUILTIN_FUNCTION_CALL", "DEFAULT_FUNCTION_CALL"),
+  ("GO_BUILTIN_TYPE", "DEFAULT_CLASS_NAME"),
+  ("GO_BUILTIN_VARIABLE", "DEFAULT_LOCAL_VARIABLE"),
+  ("GO_PACKAGE", "DEFAULT_LOCAL_VARIABLE"),
+  ("HTML_ATTRIBUTE_VALUE", "DEFAULT_STRING"),
+  ("INI.SECTION", "DEFAULT_MARKUP_TAG"),
+  ("JS.DECORATOR", "DEFAULT_METADATA"),
+  ("JS.GLOBAL_FUNCTION", "DEFAULT_FUNCTION_DECLARATION"),
+  ("JS.GLOBAL_VARIABLE", "DEFAULT_LOCAL_VARIABLE"),
+  ("JS.LOCAL_VARIABLE", "DEFAULT_LOCAL_VARIABLE"),
+  ("JS.PARAMETER", "DEFAULT_PARAMETER"),
+  ("JS.REGEXP", "DEFAULT_VALID_STRING_ESCAPE"),
+  ("JSON.PROPERTY_KEY", "DEFAULT_INSTANCE_FIELD"),
+  ("OC.METHOD_DECLARATION", "DEFAULT_INSTANCE_METHOD"),
+  ("OC.PROTOCOL_REFERENCE", "DEFAULT_INTERFACE_NAME"),
+  ("PHP_INSTANCE_FIELD", "DEFAULT_INSTANCE_FIELD"),
+  ("PHP_INTERFACE", "DEFAULT_INTERFACE_NAME"),
+  ("PHP_PARAMETER", "DEFAULT_PARAMETER"),
+  ("PHP_VAR", "DEFAULT_LOCAL_VARIABLE"),
+  ("PROPERTIES.KEY", "DEFAULT_INSTANCE_FIELD"),
+  ("PUPPET_KEYWORD", "DEFAULT_KEYWORD"),
+  ("PY.ANNOTATION", "DEFAULT_METADATA"),
+  ("PY.BUILTIN_NAME", "DEFAULT_LOCAL_VARIABLE"),
+  ("PY.DECORATOR", "DEFAULT_METADATA"),
+  ("PY.KEYWORD", "DEFAULT_KEYWORD"),
+  ("PY.KEYWORD_ARGUMENT", "DEFAULT_PARAMETER"),
+  ("PY.SELF_PARAMETER", "DEFAULT_PARAMETER"),
+  ("PY.STRING", "DEFAULT_STRING"),
+  ("RUBY_LOCAL_VAR_ID", "DEFAULT_LOCAL_VARIABLE"),
+  ("RUBY_METHOD_NAME", "DEFAULT_INSTANCE_METHOD"),
+  ("RUBY_PARAMETER_ID", "DEFAULT_PARAMETER"),
+  ("SWIFT_EXTERNAL_PARAMETER", "DEFAULT_PARAMETER"),
+  ("TS.MODULE_NAME", "DEFAULT_LOCAL_VARIABLE"),
+  ("TS.TYPE_GUARD", "DEFAULT_KEYWORD"),
+  ("TS.TYPE_PARAMETER", "DEFAULT_TYPE_PARAMETER_NAME"),
+  ("XML_ATTRIBUTE_NAME", "DEFAULT_MARKUP_ATTRIBUTE"),
+  ("XML_TAG_NAME", "DEFAULT_MARKUP_TAG"),
+  ("YAML_ANCHOR", "DEFAULT_LABEL"),
+  ("YAML_SCALAR_KEY", "DEFAULT_INSTANCE_FIELD"),
+  ("org.rust.FUNCTION", "DEFAULT_FUNCTION_DECLARATION"),
+  ("org.rust.FUNCTION_CALL", "DEFAULT_FUNCTION_CALL"),
+  ("org.rust.LIFETIME", "DEFAULT_LABEL"),
+  ("org.rust.MACRO", "DEFAULT_FUNCTION_CALL"),
+  ("org.rust.METHOD", "DEFAULT_INSTANCE_METHOD"),
+  ("org.rust.PARAMETER", "DEFAULT_PARAMETER"),
+  ("org.rust.SELF_PARAMETER", "DEFAULT_PARAMETER"),
+  ("org.rust.STRUCT", "DEFAULT_CLASS_NAME"),
+  ("org.rust.TRAIT", "DEFAULT_INTERFACE_NAME"),
+  ("org.rust.TYPE_PARAMETER", "DEFAULT_TYPE_PARAMETER_NAME"),
+  ("org.rust.VARIABLE", "DEFAULT_LOCAL_VARIABLE"),
+  ("org.toml.KEY", "DEFAULT_INSTANCE_FIELD"),
+];
+
+fn assert_language_inheritance(scheme: &str, label: &str) {
+  for (key, target) in LANGUAGE_INHERITANCE_SENTINEL {
+    let needle = format!("<option name=\"{key}\" baseAttributes=\"{target}\"/>");
+    assert!(
+      scheme.contains(&needle),
+      "{label} editor scheme missing inheritance: expected `{needle}`. Without this the language plugin falls back to the parent theme."
+    );
+  }
+}
+
+#[test]
+fn dark_covers_language_inheritance() {
+  assert_language_inheritance(DARK, "dark");
+}
+
+#[test]
+fn light_covers_language_inheritance() {
+  assert_language_inheritance(LIGHT, "light");
+}
+
+// -- Compose / annotation / rainbow overrides. Without these, Compose function calls inherit
+//    from Darcula's special Compose attribute, annotations render in Darcula's yellow, and
+//    Android Studio's semantic-highlighting rainbow colors leak in for every identifier. --
+
+#[test]
+fn dark_overrides_composable_call_attribute() {
+  assert_eq!(
+    jetbrains_attribute(DARK, "ComposableCallTextAttributes", "FOREGROUND"),
+    "#ffb454",
+    "dark @Composable call must render in the function color (amber)"
+  );
+}
+
+#[test]
+fn light_overrides_composable_call_attribute() {
+  assert_eq!(
+    jetbrains_attribute(LIGHT, "ComposableCallTextAttributes", "FOREGROUND"),
+    "#855700",
+    "light @Composable call must render in the function color"
+  );
+}
+
+#[test]
+fn dark_overrides_annotation_name() {
+  assert_eq!(
+    jetbrains_attribute(DARK, "ANNOTATION_NAME_ATTRIBUTES", "FOREGROUND"),
+    "#e6c08a",
+    "dark annotation name must use the decorator color"
+  );
+  assert_eq!(
+    jetbrains_attribute(DARK, "KOTLIN_ANNOTATION", "FOREGROUND"),
+    "#e6c08a",
+    "dark Kotlin annotation must use the decorator color"
+  );
+}
+
+#[test]
+fn light_overrides_annotation_name() {
+  assert_eq!(
+    jetbrains_attribute(LIGHT, "ANNOTATION_NAME_ATTRIBUTES", "FOREGROUND"),
+    "#7a5a1c",
+    "light annotation name must use the decorator color"
+  );
+}
+
+// Rainbow palettes: five on-brand warm tones. Catppuccin parity, our colors only.
+const DARK_RAINBOW: [&str; 5] = [
+  "#bfbdb6", // foreground
+  "#ffb454", // function
+  "#ec9878", // member_var
+  "#b4bc78", // string
+  "#90aec0", // type (the one cool accent)
+];
+
+const LIGHT_RAINBOW: [&str; 5] = [
+  "#3a3630", // foreground
+  "#855700", // function
+  "#883850", // member_var
+  "#4d5c1a", // string
+  "#285464", // type
+];
+
+const RAINBOW_PREFIXES: &[&str] = &[
+  "RAINBOW_COLOR",
+  "ROUND_BRACKETS_RAINBOW_COLOR",
+  "SQUARE_BRACKETS_RAINBOW_COLOR",
+  "SQUIGGLY_BRACKETS_RAINBOW_COLOR",
+  "ANGLE_BRACKETS_RAINBOW_COLOR",
+  "INDENT_GUIDES_RAINBOW_COLOR",
+];
+
+#[test]
+fn dark_rainbow_palettes_use_warm_tones() {
+  for prefix in RAINBOW_PREFIXES {
+    for (slot, expected) in DARK_RAINBOW.iter().enumerate() {
+      let key = format!("{prefix}{slot}");
+      assert_eq!(
+        jetbrains_attribute(DARK, &key, "FOREGROUND"),
+        *expected,
+        "dark {key} must use the on-brand warm tone for slot {slot}"
+      );
+    }
+  }
+}
+
+#[test]
+fn light_rainbow_palettes_use_warm_tones() {
+  for prefix in RAINBOW_PREFIXES {
+    for (slot, expected) in LIGHT_RAINBOW.iter().enumerate() {
+      let key = format!("{prefix}{slot}");
+      assert_eq!(
+        jetbrains_attribute(LIGHT, &key, "FOREGROUND"),
+        *expected,
+        "light {key} must use the on-brand warm tone for slot {slot}"
+      );
+    }
+  }
 }

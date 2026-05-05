@@ -7,6 +7,12 @@ target/
 .DS_Store
 .claude/
 jetbrains/warm-burnout-theme.jar
+jetbrains/Warm Burnout Islands Dark.theme.json
+jetbrains/Warm Burnout Islands Light.theme.json
+jetbrains/Warm Burnout Dark.theme.json
+jetbrains/Warm Burnout Light.theme.json
+jetbrains/Warm-Burnout-Dark.xml
+jetbrains/Warm-Burnout-Light.xml
 .idea/
 
 # Site build artifacts and local dev symlinks
