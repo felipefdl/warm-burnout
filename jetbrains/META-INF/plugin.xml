@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.warm-burnout.theme</id>
   <name>Warm Burnout</name>
-  <version>1.2.0</version>
+  <version>1.0.2</version>
   <vendor url="https://github.com/felipefdl">Felipe Lima</vendor>
   <description><![CDATA[
     <p>The theme for developers who are already burned out but still have deadlines.</p>
@@ -18,7 +18,6 @@
     non-color cues for code structure when the warm palette starts to blur together.</p>
   ]]></description>
   <change-notes><![CDATA[
-    <p>1.2.0: Classic non-Islands variants are back. Pick Warm Burnout Dark or Warm Burnout Light if Islands chrome causes performance or redraw issues for you (see IJPL-222923). Comprehensive per-language coverage for ~60 language plugins (Bash, Dart, Go, Haml, JS, Kotlin, Lua, PHP, Python, Rust, Ruby, Swift, TS, XML, YAML, etc.) so identifiers no longer fall through to teal/blue defaults. Compose composable function calls render in the function color. Semantic-highlighting and bracket rainbow palettes collapsed to five on-brand warm tones. Toolwindow stripe button hover and selected states have visible contrast against the panel. Tame bold TODO highlight, Rider/C# attribute coverage, Islands popup/tooltip backgrounds.</p>
     <p>1.0.2: Dropped classic variants. Islands themes only. Fixed toolbar borders and project gradient.</p>
     <p>1.0.1: Fix editor color scheme not loading when selecting the UI theme.</p>
     <p>1.0.0: Initial release.</p>
