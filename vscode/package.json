@@ -2,7 +2,7 @@
   "name": "warm-burnout",
   "displayName": "Warm Burnout",
   "description": "The theme for developers who are already burned out but still have deadlines. Mostly warm palette, one cool type accent, WCAG-audited contrast.",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "publisher": "felip3fdl",
   "license": "MIT",
   "icon": "warm-burnout-logo-vscode.png",

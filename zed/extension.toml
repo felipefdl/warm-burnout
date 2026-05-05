@@ -1,6 +1,6 @@
 id = "warm-burnout-theme"
 name = "Warm Burnout"
-version = "1.6.0"
+version = "1.7.0"
 schema_version = 1
 authors = ["Felipe Lima"]
 description = "Mostly warm palette, one cool type accent, WCAG-audited contrast. Your eyes deserved this."
