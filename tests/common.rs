@@ -151,7 +151,7 @@ pub fn xcode_syntax_font(src: &str, key: &str) -> String {
     .to_string()
 }
 
-fn bat_tmtheme_root(src: &str) -> plist::Value {
+pub fn bat_tmtheme_root(src: &str) -> plist::Value {
   let cursor = std::io::Cursor::new(src.as_bytes());
   plist::from_reader(cursor).expect("invalid tmTheme plist")
 }
@@ -200,7 +200,12 @@ fn bat_tmtheme_scope_setting(src: &str, scope: &str, key: &str) -> String {
     let Some(dict) = entry.as_dictionary() else {
       continue;
     };
-    let scopes = dict.get("scope").and_then(|v| v.as_string()).unwrap_or_default();
+    let Some(scope_field) = dict.get("scope") else {
+      continue;
+    };
+    let scopes = scope_field
+      .as_string()
+      .unwrap_or_else(|| panic!("tmTheme entry has non-string scope field: {scope_field:?}"));
     let has_scope = scopes.split(',').map(str::trim).any(|candidate| candidate == scope);
     if !has_scope {
       continue;

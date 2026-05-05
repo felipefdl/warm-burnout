@@ -1,26 +1,21 @@
 mod common;
 
 use common::{
-  bat_tmtheme_global_setting, bat_tmtheme_name, bat_tmtheme_scope_font_style, bat_tmtheme_scope_foreground,
-  extract_hex_colors, is_valid_hex,
+  bat_tmtheme_global_setting, bat_tmtheme_name, bat_tmtheme_root, bat_tmtheme_scope_font_style,
+  bat_tmtheme_scope_foreground, extract_hex_colors, is_valid_hex,
 };
 
 const DARK: &str = include_str!("../bat/Warm Burnout Dark.tmTheme");
 const LIGHT: &str = include_str!("../bat/Warm Burnout Light.tmTheme");
 
-fn parse_tmtheme(src: &str) -> plist::Value {
-  let cursor = std::io::Cursor::new(src.as_bytes());
-  plist::from_reader(cursor).expect("invalid tmTheme plist")
-}
-
 #[test]
 fn dark_is_valid_tmtheme_plist() {
-  parse_tmtheme(DARK);
+  bat_tmtheme_root(DARK);
 }
 
 #[test]
 fn light_is_valid_tmtheme_plist() {
-  parse_tmtheme(LIGHT);
+  bat_tmtheme_root(LIGHT);
 }
 
 #[test]
@@ -71,6 +66,7 @@ fn dark_syntax_colors_match_palette() {
     ("keyword", "#ff8f40"),
     ("keyword.operator", "#f29668"),
     ("entity.name.function", "#ffb454"),
+    ("support.function.builtin", "#ec9878"),
     ("entity.name.type", "#90aec0"),
     ("string", "#b4bc78"),
     ("string.regexp", "#96b898"),
@@ -79,6 +75,7 @@ fn dark_syntax_colors_match_palette() {
     ("variable.other.member", "#ec9878"),
     ("comment", "#b4a89c"),
     ("invalid", "#f49090"),
+    ("meta.decorator", "#e6c08a"),
     ("support.type.property-name.css", "#deb074"),
   ] {
     assert_eq!(bat_tmtheme_scope_foreground(DARK, scope), expected, "dark {scope}");
@@ -91,6 +88,7 @@ fn light_syntax_colors_match_palette() {
     ("keyword", "#924800"),
     ("keyword.operator", "#8f4418"),
     ("entity.name.function", "#855700"),
+    ("support.function.builtin", "#883850"),
     ("entity.name.type", "#285464"),
     ("string", "#4d5c1a"),
     ("string.regexp", "#286a48"),
@@ -99,6 +97,7 @@ fn light_syntax_colors_match_palette() {
     ("variable.other.member", "#883850"),
     ("comment", "#544c40"),
     ("invalid", "#b03434"),
+    ("meta.decorator", "#7a5a1c"),
     ("support.type.property-name.css", "#74501c"),
   ] {
     assert_eq!(bat_tmtheme_scope_foreground(LIGHT, scope), expected, "light {scope}");
@@ -116,6 +115,7 @@ fn dark_font_styles_preserve_three_tiers() {
     bat_tmtheme_scope_font_style(DARK, "support.type.property-name.css"),
     "italic"
   );
+  assert_eq!(bat_tmtheme_scope_font_style(DARK, "keyword.operator"), "");
 }
 
 #[test]
@@ -129,6 +129,7 @@ fn light_font_styles_preserve_three_tiers() {
     bat_tmtheme_scope_font_style(LIGHT, "support.type.property-name.css"),
     "italic"
   );
+  assert_eq!(bat_tmtheme_scope_font_style(LIGHT, "keyword.operator"), "");
 }
 
 #[test]
