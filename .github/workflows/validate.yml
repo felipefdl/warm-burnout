@@ -27,7 +27,10 @@ jobs:
       - uses: cargo-bins/cargo-binstall@main
 
       - name: Install rumdl
-        run: cargo binstall rumdl --version 0.1.84 --no-confirm
+        # --force re-places the binary even when rust-cache restored the
+        # binstall metadata (otherwise binstall short-circuits and the
+        # binary itself is missing from $CARGO_HOME/bin).
+        run: cargo binstall rumdl --version 0.1.84 --no-confirm --force
 
       - name: Check Markdown
         run: |
