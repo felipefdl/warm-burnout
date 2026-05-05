@@ -49,6 +49,7 @@ warm-burnout/
     zsh.rs                    # Zsh theme validation tests
     nvim.rs                   # Neovim theme validation tests
     vim.rs                    # Vim theme validation tests
+    bat.rs                    # Bat theme validation tests
     obsidian.rs               # Obsidian theme validation tests
     emacs.rs                  # Emacs theme validation tests
   .github/workflows/
@@ -169,6 +170,11 @@ warm-burnout/
     light.yml                 # Light variant
     README.md                 # eza install instructions
     AGENTS.md                 # eza-specific agent rules
+  bat/                        # Bat syntax highlighting theme
+    README.md                 # Bat install instructions
+    AGENTS.md                 # Bat-specific agent rules
+    Warm Burnout Dark.tmTheme # Dark variant (Sublime Text tmTheme)
+    Warm Burnout Light.tmTheme # Light variant (Sublime Text tmTheme)
   obsidian/                    # Obsidian community theme
     theme.css                  # Dark + light variants (CSS custom properties)
     manifest.json              # Community theme manifest

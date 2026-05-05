@@ -129,6 +129,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Neovim | Available | [`nvim/`](nvim/) |
 | Vim | Available | [`vim/`](vim/) |
 | Helix | Available | [`helix/`](helix/) |
+| Bat | Available | [`bat/`](bat/) |
 | Xcode | Available | [`xcode/`](xcode/) |
 | iTerm2 | Available | [`iterm2/`](iterm2/) |
 | Windows Terminal | Available | [`windows-terminal/`](windows-terminal/) |

@@ -15,6 +15,7 @@ const READMES: &[(&str, &str)] = &[
   ("obsidian", include_str!("../obsidian/README.md")),
   ("emacs", include_str!("../emacs/README.md")),
   ("helix", include_str!("../helix/README.md")),
+  ("bat", include_str!("../bat/README.md")),
 ];
 
 #[test]
@@ -63,6 +64,8 @@ fn no_theme_file_uses_patina_as_label() {
     ("emacs/light", include_str!("../emacs/warm-burnout-light-theme.el")),
     ("helix/dark", include_str!("../helix/warm-burnout-dark.toml")),
     ("helix/light", include_str!("../helix/warm-burnout-light.toml")),
+    ("bat/dark", include_str!("../bat/Warm Burnout Dark.tmTheme")),
+    ("bat/light", include_str!("../bat/Warm Burnout Light.tmTheme")),
   ];
   for (name, content) in theme_files {
     for line in content.lines() {

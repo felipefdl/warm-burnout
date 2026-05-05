@@ -158,6 +158,13 @@ jobs:
             warm-burnout-dark.toml \
             warm-burnout-light.toml
 
+      - name: Package Bat
+        run: |
+          cd bat
+          zip -j ../warm-burnout-bat.zip \
+            "Warm Burnout Dark.tmTheme" \
+            "Warm Burnout Light.tmTheme"
+
       - name: Package Home Assistant
         run: cp themes/warm-burnout.yaml warm-burnout-home-assistant.yaml
 
@@ -199,6 +206,7 @@ jobs:
             warm-burnout-zellij.zip
             warm-burnout-eza.zip
             warm-burnout-helix.zip
+            warm-burnout-bat.zip
             warm-burnout-home-assistant.yaml
             warm-burnout-obsidian.zip
             warm-burnout-emacs.zip
