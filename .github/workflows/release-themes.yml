@@ -191,6 +191,9 @@ jobs:
             warm-burnout-dark-theme.el \
             warm-burnout-light-theme.el
 
+      - name: Package OpenCode
+        run: cp opencode/warm-burnout.json warm-burnout-opencode.json
+
       - name: Package JetBrains
         run: just jetbrains-build
 
@@ -218,6 +221,7 @@ jobs:
             warm-burnout-home-assistant.yaml
             warm-burnout-obsidian.zip
             warm-burnout-emacs.zip
+            warm-burnout-opencode.json
             jetbrains/warm-burnout-theme.jar
 
       - name: Publish to JetBrains Marketplace

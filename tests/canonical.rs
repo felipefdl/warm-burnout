@@ -3,9 +3,9 @@ mod common;
 use common::{
   alacritty_color, bat_tmtheme_global_setting, emacs_palette_color, ghostty_ansi_color, ghostty_color,
   helix_palette_color, hex_to_lower, home_assistant_color, iterm2_color, jetbrains_attribute, jetbrains_color,
-  nvim_palette_color, obsidian_color, starship_palette_color, tmux_option_value, tmux_style_bg, tmux_style_fg,
-  vscode_color, warp_ansi_color, warp_color, wezterm_ansi_color, wezterm_color, windows_terminal_color, xcode_color,
-  xcode_syntax_color, zed_editor_color, zellij_color,
+  nvim_palette_color, obsidian_color, opencode_color, starship_palette_color, tmux_option_value, tmux_style_bg,
+  tmux_style_fg, vscode_color, warp_ansi_color, warp_color, wezterm_ansi_color, wezterm_color, windows_terminal_color,
+  xcode_color, xcode_syntax_color, zed_editor_color, zellij_color,
 };
 
 fn zsh_foreground(src: &str) -> Option<String> {
@@ -1987,4 +1987,112 @@ fn light_foreground_helix_matches_ghostty() {
   let helix = helix_palette_color(HELIX_LIGHT, "fg");
   let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
   assert_eq!(helix, ghostty, "light foreground: helix={helix} ghostty={ghostty}");
+}
+
+// -- OpenCode cross-platform consistency --
+
+const OPENCODE_THEME: &str = include_str!("../opencode/warm-burnout.json");
+
+#[test]
+fn dark_background_opencode_matches_ghostty() {
+  let opencode = opencode_color(OPENCODE_THEME, "dark", "background");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "background");
+  assert_eq!(
+    opencode, ghostty,
+    "dark background: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_background_opencode_matches_ghostty() {
+  let opencode = opencode_color(OPENCODE_THEME, "light", "background");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "background");
+  assert_eq!(
+    opencode, ghostty,
+    "light background: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_foreground_opencode_matches_ghostty() {
+  let opencode = opencode_color(OPENCODE_THEME, "dark", "text");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-dark"), "foreground");
+  assert_eq!(
+    opencode, ghostty,
+    "dark foreground: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_foreground_opencode_matches_ghostty() {
+  let opencode = opencode_color(OPENCODE_THEME, "light", "text");
+  let ghostty = ghostty_color(include_str!("../ghostty/warm-burnout-light"), "foreground");
+  assert_eq!(
+    opencode, ghostty,
+    "light foreground: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_background_opencode_matches_vscode() {
+  let opencode = opencode_color(OPENCODE_THEME, "dark", "background");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-dark.json"),
+    "editor.background",
+  );
+  assert_eq!(opencode, vscode, "dark background: opencode={opencode} vscode={vscode}");
+}
+
+#[test]
+fn light_background_opencode_matches_vscode() {
+  let opencode = opencode_color(OPENCODE_THEME, "light", "background");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-light.json"),
+    "editor.background",
+  );
+  assert_eq!(
+    opencode, vscode,
+    "light background: opencode={opencode} vscode={vscode}"
+  );
+}
+
+#[test]
+fn dark_foreground_opencode_matches_vscode() {
+  let opencode = opencode_color(OPENCODE_THEME, "dark", "text");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-dark.json"),
+    "editor.foreground",
+  );
+  assert_eq!(opencode, vscode, "dark foreground: opencode={opencode} vscode={vscode}");
+}
+
+#[test]
+fn light_foreground_opencode_matches_vscode() {
+  let opencode = opencode_color(OPENCODE_THEME, "light", "text");
+  let vscode = vscode_color(
+    include_str!("../vscode/themes/warm-burnout-light.json"),
+    "editor.foreground",
+  );
+  assert_eq!(
+    opencode, vscode,
+    "light foreground: opencode={opencode} vscode={vscode}"
+  );
+}
+
+#[test]
+fn dark_accent_opencode_matches_canonical() {
+  let opencode = opencode_color(OPENCODE_THEME, "dark", "accent");
+  assert_eq!(
+    opencode, "#b8522e",
+    "dark opencode accent must be canonical copper rust"
+  );
+}
+
+#[test]
+fn light_accent_opencode_matches_canonical() {
+  let opencode = opencode_color(OPENCODE_THEME, "light", "accent");
+  assert_eq!(
+    opencode, "#b8522e",
+    "light opencode accent must be canonical copper rust"
+  );
 }

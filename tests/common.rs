@@ -649,6 +649,41 @@ pub fn emacs_palette_color(src: &str, variant: &str, key: &str) -> String {
   panic!("no key '{key}' in {variant} emacs palette");
 }
 
+/// Extract a resolved color from an OpenCode theme JSON file.
+/// Handles both direct hex values and references to `defs`.
+/// `variant` is `"dark"` or `"light"`. `key` is a theme property like `"primary"`.
+pub fn opencode_color(src: &str, variant: &str, key: &str) -> String {
+  let v: serde_json::Value = serde_json::from_str(src).unwrap();
+  let defs = v.get("defs").and_then(|d| d.as_object());
+  let theme_val = &v["theme"][key];
+
+  // Value might be a {dark: ..., light: ...} object or a direct value
+  let raw = if let Some(obj) = theme_val.as_object() {
+    obj
+      .get(variant)
+      .unwrap_or_else(|| panic!("no '{variant}' key in theme.{key}"))
+      .clone()
+  } else {
+    theme_val.clone()
+  };
+
+  resolve_opencode_ref(&raw, defs)
+}
+
+fn resolve_opencode_ref(val: &serde_json::Value, defs: Option<&serde_json::Map<String, serde_json::Value>>) -> String {
+  match val {
+    serde_json::Value::String(s) if s.starts_with('#') => hex_to_lower(s),
+    serde_json::Value::String(s) => {
+      // It's a reference to a def
+      let resolved = defs
+        .and_then(|d| d.get(s.as_str()))
+        .unwrap_or_else(|| panic!("unresolved def reference: {s}"));
+      resolve_opencode_ref(resolved, defs)
+    }
+    _ => panic!("unexpected value type in opencode theme: {val}"),
+  }
+}
+
 /// Extract a color from an Obsidian theme CSS file.
 /// Finds `--wb-{key}: #hex;` inside the `.theme-{variant}` block.
 pub fn obsidian_color(src: &str, variant: &str, key: &str) -> String {

@@ -17,6 +17,7 @@ const READMES: &[(&str, &str)] = &[
   ("helix", include_str!("../helix/README.md")),
   ("bat", include_str!("../bat/README.md")),
   ("wezterm", include_str!("../wezterm/README.md")),
+  ("opencode", include_str!("../opencode/README.md")),
 ];
 
 #[test]
@@ -69,6 +70,7 @@ fn no_theme_file_uses_patina_as_label() {
     ("helix/light", include_str!("../helix/warm-burnout-light.toml")),
     ("bat/dark", include_str!("../bat/Warm Burnout Dark.tmTheme")),
     ("bat/light", include_str!("../bat/Warm Burnout Light.tmTheme")),
+    ("opencode/theme", include_str!("../opencode/warm-burnout.json")),
   ];
   for (name, content) in theme_files {
     for line in content.lines() {

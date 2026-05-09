@@ -144,6 +144,7 @@ Inspired by materials that age well. Unlike your eyes.
 | eza | Available | [`eza/`](eza/) |
 | Obsidian | Available | [`obsidian/`](obsidian/) |
 | Emacs | Available | [`emacs/`](emacs/) |
+| OpenCode | Available | [`opencode/`](opencode/) |
 
 Each platform lives in its own directory with its own README, build process, and release workflow.
 

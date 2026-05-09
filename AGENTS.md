@@ -53,6 +53,7 @@ warm-burnout/
     bat.rs                    # Bat theme validation tests
     obsidian.rs               # Obsidian theme validation tests
     emacs.rs                  # Emacs theme validation tests
+    opencode.rs               # OpenCode theme validation tests
   .github/workflows/
     validate.yml              # CI: run theme validation on push/PR
     release-vscode.yml        # VS Code extension release workflow
@@ -195,6 +196,10 @@ warm-burnout/
     warm-burnout-light-theme.el # Light variant (deftheme)
     README.md                  # Emacs install instructions
     AGENTS.md                  # Emacs-specific agent rules
+  opencode/                    # OpenCode AI coding agent theme
+    warm-burnout.json          # Theme file (dark + light in one file)
+    README.md                  # OpenCode install instructions
+    AGENTS.md                  # OpenCode-specific agent rules
   screenshots/                # Theme preview screenshots
     AGENTS.md                 # Screenshot-specific agent rules
     generate.mjs              # Playwright script to render HTML -> PNG
