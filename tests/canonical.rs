@@ -2096,3 +2096,91 @@ fn light_accent_opencode_matches_canonical() {
     "light opencode accent must be canonical copper rust"
   );
 }
+
+fn opencode_def(src: &str, name: &str) -> String {
+  let v: serde_json::Value = serde_json::from_str(src).unwrap();
+  let raw = v["defs"][name]
+    .as_str()
+    .unwrap_or_else(|| panic!("opencode def '{name}' missing or not a string"));
+  hex_to_lower(raw)
+}
+
+#[test]
+fn dark_ansi_red_opencode_matches_ghostty() {
+  let opencode = opencode_def(OPENCODE_THEME, "darkAnsiRed");
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 1);
+  assert_eq!(
+    opencode, ghostty,
+    "dark ANSI red: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_ansi_green_opencode_matches_ghostty() {
+  let opencode = opencode_def(OPENCODE_THEME, "darkAnsiGreen");
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 2);
+  assert_eq!(
+    opencode, ghostty,
+    "dark ANSI green: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_ansi_bright_red_opencode_matches_ghostty() {
+  let opencode = opencode_def(OPENCODE_THEME, "darkAnsiBrightRed");
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 9);
+  assert_eq!(
+    opencode, ghostty,
+    "dark ANSI bright red: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn dark_ansi_bright_green_opencode_matches_ghostty() {
+  let opencode = opencode_def(OPENCODE_THEME, "darkAnsiBrightGreen");
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-dark"), 10);
+  assert_eq!(
+    opencode, ghostty,
+    "dark ANSI bright green: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_red_opencode_matches_ghostty() {
+  let opencode = opencode_def(OPENCODE_THEME, "lightAnsiRed");
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 1);
+  assert_eq!(
+    opencode, ghostty,
+    "light ANSI red: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_green_opencode_matches_ghostty() {
+  let opencode = opencode_def(OPENCODE_THEME, "lightAnsiGreen");
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 2);
+  assert_eq!(
+    opencode, ghostty,
+    "light ANSI green: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_bright_red_opencode_matches_ghostty() {
+  let opencode = opencode_def(OPENCODE_THEME, "lightAnsiBrightRed");
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 9);
+  assert_eq!(
+    opencode, ghostty,
+    "light ANSI bright red: opencode={opencode} ghostty={ghostty}"
+  );
+}
+
+#[test]
+fn light_ansi_bright_green_opencode_matches_ghostty() {
+  let opencode = opencode_def(OPENCODE_THEME, "lightAnsiBrightGreen");
+  let ghostty = ghostty_ansi_color(include_str!("../ghostty/warm-burnout-light"), 10);
+  assert_eq!(
+    opencode, ghostty,
+    "light ANSI bright green: opencode={opencode} ghostty={ghostty}"
+  );
+}

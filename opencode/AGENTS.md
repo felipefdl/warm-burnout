@@ -13,53 +13,41 @@ See the root [`AGENTS.md`](../AGENTS.md) for the canonical palette, design princ
 - Placed in `~/.config/opencode/themes/` (user-wide) or `.opencode/themes/` (project-local).
 - Schema: `https://opencode.ai/theme.json`.
 
-## Color Mapping
+## Role to Canonical Token Mapping
 
-OpenCode uses semantic color roles rather than raw palette indices. The mapping from canonical palette to OpenCode roles:
+OpenCode uses semantic color roles. Each role maps to a canonical palette token defined in the root `AGENTS.md`. Hex values live in `warm-burnout.json` and the canonical palette tables, not here.
 
 ### Core UI
 
-| Role | Dark | Light | Canonical source |
-|------|------|-------|-----------------|
-| `primary` | `#ff8f40` | `#924800` | Keywords |
-| `secondary` | `#ffb454` | `#855700` | Functions |
-| `accent` | `#b8522e` | `#b8522e` | Brand accent |
-| `text` | `#bfbdb6` | `#3a3630` | Foreground |
-| `textMuted` | `#b4a89c` | `#544c40` | Comments |
-| `background` | `#1a1510` | `#F5EDE0` | Editor background |
-| `backgroundPanel` | `#14120f` | `#EDE6DA` | Panel/sidebar background |
-| `backgroundElement` | `#24201a` | `#EDE6DA` | Interactive element background |
+- `primary`, `syntaxKeyword`, `markdownHeading`, `markdownStrong` <- Keywords/storage
+- `secondary`, `syntaxFunction`, `markdownLinkText`, `markdownImageText` <- Functions
+- `accent`, `borderActive`, `warning` <- Brand accent
+- `text`, `syntaxVariable`, `syntaxPunctuation`, `markdownText`, `markdownCodeBlock` <- Foreground
+- `textMuted`, `syntaxComment`, `markdownBlockQuote`, `diffContext`, `diffHunkHeader` <- Comments
+- `background` <- Editor background
+- `backgroundPanel`, `diffContextBg` <- Panel/sidebar background (dimmer than editor)
+- `backgroundElement` <- Interactive element background
 
 ### Status
 
-| Role | Dark | Light | Canonical source |
-|------|------|-------|-----------------|
-| `error` | `#f49090` | `#b03434` | Error/invalid token |
-| `warning` | `#b8522e` | `#b8522e` | Brand accent |
-| `success` | `#b4bc78` | `#4d5c1a` | Strings (warm green) |
-| `info` | `#90aec0` | `#285464` | Types accent (the one cool color) |
+- `error` <- Error/invalid token
+- `success`, `markdownCode` <- Strings (warm green)
+- `info`, `markdownLink`, `markdownImage` <- Types accent (the one cool color)
 
 ### Syntax
 
-| Role | Dark | Light | Canonical source |
-|------|------|-------|-----------------|
-| `syntaxKeyword` | `#ff8f40` | `#924800` | Keywords/storage |
-| `syntaxFunction` | `#ffb454` | `#855700` | Functions |
-| `syntaxVariable` | `#bfbdb6` | `#3a3630` | Foreground |
-| `syntaxString` | `#b4bc78` | `#4d5c1a` | Strings |
-| `syntaxNumber` | `#d4a8b8` | `#7e4060` | Constants/numbers |
-| `syntaxType` | `#90aec0` | `#285464` | Types/classes |
-| `syntaxOperator` | `#f29668` | `#8f4418` | Operators |
-| `syntaxComment` | `#b4a89c` | `#544c40` | Comments |
-| `syntaxPunctuation` | `#bfbdb6` | `#3a3630` | Foreground |
+`syntaxKeyword`, `syntaxFunction`, `syntaxString`, `syntaxNumber`, `syntaxType`, `syntaxOperator`, `syntaxComment` map directly to the canonical token of the same name. `syntaxVariable` and `syntaxPunctuation` map to foreground (see design decision 4).
 
 ### Diff
 
-Diff foreground colors use ANSI red/green from the terminal palette (programs depend on conventional red/green for diffs). Diff backgrounds are opaque blends of those colors over the editor background at ~12% opacity.
+Diff foreground colors use ANSI red/green from the terminal palette (programs depend on conventional red/green for diffs); these match the values in `ghostty/warm-burnout-{dark,light}` palette indices 1, 2, 9, 10. Diff backgrounds are subtle ~12% tints of the diff foreground blended over the editor background -- terminal apps cannot rely on alpha compositing.
 
 ### Markdown
 
-Markdown roles map to syntax tokens for visual consistency: headings and strong text use keywords, links use types, code uses strings, emphasis uses decorators, list markers use operators.
+- `markdownEmph` <- Decorators
+- `markdownListItem` <- Operators
+- `markdownListEnumeration` <- Constants/numbers
+- `markdownHorizontalRule` <- Border (derived chrome)
 
 ## File Naming
 
@@ -68,8 +56,8 @@ Markdown roles map to syntax tokens for visual consistency: headings and strong 
 
 ## Design Decisions
 
-1. `primary` uses keywords (burnt orange) rather than the brand accent (`#b8522e`). Keywords are the most visually prominent token and map well to primary interactive elements.
+1. `primary` uses keywords (burnt orange) rather than the brand accent. Keywords are the most visually prominent token and map well to primary interactive elements.
 2. `warning` reuses the brand accent. The accent already reads as a warm caution tone.
 3. `info` uses the types accent (steel patina). This is the single cool hue in the palette, reserved for informational/neutral highlights.
-4. `syntaxVariable` maps to foreground rather than a distinct color. Variables are the most common token; coloring them differently from base text adds noise without information.
-5. Diff backgrounds are subtle tints computed as opaque blends (terminal apps cannot rely on alpha compositing).
+4. `syntaxVariable` and `syntaxPunctuation` map to foreground rather than a distinct color. They are the most common tokens; coloring them differently from base text adds noise without information.
+5. Diff backgrounds are subtle tints computed as opaque blends (terminal apps cannot rely on alpha compositing). Light theme `backgroundElement` and `backgroundPanel` collapse to the same value because the light palette has less luminance headroom for separating multiple chrome levels.

@@ -346,7 +346,7 @@ fn light_no_steel_blue_in_chrome() {
 fn defs_section_exists() {
   let v = parse_json(THEME);
   assert!(v.get("defs").is_some(), "missing defs section");
-  assert!(v["defs"].as_object().unwrap().len() > 0, "defs section is empty");
+  assert!(!v["defs"].as_object().unwrap().is_empty(), "defs section is empty");
 }
 
 #[test]
@@ -359,13 +359,13 @@ fn all_theme_references_resolve() {
     let obj = val.as_object().unwrap();
     for variant in ["dark", "light"] {
       let ref_val = &obj[variant];
-      if let Some(s) = ref_val.as_str() {
-        if !s.starts_with('#') {
-          assert!(
-            defs.contains_key(s),
-            "theme.{key}.{variant} references undefined def: {s}"
-          );
-        }
+      if let Some(s) = ref_val.as_str()
+        && !s.starts_with('#')
+      {
+        assert!(
+          defs.contains_key(s),
+          "theme.{key}.{variant} references undefined def: {s}"
+        );
       }
     }
   }
@@ -493,5 +493,143 @@ fn has_all_syntax_keys() {
   let theme = v["theme"].as_object().unwrap();
   for key in SYNTAX_KEYS {
     assert!(theme.contains_key(*key), "missing syntax key: {key}");
+  }
+}
+
+// -- Diff fg vs diff bg contrast --
+//
+// Base diffAdded / diffRemoved must meet AA (4.5:1) since they carry the
+// primary signal. Highlight variants are inline emphasis on top of the same
+// background; the WCAG 3.0:1 large-text threshold is the right bar there.
+
+const DIFF_BASE_PAIRS: &[(&str, &str)] = &[("diffAdded", "diffAddedBg"), ("diffRemoved", "diffRemovedBg")];
+const DIFF_HIGHLIGHT_PAIRS: &[(&str, &str)] = &[
+  ("diffHighlightAdded", "diffAddedBg"),
+  ("diffHighlightRemoved", "diffRemovedBg"),
+];
+
+#[test]
+fn dark_diff_base_over_diff_bg_meets_aa() {
+  for (fg_key, bg_key) in DIFF_BASE_PAIRS {
+    let fg = opencode_color(THEME, "dark", fg_key);
+    let bg = opencode_color(THEME, "dark", bg_key);
+    let cr = contrast_ratio(&fg, &bg);
+    assert!(
+      cr >= 4.5,
+      "dark {fg_key} ({fg}) over {bg_key} ({bg}) contrast {cr:.1}:1 is below AA (4.5:1)"
+    );
+  }
+}
+
+#[test]
+fn light_diff_base_over_diff_bg_meets_aa() {
+  for (fg_key, bg_key) in DIFF_BASE_PAIRS {
+    let fg = opencode_color(THEME, "light", fg_key);
+    let bg = opencode_color(THEME, "light", bg_key);
+    let cr = contrast_ratio(&fg, &bg);
+    assert!(
+      cr >= 4.5,
+      "light {fg_key} ({fg}) over {bg_key} ({bg}) contrast {cr:.1}:1 is below AA (4.5:1)"
+    );
+  }
+}
+
+#[test]
+fn dark_diff_highlight_over_diff_bg_meets_large_text_aa() {
+  for (fg_key, bg_key) in DIFF_HIGHLIGHT_PAIRS {
+    let fg = opencode_color(THEME, "dark", fg_key);
+    let bg = opencode_color(THEME, "dark", bg_key);
+    let cr = contrast_ratio(&fg, &bg);
+    assert!(
+      cr >= 3.0,
+      "dark {fg_key} ({fg}) over {bg_key} ({bg}) contrast {cr:.1}:1 is below large-text AA (3.0:1)"
+    );
+  }
+}
+
+#[test]
+fn light_diff_highlight_over_diff_bg_meets_large_text_aa() {
+  for (fg_key, bg_key) in DIFF_HIGHLIGHT_PAIRS {
+    let fg = opencode_color(THEME, "light", fg_key);
+    let bg = opencode_color(THEME, "light", bg_key);
+    let cr = contrast_ratio(&fg, &bg);
+    assert!(
+      cr >= 3.0,
+      "light {fg_key} ({fg}) over {bg_key} ({bg}) contrast {cr:.1}:1 is below large-text AA (3.0:1)"
+    );
+  }
+}
+
+// -- Status colors meet AA contrast against background --
+//
+// `warning` deliberately reuses the brand accent (#b8522e) which sits at ~3.7:1
+// dark and ~4.2:1 light against the editor bg. Per AGENTS.md design decision 2,
+// this is the chosen warm-caution tone; it ships with iconography and is not
+// required to meet text-AA. So error/info/success are checked here, warning is
+// covered by `*_warning_uses_brand_accent` instead.
+
+const TEXT_STATUS_KEYS: &[&str] = &["error", "info", "success"];
+
+#[test]
+fn dark_status_colors_meet_aa_contrast() {
+  let bg = opencode_color(THEME, "dark", "background");
+  for key in TEXT_STATUS_KEYS {
+    let fg = opencode_color(THEME, "dark", key);
+    let cr = contrast_ratio(&fg, &bg);
+    assert!(cr >= 4.5, "dark {key} ({fg}) contrast {cr:.1}:1 is below AA (4.5:1)");
+  }
+}
+
+#[test]
+fn light_status_colors_meet_aa_contrast() {
+  let bg = opencode_color(THEME, "light", "background");
+  for key in TEXT_STATUS_KEYS {
+    let fg = opencode_color(THEME, "light", key);
+    let cr = contrast_ratio(&fg, &bg);
+    assert!(cr >= 4.5, "light {key} ({fg}) contrast {cr:.1}:1 is below AA (4.5:1)");
+  }
+}
+
+#[test]
+fn dark_warning_uses_brand_accent() {
+  assert_eq!(opencode_color(THEME, "dark", "warning"), "#b8522e");
+}
+
+#[test]
+fn light_warning_uses_brand_accent() {
+  assert_eq!(opencode_color(THEME, "light", "warning"), "#b8522e");
+}
+
+// -- borderActive resolves to the brand accent --
+
+#[test]
+fn dark_border_active_matches_accent() {
+  assert_eq!(
+    opencode_color(THEME, "dark", "borderActive"),
+    opencode_color(THEME, "dark", "accent"),
+  );
+}
+
+#[test]
+fn light_border_active_matches_accent() {
+  assert_eq!(
+    opencode_color(THEME, "light", "borderActive"),
+    opencode_color(THEME, "light", "accent"),
+  );
+}
+
+// -- No orphan defs (every def is referenced by at least one theme key) --
+
+#[test]
+fn no_orphan_defs() {
+  let v = parse_json(THEME);
+  let defs = v["defs"].as_object().unwrap();
+  let theme_str = serde_json::to_string(&v["theme"]).unwrap();
+  for def_name in defs.keys() {
+    let needle = format!("\"{def_name}\"");
+    assert!(
+      theme_str.contains(&needle),
+      "def '{def_name}' is defined but not referenced by any theme key"
+    );
   }
 }
