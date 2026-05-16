@@ -563,7 +563,8 @@
 				"entity.name.function"
 			],
 			"settings": {
-				"foreground": "#ffb454"
+				"foreground": "#ffb454",
+				"fontStyle": ""
 			}
 		},
 		{
