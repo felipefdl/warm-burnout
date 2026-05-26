@@ -563,8 +563,7 @@
 				"entity.name.function"
 			],
 			"settings": {
-				"foreground": "#ffb454",
-				"fontStyle": ""
+				"foreground": "#ffb454"
 			}
 		},
 		{
@@ -610,9 +609,15 @@
 			}
 		},
 		{
-			"name": "Entity name",
+			"name": "Type name",
 			"scope": [
-				"entity.name"
+				"entity.name.type",
+				"entity.name.class",
+				"entity.name.struct",
+				"entity.name.enum",
+				"entity.name.interface",
+				"entity.name.union",
+				"entity.name.trait"
 			],
 			"settings": {
 				"fontStyle": "italic",
