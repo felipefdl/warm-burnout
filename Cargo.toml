@@ -11,5 +11,5 @@ publish = false
 [dev-dependencies]
 plist = "1"
 serde_json = "1"
-serde_yml = "0.0.12"
+serde_norway = "0.9"
 toml = "1"

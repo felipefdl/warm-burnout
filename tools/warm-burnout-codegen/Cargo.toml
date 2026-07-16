@@ -8,5 +8,5 @@ publish = false
 anyhow = "1"
 clap = { version = "4", features = ["derive"] }
 serde = { version = "1", features = ["derive"] }
-serde_yml = "0.0.12"
+serde_norway = "0.9"
 tera = "1"

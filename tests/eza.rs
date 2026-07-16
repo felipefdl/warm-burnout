@@ -1,13 +1,13 @@
 mod common;
 
 use common::{extract_hex_colors, hex_to_lower, is_valid_hex};
-use serde_yml::Value;
+use serde_norway::Value;
 
 const DARK: &str = include_str!("../eza/dark.yml");
 const LIGHT: &str = include_str!("../eza/light.yml");
 
 fn parse_theme(src: &str) -> Value {
-  serde_yml::from_str(src).expect("invalid YAML")
+  serde_norway::from_str(src).expect("invalid YAML")
 }
 
 fn get_section<'a>(root: &'a Value, name: &str) -> &'a Value {

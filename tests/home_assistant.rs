@@ -1,12 +1,12 @@
 mod common;
 
 use common::{extract_hex_colors, home_assistant_color, is_valid_hex};
-use serde_yml::Value;
+use serde_norway::Value;
 
 const THEME: &str = include_str!("../home-assistant/warm-burnout.yaml");
 
 fn parse_theme() -> Value {
-  serde_yml::from_str(THEME).expect("invalid YAML")
+  serde_norway::from_str(THEME).expect("invalid YAML")
 }
 
 // -- Valid YAML --

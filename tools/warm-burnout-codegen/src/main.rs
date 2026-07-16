@@ -53,7 +53,7 @@ fn main() -> Result<()> {
   let palette_text =
     fs::read_to_string(&cli.palette).with_context(|| format!("reading palette {}", cli.palette.display()))?;
   let palette: Palette =
-    serde_yml::from_str(&palette_text).with_context(|| format!("parsing palette {}", cli.palette.display()))?;
+    serde_norway::from_str(&palette_text).with_context(|| format!("parsing palette {}", cli.palette.display()))?;
 
   let flavor = palette
     .flavors

@@ -343,7 +343,7 @@ pub fn jetbrains_attribute(src: &str, attr: &str, prop: &str) -> String {
 /// Extract a color value from a Home Assistant theme YAML file.
 /// Navigates to `theme_name > modes > mode > key` and returns the lowercase hex value.
 pub fn home_assistant_color(src: &str, theme_name: &str, mode: &str, key: &str) -> String {
-  let v: serde_yml::Value = serde_yml::from_str(src).expect("invalid YAML");
+  let v: serde_norway::Value = serde_norway::from_str(src).expect("invalid YAML");
   let val = v[theme_name]["modes"][mode][key]
     .as_str()
     .unwrap_or_else(|| panic!("missing key '{key}' in {theme_name} > modes > {mode}"));
@@ -353,7 +353,7 @@ pub fn home_assistant_color(src: &str, theme_name: &str, mode: &str, key: &str) 
 /// Extract a top-level chrome color (`accent`, `background`, `foreground`, `cursor`)
 /// from a Warp theme YAML file.
 pub fn warp_color(src: &str, key: &str) -> String {
-  let v: serde_yml::Value = serde_yml::from_str(src).expect("invalid YAML");
+  let v: serde_norway::Value = serde_norway::from_str(src).expect("invalid YAML");
   hex_to_lower(
     v.get(key)
       .and_then(|x| x.as_str())
@@ -427,7 +427,7 @@ pub fn wezterm_ansi_color(src: &str, bank: &str, index: usize) -> String {
 /// Extract an ANSI color from a Warp theme YAML file.
 /// `bank` is `"normal"` or `"bright"`. `name` is one of `black, red, green, yellow, blue, magenta, cyan, white`.
 pub fn warp_ansi_color(src: &str, bank: &str, name: &str) -> String {
-  let v: serde_yml::Value = serde_yml::from_str(src).expect("invalid YAML");
+  let v: serde_norway::Value = serde_norway::from_str(src).expect("invalid YAML");
   hex_to_lower(
     v["terminal_colors"][bank][name]
       .as_str()

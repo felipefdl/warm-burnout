@@ -1,7 +1,7 @@
 mod common;
 
 use common::{extract_hex_colors, ghostty_ansi_color, ghostty_color, is_valid_hex, warp_ansi_color, warp_color};
-use serde_yml::Value;
+use serde_norway::Value;
 
 const DARK: &str = include_str!("../warp/warm-burnout-dark.yaml");
 const LIGHT: &str = include_str!("../warp/warm-burnout-light.yaml");
@@ -22,7 +22,7 @@ const REQUIRED_TOP_LEVEL: &[&str] = &[
 ];
 
 fn parse_theme(src: &str) -> Value {
-  serde_yml::from_str(src).expect("invalid YAML")
+  serde_norway::from_str(src).expect("invalid YAML")
 }
 
 // -- Valid YAML --
