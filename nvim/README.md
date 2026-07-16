@@ -50,6 +50,7 @@ require('warm-burnout').load('light')
 - Neo-tree
 - Barbar
 - Mini.statusline
+- Lualine
 - Which-key
 - Trouble
 - Flash
@@ -58,6 +59,14 @@ require('warm-burnout').load('light')
 - Indent-blankline
 - Lazy
 - Notify
+
+### Lualine
+
+```lua
+require("lualine").setup({
+  options = { theme = "warm-burnout-dark" }, -- or "warm-burnout-light"
+})
+```
 
 ## The Palette
 
