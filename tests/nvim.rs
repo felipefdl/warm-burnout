@@ -877,22 +877,93 @@ fn light_selection_matches_vscode() {
   );
 }
 
-// -- Init resolves alpha hex colors --
+// -- Palette resolves alpha hex colors --
 
 #[test]
-fn init_has_alpha_blend_function() {
+fn palette_has_alpha_blend_function() {
   assert!(
-    INIT.contains("blend_alpha"),
-    "init.lua should have alpha blending function"
+    PALETTE.contains("blend_alpha"),
+    "palette.lua should have alpha blending function"
+  );
+}
+
+#[test]
+fn palette_exports_resolve() {
+  assert!(
+    PALETTE.contains("function M.resolve"),
+    "palette.lua should export resolve for 8-digit alpha blending"
   );
 }
 
 #[test]
 fn init_resolves_palette_before_applying() {
   assert!(
-    INIT.contains("resolve_palette"),
+    INIT.contains("palette.resolve"),
     "init.lua should resolve palette (blend alpha hex) before applying highlights"
   );
+}
+
+// -- Lualine themes --
+
+const LUALINE_DARK: &str = include_str!("../nvim/lua/lualine/themes/warm-burnout-dark.lua");
+const LUALINE_LIGHT: &str = include_str!("../nvim/lua/lualine/themes/warm-burnout-light.lua");
+
+#[test]
+fn lualine_themes_resolve_palette() {
+  for (name, body) in [("dark", LUALINE_DARK), ("light", LUALINE_LIGHT)] {
+    assert!(
+      body.contains(".resolve("),
+      "lualine {name} theme must call palette.resolve so alpha hex is blended"
+    );
+  }
+}
+
+#[test]
+fn lualine_themes_define_modes() {
+  for mode in [
+    "normal", "insert", "visual", "replace", "command", "terminal", "inactive",
+  ] {
+    for (name, body) in [("dark", LUALINE_DARK), ("light", LUALINE_LIGHT)] {
+      assert!(
+        body.contains(&format!("{mode} =")),
+        "lualine {name} theme missing mode: {mode}"
+      );
+    }
+  }
+}
+
+#[test]
+fn lualine_themes_use_semantic_palette_keys() {
+  for key in [
+    "accent",
+    "added",
+    "keyword",
+    "error",
+    "cursor",
+    "info",
+    "bg_highlight",
+    "bg",
+    "fg",
+    "comment",
+  ] {
+    for (name, body) in [("dark", LUALINE_DARK), ("light", LUALINE_LIGHT)] {
+      assert!(
+        body.contains(&format!("p.{key}")),
+        "lualine {name} theme should use palette key p.{key}"
+      );
+    }
+  }
+}
+
+#[test]
+fn lualine_themes_have_no_raw_hex() {
+  for (name, body) in [("dark", LUALINE_DARK), ("light", LUALINE_LIGHT)] {
+    let hex = extract_hex_colors(body);
+    assert!(
+      hex.is_empty(),
+      "lualine {name} theme must not hardcode hex; found: {hex:?}"
+    );
+  }
 }
 
 // -- Headless Neovim load tests --

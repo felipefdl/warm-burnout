@@ -21,9 +21,13 @@ nvim/
   lua/
     warm-burnout/
       init.lua                -- setup(), load(variant)
-      palette.lua             -- Dark + light palette tables
+      palette.lua             -- Dark + light palette tables + resolve()
       highlights.lua          -- All highlight group definitions
       terminal.lua            -- Terminal ANSI colors (16 colors)
+    lualine/
+      themes/
+        warm-burnout-dark.lua  -- Lualine dark theme
+        warm-burnout-light.lua -- Lualine light theme
   README.md                   -- Install instructions
   AGENTS.md                   -- This file
 ```
@@ -57,9 +61,10 @@ Since the repo is a monorepo (not a pure Neovim plugin), users add the `nvim/` s
 
 ## Adding Plugin Support
 
-1. Add highlight groups to `highlights.lua` in the appropriate section.
-2. Use palette semantic names, not raw hex values.
-3. Follow existing patterns for foreground/background assignment.
+1. Most plugins: add highlight groups to `highlights.lua` in the appropriate section.
+2. Lualine is special: it loads theme tables from `lua/lualine/themes/`, not highlight groups. Theme files must call `palette.resolve(...)` so 8-digit alpha hex values are blended (same path as `load()`).
+3. Use palette semantic names, not raw hex values.
+4. Follow existing patterns for foreground/background assignment.
 
 ## Color Rules
 

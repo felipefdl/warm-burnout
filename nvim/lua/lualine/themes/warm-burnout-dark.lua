@@ -1,37 +1,39 @@
-local palette = require('warm-burnout.palette').dark
-local theme
+local p = require("warm-burnout.palette").resolve(require("warm-burnout.palette").dark)
 
-theme = {
-    normal = {
-        a = { bg = palette.accent, fg = palette.bg, gui = 'bold' },
-        b = { bg = palette.bg_highlight, fg = palette.fg },
-        c = { bg = palette.bg, fg = palette.fg },
-    },
-    insert = {
-        a = { bg = palette.added, fg = palette.bg, gui = 'bold' },
-        b = { bg = palette.bg_highlight, fg = palette.fg },
-        c = { bg = palette.bg, fg = palette.fg },
-    },
-    visual = {
-        a = { bg = palette.keyword, fg = palette.bg, gui = 'bold' },
-        b = { bg = palette.bg_highlight, fg = palette.fg },
-        c = { bg = palette.bg, fg = palette.fg },
-    },
-    replace = {
-        a = { bg = palette.error, fg = palette.bg, gui = 'bold' },
-        b = { bg = palette.bg_highlight, fg = palette.fg },
-        c = { bg = palette.bg, fg = palette.fg },
-    },
-    command = {
-        a = { bg = palette.cursor, fg = palette.bg, gui = 'bold' },
-        b = { bg = palette.bg_highlight, fg = palette.fg },
-        c = { bg = palette.bg, fg = palette.fg },
-    },
-    inactive = {
-        a = { bg = palette.bg, fg = palette.comment, gui = 'bold' },
-        b = { bg = palette.bg_highlight, fg = palette.fg },
-        c = { bg = palette.bg, fg = palette.fg },
-    },
+return {
+  normal = {
+    a = { bg = p.accent, fg = p.bg, gui = "bold" },
+    b = { bg = p.bg_highlight, fg = p.fg },
+    c = { bg = p.bg, fg = p.fg },
+  },
+  insert = {
+    a = { bg = p.added, fg = p.bg, gui = "bold" },
+    b = { bg = p.bg_highlight, fg = p.fg },
+    c = { bg = p.bg, fg = p.fg },
+  },
+  visual = {
+    a = { bg = p.keyword, fg = p.bg, gui = "bold" },
+    b = { bg = p.bg_highlight, fg = p.fg },
+    c = { bg = p.bg, fg = p.fg },
+  },
+  replace = {
+    a = { bg = p.error, fg = p.bg, gui = "bold" },
+    b = { bg = p.bg_highlight, fg = p.fg },
+    c = { bg = p.bg, fg = p.fg },
+  },
+  command = {
+    a = { bg = p.cursor, fg = p.bg, gui = "bold" },
+    b = { bg = p.bg_highlight, fg = p.fg },
+    c = { bg = p.bg, fg = p.fg },
+  },
+  terminal = {
+    a = { bg = p.info, fg = p.bg, gui = "bold" },
+    b = { bg = p.bg_highlight, fg = p.fg },
+    c = { bg = p.bg, fg = p.fg },
+  },
+  inactive = {
+    a = { bg = p.bg, fg = p.comment, gui = "bold" },
+    b = { bg = p.bg_highlight, fg = p.fg },
+    c = { bg = p.bg, fg = p.fg },
+  },
 }
-
-return theme
