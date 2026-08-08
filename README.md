@@ -136,6 +136,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Warp | Available | [`warp/`](warp/) |
 | WezTerm | Available | [`wezterm/`](wezterm/) |
 | Alacritty | Available | [`alacritty/`](alacritty/) |
+| Moshi | Available | [`moshi/`](moshi/) |
 | tmux | Available | [`tmux/`](tmux/) |
 | Zellij | Available | [`zellij/`](zellij/) |
 | Starship | Available | [`starship/`](starship/) |
