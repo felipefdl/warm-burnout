@@ -281,6 +281,15 @@ pub fn windows_terminal_color(src: &str, key: &str) -> String {
   hex_to_lower(v[key].as_str().unwrap_or_else(|| panic!("missing key: {key}")))
 }
 
+pub fn moshi_color(src: &str, key: &str) -> String {
+  let v: serde_json::Value = serde_json::from_str(src).unwrap();
+  hex_to_lower(
+    v["colors"][key]
+      .as_str()
+      .unwrap_or_else(|| panic!("missing colors.{key} in moshi theme")),
+  )
+}
+
 pub fn iterm2_color(src: &str, key: &str) -> String {
   let cursor = std::io::Cursor::new(src.as_bytes());
   let value: plist::Value = plist::from_reader(cursor).expect("invalid plist");

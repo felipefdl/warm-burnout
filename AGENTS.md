@@ -52,6 +52,7 @@ warm-burnout/
     warp.rs                   # Warp theme validation tests
     wezterm.rs                # WezTerm theme validation tests
     alacritty.rs              # Alacritty theme validation tests
+    moshi.rs                  # Moshi theme validation tests
     tmux.rs                   # tmux theme validation tests
     zellij.rs                 # Zellij theme validation tests
     zsh.rs                    # Zsh theme validation tests
@@ -180,6 +181,11 @@ warm-burnout/
     AGENTS.md                 # Alacritty-specific agent rules
     warm-burnout-dark.toml    # Dark variant (TOML, importable)
     warm-burnout-light.toml   # Light variant
+  moshi/                      # Moshi mobile terminal theme (getmoshi.app)
+    README.md                 # Moshi install instructions
+    AGENTS.md                 # Moshi-specific agent rules
+    warm-burnout-dark.json    # Dark variant (Moshi theme v1)
+    warm-burnout-light.json   # Light variant
   tmux/                       # tmux status bar theme
     README.md                 # tmux install instructions
     AGENTS.md                 # tmux-specific agent rules

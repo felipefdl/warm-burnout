@@ -133,6 +133,7 @@ Then select **Warm Burnout Dark** or **Warm Burnout Light** with `Cmd+K Cmd+T` (
 - [Warp](https://github.com/felipefdl/warm-burnout/tree/main/warp)
 - [WezTerm](https://github.com/felipefdl/warm-burnout/tree/main/wezterm)
 - [Alacritty](https://github.com/felipefdl/warm-burnout/tree/main/alacritty)
+- [Moshi](https://github.com/felipefdl/warm-burnout/tree/main/moshi)
 - [tmux](https://github.com/felipefdl/warm-burnout/tree/main/tmux)
 - [Zellij](https://github.com/felipefdl/warm-burnout/tree/main/zellij)
 - [Starship](https://github.com/felipefdl/warm-burnout/tree/main/starship)

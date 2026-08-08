@@ -125,6 +125,7 @@ Then switch themes via `Cmd+Shift+P` and typing "theme" to select **Warm Burnout
 - [Warp](https://github.com/felipefdl/warm-burnout/tree/main/warp)
 - [WezTerm](https://github.com/felipefdl/warm-burnout/tree/main/wezterm)
 - [Alacritty](https://github.com/felipefdl/warm-burnout/tree/main/alacritty)
+- [Moshi](https://github.com/felipefdl/warm-burnout/tree/main/moshi)
 - [tmux](https://github.com/felipefdl/warm-burnout/tree/main/tmux)
 - [Zellij](https://github.com/felipefdl/warm-burnout/tree/main/zellij)
 - [Starship](https://github.com/felipefdl/warm-burnout/tree/main/starship)

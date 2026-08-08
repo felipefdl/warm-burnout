@@ -18,6 +18,7 @@ const READMES: &[(&str, &str)] = &[
   ("bat", include_str!("../bat/README.md")),
   ("wezterm", include_str!("../wezterm/README.md")),
   ("opencode", include_str!("../opencode/README.md")),
+  ("moshi", include_str!("../moshi/README.md")),
 ];
 
 #[test]
@@ -71,6 +72,8 @@ fn no_theme_file_uses_patina_as_label() {
     ("bat/dark", include_str!("../bat/Warm Burnout Dark.tmTheme")),
     ("bat/light", include_str!("../bat/Warm Burnout Light.tmTheme")),
     ("opencode/theme", include_str!("../opencode/warm-burnout.json")),
+    ("moshi/dark", include_str!("../moshi/warm-burnout-dark.json")),
+    ("moshi/light", include_str!("../moshi/warm-burnout-light.json")),
   ];
   for (name, content) in theme_files {
     for line in content.lines() {

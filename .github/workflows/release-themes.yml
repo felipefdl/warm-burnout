@@ -141,6 +141,13 @@ jobs:
             warm-burnout-dark.toml \
             warm-burnout-light.toml
 
+      - name: Package Moshi
+        run: |
+          cd moshi
+          zip -j ../warm-burnout-moshi.zip \
+            warm-burnout-dark.json \
+            warm-burnout-light.json
+
       - name: Package tmux
         run: |
           cd tmux
@@ -216,6 +223,7 @@ jobs:
             warm-burnout-warp.zip
             warm-burnout-wezterm.zip
             warm-burnout-alacritty.zip
+            warm-burnout-moshi.zip
             warm-burnout-tmux.zip
             warm-burnout-zellij.zip
             warm-burnout-eza.zip
