@@ -143,7 +143,7 @@ Inspired by materials that age well. Unlike your eyes.
 | Zsh | Available | [`zsh/`](zsh/) |
 | Home Assistant | Available | [`home-assistant/`](home-assistant/) |
 | eza | Available | [`eza/`](eza/) |
-| Obsidian | Available | [`obsidian/`](obsidian/) |
+| Obsidian | Available | [Community Themes](https://community.obsidian.md/themes/warm-burnout) |
 | Emacs | Available | [`emacs/`](emacs/) |
 | OpenCode | Available | [`opencode/`](opencode/) |
 

@@ -140,7 +140,7 @@ Then select **Warm Burnout Dark** or **Warm Burnout Light** with `Cmd+K Cmd+T` (
 - [Zsh](https://github.com/felipefdl/warm-burnout/tree/main/zsh) (syntax highlighting + fzf)
 - [Home Assistant](https://github.com/felipefdl/warm-burnout/tree/main/home-assistant)
 - [eza](https://github.com/felipefdl/warm-burnout/tree/main/eza)
-- [Obsidian](https://github.com/felipefdl/warm-burnout/tree/main/obsidian)
+- [Obsidian](https://community.obsidian.md/themes/warm-burnout)
 - [Emacs](https://github.com/felipefdl/warm-burnout/tree/main/emacs)
 - [OpenCode](https://github.com/felipefdl/warm-burnout/tree/main/opencode)
 

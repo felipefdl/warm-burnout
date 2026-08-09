@@ -33,6 +33,8 @@ Full community theme for Obsidian with dark and light variants. Warm-first palet
 
 ### Community Themes (recommended)
 
+Listed in the [Obsidian Community Themes directory](https://community.obsidian.md/themes/warm-burnout).
+
 1. Open Settings > Appearance > Themes
 2. Click "Manage" and search for **Warm Burnout**
 3. Install and activate
