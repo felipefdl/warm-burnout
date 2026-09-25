@@ -13,11 +13,6 @@
 
 Warm Burnout is a multi-platform color theme suite designed for extended coding sessions. Mostly warm palette, one cool type accent, contrast-audited to WCAG standards. Two variants: dark and light.
 
-## Agent Instruction Files
-
-- `AGENTS.md` is the source of truth for repo-level agent instructions.
-- `CLAUDE.md` is a symbolic link to `AGENTS.md`. Do not edit or review both as separate files.
-
 ## Project Structure
 
 ```
